@@ -5,6 +5,256 @@
  * 
  */
 /**
+ * ErrorData
+ */
+class ErrorData {
+	/**
+	 * @access public
+	 * @var long
+	 */
+	public $errorId;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $domain;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $subdomain;
+
+	/**
+	 * @access public
+	 * @var ErrorSeverity
+	 */
+	public $severity;
+
+	/**
+	 * @access public
+	 * @var ErrorCategory
+	 */
+	public $category;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $message;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $exceptionId;
+
+	/**
+	 * array
+	 * @access public
+	 * @var ErrorParameter
+	 */
+	public $parameter;
+
+
+	public function init($map = null, $prefix='') {
+		if($map != null) {
+			$mapKeyName =  $prefix . 'errorId';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->errorId = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'domain';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->domain = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'subdomain';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->subdomain = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'severity';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->severity = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'category';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->category = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'message';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->message = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'exceptionId';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->exceptionId = $map[$mapKeyName];
+			}
+			for($i=0; $i<10;$i++) {
+				if( PPUtils::array_match_key($map, $prefix."parameter($i)") ) {
+					$newPrefix = $prefix."parameter($i).";
+				$this->parameter[$i] = new ErrorParameter();
+				$this->parameter[$i]->init($map, $newPrefix);
+			}
+			 }
+		}
+	}
+}
+
+/**
+ * ErrorParameter
+ */
+class ErrorParameter {
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $value;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $name;
+
+
+	public function init($map = null, $prefix='') {
+		if($map != null) {
+			$mapKeyName =  $prefix . 'value';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->value = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'name';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->name = $map[$mapKeyName];
+			}
+		}
+	}
+}
+
+/**
+ * ResponseEnvelope
+ * This is the sample message
+ */
+class ResponseEnvelope {
+	/**
+	 * @access public
+	 * @var dateTime
+	 */
+	public $timestamp;
+
+	/**
+	 * Application level acknowledgment code.
+	 *
+	 * @access public
+	 * @var AckCode
+	 */
+	public $ack;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $correlationId;
+
+	/**
+	 * @access public
+	 * @var string
+	 */
+	public $build;
+
+
+	public function init($map = null, $prefix='') {
+		if($map != null) {
+			$mapKeyName =  $prefix . 'timestamp';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->timestamp = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'ack';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->ack = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'correlationId';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->correlationId = $map[$mapKeyName];
+			}
+			$mapKeyName =  $prefix . 'build';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->build = $map[$mapKeyName];
+			}
+		}
+	}
+}
+
+/**
+ * RequestEnvelope
+ * This specifies the list of parameters with every
+ * request to the service.
+ */
+class RequestEnvelope {
+	/**
+	 * This should be the standard RFC 3066
+	 * language identification tag, e.g.,
+	 * en_US.
+	 *
+	 * @access public
+	 * @var string
+	 */
+	public $errorLanguage;
+
+
+	public function __construct($errorLanguage = null) {
+		$this->errorLanguage  = $errorLanguage;
+	}
+
+	public function toNVPString($prefix='') { 
+		$str = '';
+		$delim = '';
+		if( $this->errorLanguage != null ) {
+			$str .= $delim .  $prefix . 'errorLanguage=' . urlencode($this->errorLanguage);
+			$delim = '&';
+		}
+
+		return $str;
+	}
+
+}
+
+/**
+ * FaultMessage
+ */
+class FaultMessage {
+	/**
+	 * @access public
+	 * @var ResponseEnvelope
+	 */
+	public $responseEnvelope;
+
+	/**
+	 * array
+	 * @access public
+	 * @var ErrorData
+	 */
+	public $error;
+
+
+	public function init($map = null, $prefix='') {
+		if($map != null) {
+			if( PPUtils::array_match_key($map, $prefix."responseEnvelope.") ) {
+				$newPrefix = $prefix ."responseEnvelope.";
+				$this->responseEnvelope = new ResponseEnvelope();
+				$this->responseEnvelope->init($map, $newPrefix);
+			}
+			for($i=0; $i<10;$i++) {
+				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
+					$newPrefix = $prefix."error($i).";
+				$this->error[$i] = new ErrorData();
+				$this->error[$i]->init($map, $newPrefix);
+			}
+			 }
+		}
+	}
+}
+
+/**
  * RequestPermissionsRequest
  * Describes the request for permissions over an
  * account. Primary element is "scope", which lists
@@ -65,241 +315,6 @@ class RequestPermissionsRequest {
 }
 
 /**
- * RequestEnvelope
- * This specifies the list of parameters with every
- * request to the service.
- */
-class RequestEnvelope {
-	/**
-	 * This should be the standard RFC 3066
-	 * language identification tag, e.g.,
-	 * en_US.
-	 *
-	 * @access public
-	 * @var string
-	 */
-	public $errorLanguage;
-
-
-	public function __construct($errorLanguage = null) {
-		$this->errorLanguage  = $errorLanguage;
-	}
-
-	public function toNVPString($prefix='') { 
-		$str = '';
-		$delim = '';
-		if( $this->errorLanguage != null ) {
-			$str .= $delim .  $prefix . 'errorLanguage=' . urlencode($this->errorLanguage);
-			$delim = '&';
-		}
-
-		return $str;
-	}
-
-}
-
-/**
- * FaultMessage
- */
-class FaultMessage {
-	/**
-	 * @access public
-	 * @var ResponseEnvelope
-	 */
-	public $responseEnvelope;
-
-	/**
-	 * array
-	 * @access public
-	 * @var ErrorData
-	 */
-	public $error;
-
-
-	public function __construct($map = null, $prefix='') {
-		if($map != null) {
-			$newPrefix = $prefix ."responseEnvelope.";
-			$this->responseEnvelope = new ResponseEnvelope($map, $newPrefix);
-			for($i=0; $i<10;$i++) {
-				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
-					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData($map, $newPrefix);
-				}
-			 }
-		}
-	}
-}
-
-/**
- * ResponseEnvelope
- * This is the sample message
- */
-class ResponseEnvelope {
-	/**
-	 * @access public
-	 * @var dateTime
-	 */
-	public $timestamp;
-
-	/**
-	 * Application level acknowledgment code.
-	 *
-	 * @access public
-	 * @var AckCode
-	 */
-	public $ack;
-
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $correlationId;
-
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $build;
-
-
-	public function __construct($map = null, $prefix='') {
-		if($map != null) {
-			$mapKeyName =  $prefix . 'timestamp';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->timestamp = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'ack';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->ack = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'correlationId';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->correlationId = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'build';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->build = $map[$mapKeyName];
-			}
-		}
-	}
-}
-
-/**
- * ErrorData
- */
-class ErrorData {
-	/**
-	 * @access public
-	 * @var long
-	 */
-	public $errorId;
-
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $domain;
-
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $subdomain;
-
-	/**
-	 * @access public
-	 * @var ErrorSeverity
-	 */
-	public $severity;
-
-	/**
-	 * @access public
-	 * @var ErrorCategory
-	 */
-	public $category;
-
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $message;
-
-	/**
-	 * @access public
-	 * @var token
-	 */
-	public $exceptionId;
-
-	/**
-	 * array
-	 * @access public
-	 * @var ErrorParameter
-	 */
-	public $parameter;
-
-
-	public function __construct($map = null, $prefix='') {
-		if($map != null) {
-			$mapKeyName =  $prefix . 'errorId';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->errorId = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'domain';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->domain = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'subdomain';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->subdomain = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'severity';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->severity = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'category';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->category = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'message';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->message = $map[$mapKeyName];
-			}
-			$mapKeyName =  $prefix . 'exceptionId';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->exceptionId = $map[$mapKeyName];
-			}
-			for($i=0; $i<10;$i++) {
-				if( PPUtils::array_match_key($map, $prefix."parameter($i)") ) {
-					$newPrefix = $prefix."parameter($i).";
-				$this->parameter[$i] = new ErrorParameter($map, $newPrefix);
-				}
-			 }
-		}
-	}
-}
-
-/**
- * ErrorParameter
- */
-class ErrorParameter {
-	/**
-	 * @access public
-	 * @var string
-	 */
-	public $value;
-
-
-	public function __construct($map = null, $prefix='') {
-		if($map != null) {
-			$mapKeyName =  $prefix . 'value';
-			if($map != null && array_key_exists($mapKeyName, $map)) {
-				$this->value = $map[$mapKeyName];
-			}
-		}
-	}
-}
-
-/**
  * RequestPermissionsResponse
  * Returns the temporary request token
  */
@@ -331,10 +346,13 @@ class RequestPermissionsResponse {
 	public $error;
 
 
-	public function __construct($map = null, $prefix='') {
+	public function init($map = null, $prefix='') {
 		if($map != null) {
-			$newPrefix = $prefix ."responseEnvelope.";
-			$this->responseEnvelope = new ResponseEnvelope($map, $newPrefix);
+			if( PPUtils::array_match_key($map, $prefix."responseEnvelope.") ) {
+				$newPrefix = $prefix ."responseEnvelope.";
+				$this->responseEnvelope = new ResponseEnvelope();
+				$this->responseEnvelope->init($map, $newPrefix);
+			}
 			$mapKeyName =  $prefix . 'token';
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->token = $map[$mapKeyName];
@@ -342,8 +360,9 @@ class RequestPermissionsResponse {
 			for($i=0; $i<10;$i++) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData($map, $newPrefix);
-				}
+				$this->error[$i] = new ErrorData();
+				$this->error[$i]->init($map, $newPrefix);
+			}
 			 }
 		}
 	}
@@ -470,10 +489,13 @@ class GetAccessTokenResponse {
 	public $error;
 
 
-	public function __construct($map = null, $prefix='') {
+	public function init($map = null, $prefix='') {
 		if($map != null) {
-			$newPrefix = $prefix ."responseEnvelope.";
-			$this->responseEnvelope = new ResponseEnvelope($map, $newPrefix);
+			if( PPUtils::array_match_key($map, $prefix."responseEnvelope.") ) {
+				$newPrefix = $prefix ."responseEnvelope.";
+				$this->responseEnvelope = new ResponseEnvelope();
+				$this->responseEnvelope->init($map, $newPrefix);
+			}
 			for($i=0; $i<10;$i++) {
 			 }
 			$mapKeyName =  $prefix . 'token';
@@ -487,8 +509,9 @@ class GetAccessTokenResponse {
 			for($i=0; $i<10;$i++) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData($map, $newPrefix);
-				}
+				$this->error[$i] = new ErrorData();
+				$this->error[$i]->init($map, $newPrefix);
+			}
 			 }
 		}
 	}
@@ -567,17 +590,21 @@ class GetPermissionsResponse {
 	public $error;
 
 
-	public function __construct($map = null, $prefix='') {
+	public function init($map = null, $prefix='') {
 		if($map != null) {
-			$newPrefix = $prefix ."responseEnvelope.";
-			$this->responseEnvelope = new ResponseEnvelope($map, $newPrefix);
+			if( PPUtils::array_match_key($map, $prefix."responseEnvelope.") ) {
+				$newPrefix = $prefix ."responseEnvelope.";
+				$this->responseEnvelope = new ResponseEnvelope();
+				$this->responseEnvelope->init($map, $newPrefix);
+			}
 			for($i=0; $i<10;$i++) {
 			 }
 			for($i=0; $i<10;$i++) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData($map, $newPrefix);
-				}
+				$this->error[$i] = new ErrorData();
+				$this->error[$i]->init($map, $newPrefix);
+			}
 			 }
 		}
 	}
@@ -642,15 +669,19 @@ class CancelPermissionsResponse {
 	public $error;
 
 
-	public function __construct($map = null, $prefix='') {
+	public function init($map = null, $prefix='') {
 		if($map != null) {
-			$newPrefix = $prefix ."responseEnvelope.";
-			$this->responseEnvelope = new ResponseEnvelope($map, $newPrefix);
+			if( PPUtils::array_match_key($map, $prefix."responseEnvelope.") ) {
+				$newPrefix = $prefix ."responseEnvelope.";
+				$this->responseEnvelope = new ResponseEnvelope();
+				$this->responseEnvelope->init($map, $newPrefix);
+			}
 			for($i=0; $i<10;$i++) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData($map, $newPrefix);
-				}
+				$this->error[$i] = new ErrorData();
+				$this->error[$i]->init($map, $newPrefix);
+			}
 			 }
 		}
 	}

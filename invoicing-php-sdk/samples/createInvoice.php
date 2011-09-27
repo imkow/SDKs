@@ -94,6 +94,7 @@ TokenSecret here)</a><br />
 	size="50" maxlength="260" /></div>
 <input type="submit" name="CreateBtn" value="CreateInvoice" /></div>
 </form>
+<a href="index.php" >Home</a>
 </body>
 </html>
 	<?php

@@ -5,19 +5,14 @@ require_once('services/Invoice/InvoiceService.php');
 require_once('PPLoggingManager.php');
 session_start();
 
-//get the current filename
-$currentFile = $_SERVER["SCRIPT_NAME"];
-$parts = Explode('/', $currentFile);
-$currentFile = $parts[count($parts) - 1];
-$_SESSION['curFile']=$currentFile;
 
-$logger = new PPLoggingManager('SendInvoice');
+$logger = new PPLoggingManager('GetInvoiceDetails');
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// send request
 	$requestEnvelope = new RequestEnvelope();
 	$requestEnvelope->errorLanguage = "en_US";
-	$sendInvoiceRequest = new SendInvoiceRequest($requestEnvelope, $_POST['invoiceID']);
-	$logger->error("created SendInvoice Object");
+	$getInvoiceDetailsRequest = new GetInvoiceDetailsRequest($requestEnvelope, $_POST['invoiceID']);
+	$logger->error("created GetInvoiceDetails Object");
 	$invoice_service = new InvoiceService();
 	// required in third party permissioning
 if(($_POST['accessToken']!= null) && ($_POST['tokenSecret'] != null))
@@ -25,18 +20,18 @@ if(($_POST['accessToken']!= null) && ($_POST['tokenSecret'] != null))
 		$invoice_service->setAccessToken($_POST['accessToken']);
 		$invoice_service->setTokenSecret($_POST['tokenSecret']);
 	}
-	$sendInvoiceResponse = $invoice_service->SendInvoice($sendInvoiceRequest, 'jb-us-seller_api1.paypal.com');
-	$logger->error("Received SendInvoiceResponse:");
-	var_dump($sendInvoiceResponse);
+	$getInvoiceDetailsResponse = $invoice_service->GetInvoiceDetails($getInvoiceDetailsRequest, 'jb-us-seller_api1.paypal.com');
+	$logger->error("Received getInvoiceDetailsResponse");
+	var_dump($getInvoiceDetailsResponse);
 } else {
 
 	?>
 <html>
 <head>
-<title>SendInvoice Sample API Page</title>
+<title>GetInvoiceDetails Sample API Page</title>
 </head>
 <body>
-<h2>SendInvoice API Test Page</h2>
+<h2>GetInvoiceDetails API Test Page</h2>
 <form method="POST">
 <div class="params">
 <div class="param_name">InvoiceID</div>

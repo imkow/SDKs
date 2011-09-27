@@ -14,45 +14,57 @@ class PermissionsService extends PPBaseService {
 
 	/**
 	 * Service Call: RequestPermissions
-	 * @param RequestPermissionsRequest requestPermissionsRequest
+	 * @param RequestPermissionsRequest $requestPermissionsRequest
 	 * @return RequestPermissionsResponse
 	 * @throws APIException
 	 */
 	public function RequestPermissions($requestPermissionsRequest, $apiUsername=null) {
-		return new RequestPermissionsResponse( PPUtils::nvpToMap( $this->call("RequestPermissions", $requestPermissionsRequest, $apiUsername)));
+		$ret = new RequestPermissionsResponse();
+		$resp = $this->call("RequestPermissions", $requestPermissionsRequest, $apiUsername);
+		$ret->init(PPUtils::nvpToMap($resp));
+		return $ret;
 	}
 
 
 	/**
 	 * Service Call: GetAccessToken
-	 * @param GetAccessTokenRequest getAccessTokenRequest
+	 * @param GetAccessTokenRequest $getAccessTokenRequest
 	 * @return GetAccessTokenResponse
 	 * @throws APIException
 	 */
 	public function GetAccessToken($getAccessTokenRequest, $apiUsername=null) {
-		return new GetAccessTokenResponse( PPUtils::nvpToMap( $this->call("GetAccessToken", $getAccessTokenRequest, $apiUsername)));
+		$ret = new GetAccessTokenResponse();
+		$resp = $this->call("GetAccessToken", $getAccessTokenRequest, $apiUsername);
+		$ret->init(PPUtils::nvpToMap($resp));
+		return $ret;
 	}
 
 
 	/**
 	 * Service Call: GetPermissions
-	 * @param GetPermissionsRequest getPermissionsRequest
+	 * @param GetPermissionsRequest $getPermissionsRequest
 	 * @return GetPermissionsResponse
 	 * @throws APIException
 	 */
 	public function GetPermissions($getPermissionsRequest, $apiUsername=null) {
-		return new GetPermissionsResponse( PPUtils::nvpToMap( $this->call("GetPermissions", $getPermissionsRequest, $apiUsername)));
+		$ret = new GetPermissionsResponse();
+		$resp = $this->call("GetPermissions", $getPermissionsRequest, $apiUsername);
+		$ret->init(PPUtils::nvpToMap($resp));
+		return $ret;
 	}
 
 
 	/**
 	 * Service Call: CancelPermissions
-	 * @param CancelPermissionsRequest cancelPermissionsRequest
+	 * @param CancelPermissionsRequest $cancelPermissionsRequest
 	 * @return CancelPermissionsResponse
 	 * @throws APIException
 	 */
 	public function CancelPermissions($cancelPermissionsRequest, $apiUsername=null) {
-		return new CancelPermissionsResponse( PPUtils::nvpToMap( $this->call("CancelPermissions", $cancelPermissionsRequest, $apiUsername)));
+		$ret = new CancelPermissionsResponse();
+		$resp = $this->call("CancelPermissions", $cancelPermissionsRequest, $apiUsername);
+		$ret->init(PPUtils::nvpToMap($resp));
+		return $ret;
 	}
 
 
