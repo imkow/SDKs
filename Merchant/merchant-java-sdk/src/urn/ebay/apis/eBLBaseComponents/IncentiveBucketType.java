@@ -129,29 +129,29 @@ public class IncentiveBucketType {
 			sb.append("</ebl:ExternalSellerId>");
 		}
 		if( BucketSubtotalAmt != null ) {
-			sb.append("<cc:BucketSubtotalAmt>");
+			sb.append("<ebl:BucketSubtotalAmt ");
 			sb.append(BucketSubtotalAmt.toXMLString());
-			sb.append("</cc:BucketSubtotalAmt>");
+			sb.append("</ebl:BucketSubtotalAmt>");
 		}
 		if( BucketShippingAmt != null ) {
-			sb.append("<cc:BucketShippingAmt>");
+			sb.append("<ebl:BucketShippingAmt ");
 			sb.append(BucketShippingAmt.toXMLString());
-			sb.append("</cc:BucketShippingAmt>");
+			sb.append("</ebl:BucketShippingAmt>");
 		}
 		if( BucketInsuranceAmt != null ) {
-			sb.append("<cc:BucketInsuranceAmt>");
+			sb.append("<ebl:BucketInsuranceAmt ");
 			sb.append(BucketInsuranceAmt.toXMLString());
-			sb.append("</cc:BucketInsuranceAmt>");
+			sb.append("</ebl:BucketInsuranceAmt>");
 		}
 		if( BucketSalesTaxAmt != null ) {
-			sb.append("<cc:BucketSalesTaxAmt>");
+			sb.append("<ebl:BucketSalesTaxAmt ");
 			sb.append(BucketSalesTaxAmt.toXMLString());
-			sb.append("</cc:BucketSalesTaxAmt>");
+			sb.append("</ebl:BucketSalesTaxAmt>");
 		}
 		if( BucketTotalAmt != null ) {
-			sb.append("<cc:BucketTotalAmt>");
+			sb.append("<ebl:BucketTotalAmt ");
 			sb.append(BucketTotalAmt.toXMLString());
-			sb.append("</cc:BucketTotalAmt>");
+			sb.append("</ebl:BucketTotalAmt>");
 		}
 		return sb.toString();
 	}

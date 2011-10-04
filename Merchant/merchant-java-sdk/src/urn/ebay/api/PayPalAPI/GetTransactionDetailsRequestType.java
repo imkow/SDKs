@@ -42,8 +42,8 @@ public class GetTransactionDetailsRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( TransactionID != null ) {
-			sb.append("<ebl:TransactionID>").append(TransactionID);
-			sb.append("</ebl:TransactionID>");
+			sb.append("<urn:TransactionID>").append(TransactionID);
+			sb.append("</urn:TransactionID>");
 		}
 		return sb.toString();
 	}

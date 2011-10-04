@@ -47,8 +47,8 @@ public class GetBoardingDetailsRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( Token != null ) {
-			sb.append("<ebl:Token>").append(Token);
-			sb.append("</ebl:Token>");
+			sb.append("<urn:Token>").append(Token);
+			sb.append("</urn:Token>");
 		}
 		return sb.toString();
 	}

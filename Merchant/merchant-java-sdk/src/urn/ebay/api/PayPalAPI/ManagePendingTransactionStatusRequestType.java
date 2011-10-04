@@ -49,12 +49,12 @@ public class ManagePendingTransactionStatusRequestType extends AbstractRequestTy
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( TransactionID != null ) {
-			sb.append("<ebl:TransactionID>").append(TransactionID);
-			sb.append("</ebl:TransactionID>");
+			sb.append("<urn:TransactionID>").append(TransactionID);
+			sb.append("</urn:TransactionID>");
 		}
 		if( Action != null ) {
-			sb.append("<ebl:Action>").append( Action.getValue());
-			sb.append("</ebl:Action>");
+			sb.append("<urn:Action>").append( Action.getValue());
+			sb.append("</urn:Action>");
 		}
 		return sb.toString();
 	}

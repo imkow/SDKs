@@ -203,9 +203,9 @@ public class MerchantPullPaymentType {
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<ebl:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</ebl:Amount>");
 		}
 		if( MpID != null ) {
 			sb.append("<ebl:MpID>").append(MpID);
@@ -224,19 +224,19 @@ public class MerchantPullPaymentType {
 			sb.append("</ebl:EmailSubject>");
 		}
 		if( Tax != null ) {
-			sb.append("<cc:Tax>");
+			sb.append("<ebl:Tax ");
 			sb.append(Tax.toXMLString());
-			sb.append("</cc:Tax>");
+			sb.append("</ebl:Tax>");
 		}
 		if( Shipping != null ) {
-			sb.append("<cc:Shipping>");
+			sb.append("<ebl:Shipping ");
 			sb.append(Shipping.toXMLString());
-			sb.append("</cc:Shipping>");
+			sb.append("</ebl:Shipping>");
 		}
 		if( Handling != null ) {
-			sb.append("<cc:Handling>");
+			sb.append("<ebl:Handling ");
 			sb.append(Handling.toXMLString());
-			sb.append("</cc:Handling>");
+			sb.append("</ebl:Handling>");
 		}
 		if( ItemName != null ) {
 			sb.append("<ebl:ItemName>").append(ItemName);

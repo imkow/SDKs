@@ -52,9 +52,9 @@ public class ShippingOptionType {
 			sb.append("</ebl:ShippingOptionIsDefault>");
 		}
 		if( ShippingOptionAmount != null ) {
-			sb.append("<cc:ShippingOptionAmount>");
+			sb.append("<ebl:ShippingOptionAmount ");
 			sb.append(ShippingOptionAmount.toXMLString());
-			sb.append("</cc:ShippingOptionAmount>");
+			sb.append("</ebl:ShippingOptionAmount>");
 		}
 		if( ShippingOptionName != null ) {
 			sb.append("<ebl:ShippingOptionName>").append(ShippingOptionName);

@@ -12,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -26,18 +27,6 @@ public class MeasureType {
 	 *
 	 * @Required
 	 */
-	private Double value;
-	public Double getValue() {
-		return value;
-	}
-	public void setValue(Double value) {
-		this.value = value;
-	}
-
-	/**
-	 *
-	 * @Required
-	 */
 	private String unit;
 	public String getUnit() {
 		return unit;
@@ -46,24 +35,34 @@ public class MeasureType {
 		this.unit = value;
 	}
 
-
-	public MeasureType(Double value, String unit) {
+	/**
+	 *
+	 * @Required
+	 */
+	private Double value;
+	public Double getValue() {
+		return value;
+	}
+	public void setValue(Double value) {
 		this.value = value;
+	}
+
+
+	public MeasureType(String unit, Double value) {
 		this.unit = unit;
+		this.value = value;
 	}
 	public MeasureType() {
 	}
 
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
-		if( value != null ) {
-			sb.append("<cc:value>").append(value);
-			sb.append("</cc:value>");
-		}
 		if( unit != null ) {
 			sb.append("<cc:unit>").append(unit);
 			sb.append("</cc:unit>");
 		}
+		if( value != null ) {
+sb.append(value);		}
 		return sb.toString();
 	}
 
@@ -75,29 +74,49 @@ public class MeasureType {
 				return false;
 		 } 
 	 } 
-	 private String convertToXML(Node node){ 
-		 StringBuffer bf = new StringBuffer(); 
-		 do{ 
-		 if (node.getChildNodes().getLength() == 1 && node.getChildNodes().item(0).getNodeType()==Node.TEXT_NODE) { 
-				bf.append("<" + node.getNodeName() + ">" + node.getTextContent()+ "</" + node.getNodeName() + ">"); 
-				return bf.toString(); 
-			} 
-			bf.append("<" + node.getNodeName() + ">"); 
-			NodeList childNode = node.getChildNodes(); 
-			for (int j = 0; j < childNode.getLength(); j++) { 
-				Node offspring = childNode.item(j); 
-				if (offspring.getChildNodes().getLength() == 1) { 
-					if (!isWhitespaceNode(offspring)) { 
-						bf.append("<" + offspring.getNodeName() + ">"+ offspring.getTextContent() + "</"+ offspring.getNodeName() + ">");
-					}
-				} else {
-					bf.append(convertToXML(offspring));
-				}
-			}
-			bf.append("</" + node.getNodeName() + ">");
-			return bf.toString();
-		 }while(true);
-		}
+	 private String convertToXML(Node n){ 
+		 String name = n.getNodeName();
+		 short type = n.getNodeType();
+		 if (Node.CDATA_SECTION_NODE == type) {
+			  return "<![CDATA[" + n.getNodeValue() + "]]&gt;";
+		 } 
+		 if (name.startsWith("#")) {
+			  return "";
+		} 
+		 StringBuffer sb = new StringBuffer();
+		 sb.append('<').append(name);
+		 NamedNodeMap attrs = n.getAttributes();
+		 if (attrs != null) { 
+		  for (int i = 0; i < attrs.getLength(); i++) { 
+			    Node attr = attrs.item(i);
+			    sb.append(' ').append(attr.getNodeName()).append("=\"").append(attr.getNodeValue()).append("\"");
+		  }
+		 } 
+		 String textContent = null; 
+		 NodeList children = n.getChildNodes(); 
+		 if (children.getLength() == 0) { 
+		  if ((textContent = n.getTextContent()) != null && !"".equals(textContent)) {
+		    sb.append(textContent).append("</").append(name).append('>'); 
+		  } else { 
+		    sb.append("/>"); 
+		  } 
+		 } else { 
+		  sb.append('>'); 
+		  boolean hasValidChildren = false;
+		  for (int i = 0; i < children.getLength(); i++) { 
+		    String childToString = convertToXML(children.item(i));
+		    if (!"".equals(childToString)) {
+		      sb.append(childToString); 
+		      hasValidChildren = true; 
+		    } 
+		  } 
+		  if (!hasValidChildren && ((textContent = n.getTextContent()) != null)) { 
+		    sb.append(textContent); 
+		 }
+		  sb.append("</").append(name).append('>');
+		 }
+		 return sb.toString();
+	 } 
 	 public MeasureType(Object xmlSoap) throws IOException,SAXException,ParserConfigurationException	{
 		 DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
 		 DocumentBuilder builder = builderFactory.newDocumentBuilder();
@@ -106,15 +125,11 @@ public class MeasureType {
 		 Document document = builder.parse(inStream);
 		 NodeList nodeList= null; 
 		 String xmlString ="";
-		 if(document.getElementsByTagName("value").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("value").item(0))){ 
-		 this.value =Double.valueOf(document.getElementsByTagName("value").item(0).getTextContent());
-
-}
-	}
 		 if(document.getElementsByTagName("unit").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("unit").item(0))){ 
 		 this.unit =(String)document.getElementsByTagName("unit").item(0).getTextContent();
 
 }
 	}
+		 this.value =Double.valueOf(document.getChildNodes().item(0).getTextContent());
 	}
 }

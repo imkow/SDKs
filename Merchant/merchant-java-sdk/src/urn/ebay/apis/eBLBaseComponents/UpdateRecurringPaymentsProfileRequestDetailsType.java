@@ -231,24 +231,24 @@ public class UpdateRecurringPaymentsProfileRequestDetailsType {
 			sb.append("</ebl:AdditionalBillingCycles>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<ebl:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</ebl:Amount>");
 		}
 		if( ShippingAmount != null ) {
-			sb.append("<cc:ShippingAmount>");
+			sb.append("<ebl:ShippingAmount ");
 			sb.append(ShippingAmount.toXMLString());
-			sb.append("</cc:ShippingAmount>");
+			sb.append("</ebl:ShippingAmount>");
 		}
 		if( TaxAmount != null ) {
-			sb.append("<cc:TaxAmount>");
+			sb.append("<ebl:TaxAmount ");
 			sb.append(TaxAmount.toXMLString());
-			sb.append("</cc:TaxAmount>");
+			sb.append("</ebl:TaxAmount>");
 		}
 		if( OutstandingBalance != null ) {
-			sb.append("<cc:OutstandingBalance>");
+			sb.append("<ebl:OutstandingBalance ");
 			sb.append(OutstandingBalance.toXMLString());
-			sb.append("</cc:OutstandingBalance>");
+			sb.append("</ebl:OutstandingBalance>");
 		}
 		if( AutoBillOutstandingAmount != null ) {
 			sb.append("<ebl:AutoBillOutstandingAmount>").append( AutoBillOutstandingAmount.getValue());

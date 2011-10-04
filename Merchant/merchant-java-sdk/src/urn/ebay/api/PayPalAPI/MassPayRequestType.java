@@ -99,8 +99,8 @@ sb.append(super.toXMLString());
 			sb.append("</urn:EmailSubject>");
 		}
 		if( ReceiverType != null ) {
-			sb.append("<ebl:ReceiverType>").append( ReceiverType.getValue());
-			sb.append("</ebl:ReceiverType>");
+			sb.append("<urn:ReceiverType>").append( ReceiverType.getValue());
+			sb.append("</urn:ReceiverType>");
 		}
 		if( ButtonSource != null ) {
 			sb.append("<urn:ButtonSource>").append(ButtonSource);
