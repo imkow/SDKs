@@ -45,9 +45,9 @@ public class ActivationDetailsType {
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
 		if( InitialAmount != null ) {
-			sb.append("<cc:InitialAmount>");
+			sb.append("<ebl:InitialAmount ");
 			sb.append(InitialAmount.toXMLString());
-			sb.append("</cc:InitialAmount>");
+			sb.append("</ebl:InitialAmount>");
 		}
 		if( FailedInitialAmountAction != null ) {
 			sb.append("<ebl:FailedInitialAmountAction>").append( FailedInitialAmountAction.getValue());

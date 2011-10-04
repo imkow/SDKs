@@ -189,19 +189,19 @@ public class AirlineItineraryType {
 			sb.append("</ebl:CustomerCode>");
 		}
 		if( TotalFare != null ) {
-			sb.append("<cc:TotalFare>");
+			sb.append("<ebl:TotalFare ");
 			sb.append(TotalFare.toXMLString());
-			sb.append("</cc:TotalFare>");
+			sb.append("</ebl:TotalFare>");
 		}
 		if( TotalTaxes != null ) {
-			sb.append("<cc:TotalTaxes>");
+			sb.append("<ebl:TotalTaxes ");
 			sb.append(TotalTaxes.toXMLString());
-			sb.append("</cc:TotalTaxes>");
+			sb.append("</ebl:TotalTaxes>");
 		}
 		if( TotalFee != null ) {
-			sb.append("<cc:TotalFee>");
+			sb.append("<ebl:TotalFee ");
 			sb.append(TotalFee.toXMLString());
-			sb.append("</cc:TotalFee>");
+			sb.append("</ebl:TotalFee>");
 		}
 		if( RestrictedTicket != null ) {
 			sb.append("<ebl:RestrictedTicket>").append(RestrictedTicket);

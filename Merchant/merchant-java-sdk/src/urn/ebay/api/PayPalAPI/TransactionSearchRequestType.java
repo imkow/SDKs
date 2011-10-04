@@ -285,29 +285,29 @@ sb.append(super.toXMLString());
 			sb.append("</urn:EndDate>");
 		}
 		if( Payer != null ) {
-			sb.append("<ebl:Payer>").append(Payer);
-			sb.append("</ebl:Payer>");
+			sb.append("<urn:Payer>").append(Payer);
+			sb.append("</urn:Payer>");
 		}
 		if( Receiver != null ) {
-			sb.append("<ebl:Receiver>").append(Receiver);
-			sb.append("</ebl:Receiver>");
+			sb.append("<urn:Receiver>").append(Receiver);
+			sb.append("</urn:Receiver>");
 		}
 		if( ReceiptID != null ) {
 			sb.append("<urn:ReceiptID>").append(ReceiptID);
 			sb.append("</urn:ReceiptID>");
 		}
 		if( TransactionID != null ) {
-			sb.append("<ebl:TransactionID>").append(TransactionID);
-			sb.append("</ebl:TransactionID>");
+			sb.append("<urn:TransactionID>").append(TransactionID);
+			sb.append("</urn:TransactionID>");
 		}
 		if( ProfileID != null ) {
 			sb.append("<urn:ProfileID>").append(ProfileID);
 			sb.append("</urn:ProfileID>");
 		}
 		if( PayerName != null ) {
-			sb.append("<ebl:PayerName>");
+			sb.append("<urn:PayerName>");
 			sb.append(PayerName.toXMLString());
-			sb.append("</ebl:PayerName>");
+			sb.append("</urn:PayerName>");
 		}
 		if( AuctionItemNumber != null ) {
 			sb.append("<urn:AuctionItemNumber>").append(AuctionItemNumber);
@@ -322,21 +322,21 @@ sb.append(super.toXMLString());
 			sb.append("</urn:CardNumber>");
 		}
 		if( TransactionClass != null ) {
-			sb.append("<ebl:TransactionClass>").append( TransactionClass.getValue());
-			sb.append("</ebl:TransactionClass>");
+			sb.append("<urn:TransactionClass>").append( TransactionClass.getValue());
+			sb.append("</urn:TransactionClass>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		if( CurrencyCode != null ) {
-			sb.append("<ebl:CurrencyCode>").append( CurrencyCode.getValue());
-			sb.append("</ebl:CurrencyCode>");
+			sb.append("<urn:CurrencyCode>").append( CurrencyCode.getValue());
+			sb.append("</urn:CurrencyCode>");
 		}
 		if( Status != null ) {
-			sb.append("<ebl:Status>").append( Status.getValue());
-			sb.append("</ebl:Status>");
+			sb.append("<urn:Status>").append( Status.getValue());
+			sb.append("</urn:Status>");
 		}
 		return sb.toString();
 	}

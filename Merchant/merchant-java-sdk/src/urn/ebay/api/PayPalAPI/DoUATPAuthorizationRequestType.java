@@ -91,13 +91,13 @@ sb.append(super.toXMLString());
 			sb.append("</ebl:UATPDetails>");
 		}
 		if( TransactionEntity != null ) {
-			sb.append("<ebl:TransactionEntity>").append( TransactionEntity.getValue());
-			sb.append("</ebl:TransactionEntity>");
+			sb.append("<urn:TransactionEntity>").append( TransactionEntity.getValue());
+			sb.append("</urn:TransactionEntity>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		if( InvoiceID != null ) {
 			sb.append("<urn:InvoiceID>").append(InvoiceID);

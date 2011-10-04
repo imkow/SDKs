@@ -144,17 +144,17 @@ public class DoCaptureRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( AuthorizationID != null ) {
-			sb.append("<ebl:AuthorizationID>").append(AuthorizationID);
-			sb.append("</ebl:AuthorizationID>");
+			sb.append("<urn:AuthorizationID>").append(AuthorizationID);
+			sb.append("</urn:AuthorizationID>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		if( CompleteType != null ) {
-			sb.append("<ebl:CompleteType>").append( CompleteType.getValue());
-			sb.append("</ebl:CompleteType>");
+			sb.append("<urn:CompleteType>").append( CompleteType.getValue());
+			sb.append("</urn:CompleteType>");
 		}
 		if( Note != null ) {
 			sb.append("<urn:Note>").append(Note);

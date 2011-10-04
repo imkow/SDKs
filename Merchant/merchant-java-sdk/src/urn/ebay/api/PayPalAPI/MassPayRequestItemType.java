@@ -120,21 +120,21 @@ public class MassPayRequestItemType {
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
 		if( ReceiverEmail != null ) {
-			sb.append("<ebl:ReceiverEmail>").append(ReceiverEmail);
-			sb.append("</ebl:ReceiverEmail>");
+			sb.append("<urn:ReceiverEmail>").append(ReceiverEmail);
+			sb.append("</urn:ReceiverEmail>");
 		}
 		if( ReceiverPhone != null ) {
 			sb.append("<urn:ReceiverPhone>").append(ReceiverPhone);
 			sb.append("</urn:ReceiverPhone>");
 		}
 		if( ReceiverID != null ) {
-			sb.append("<ebl:ReceiverID>").append(ReceiverID);
-			sb.append("</ebl:ReceiverID>");
+			sb.append("<urn:ReceiverID>").append(ReceiverID);
+			sb.append("</urn:ReceiverID>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		if( UniqueId != null ) {
 			sb.append("<urn:UniqueId>").append(UniqueId);

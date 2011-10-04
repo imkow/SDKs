@@ -97,19 +97,19 @@ public class BillingPeriodDetailsType_Update {
 			sb.append("</ebl:TotalBillingCycles>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<ebl:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</ebl:Amount>");
 		}
 		if( ShippingAmount != null ) {
-			sb.append("<cc:ShippingAmount>");
+			sb.append("<ebl:ShippingAmount ");
 			sb.append(ShippingAmount.toXMLString());
-			sb.append("</cc:ShippingAmount>");
+			sb.append("</ebl:ShippingAmount>");
 		}
 		if( TaxAmount != null ) {
-			sb.append("<cc:TaxAmount>");
+			sb.append("<ebl:TaxAmount ");
 			sb.append(TaxAmount.toXMLString());
-			sb.append("</cc:TaxAmount>");
+			sb.append("</ebl:TaxAmount>");
 		}
 		return sb.toString();
 	}

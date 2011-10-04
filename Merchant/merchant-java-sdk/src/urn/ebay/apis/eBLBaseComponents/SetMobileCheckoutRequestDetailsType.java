@@ -239,19 +239,19 @@ public class SetMobileCheckoutRequestDetailsType {
 			sb.append("</ebl:BuyerPhone>");
 		}
 		if( ItemAmount != null ) {
-			sb.append("<cc:ItemAmount>");
+			sb.append("<ebl:ItemAmount ");
 			sb.append(ItemAmount.toXMLString());
-			sb.append("</cc:ItemAmount>");
+			sb.append("</ebl:ItemAmount>");
 		}
 		if( Tax != null ) {
-			sb.append("<cc:Tax>");
+			sb.append("<ebl:Tax ");
 			sb.append(Tax.toXMLString());
-			sb.append("</cc:Tax>");
+			sb.append("</ebl:Tax>");
 		}
 		if( Shipping != null ) {
-			sb.append("<cc:Shipping>");
+			sb.append("<ebl:Shipping ");
 			sb.append(Shipping.toXMLString());
-			sb.append("</cc:Shipping>");
+			sb.append("</ebl:Shipping>");
 		}
 		if( ItemName != null ) {
 			sb.append("<ebl:ItemName>").append(ItemName);

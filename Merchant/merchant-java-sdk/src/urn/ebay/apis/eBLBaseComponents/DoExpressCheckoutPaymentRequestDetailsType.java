@@ -336,9 +336,9 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 			sb.append("</ebl:GiftWrapName>");
 		}
 		if( GiftWrapAmount != null ) {
-			sb.append("<cc:GiftWrapAmount>");
+			sb.append("<ebl:GiftWrapAmount ");
 			sb.append(GiftWrapAmount.toXMLString());
-			sb.append("</cc:GiftWrapAmount>");
+			sb.append("</ebl:GiftWrapAmount>");
 		}
 		if( BuyerMarketingEmail != null ) {
 			sb.append("<ebl:BuyerMarketingEmail>").append(BuyerMarketingEmail);
