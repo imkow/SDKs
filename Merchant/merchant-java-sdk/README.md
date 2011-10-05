@@ -6,6 +6,7 @@ Using SDK:
 ----------
 SDK Integration:
 ----------------
+
 *	Download the project from github, build project using build.xml with default ant target, which will create 'merchant-java-sdk_0.1.jar' inside 'dist' folder.
 
 *	Copy 'merchant-java-sdk_0.1.jar' inside 'dist' folder under SDK root, to your class path.
