@@ -72,9 +72,9 @@ sb.append(super.toXMLString());
 			sb.append("</urn:AuthorizationID>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		return sb.toString();
 	}

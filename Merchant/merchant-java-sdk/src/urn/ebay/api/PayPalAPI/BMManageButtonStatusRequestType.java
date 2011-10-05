@@ -55,8 +55,8 @@ sb.append(super.toXMLString());
 			sb.append("</urn:HostedButtonID>");
 		}
 		if( ButtonStatus != null ) {
-			sb.append("<ebl:ButtonStatus>").append( ButtonStatus.getValue());
-			sb.append("</ebl:ButtonStatus>");
+			sb.append("<urn:ButtonStatus>").append( ButtonStatus.getValue());
+			sb.append("</urn:ButtonStatus>");
 		}
 		return sb.toString();
 	}

@@ -67,9 +67,9 @@ sb.append(super.toXMLString());
 			sb.append("</urn:ExternalRememberMeID>");
 		}
 		if( ExternalRememberMeOwnerDetails != null ) {
-			sb.append("<ebl:ExternalRememberMeOwnerDetails>");
+			sb.append("<urn:ExternalRememberMeOwnerDetails>");
 			sb.append(ExternalRememberMeOwnerDetails.toXMLString());
-			sb.append("</ebl:ExternalRememberMeOwnerDetails>");
+			sb.append("</urn:ExternalRememberMeOwnerDetails>");
 		}
 		return sb.toString();
 	}

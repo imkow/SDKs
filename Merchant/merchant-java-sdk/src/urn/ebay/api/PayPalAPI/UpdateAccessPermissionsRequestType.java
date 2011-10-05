@@ -43,8 +43,8 @@ public class UpdateAccessPermissionsRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( PayerID != null ) {
-			sb.append("<ebl:PayerID>").append(PayerID);
-			sb.append("</ebl:PayerID>");
+			sb.append("<urn:PayerID>").append(PayerID);
+			sb.append("</urn:PayerID>");
 		}
 		return sb.toString();
 	}

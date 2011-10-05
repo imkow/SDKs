@@ -85,8 +85,8 @@ public class AddressVerifyRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( Email != null ) {
-			sb.append("<ebl:Email>").append(Email);
-			sb.append("</ebl:Email>");
+			sb.append("<urn:Email>").append(Email);
+			sb.append("</urn:Email>");
 		}
 		if( Street != null ) {
 			sb.append("<urn:Street>").append(Street);

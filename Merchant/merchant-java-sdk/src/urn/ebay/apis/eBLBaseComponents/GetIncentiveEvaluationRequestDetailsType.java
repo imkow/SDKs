@@ -106,9 +106,9 @@ public class GetIncentiveEvaluationRequestDetailsType {
 			}
 		}
 		if( CartTotalAmt != null ) {
-			sb.append("<cc:CartTotalAmt>");
+			sb.append("<ebl:CartTotalAmt ");
 			sb.append(CartTotalAmt.toXMLString());
-			sb.append("</cc:CartTotalAmt>");
+			sb.append("</ebl:CartTotalAmt>");
 		}
 		if( RequestDetails != null ) {
 			sb.append("<ebl:RequestDetails>");

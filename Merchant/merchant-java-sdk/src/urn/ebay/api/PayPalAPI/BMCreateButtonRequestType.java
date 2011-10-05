@@ -190,16 +190,16 @@ public class BMCreateButtonRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( ButtonType != null ) {
-			sb.append("<ebl:ButtonType>").append( ButtonType.getValue());
-			sb.append("</ebl:ButtonType>");
+			sb.append("<urn:ButtonType>").append( ButtonType.getValue());
+			sb.append("</urn:ButtonType>");
 		}
 		if( ButtonCode != null ) {
-			sb.append("<ebl:ButtonCode>").append( ButtonCode.getValue());
-			sb.append("</ebl:ButtonCode>");
+			sb.append("<urn:ButtonCode>").append( ButtonCode.getValue());
+			sb.append("</urn:ButtonCode>");
 		}
 		if( ButtonSubType != null ) {
-			sb.append("<ebl:ButtonSubType>").append( ButtonSubType.getValue());
-			sb.append("</ebl:ButtonSubType>");
+			sb.append("<urn:ButtonSubType>").append( ButtonSubType.getValue());
+			sb.append("</urn:ButtonSubType>");
 		}
 		if( ButtonVar != null ) {
 			for(int i=0; i<ButtonVar.size(); i++) {
@@ -221,24 +221,24 @@ sb.append(super.toXMLString());
 			}
 		}
 		if( ButtonImage != null ) {
-			sb.append("<ebl:ButtonImage>").append( ButtonImage.getValue());
-			sb.append("</ebl:ButtonImage>");
+			sb.append("<urn:ButtonImage>").append( ButtonImage.getValue());
+			sb.append("</urn:ButtonImage>");
 		}
 		if( ButtonImageURL != null ) {
 			sb.append("<urn:ButtonImageURL>").append(ButtonImageURL);
 			sb.append("</urn:ButtonImageURL>");
 		}
 		if( BuyNowText != null ) {
-			sb.append("<ebl:BuyNowText>").append( BuyNowText.getValue());
-			sb.append("</ebl:BuyNowText>");
+			sb.append("<urn:BuyNowText>").append( BuyNowText.getValue());
+			sb.append("</urn:BuyNowText>");
 		}
 		if( SubscribeText != null ) {
-			sb.append("<ebl:SubscribeText>").append( SubscribeText.getValue());
-			sb.append("</ebl:SubscribeText>");
+			sb.append("<urn:SubscribeText>").append( SubscribeText.getValue());
+			sb.append("</urn:SubscribeText>");
 		}
 		if( ButtonCountry != null ) {
-			sb.append("<ebl:ButtonCountry>").append( ButtonCountry.getValue());
-			sb.append("</ebl:ButtonCountry>");
+			sb.append("<urn:ButtonCountry>").append( ButtonCountry.getValue());
+			sb.append("</urn:ButtonCountry>");
 		}
 		if( ButtonLanguage != null ) {
 			sb.append("<urn:ButtonLanguage>").append(ButtonLanguage);
