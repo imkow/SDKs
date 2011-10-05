@@ -88,24 +88,24 @@ public class DoNonReferencedCreditRequestDetailsType {
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<ebl:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</ebl:Amount>");
 		}
 		if( NetAmount != null ) {
-			sb.append("<cc:NetAmount>");
+			sb.append("<ebl:NetAmount ");
 			sb.append(NetAmount.toXMLString());
-			sb.append("</cc:NetAmount>");
+			sb.append("</ebl:NetAmount>");
 		}
 		if( TaxAmount != null ) {
-			sb.append("<cc:TaxAmount>");
+			sb.append("<ebl:TaxAmount ");
 			sb.append(TaxAmount.toXMLString());
-			sb.append("</cc:TaxAmount>");
+			sb.append("</ebl:TaxAmount>");
 		}
 		if( ShippingAmount != null ) {
-			sb.append("<cc:ShippingAmount>");
+			sb.append("<ebl:ShippingAmount ");
 			sb.append(ShippingAmount.toXMLString());
-			sb.append("</cc:ShippingAmount>");
+			sb.append("</ebl:ShippingAmount>");
 		}
 		if( CreditCard != null ) {
 			sb.append("<ebl:CreditCard>");

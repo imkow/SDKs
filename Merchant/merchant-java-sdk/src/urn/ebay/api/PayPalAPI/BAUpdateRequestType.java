@@ -74,8 +74,8 @@ sb.append(super.toXMLString());
 			sb.append("</urn:BillingAgreementDescription>");
 		}
 		if( BillingAgreementStatus != null ) {
-			sb.append("<ebl:BillingAgreementStatus>").append( BillingAgreementStatus.getValue());
-			sb.append("</ebl:BillingAgreementStatus>");
+			sb.append("<urn:BillingAgreementStatus>").append( BillingAgreementStatus.getValue());
+			sb.append("</urn:BillingAgreementStatus>");
 		}
 		if( BillingAgreementCustom != null ) {
 			sb.append("<urn:BillingAgreementCustom>").append(BillingAgreementCustom);

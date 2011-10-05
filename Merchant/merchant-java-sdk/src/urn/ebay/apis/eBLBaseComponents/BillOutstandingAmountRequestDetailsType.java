@@ -58,9 +58,9 @@ public class BillOutstandingAmountRequestDetailsType {
 			sb.append("</ebl:ProfileID>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<ebl:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</ebl:Amount>");
 		}
 		if( Note != null ) {
 			sb.append("<ebl:Note>").append(Note);

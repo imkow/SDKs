@@ -240,19 +240,19 @@ public class FlightDetailsType {
 			sb.append("</ebl:FareBasisCode>");
 		}
 		if( Fare != null ) {
-			sb.append("<cc:Fare>");
+			sb.append("<ebl:Fare ");
 			sb.append(Fare.toXMLString());
-			sb.append("</cc:Fare>");
+			sb.append("</ebl:Fare>");
 		}
 		if( Taxes != null ) {
-			sb.append("<cc:Taxes>");
+			sb.append("<ebl:Taxes ");
 			sb.append(Taxes.toXMLString());
-			sb.append("</cc:Taxes>");
+			sb.append("</ebl:Taxes>");
 		}
 		if( Fee != null ) {
-			sb.append("<cc:Fee>");
+			sb.append("<ebl:Fee ");
 			sb.append(Fee.toXMLString());
-			sb.append("</cc:Fee>");
+			sb.append("</ebl:Fee>");
 		}
 		if( EndorsementOrRestrictions != null ) {
 			sb.append("<ebl:EndorsementOrRestrictions>").append(EndorsementOrRestrictions);

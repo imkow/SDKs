@@ -43,9 +43,9 @@ Expected maximum amount that the merchant may pull
 			sb.append("</ebl:Description>");
 		}
 		if( MaxAmount != null ) {
-			sb.append("<cc:MaxAmount>");
+			sb.append("<ebl:MaxAmount ");
 			sb.append(MaxAmount.toXMLString());
-			sb.append("</cc:MaxAmount>");
+			sb.append("</ebl:MaxAmount>");
 		}
 		return sb.toString();
 	}

@@ -120,21 +120,21 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 		StringBuilder sb = new StringBuilder();
 sb.append(super.toXMLString());
 		if( TransactionID != null ) {
-			sb.append("<ebl:TransactionID>").append(TransactionID);
-			sb.append("</ebl:TransactionID>");
+			sb.append("<urn:TransactionID>").append(TransactionID);
+			sb.append("</urn:TransactionID>");
 		}
 		if( InvoiceID != null ) {
 			sb.append("<urn:InvoiceID>").append(InvoiceID);
 			sb.append("</urn:InvoiceID>");
 		}
 		if( RefundType != null ) {
-			sb.append("<ebl:RefundType>").append( RefundType.getValue());
-			sb.append("</ebl:RefundType>");
+			sb.append("<urn:RefundType>").append( RefundType.getValue());
+			sb.append("</urn:RefundType>");
 		}
 		if( Amount != null ) {
-			sb.append("<cc:Amount>");
+			sb.append("<urn:Amount ");
 			sb.append(Amount.toXMLString());
-			sb.append("</cc:Amount>");
+			sb.append("</urn:Amount>");
 		}
 		if( Memo != null ) {
 			sb.append("<urn:Memo>").append(Memo);
@@ -145,8 +145,8 @@ sb.append(super.toXMLString());
 			sb.append("</urn:RetryUntil>");
 		}
 		if( RefundSource != null ) {
-			sb.append("<ebl:RefundSource>").append( RefundSource.getValue());
-			sb.append("</ebl:RefundSource>");
+			sb.append("<urn:RefundSource>").append( RefundSource.getValue());
+			sb.append("</urn:RefundSource>");
 		}
 		return sb.toString();
 	}

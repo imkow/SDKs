@@ -79,9 +79,9 @@ public class IncentiveItemType {
 			sb.append("</ebl:ItemCategoryList>");
 		}
 		if( ItemPrice != null ) {
-			sb.append("<cc:ItemPrice>");
+			sb.append("<ebl:ItemPrice ");
 			sb.append(ItemPrice.toXMLString());
-			sb.append("</cc:ItemPrice>");
+			sb.append("</ebl:ItemPrice>");
 		}
 		if( ItemQuantity != null ) {
 			sb.append("<ebl:ItemQuantity>").append(ItemQuantity);

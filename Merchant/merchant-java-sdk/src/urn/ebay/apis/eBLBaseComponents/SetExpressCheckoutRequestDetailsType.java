@@ -956,9 +956,9 @@ public class SetExpressCheckoutRequestDetailsType {
 	public String toXMLString()  {
 		StringBuilder sb = new StringBuilder();
 		if( OrderTotal != null ) {
-			sb.append("<cc:OrderTotal>");
+			sb.append("<ebl:OrderTotal ");
 			sb.append(OrderTotal.toXMLString());
-			sb.append("</cc:OrderTotal>");
+			sb.append("</ebl:OrderTotal>");
 		}
 		if( ReturnURL != null ) {
 			sb.append("<ebl:ReturnURL>").append(ReturnURL);
@@ -989,9 +989,9 @@ public class SetExpressCheckoutRequestDetailsType {
 			sb.append("</ebl:Token>");
 		}
 		if( MaxAmount != null ) {
-			sb.append("<cc:MaxAmount>");
+			sb.append("<ebl:MaxAmount ");
 			sb.append(MaxAmount.toXMLString());
-			sb.append("</cc:MaxAmount>");
+			sb.append("</ebl:MaxAmount>");
 		}
 		if( OrderDescription != null ) {
 			sb.append("<ebl:OrderDescription>").append(OrderDescription);
@@ -1130,9 +1130,9 @@ public class SetExpressCheckoutRequestDetailsType {
 			sb.append("</ebl:CallbackURL>");
 		}
 		if( EnhancedCheckoutData != null ) {
-			sb.append("<ed:EnhancedCheckoutData>");
+			sb.append("<ebl:EnhancedCheckoutData>");
 			sb.append(EnhancedCheckoutData.toXMLString());
-			sb.append("</ed:EnhancedCheckoutData>");
+			sb.append("</ebl:EnhancedCheckoutData>");
 		}
 		if( OtherPaymentMethods != null ) {
 			for(int i=0; i<OtherPaymentMethods.size(); i++) {
@@ -1189,9 +1189,9 @@ public class SetExpressCheckoutRequestDetailsType {
 			sb.append("</ebl:GiftWrapName>");
 		}
 		if( GiftWrapAmount != null ) {
-			sb.append("<cc:GiftWrapAmount>");
+			sb.append("<ebl:GiftWrapAmount ");
 			sb.append(GiftWrapAmount.toXMLString());
-			sb.append("</cc:GiftWrapAmount>");
+			sb.append("</ebl:GiftWrapAmount>");
 		}
 		if( BuyerEmailOptInEnable != null ) {
 			sb.append("<ebl:BuyerEmailOptInEnable>").append(BuyerEmailOptInEnable);
