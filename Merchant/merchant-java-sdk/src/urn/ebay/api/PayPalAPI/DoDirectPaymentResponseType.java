@@ -166,8 +166,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * The reason why a particular transaction went in
-	 * pending.
+	 * The reason why a particular transaction went in pending.
 	 */
 	private PendingStatusCodeType PendingReason;
 	public PendingStatusCodeType getPendingReason() {
@@ -178,8 +177,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * This will identify the actual transaction
-	 * status.
+	 * This will identify the actual transaction status.
 	 */
 	private PaymentStatusCodeType PaymentStatus;
 	public PaymentStatusCodeType getPaymentStatus() {
@@ -210,8 +208,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * Response code from the processor when a
-	 * recurring transaction is
+	 * Response code from the processor when a recurring transaction is
 	 * declined.
 	 */
 	private String PaymentAdviceCode;

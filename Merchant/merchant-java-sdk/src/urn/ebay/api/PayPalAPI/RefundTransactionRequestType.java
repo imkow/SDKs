@@ -7,6 +7,7 @@ package urn.ebay.api.PayPalAPI;
 
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
+import urn.ebay.apis.eBLBaseComponents.MerchantStoreDetailsType;
 import urn.ebay.apis.eBLBaseComponents.RefundSourceCodeType;
 import urn.ebay.apis.eBLBaseComponents.RefundType;
 
@@ -114,6 +115,18 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 		this.RefundSource = value;
 	}
 
+	/**
+	 * To pass the Merchant store information
+	 * Optional
+	 */
+	private MerchantStoreDetailsType MerchantStoreDetails;
+	public MerchantStoreDetailsType getMerchantStoreDetails() {
+		return MerchantStoreDetails;
+	}
+	public void setMerchantStoreDetails(MerchantStoreDetailsType value) {
+		this.MerchantStoreDetails = value;
+	}
+
 
 
 	public String toXMLString()  {
@@ -147,6 +160,11 @@ sb.append(super.toXMLString());
 		if( RefundSource != null ) {
 			sb.append("<urn:RefundSource>").append( RefundSource.getValue());
 			sb.append("</urn:RefundSource>");
+		}
+		if( MerchantStoreDetails != null ) {
+			sb.append("<ebl:MerchantStoreDetails>");
+			sb.append(MerchantStoreDetails.toXMLString());
+			sb.append("</ebl:MerchantStoreDetails>");
 		}
 		return sb.toString();
 	}
