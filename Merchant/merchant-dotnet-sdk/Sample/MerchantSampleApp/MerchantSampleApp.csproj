@@ -52,6 +52,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DoDirectPayment.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>DoDirectPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoDirectPayment.aspx.designer.cs">
+      <DependentUpon>DoDirectPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="merchanthandler.ashx.cs">
       <DependentUpon>merchanthandler.ashx</DependentUpon>
     </Compile>
@@ -66,6 +73,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DoDirectPayment.aspx" />
     <Content Include="merchanthandler.ashx" />
   </ItemGroup>
   <ItemGroup>

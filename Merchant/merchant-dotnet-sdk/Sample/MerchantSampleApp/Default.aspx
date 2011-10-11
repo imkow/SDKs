@@ -10,7 +10,7 @@
 <h2>Merchant API samples</h2>
     <form id="form1" runat="server">
     <div>
-    
+    <a href="DoDirectPayment.aspx">DoDirectPayment</a> <br />
     <a href="TransactionSearch.aspx">TransactionSearch</a> <br />
     </div>
     </form>

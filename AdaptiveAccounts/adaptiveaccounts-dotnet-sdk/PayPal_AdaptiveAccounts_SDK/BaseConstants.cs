@@ -50,7 +50,10 @@ namespace PayPal
         // Encoding format to be used for API payloads
         public static readonly Encoding ENCODING_FORMAT = Encoding.UTF8;
         
-        public const string XPAYPALSOURCE = "PayPal_Invoicing_Dotnet_SDK";
+        public const string XPAYPALSOURCE = "PayPal_AdaptiveAccounts_Dotnet_SDK";
+
+        public const string SANDBOXEMAILADDRESS = "Platform.sdk.seller@gmail.com";
+
 
         public class ErrorMessages
         {

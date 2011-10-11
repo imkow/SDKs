@@ -21412,7 +21412,7 @@ The net amount of the transaction 		 */
 }
 	}
 		 if(document.GetElementsByTagName("TransactionID").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("TransactionID")[0])){ 
-		 this.TransactionID =(string)document.GetElementsByTagName("TransactionID")[0].InnerText;
+		 this.TransactionID =(string)document.GetElementsByTagName("TransactionID").Item(0).InnerText;
 
 }
 	}

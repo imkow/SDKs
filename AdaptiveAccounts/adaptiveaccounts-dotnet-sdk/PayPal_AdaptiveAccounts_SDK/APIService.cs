@@ -81,6 +81,7 @@ namespace PayPal
                 httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTDATAFORMAT, BaseConstants.RequestDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALRESPONSEDATAFORMAT, BaseConstants.ResponseDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALDEVICEIPADDRESS, configMgr.GetProperty("IPAddress"));
+                httpRequest.Headers.Add(BaseConstants.XPAYPALSANDBOXEMAILADDRESS,BaseConstants.SANDBOXEMAILADDRESS);
             }
             // This header is used to track the calls from PayPal SDKs            
             
