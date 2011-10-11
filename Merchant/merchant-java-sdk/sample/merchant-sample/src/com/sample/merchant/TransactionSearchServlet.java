@@ -70,6 +70,8 @@ public class TransactionSearchServlet extends HttpServlet {
 				response.setContentType("text/html");
 				response.getWriter().println("Ack : " + txnresponse.getAck());
 				response.getWriter().println("<br/>");
+				response.getWriter().println("TransactionId : " + txnresponse.getPaymentTransactions().get(0).getTransactionID());
+				response.getWriter().println("<br/>");
 				response.getWriter().println("CurrencyId : "+ txnresponse.getPaymentTransactions().get(0)
 						.getNetAmount().getCurrencyID());
 				response.getWriter().println("<br/>");
