@@ -389,7 +389,7 @@ return null;
 		 if(document.GetElementsByTagName("Errors").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("Errors")[0])){ 
 		 nodeList = document.GetElementsByTagName("Errors");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.Errors.Add(new ErrorType(xmlString));
 			}
 
@@ -1789,7 +1789,7 @@ Two-character country code (ISO 3166) on file
 		 if(document.GetElementsByTagName("AuthorizationError").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("AuthorizationError")[0])){ 
 		 nodeList = document.GetElementsByTagName("AuthorizationError");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.AuthorizationError.Add(new ErrorType(xmlString));
 			}
 
@@ -2189,7 +2189,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("ButtonSearchResult").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("ButtonSearchResult")[0])){ 
 		 nodeList = document.GetElementsByTagName("ButtonSearchResult");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.ButtonSearchResult.Add(new ButtonSearchResultType(xmlString));
 			}
 
@@ -2886,7 +2886,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("ButtonVar").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("ButtonVar")[0])){ 
 		 nodeList = document.GetElementsByTagName("ButtonVar");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.ButtonVar.Add(value);
 		}
 
@@ -2895,7 +2895,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("OptionDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("OptionDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("OptionDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.OptionDetails.Add(new OptionDetailsType(xmlString));
 			}
 
@@ -2904,7 +2904,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("TextBox").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("TextBox")[0])){ 
 		 nodeList = document.GetElementsByTagName("TextBox");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.TextBox.Add(value);
 		}
 
@@ -3151,7 +3151,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("OptionTrackingDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("OptionTrackingDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("OptionTrackingDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.OptionTrackingDetails.Add(new OptionTrackingDetailsType(xmlString));
 			}
 
@@ -3165,7 +3165,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("DigitalDownloadKeys").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("DigitalDownloadKeys")[0])){ 
 		 nodeList = document.GetElementsByTagName("DigitalDownloadKeys");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.DigitalDownloadKeys.Add(value);
 		}
 
@@ -9190,7 +9190,7 @@ Information about the transaction 		 */
 		 if(document.GetElementsByTagName("PaymentInfo").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentInfo")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentInfo");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentInfo.Add(new PaymentInfoType(xmlString));
 			}
 
@@ -11449,7 +11449,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("ErrorParameters").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("ErrorParameters")[0])){ 
 		 nodeList = document.GetElementsByTagName("ErrorParameters");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.ErrorParameters.Add(new ErrorParameterType(xmlString));
 			}
 
@@ -12697,7 +12697,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("AccessPermissionName").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("AccessPermissionName")[0])){ 
 		 nodeList = document.GetElementsByTagName("AccessPermissionName");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.AccessPermissionName.Add(value);
 		}
 
@@ -12706,7 +12706,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("AccessPermissionStatus").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("AccessPermissionStatus")[0])){ 
 		 nodeList = document.GetElementsByTagName("AccessPermissionStatus");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.AccessPermissionStatus.Add(value);
 		}
 
@@ -13062,7 +13062,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("BalanceHoldings").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("BalanceHoldings")[0])){ 
 		 nodeList = document.GetElementsByTagName("BalanceHoldings");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.BalanceHoldings.Add(new BasicAmountType(xmlString));
 			}
 
@@ -14091,7 +14091,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("PaymentDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentDetails.Add(new PaymentDetailsType(xmlString));
 			}
 
@@ -14107,7 +14107,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("IncentiveDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("IncentiveDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("IncentiveDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.IncentiveDetails.Add(new IncentiveDetailsType(xmlString));
 			}
 
@@ -14148,7 +14148,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("SurveyChoiceSelected").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("SurveyChoiceSelected")[0])){ 
 		 nodeList = document.GetElementsByTagName("SurveyChoiceSelected");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.SurveyChoiceSelected.Add(value);
 		}
 
@@ -14157,7 +14157,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("PaymentRequestInfo").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentRequestInfo")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentRequestInfo");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentRequestInfo.Add(new PaymentRequestInfoType(xmlString));
 			}
 
@@ -14407,7 +14407,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("IncentiveDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("IncentiveDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("IncentiveDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.IncentiveDetails.Add(new IncentiveDetailType(xmlString));
 			}
 
@@ -15754,7 +15754,7 @@ Contains login bypass information.		 */
 		 if(document.GetElementsByTagName("AppliedTo").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("AppliedTo")[0])){ 
 		 nodeList = document.GetElementsByTagName("AppliedTo");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.AppliedTo.Add(new IncentiveAppliedToType(xmlString));
 			}
 
@@ -15897,7 +15897,7 @@ Contains login bypass information.		 */
 		 if(document.GetElementsByTagName("IncentiveAppliedDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("IncentiveAppliedDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("IncentiveAppliedDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.IncentiveAppliedDetails.Add(new IncentiveAppliedDetailsType(xmlString));
 			}
 
@@ -18023,7 +18023,7 @@ The Session token returned during buyer
 		 if(document.GetElementsByTagName("OptionSelectionDetails").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("OptionSelectionDetails")[0])){ 
 		 nodeList = document.GetElementsByTagName("OptionSelectionDetails");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.OptionSelectionDetails.Add(new OptionSelectionDetailsType(xmlString));
 			}
 
@@ -18148,7 +18148,7 @@ The Session token returned during buyer
 		 if(document.GetElementsByTagName("PaymentPeriod").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentPeriod")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentPeriod");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentPeriod.Add(new InstallmentDetailsType(xmlString));
 			}
 
@@ -19928,7 +19928,7 @@ Holds any enhanced information about the payer
 		 if(document.GetElementsByTagName("PaymentDetailsItem").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentDetailsItem")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentDetailsItem");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentDetailsItem.Add(new PaymentDetailsItemType(xmlString));
 			}
 
@@ -20914,7 +20914,7 @@ Amount deposited into the account's primary
 		 if(document.GetElementsByTagName("PaymentItem").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentItem")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentItem");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentItem.Add(new PaymentItemType(xmlString));
 			}
 
@@ -21113,7 +21113,7 @@ Amount deposited into the account's primary
 		 if(document.GetElementsByTagName("Options").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("Options")[0])){ 
 		 nodeList = document.GetElementsByTagName("Options");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.Options.Add(new OptionType(xmlString));
 			}
 
@@ -21412,7 +21412,7 @@ The net amount of the transaction 		 */
 }
 	}
 		 if(document.GetElementsByTagName("TransactionID").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("TransactionID")[0])){ 
-		 this.TransactionID =(string)document.GetElementsByTagName("TransactionID").Item(0).InnerText;
+		 this.TransactionID =(string)document.GetElementsByTagName("TransactionID")[0].InnerText;
 
 }
 	}
@@ -21688,7 +21688,7 @@ Information about an individual item in the
 		 if(document.GetElementsByTagName("SurveyChoiceSelected").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("SurveyChoiceSelected")[0])){ 
 		 nodeList = document.GetElementsByTagName("SurveyChoiceSelected");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 string value = nodeList[0].InnerText; 
+			 string value = nodeList[i].InnerText; 
 			 this.SurveyChoiceSelected.Add(value);
 		}
 
@@ -23070,7 +23070,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("Filters").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("Filters")[0])){ 
 		 nodeList = document.GetElementsByTagName("Filters");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.Filters.Add(new RiskFilterDetailsType(xmlString));
 			}
 
@@ -24719,7 +24719,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("SetDataError").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("SetDataError")[0])){ 
 		 nodeList = document.GetElementsByTagName("SetDataError");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.SetDataError.Add(new ErrorType(xmlString));
 			}
 
@@ -26863,7 +26863,7 @@ sb.Append(base.toXMLString());
 		 if(document.GetElementsByTagName("Terms").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("Terms")[0])){ 
 		 nodeList = document.GetElementsByTagName("Terms");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.Terms.Add(new SubscriptionTermsType(xmlString));
 			}
 
@@ -27605,7 +27605,7 @@ Results of a Transaction Search.		 */
 		 if(document.GetElementsByTagName("PaymentTransactions").Count!=0){		 if(!DeserializationUtils.isWhiteSpaceNode(document.GetElementsByTagName("PaymentTransactions")[0])){ 
 		 nodeList = document.GetElementsByTagName("PaymentTransactions");
 		 for(int i=0; i<nodeList.Count; i++) {
-			 xmlString = DeserializationUtils.convertToXML(nodeList[0]); 
+			 xmlString = DeserializationUtils.convertToXML(nodeList[i]); 
 				this.PaymentTransactions.Add(new PaymentTransactionSearchResultType(xmlString));
 			}
 
