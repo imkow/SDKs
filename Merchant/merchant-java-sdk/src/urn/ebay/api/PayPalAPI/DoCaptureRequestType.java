@@ -9,6 +9,7 @@ import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 import urn.ebay.apis.eBLBaseComponents.CompleteCodeType;
 import urn.ebay.apis.eBLBaseComponents.EnhancedDataType;
+import urn.ebay.apis.eBLBaseComponents.MerchantStoreDetailsType;
 
 
 /**
@@ -131,6 +132,18 @@ public class DoCaptureRequestType extends AbstractRequestType{
 		this.Descriptor = value;
 	}
 
+	/**
+	 * To pass the Merchant store information
+	 * Optional
+	 */
+	private MerchantStoreDetailsType MerchantStoreDetails;
+	public MerchantStoreDetailsType getMerchantStoreDetails() {
+		return MerchantStoreDetails;
+	}
+	public void setMerchantStoreDetails(MerchantStoreDetailsType value) {
+		this.MerchantStoreDetails = value;
+	}
+
 
 	public DoCaptureRequestType(String AuthorizationID, BasicAmountType Amount, CompleteCodeType CompleteType) {
 		this.AuthorizationID = AuthorizationID;
@@ -172,6 +185,11 @@ sb.append(super.toXMLString());
 		if( Descriptor != null ) {
 			sb.append("<urn:Descriptor>").append(Descriptor);
 			sb.append("</urn:Descriptor>");
+		}
+		if( MerchantStoreDetails != null ) {
+			sb.append("<ebl:MerchantStoreDetails>");
+			sb.append(MerchantStoreDetails.toXMLString());
+			sb.append("</ebl:MerchantStoreDetails>");
 		}
 		return sb.toString();
 	}

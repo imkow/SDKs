@@ -65,16 +65,27 @@ public class TransactionSearchServlet extends HttpServlet {
 			txnreq.setTransactionSearchRequest(type);
 			TransactionSearchResponseType txnresponse = null;
 			txnresponse = service.transactionSearch(txnreq);
-			
-			if (txnresponse.getPaymentTransactions().size() > 0) {
-				response.setContentType("text/html");
-				response.getWriter().println("Ack : " + txnresponse.getAck());
-				response.getWriter().println("<br/>");
-				response.getWriter().println("CurrencyId : "+ txnresponse.getPaymentTransactions().get(0)
-						.getNetAmount().getCurrencyID());
-				response.getWriter().println("<br/>");
-				response.getWriter().println("NetAmount : "+txnresponse.getPaymentTransactions().get(0)
-						.getNetAmount().getValue());
+			response.setContentType("text/html");
+			if(txnresponse != null){
+				if(txnresponse.getAck().toString().equalsIgnoreCase("SUCCESS") || txnresponse.getAck().toString().equalsIgnoreCase("SUCCESSWITHWARNING")){
+					if (txnresponse.getPaymentTransactions().size() > 0) {
+						response.getWriter().println("Ack : " + txnresponse.getAck());
+						response.getWriter().println("<br/>");
+						response.getWriter().println("TransactionId : " + txnresponse.getPaymentTransactions().get(0).getTransactionID());
+						response.getWriter().println("<br/>");
+						response.getWriter().println("CurrencyId : "+ txnresponse.getPaymentTransactions().get(0)
+								.getNetAmount().getCurrencyID());
+						response.getWriter().println("<br/>");
+						response.getWriter().println("NetAmount : "+txnresponse.getPaymentTransactions().get(0)
+								.getNetAmount().getValue());
+					}
+				}else {
+					List<ErrorType> errorList = txnresponse.getErrors();
+					for(ErrorType e:errorList){
+						response.getWriter().println("Short Err Msg : "+e.getShortMessage());
+						response.getWriter().println("Long Err Msg : "+e.getLongMessage());
+					}
+				}
 			}
 			response.getWriter().println("<br/>");
 			response.getWriter().println("<a href='index.html'>Home</a>");

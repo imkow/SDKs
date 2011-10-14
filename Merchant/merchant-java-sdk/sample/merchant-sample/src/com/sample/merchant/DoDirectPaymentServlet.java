@@ -103,12 +103,19 @@ public class DoDirectPaymentServlet extends HttpServlet{
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
 					this.getServletContext().getRealPath("/")+ "/WEB-INF/sdk_config.properties");
 			DoDirectPaymentResponseType ddresponse = service.doDirectPayment(doPaymentReq);
-			
+			res.setContentType("text/html");
 			if(ddresponse!=null){
-				res.setContentType("text/html");
-				res.getWriter().println("CorelationId : "+ddresponse.getCorrelationID());
-				res.getWriter().println("<br/>");
-				res.getWriter().println("TransactionId : "+ddresponse.getTransactionID());
+				if(ddresponse.getAck().toString().equalsIgnoreCase("SUCCESS") || ddresponse.getAck().toString().equalsIgnoreCase("SUCCESSWITHWARNING")){
+					res.getWriter().println("CorelationId : "+ddresponse.getCorrelationID());
+					res.getWriter().println("<br/>");
+					res.getWriter().println("TransactionId : "+ddresponse.getTransactionID());
+				}else{
+					List<ErrorType> errorList = ddresponse.getErrors();
+					for(ErrorType e:errorList){
+						res.getWriter().println("Short Err Msg : "+e.getShortMessage());
+						res.getWriter().println("Long Err Msg : "+e.getLongMessage());
+					}
+				}
 			}
 			
 			res.getWriter().println("<br/>");

@@ -14,6 +14,7 @@ import urn.ebay.apis.eBLBaseComponents.BillingAgreementDetailsType;
 import urn.ebay.apis.eBLBaseComponents.BuyerDetailsType;
 import urn.ebay.apis.eBLBaseComponents.ChannelType;
 import urn.ebay.apis.eBLBaseComponents.DisplayControlDetailsType;
+import urn.ebay.apis.eBLBaseComponents.ExternalPartnerTrackingDetailsType;
 import urn.ebay.apis.eBLBaseComponents.ExternalRememberMeOptInDetailsType;
 import urn.ebay.apis.eBLBaseComponents.FlowControlDetailsType;
 import urn.ebay.apis.eBLBaseComponents.FundingSourceDetailsType;
@@ -951,6 +952,18 @@ public class SetExpressCheckoutRequestDetailsType {
 		this.DisplayControlDetails = value;
 	}
 
+	/**
+	 * An optional set of values related to tracking for external
+	 * partner.
+	 */
+	private ExternalPartnerTrackingDetailsType ExternalPartnerTrackingDetails;
+	public ExternalPartnerTrackingDetailsType getExternalPartnerTrackingDetails() {
+		return ExternalPartnerTrackingDetails;
+	}
+	public void setExternalPartnerTrackingDetails(ExternalPartnerTrackingDetailsType value) {
+		this.ExternalPartnerTrackingDetails = value;
+	}
+
 
 
 	public String toXMLString()  {
@@ -1244,6 +1257,11 @@ public class SetExpressCheckoutRequestDetailsType {
 			sb.append("<ebl:DisplayControlDetails>");
 			sb.append(DisplayControlDetails.toXMLString());
 			sb.append("</ebl:DisplayControlDetails>");
+		}
+		if( ExternalPartnerTrackingDetails != null ) {
+			sb.append("<ebl:ExternalPartnerTrackingDetails>");
+			sb.append(ExternalPartnerTrackingDetails.toXMLString());
+			sb.append("</ebl:ExternalPartnerTrackingDetails>");
 		}
 		return sb.toString();
 	}

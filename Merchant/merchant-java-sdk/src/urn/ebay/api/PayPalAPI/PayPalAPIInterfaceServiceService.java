@@ -132,7 +132,7 @@ import urn.ebay.api.PayPalAPI.UpdateRecurringPaymentsProfileResponseType;
 
 public class PayPalAPIInterfaceServiceService extends BaseService {
 
-	private static final String SERVICE_VERSION = "78.0";
+	private static final String SERVICE_VERSION = "82.0";
 	private static final String SERVICE_NAME = "PayPalAPIInterfaceService";
 
 	public PayPalAPIInterfaceServiceService(File configFile) throws IOException, FileNotFoundException {

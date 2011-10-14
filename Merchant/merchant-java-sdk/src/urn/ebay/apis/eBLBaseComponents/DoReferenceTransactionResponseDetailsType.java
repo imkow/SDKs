@@ -85,6 +85,18 @@ public class DoReferenceTransactionResponseDetailsType {
 		this.TransactionID = value;
 	}
 
+	/**
+	 * Response code from the processor when a recurring transaction is
+	 * declined
+	 */
+	private String PaymentAdviceCode;
+	public String getPaymentAdviceCode() {
+		return PaymentAdviceCode;
+	}
+	public void setPaymentAdviceCode(String value) {
+		this.PaymentAdviceCode = value;
+	}
+
 
 	public DoReferenceTransactionResponseDetailsType() {
 	}
@@ -178,6 +190,11 @@ public class DoReferenceTransactionResponseDetailsType {
 	}
 		 if(document.getElementsByTagName("TransactionID").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("TransactionID").item(0))){ 
 		 this.TransactionID =(String)document.getElementsByTagName("TransactionID").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("PaymentAdviceCode").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("PaymentAdviceCode").item(0))){ 
+		 this.PaymentAdviceCode =(String)document.getElementsByTagName("PaymentAdviceCode").item(0).getTextContent();
 
 }
 	}
