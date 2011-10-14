@@ -40,6 +40,8 @@ class PPAuthenticationManager
 		$headers_arr[] = "X-PAYPAL-RESPONSE-DATA-FORMAT: "  . $config->get('service.Binding');
 		$headers_arr[] = "X-PAYPAL-DEVICE-IPADDRESS: " . PPUtils::getLocalIPAddress();
 		$headers_arr[] = "X-PAYPAL-REQUEST-SOURCE: " . PPUtils::getRequestSource();
+		if($config->get('service.SandboxEmailAddress'))
+		$headers_arr[] = "X-PAYPAL-SANDBOX-EMAIL-ADDRESS: " . $config->get('service.SandboxEmailAddress');		
 		return $headers_arr;
 	}
 
