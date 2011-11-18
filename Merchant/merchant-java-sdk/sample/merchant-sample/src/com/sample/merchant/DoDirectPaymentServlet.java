@@ -3,11 +3,13 @@ package com.sample.merchant;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -23,6 +25,7 @@ import urn.ebay.apis.eBLBaseComponents.CreditCardDetailsType;
 import urn.ebay.apis.eBLBaseComponents.CreditCardTypeType;
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
 import urn.ebay.apis.eBLBaseComponents.DoDirectPaymentRequestDetailsType;
+import urn.ebay.apis.eBLBaseComponents.ErrorType;
 import urn.ebay.apis.eBLBaseComponents.PayerInfoType;
 import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
@@ -36,20 +39,24 @@ import com.paypal.exception.MissingCredentialException;
 import com.paypal.exception.SSLConfigurationException;
 import com.paypal.sdk.exceptions.OAuthException;
 
-public class DoDirectPaymentServlet extends HttpServlet{
+public class DoDirectPaymentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 12345456723541232L;
-	
-	public DoDirectPaymentServlet(){
+
+	public DoDirectPaymentServlet() {
 		super();
 	}
-	
-	protected void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException{
-	  getServletConfig().getServletContext().getRequestDispatcher("/DoDirectPayment.jsp").forward(req, res);	
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		getServletConfig().getServletContext()
+				.getRequestDispatcher("/DirectPayment/DoDirectPayment.jsp")
+				.forward(req, res);
 	}
-	
-	protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException{
-		
+
+	protected void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+
 		DoDirectPaymentReq doPaymentReq = new DoDirectPaymentReq();
 		DoDirectPaymentRequestType pprequest = new DoDirectPaymentRequestType();
 		pprequest.setVersion("76.0");
@@ -59,75 +66,106 @@ public class DoDirectPaymentServlet extends HttpServlet{
 
 		BasicAmountType amount = new BasicAmountType();
 		amount.setValue(req.getParameter("amount"));
-		amount.setCurrencyID(CurrencyCodeType.USD);
-		paymentDetails.setOrderTotal(amount);	
-				
+		amount.setCurrencyID(CurrencyCodeType.fromValue(req
+				.getParameter("currencyCode")));
+		paymentDetails.setOrderTotal(amount);
+
 		AddressType shipTo = new AddressType();
-		shipTo.setName(req.getParameter("firstName")+ " " + req.getParameter("lastName"));
+		shipTo.setName(req.getParameter("firstName") + " "
+				+ req.getParameter("lastName"));
 		shipTo.setStreet1(req.getParameter("address1"));
 		shipTo.setStreet2(req.getParameter("address2"));
 		shipTo.setCityName(req.getParameter("city"));
 		shipTo.setStateOrProvince(req.getParameter("state"));
-		shipTo.setCountry(CountryCodeType.US);
+		shipTo.setCountry(CountryCodeType.fromValue(req
+				.getParameter("countryCode")));
 		shipTo.setPostalCode(req.getParameter("zip"));
 		paymentDetails.setShipToAddress(shipTo);
-		
+
 		details.setPaymentDetails(paymentDetails);
-	       
+
 		CreditCardDetailsType cardDetails = new CreditCardDetailsType();
-		cardDetails.setCreditCardType(CreditCardTypeType.fromValue(req.getParameter("creditCardType")));
+		cardDetails.setCreditCardType(CreditCardTypeType.fromValue(req
+				.getParameter("creditCardType")));
 		cardDetails.setCreditCardNumber(req.getParameter("creditCardNumber"));
-		cardDetails.setExpMonth(Integer.parseInt(req.getParameter("expDateMonth")));
-		cardDetails.setExpYear(Integer.parseInt(req.getParameter("expDateYear")));
+		cardDetails.setExpMonth(Integer.parseInt(req
+				.getParameter("expDateMonth")));
+		cardDetails
+				.setExpYear(Integer.parseInt(req.getParameter("expDateYear")));
 		cardDetails.setCVV2(req.getParameter("cvv2Number"));
-		
+
 		PayerInfoType payer = new PayerInfoType();
 		PersonNameType name = new PersonNameType();
 		name.setFirstName(req.getParameter("firstName"));
 		name.setLastName(req.getParameter("lastName"));
 		payer.setPayerName(name);
-		payer.setPayerCountry(CountryCodeType.US);
-	    payer.setAddress(shipTo);
-	   
-	    cardDetails.setCardOwner(payer);
-	                
+		payer.setPayerCountry(CountryCodeType.fromValue(req
+				.getParameter("countryCode")));
+		payer.setAddress(shipTo);
+
+		cardDetails.setCardOwner(payer);
+
 		details.setCreditCard(cardDetails);
-		
+
 		details.setIPAddress("127.0.0.1");
-		details.setPaymentAction(PaymentActionCodeType.fromValue(req.getParameter("paymentType")));
-		
-	    pprequest.setDoDirectPaymentRequestDetails(details);
-	    doPaymentReq.setDoDirectPaymentRequest(pprequest);
-	    
+		details.setPaymentAction(PaymentActionCodeType.fromValue(req
+				.getParameter("paymentType")));
+
+		pprequest.setDoDirectPaymentRequestDetails(details);
+		doPaymentReq.setDoDirectPaymentRequest(pprequest);
+
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
-					this.getServletContext().getRealPath("/")+ "/WEB-INF/sdk_config.properties");
-			DoDirectPaymentResponseType ddresponse = service.doDirectPayment(doPaymentReq);
+					this.getServletContext().getRealPath("/")
+							+ "/WEB-INF/sdk_config.properties");
+			DoDirectPaymentResponseType ddresponse = service
+					.doDirectPayment(doPaymentReq);
 			res.setContentType("text/html");
-			if(ddresponse!=null){
-				if(ddresponse.getAck().toString().equalsIgnoreCase("SUCCESS") || ddresponse.getAck().toString().equalsIgnoreCase("SUCCESSWITHWARNING")){
-					res.getWriter().println("CorelationId : "+ddresponse.getCorrelationID());
+			if (ddresponse != null) {
+				if (ddresponse.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+					res.getWriter().println("Ack : " + ddresponse.getAck());
 					res.getWriter().println("<br/>");
-					res.getWriter().println("TransactionId : "+ddresponse.getTransactionID());
-				}else{
-					List<ErrorType> errorList = ddresponse.getErrors();
-					for(ErrorType e:errorList){
-						res.getWriter().println("Short Err Msg : "+e.getShortMessage());
-						res.getWriter().println("Long Err Msg : "+e.getLongMessage());
-					}
+					res.getWriter()
+							.println(
+									"Transaction ID : "
+											+ ddresponse.getTransactionID());
+					res.getWriter().println("<br/>");
+					res.getWriter()
+							.println(
+									"Pending Status : "
+											+ ddresponse.getPaymentStatus());
+					res.getWriter().println("<br/>");
+					res.getWriter()
+							.println(
+									"Pending Reason : "
+											+ ddresponse.getPendingReason());
+					res.getWriter().println("<br/>");
+					res.getWriter().println(
+							"Amount : " + ddresponse.getAmount().getValue());
+					res.getWriter().println("<br/>");
+				} else {
+					HttpSession session = req.getSession();
+					session.setAttribute("Error", ddresponse.getErrors());
+					res.sendRedirect("/merchant-sample/Error.jsp");
 				}
 			}
-			
 			res.getWriter().println("<br/>");
-			res.getWriter().println("<a href='index.html'>Home</a>");
-		}catch (FileNotFoundException e) {
+			res.getWriter().println(
+					"<a href='/merchant-sample/index.html'>Home</a>");
+			res.getWriter().println("<br/>");
+			res.getWriter().println("See also:");
+			res.getWriter().println("<br/>");
+			res.getWriter()
+					.println(
+							"<ul><li><a href='DoDirectPayment'>DoDirectPayment</a></li><li><a href='RT/DoReferenceTransaction'>DoReferenceTransaction</a></li><li><a href='RP/CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a></li></ul>");
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}catch (SAXException e) {
+		} catch (SAXException e) {
 			e.printStackTrace();
-		}catch (ParserConfigurationException e) {
+		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
-		}catch (SSLConfigurationException e) {
+		} catch (SSLConfigurationException e) {
 			e.printStackTrace();
 		} catch (InvalidCredentialException e) {
 			e.printStackTrace();
@@ -147,10 +185,9 @@ public class DoDirectPaymentServlet extends HttpServlet{
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 }

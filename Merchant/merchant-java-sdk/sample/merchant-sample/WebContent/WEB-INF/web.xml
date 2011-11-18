@@ -20,16 +20,78 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DoDirectPaymentServlet</servlet-name>
-		<url-pattern>/DoDirectPayment</url-pattern>
+		<url-pattern>/DCC/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>TransactionSearchServlet</display-name>
-		<servlet-name>TransactionSearchServlet</servlet-name>
-		<servlet-class>com.sample.merchant.TransactionSearchServlet</servlet-class>
+		<display-name>TransactionReportingServlet</display-name>
+		<servlet-name>TransactionReportingServlet</servlet-name>
+		<servlet-class>com.sample.merchant.TransactionReportingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>TransactionSearchServlet</servlet-name>
-		<url-pattern>/TransactionSearch</url-pattern>
+		<servlet-name>
+	TransactionReportingServlet</servlet-name>
+		<url-pattern>/Report/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>MassPayServlet</display-name>
+		<servlet-name>MassPayServlet</servlet-name>
+		<servlet-class>com.sample.merchant.MassPayServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MassPayServlet</servlet-name>
+		<url-pattern>/MassPay</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ButtonManagerServlet</display-name>
+		<servlet-name>ButtonManagerServlet</servlet-name>
+		<servlet-class>com.sample.merchant.ButtonManagerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ButtonManagerServlet</servlet-name>
+		<url-pattern>/BM/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>SettlementServlet</display-name>
+		<servlet-name>SettlementServlet</servlet-name>
+		<servlet-class>com.sample.merchant.SettlementServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SettlementServlet</servlet-name>
+		<url-pattern>/Settlement/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>CheckoutServlet</display-name>
+		<servlet-name>CheckoutServlet</servlet-name>
+		<servlet-class>com.sample.merchant.CheckoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckoutServlet</servlet-name>
+		<url-pattern>/EC/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>RecurringPaymentsServlet</display-name>
+		<servlet-name>RecurringPaymentsServlet</servlet-name>
+		<servlet-class>com.sample.merchant.RecurringPaymentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecurringPaymentsServlet</servlet-name>
+		<url-pattern>/RP/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ReferenceTransactionServlet</display-name>
+		<servlet-name>ReferenceTransactionServlet</servlet-name>
+		<servlet-class>com.sample.merchant.ReferenceTransactionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ReferenceTransactionServlet</servlet-name>
+		<url-pattern>/RT/*</url-pattern>
 	</servlet-mapping>
 </web-app>
