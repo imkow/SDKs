@@ -16,11 +16,13 @@
 						<th>Button Manager</th>
 					</tr>
 					<tr>
-						<td><a href="BM/BMCreateButton">BMCreateButton</a></td>
+						<td><a href="BM/BMCreateButton">BMCreateButton</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="BM/BMUpdateButton">BMUpdateButton</a></td>
+						<td><a href="BM/BMUpdateButton">BMUpdateButton</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
@@ -29,22 +31,27 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="BM/BMGetButtonDetails">BMGetButtonDetails</a></td>
+						<td><a href="BM/BMGetButtonDetails">BMGetButtonDetails</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="BM/BMButtonSearch">BMButtonSearch</a></td>
+						<td><a href="BM/BMButtonSearch">BMButtonSearch</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="BM/BMSetInventory">BMSetInventory</a></td>
+						<td><a href="BM/BMSetInventory">BMSetInventory</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="BM/BMGetInventory">BMGetInventory</a></td>
+						<td><a href="BM/BMGetInventory">BMGetInventory</a>
+						</td>
 						<td></td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 			<td valign="top"><table>
 
 					<tr>
@@ -56,7 +63,8 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="Settlement/DoVoid">DoVoid</a></td>
+						<td><a href="Settlement/DoVoid">DoVoid</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
@@ -65,25 +73,30 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="Settlement/DoCapture">DoCapture</a></td>
+						<td><a href="Settlement/DoCapture">DoCapture</a>
+						</td>
 						<td></td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 			<td valign="top"><table>
 					<tr>
 						<th>Express Checkout</th>
 					</tr>
 
 					<tr>
-						<td><a href="EC/SetExpressCheckout">SetExpressCheckout</a></td>
+						<td><a href="EC/SetExpressCheckout">SetExpressCheckout</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="EC/GetExpressCheckout">GetExpressCheckout</a></td>
+						<td><a href="EC/GetExpressCheckout">GetExpressCheckout</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="EC/DoExpressCheckout">DoExpressCheckout</a></td>
+						<td><a href="EC/DoExpressCheckout">DoExpressCheckout</a>
+						</td>
 						<td></td>
 					</tr>
 					<tr>
@@ -91,28 +104,29 @@
 						</td>
 						<td></td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 			<td valign="top"><table>
 					<tr>
 						<th>Recurring Payments</th>
 					</tr>
 					<tr>
-						<td><a href="RP/CreateRecurringPaymentsProfile">CreateRecurringPaymentsProfile</a>
+						<td><a href="RP/CreateRPProfile">CreateRPProfile</a>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="RP/GetRecurringPaymentsProfileDetails">GetRecurringPaymentsProfileDetails</a>
+						<td><a href="RP/GetRPProfileDetails">GetRPProfileDetails</a>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="RP/ManageRecurringPaymentsProfileStatus">ManageRecurringPaymentsProfileStatus</a>
+						<td><a href="RP/ManageRPProfileStatus">ManageRPProfileStatus</a>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><a href="RP/UpdateRecurringPaymentsProfile">UpdateRecurringPaymentsProfile</a>
+						<td><a href="RP/UpdateRPProfile">UpdateRPProfile</a>
 						</td>
 						<td></td>
 					</tr>
@@ -122,8 +136,7 @@
 						<td></td>
 					</tr>
 
-				</table>
-			</td>
+				</table></td>
 		</tr>
 		<tr></tr>
 		<tr></tr>
@@ -134,29 +147,47 @@
 						<th>Reference Transactions</th>
 					</tr>
 					<tr>
-						<td><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a>
-						</td>
-						<td></td>
+					   <td style="width:100px">[It is recommended to Use the SetExpressCheckout API for creating billing agreement instead of using SetCustomerBillingAgreement and CreateBillingAgreement api's.]</td>
 					</tr>
-				</table></td>
+					<tr>
+						<td><u>SetCustomerBillingAgreement</u></td>
+					</tr>
+					<tr>
+						<td><u>CreateBillingAgreement</u></td>
+					</tr>
+					<tr>
+						<td><a href="RT/GetBillingAgreementCustomerDetails">GetBillingAgreementCustomerDetails</a></td>
+					</tr>
+					<tr>
+						<td><a href="RT/BillAgreementUpdate">BillAgreementUpdate</a></td>
+					</tr>
+					<tr>
+						<td><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a></td>
+					</tr>
+				</table>
+			</td>
 			<td valign="top"><table>
 					<tr>
 						<th>DCC</th>
 					</tr>
 					<tr>
-						<td><a href="DCC/DoDirectPayment">DoDirectPayment</a></td>
+						<td><a href="DCC/DoDirectPayment">DoDirectPayment</a>
+						</td>
 						<td></td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 			<td valign="top"><table>
 					<tr>
 						<th>MassPay</th>
 					</tr>
 					<tr>
-						<td><a href="MassPay">MassPay</a></td>
+						<td><a href="MassPay">MassPay</a>
+						</td>
 						<td></td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 			<td valign="top"><table>
 					<tr>
 						<th>Reporting</th>
@@ -166,8 +197,7 @@
 						</td>
 						<td></td>
 					</tr>
-				</table>
-			</td>
+				</table></td>
 		</tr>
 	</table>
 </body>
