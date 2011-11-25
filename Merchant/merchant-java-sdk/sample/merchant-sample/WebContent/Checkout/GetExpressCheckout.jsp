@@ -16,7 +16,7 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">Token</div>
+					<div class="param_name">Token(Get Token via <a href="SetExpressCheckout">SetExpressCheckout</a>)</div>
 					<div class="param_value">
 						<input type="text" name="token" value="" size="50" maxlength="260" />
 					</div>

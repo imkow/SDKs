@@ -20,7 +20,7 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">HostedID</div>
+					<div class="param_name">HostedID*(Get hosted ID via <a href='BMCreateButton'>BMCreateButton</a>)</div>
 					<div class="param_value">
 						<input type="text" name="hostedID" value="" size="50"
 							maxlength="260" />

@@ -205,8 +205,7 @@
 					</div>
 				</div>
 				<div class="submit">
-					<input type="submit" name="DirectPaymentBtn"
-						value="DirectPaymentButton" /><br />
+					<input type="submit" name="DirectPaymentBtn" value="DirectPayment" /><br />
 				</div>
 				<a href="/merchant-sample/index.html">Home</a> <br /> <br />
 			</div>
@@ -214,9 +213,9 @@
 		<div id="relatedcalls">
 			See also
 			<ul>
-				<li><a href="/RT/DoReferenceTransaction">DoReferenceTransaction</a>
+				<li><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a>
 				</li>
-				<li><a href="/RP/CreateRecurringPaymentsProfile">CreateRecurringPaymentsProfile</a>
+				<li><a href="RP/CreateRecurringPaymentsProfile">CreateRecurringPaymentsProfile</a>
 				</li>
 			</ul>
 		</div>

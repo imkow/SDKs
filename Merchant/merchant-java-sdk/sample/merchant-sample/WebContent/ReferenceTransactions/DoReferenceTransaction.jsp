@@ -14,7 +14,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<h3>DoReferenceTransaction</h3>
-			<div id="DoReferenceTransaction">
+			<div id="header">
 				<p>The DoReferenceTransaction API operation processes a payment
 					from a buyers account, which is identified by a previous
 					transaction.</p>
@@ -182,7 +182,9 @@
 					</div>
 					<div class="params">
 						<div class="param_name">
-							<b>Reference TransactionID</b>
+							<b>Reference TransactionID(Billing agreement ID or a
+								reference transaction ID that is associated with a billing
+								agreement, get it via <a href="../EC/SetExpressCheckout">ExpressCheckout</a>)</b>
 						</div>
 						<div class="param_value">
 							<input type="text" name="referenceID" id="referenceID" />
@@ -378,7 +380,8 @@
 						</div>
 					</div>
 					<div class="submit">
-						<input id="Submit1" type="submit" name="submit" value="submit" /><br />
+						<input type="submit" name="DoReferenceTransactionBtn"
+							value="DoReferenceTransaction" /><br />
 					</div>
 					<a href="/merchant-sample/index.html">Home</a>
 				</div>
@@ -387,9 +390,12 @@
 		<div id="relatedcalls">
 			See also:
 			<ul>
-				<li><a href="/RP/CreateRecurringPaymentsProfile">RecurringPayments</a>
+				<li><a href="RP/CreateRecurringPaymentsProfile">RecurringPayments</a>
 				</li>
-				<li><a href="/EC/SetExpressCheckout">SetExpressCheckout</a></li>
+				<li><a href="RT/BillAgreementUpdate">BillAgreementUpdate</a></li>
+				<li><a href="RT/GetBillingAgreementCustomerDetails">GetBillingAgreementCustomerDetails</a>
+				</li>
+				<li><a href="RT/BillUser">BillUser</a></li>
 			</ul>
 		</div>
 	</div>

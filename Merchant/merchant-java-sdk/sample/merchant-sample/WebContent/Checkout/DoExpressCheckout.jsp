@@ -15,7 +15,9 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">Token</div>
+					<div class="param_name">
+						Token(Get Token via <a href="SetExpressCheckout">SetExpressCheckout</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="token" value="" size="50" maxlength="260" />
 					</div>
@@ -25,6 +27,16 @@
 					<div class="param_value">
 						<input type="text" name="payerID" value="" size="50"
 							maxlength="260" />
+					</div>
+				</div>
+				<div class="params">
+					<div class="param_name">PaymentType</div>
+					<div class="param_value">
+						<select name="paymentAction">
+							<option value="Sale">Sale</option>
+							<option value="Authorization">Authorization</option>
+							<option value="Order">Order</option>
+						</select>
 					</div>
 				</div>
 				<div class="params">

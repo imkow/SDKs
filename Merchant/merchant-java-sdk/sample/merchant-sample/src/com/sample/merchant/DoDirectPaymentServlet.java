@@ -3,7 +3,8 @@ package com.sample.merchant;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +26,6 @@ import urn.ebay.apis.eBLBaseComponents.CreditCardDetailsType;
 import urn.ebay.apis.eBLBaseComponents.CreditCardTypeType;
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
 import urn.ebay.apis.eBLBaseComponents.DoDirectPaymentRequestDetailsType;
-import urn.ebay.apis.eBLBaseComponents.ErrorType;
 import urn.ebay.apis.eBLBaseComponents.PayerInfoType;
 import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
@@ -56,13 +56,15 @@ public class DoDirectPaymentServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-
+		HttpSession session = req.getSession();
+		session.setAttribute("url", req.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='DCC/DoDirectPayment'>DoDirectPayment</a></li><li><a href='RT/DoReferenceTransaction'>DoReferenceTransaction</a></li><li><a href='RP/CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a></li></ul>");
 		DoDirectPaymentReq doPaymentReq = new DoDirectPaymentReq();
 		DoDirectPaymentRequestType pprequest = new DoDirectPaymentRequestType();
-		pprequest.setVersion("76.0");
 		DoDirectPaymentRequestDetailsType details = new DoDirectPaymentRequestDetailsType();
 		PaymentDetailsType paymentDetails = new PaymentDetailsType();
-		paymentDetails.setButtonSource("Java_SDK_JSP");
 
 		BasicAmountType amount = new BasicAmountType();
 		amount.setValue(req.getParameter("amount"));
@@ -122,42 +124,22 @@ public class DoDirectPaymentServlet extends HttpServlet {
 					.doDirectPayment(doPaymentReq);
 			res.setContentType("text/html");
 			if (ddresponse != null) {
+				session.setAttribute("lastReq", service.getLastRequest());
+				session.setAttribute("lastResp", service.getLastResponse());
 				if (ddresponse.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-					res.getWriter().println("Ack : " + ddresponse.getAck());
-					res.getWriter().println("<br/>");
-					res.getWriter()
-							.println(
-									"Transaction ID : "
-											+ ddresponse.getTransactionID());
-					res.getWriter().println("<br/>");
-					res.getWriter()
-							.println(
-									"Pending Status : "
-											+ ddresponse.getPaymentStatus());
-					res.getWriter().println("<br/>");
-					res.getWriter()
-							.println(
-									"Pending Reason : "
-											+ ddresponse.getPendingReason());
-					res.getWriter().println("<br/>");
-					res.getWriter().println(
-							"Amount : " + ddresponse.getAmount().getValue());
-					res.getWriter().println("<br/>");
+					Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+					map.put("Ack", ddresponse.getAck());
+					map.put("Transaction ID", ddresponse.getTransactionID());
+					map.put("Amount", ddresponse.getAmount().getValue() + " "
+							+ ddresponse.getAmount().getCurrencyID());
+					map.put("Payment Status", ddresponse.getPaymentStatus());
+					session.setAttribute("map", map);
+					res.sendRedirect("/merchant-sample/Response.jsp");
 				} else {
-					HttpSession session = req.getSession();
 					session.setAttribute("Error", ddresponse.getErrors());
 					res.sendRedirect("/merchant-sample/Error.jsp");
 				}
 			}
-			res.getWriter().println("<br/>");
-			res.getWriter().println(
-					"<a href='/merchant-sample/index.html'>Home</a>");
-			res.getWriter().println("<br/>");
-			res.getWriter().println("See also:");
-			res.getWriter().println("<br/>");
-			res.getWriter()
-					.println(
-							"<ul><li><a href='DoDirectPayment'>DoDirectPayment</a></li><li><a href='RT/DoReferenceTransaction'>DoReferenceTransaction</a></li><li><a href='RP/CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a></li></ul>");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

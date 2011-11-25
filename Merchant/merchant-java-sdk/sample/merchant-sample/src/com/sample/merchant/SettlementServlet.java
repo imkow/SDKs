@@ -3,7 +3,8 @@ package com.sample.merchant;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,48 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import urn.ebay.api.PayPalAPI.DoAuthorizationReq;
+import urn.ebay.api.PayPalAPI.DoAuthorizationRequestType;
+import urn.ebay.api.PayPalAPI.DoAuthorizationResponseType;
+import urn.ebay.api.PayPalAPI.DoCaptureReq;
+import urn.ebay.api.PayPalAPI.DoCaptureRequestType;
+import urn.ebay.api.PayPalAPI.DoCaptureResponseType;
+import urn.ebay.api.PayPalAPI.DoNonReferencedCreditReq;
+import urn.ebay.api.PayPalAPI.DoNonReferencedCreditRequestType;
+import urn.ebay.api.PayPalAPI.DoNonReferencedCreditResponseType;
+import urn.ebay.api.PayPalAPI.DoReauthorizationReq;
+import urn.ebay.api.PayPalAPI.DoReauthorizationRequestType;
+import urn.ebay.api.PayPalAPI.DoReauthorizationResponseType;
+import urn.ebay.api.PayPalAPI.DoUATPAuthorizationReq;
+import urn.ebay.api.PayPalAPI.DoUATPAuthorizationRequestType;
+import urn.ebay.api.PayPalAPI.DoUATPAuthorizationResponseType;
+import urn.ebay.api.PayPalAPI.DoVoidReq;
+import urn.ebay.api.PayPalAPI.DoVoidRequestType;
+import urn.ebay.api.PayPalAPI.DoVoidResponseType;
+import urn.ebay.api.PayPalAPI.ManagePendingTransactionStatusReq;
+import urn.ebay.api.PayPalAPI.ManagePendingTransactionStatusRequestType;
+import urn.ebay.api.PayPalAPI.ManagePendingTransactionStatusResponseType;
+import urn.ebay.api.PayPalAPI.PayPalAPIInterfaceServiceService;
+import urn.ebay.api.PayPalAPI.RefundTransactionReq;
+import urn.ebay.api.PayPalAPI.RefundTransactionRequestType;
+import urn.ebay.api.PayPalAPI.RefundTransactionResponseType;
+import urn.ebay.api.PayPalAPI.ReverseTransactionReq;
+import urn.ebay.api.PayPalAPI.ReverseTransactionRequestType;
+import urn.ebay.api.PayPalAPI.ReverseTransactionResponseType;
+import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
+import urn.ebay.apis.eBLBaseComponents.CompleteCodeType;
+import urn.ebay.apis.eBLBaseComponents.CreditCardDetailsType;
+import urn.ebay.apis.eBLBaseComponents.CreditCardTypeType;
+import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
+import urn.ebay.apis.eBLBaseComponents.DoNonReferencedCreditRequestDetailsType;
+import urn.ebay.apis.eBLBaseComponents.FMFPendingTransactionActionType;
+import urn.ebay.apis.eBLBaseComponents.MerchantStoreDetailsType;
+import urn.ebay.apis.eBLBaseComponents.RefundSourceCodeType;
+import urn.ebay.apis.eBLBaseComponents.RefundType;
+import urn.ebay.apis.eBLBaseComponents.ReverseTransactionRequestDetailsType;
+import urn.ebay.apis.eBLBaseComponents.TransactionEntityType;
+import urn.ebay.apis.eBLBaseComponents.UATPDetailsType;
+
 import com.paypal.exception.ClientActionRequiredException;
 import com.paypal.exception.HttpErrorException;
 import com.paypal.exception.InvalidCredentialException;
@@ -21,37 +64,6 @@ import com.paypal.exception.InvalidResponseDataException;
 import com.paypal.exception.MissingCredentialException;
 import com.paypal.exception.SSLConfigurationException;
 import com.paypal.sdk.exceptions.OAuthException;
-
-import urn.ebay.api.PayPalAPI.DoAuthorizationReq;
-import urn.ebay.api.PayPalAPI.DoAuthorizationRequestType;
-import urn.ebay.api.PayPalAPI.DoAuthorizationResponseType;
-import urn.ebay.api.PayPalAPI.DoCaptureReq;
-import urn.ebay.api.PayPalAPI.DoCaptureRequestType;
-import urn.ebay.api.PayPalAPI.DoCaptureResponseType;
-import urn.ebay.api.PayPalAPI.DoReauthorizationReq;
-import urn.ebay.api.PayPalAPI.DoReauthorizationRequestType;
-import urn.ebay.api.PayPalAPI.DoReauthorizationResponseType;
-import urn.ebay.api.PayPalAPI.DoReferenceTransactionReq;
-import urn.ebay.api.PayPalAPI.DoReferenceTransactionRequestType;
-import urn.ebay.api.PayPalAPI.DoReferenceTransactionResponseType;
-import urn.ebay.api.PayPalAPI.DoVoidReq;
-import urn.ebay.api.PayPalAPI.DoVoidRequestType;
-import urn.ebay.api.PayPalAPI.DoVoidResponseType;
-import urn.ebay.api.PayPalAPI.PayPalAPIInterfaceServiceService;
-import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
-import urn.ebay.apis.eBLBaseComponents.AddressType;
-import urn.ebay.apis.eBLBaseComponents.CompleteCodeType;
-import urn.ebay.apis.eBLBaseComponents.CountryCodeType;
-import urn.ebay.apis.eBLBaseComponents.CreditCardNumberTypeType;
-import urn.ebay.apis.eBLBaseComponents.CreditCardTypeType;
-import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
-import urn.ebay.apis.eBLBaseComponents.DoReferenceTransactionRequestDetailsType;
-import urn.ebay.apis.eBLBaseComponents.ErrorType;
-import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentCodeType;
-import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
-import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
-import urn.ebay.apis.eBLBaseComponents.PersonNameType;
-import urn.ebay.apis.eBLBaseComponents.ReferenceCreditCardDetailsType;
 
 /**
  * Servlet implementation class CheckoutServlet
@@ -89,6 +101,34 @@ public class SettlementServlet extends HttpServlet {
 			getServletConfig().getServletContext()
 					.getRequestDispatcher("/Settlements/DoCapture.jsp")
 					.forward(request, response);
+		else if (request.getRequestURI().contains("Refund"))
+			getServletConfig().getServletContext()
+					.getRequestDispatcher("/Settlements/Refund.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains("DoUATPAuthorization"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/Settlements/DoUATPAuthorization.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains("ReverseTransaction"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher("/Settlements/ReverseTransaction.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains("DoNonReferencedCredit"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/Settlements/DoNonReferencedCredit.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains(
+				"ManagePendingTransactionStatus"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/Settlements/ManagePendingTransactionStatus.jsp")
+					.forward(request, response);
 
 	}
 
@@ -98,7 +138,13 @@ public class SettlementServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("url", request.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='DoAuthorization'>DoAuthorization</a></li><li><a href='DoCapture'>DoCapture</a></li><li><a href='DoVoid'>DoVoid</a></li><li><a href='DoReauthorization'>DoReauthorization</a></li><li><a href='DoUATPAuthorization'>DoUATPAuthorization</a></li><li><a href='Refund'>Refund</a></li><li><a href='ReverseTransaction'>ReverseTransaction</a></li><li><a href='DoNonReferencedCredit'>DoNonReferencedCredit</a></li><li><a href='ManagePendingTransactionStatus'>ManagePendingTransactionStatus</a></li></ul>");
 		response.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
@@ -112,40 +158,24 @@ public class SettlementServlet extends HttpServlet {
 						request.getParameter("amt"));
 				DoAuthorizationRequestType reqType = new DoAuthorizationRequestType(
 						request.getParameter("transID"), amount);
-				reqType.setVersion("82");
+
 				req.setDoAuthorizationRequest(reqType);
 				DoAuthorizationResponseType resp = service.doAuthorization(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Authorization ID: " + resp.getTransactionID());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Protection Eligibility:"
-										+ resp.getAuthorizationInfo()
-												.getProtectionEligibility());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Protection Eligiblity Type:"
-												+ resp.getAuthorizationInfo()
-														.getProtectionEligibilityType());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Payment Status:"
-										+ resp.getAuthorizationInfo()
-												.getPaymentStatus());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Pending Reason:"
-										+ resp.getAuthorizationInfo()
-												.getPendingReason());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Amount", resp.getAmount().getValue() + " "
+								+ resp.getAmount().getCurrencyID());
+						map.put("Payment Status", resp.getAuthorizationInfo()
+								.getPaymentStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -158,43 +188,24 @@ public class SettlementServlet extends HttpServlet {
 						request.getParameter("amt"));
 				DoReauthorizationRequestType reqType = new DoReauthorizationRequestType(
 						request.getParameter("authID"), amount);
-				reqType.setVersion("82");
+
 				req.setDoReauthorizationRequest(reqType);
 				DoReauthorizationResponseType resp = service
 						.doReauthorization(req);
 
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Authorization ID: "
-										+ resp.getAuthorizationID());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Protection Eligibility:"
-										+ resp.getAuthorizationInfo()
-												.getProtectionEligibility());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Protection Eligiblity Type:"
-												+ resp.getAuthorizationInfo()
-														.getProtectionEligibilityType());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Payment Status:"
-										+ resp.getAuthorizationInfo()
-												.getPaymentStatus());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Pending Reason:"
-										+ resp.getAuthorizationInfo()
-												.getPendingReason());
-						response.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Authorization ID", resp.getAuthorizationID());
+						map.put("Payment Status", resp.getAuthorizationInfo()
+								.getPaymentStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -203,20 +214,19 @@ public class SettlementServlet extends HttpServlet {
 				DoVoidReq req = new DoVoidReq();
 				DoVoidRequestType reqType = new DoVoidRequestType(
 						request.getParameter("authID"));
-				reqType.setVersion("82");
 				req.setDoVoidRequest(reqType);
 				DoVoidResponseType resp = service.doVoid(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Authorization ID: "
-										+ resp.getAuthorizationID());
-						response.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Authorization ID", resp.getAuthorizationID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -231,35 +241,235 @@ public class SettlementServlet extends HttpServlet {
 						request.getParameter("authID"), amount,
 						CompleteCodeType.fromValue(request
 								.getParameter("completeCodeType")));
-				reqType.setVersion("82");
 				req.setDoCaptureRequest(reqType);
 				DoCaptureResponseType resp = service.doCapture(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Authorization ID: "
-										+ resp.getDoCaptureResponseDetails()
-												.getAuthorizationID());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Authorization ID", resp
+								.getDoCaptureResponseDetails()
+								.getAuthorizationID());
+						map.put("Gross Amount", resp
+								.getDoCaptureResponseDetails().getPaymentInfo()
+								.getGrossAmount().getValue()
+								+ " "
+								+ resp.getDoCaptureResponseDetails()
+										.getPaymentInfo().getGrossAmount()
+										.getCurrencyID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
+			} else if (request.getRequestURI().contains("Refund")) {
+				RefundTransactionReq req = new RefundTransactionReq();
+				RefundTransactionRequestType reqType = new RefundTransactionRequestType();
+				reqType.setTransactionID(request.getParameter("transID"));
+				if (request.getParameter("refundType") != "Full"
+						& request.getParameter("refundType") != "") {
+					reqType.setAmount(new BasicAmountType(CurrencyCodeType
+							.fromValue(request.getParameter("currencyID")),
+							request.getParameter("amt")));
+				}
+				if (request.getParameter("refundType") != "")
+					reqType.setRefundType(RefundType.fromValue(request
+							.getParameter("refundType")));
+				if (request.getParameter("refundSource") != "")
+					reqType.setRefundSource(RefundSourceCodeType
+							.fromValue(request.getParameter("refundSource")));
+				if (request.getParameter("storeID") != null) {
+					MerchantStoreDetailsType merchantStoreDetails = new MerchantStoreDetailsType(
+							request.getParameter("storeID"));
+					merchantStoreDetails.setTerminalID(request
+							.getParameter("terminalID"));
+					reqType.setMerchantStoreDetails(merchantStoreDetails);
+				}
+				req.setRefundTransactionRequest(reqType);
+				RefundTransactionResponseType resp = service
+						.refundTransaction(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Refund Transaction ID",
+								resp.getRefundTransactionID());
+						map.put("Total Refunded Amount", resp
+								.getTotalRefundedAmount().getValue()
+								+ " "
+								+ resp.getTotalRefundedAmount().getCurrencyID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+
+			} else if (request.getRequestURI().contains("DoUATPAuthorization")) {
+				DoUATPAuthorizationReq req = new DoUATPAuthorizationReq();
+				UATPDetailsType details = new UATPDetailsType();
+				BasicAmountType amount = new BasicAmountType(
+						CurrencyCodeType.fromValue(request
+								.getParameter("currencyID")),
+						request.getParameter("amt"));
+				details.setExpMonth(Integer.parseInt(request
+						.getParameter("expMonth")));
+				details.setExpYear(Integer.parseInt(request
+						.getParameter("expYear")));
+				details.setUATPNumber(request.getParameter("UATPNum"));
+				DoUATPAuthorizationRequestType reqType = new DoUATPAuthorizationRequestType(
+						details, amount);
+				reqType.setTransactionEntity(TransactionEntityType
+						.fromValue(request.getParameter("transactionEntity")));
+				req.setDoUATPAuthorizationRequest(reqType);
+				DoUATPAuthorizationResponseType resp = service
+						.doUATPAuthorization(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Authorization Code",
+								resp.getAuthorizationCode());
+						map.put("Payment Status", resp.getAuthorizationInfo()
+								.getPaymentStatus());
+						map.put("Amount", resp.getAmount().getValue() + " "
+								+ resp.getAmount().getCurrencyID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+			} else if (request.getRequestURI().contains("ReverseTransaction")) {
+				ReverseTransactionReq req = new ReverseTransactionReq();
+				ReverseTransactionRequestDetailsType reqDetails = new ReverseTransactionRequestDetailsType();
+				reqDetails.setTransactionID(request.getParameter("transID"));
+				ReverseTransactionRequestType reqType = new ReverseTransactionRequestType(
+						reqDetails);
+				req.setReverseTransactionRequest(reqType);
+				ReverseTransactionResponseType resp = service
+						.reverseTransaction(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Reverse Transaction ID", resp
+								.getReverseTransactionResponseDetails()
+								.getReverseTransactionID());
+						map.put("Status", resp
+								.getReverseTransactionResponseDetails()
+								.getStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+
+			} else if (request.getRequestURI()
+					.contains("DoNonReferencedCredit")) {
+				DoNonReferencedCreditReq req = new DoNonReferencedCreditReq();
+				DoNonReferencedCreditRequestDetailsType reqDetails = new DoNonReferencedCreditRequestDetailsType();
+				CreditCardDetailsType cardDetails = new CreditCardDetailsType();
+				cardDetails.setCreditCardType(CreditCardTypeType
+						.fromValue(request.getParameter("creditCardType")));
+				cardDetails.setCreditCardNumber(request
+						.getParameter("creditCardNumber"));
+				cardDetails.setExpMonth(Integer.parseInt(request
+						.getParameter("expMonth")));
+				cardDetails.setExpYear(Integer.parseInt(request
+						.getParameter("expYear")));
+				cardDetails.setCVV2(request.getParameter("cvv"));
+				reqDetails.setCreditCard(cardDetails);
+				reqDetails.setComment(request.getParameter("comment"));
+				reqDetails.setNetAmount(new BasicAmountType(CurrencyCodeType
+						.fromValue(request.getParameter("currencyID")), request
+						.getParameter("itemAmount")));
+				reqDetails.setShippingAmount(new BasicAmountType(
+						CurrencyCodeType.fromValue(request
+								.getParameter("currencyID")), request
+								.getParameter("shippingAmount")));
+				reqDetails.setTaxAmount(new BasicAmountType(CurrencyCodeType
+						.fromValue(request.getParameter("currencyID")), request
+						.getParameter("taxAmount")));
+				double totalAmount = Double.parseDouble(request
+						.getParameter("itemAmount"))
+						+ Double.parseDouble(request
+								.getParameter("shippingAmount"))
+						+ Double.parseDouble(request.getParameter("taxAmount"));
+				reqDetails.setAmount(new BasicAmountType(CurrencyCodeType
+						.fromValue(request.getParameter("currencyID")), String
+						.valueOf(totalAmount)));
+				DoNonReferencedCreditRequestType reqType = new DoNonReferencedCreditRequestType(
+						reqDetails);
+				req.setDoNonReferencedCreditRequest(reqType);
+				DoNonReferencedCreditResponseType resp = service
+						.doNonReferencedCredit(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Transaction ID", resp
+								.getDoNonReferencedCreditResponseDetails()
+								.getTransactionID());
+						map.put("Amount",
+								resp.getDoNonReferencedCreditResponseDetails()
+										.getAmount().getValue()
+										+ " "
+										+ resp.getDoNonReferencedCreditResponseDetails()
+												.getAmount().getCurrencyID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+			} else if (request.getRequestURI().contains(
+					"ManagePendingTransactionStatus")) {
+				ManagePendingTransactionStatusReq req = new ManagePendingTransactionStatusReq();
+				ManagePendingTransactionStatusRequestType reqType = new ManagePendingTransactionStatusRequestType(
+						request.getParameter("transactionID"),
+						FMFPendingTransactionActionType.fromValue(request
+								.getParameter("action")));
+				req.setManagePendingTransactionStatusRequest(reqType);
+				ManagePendingTransactionStatusResponseType resp = service
+						.managePendingTransactionStatus(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Transaction ID", resp.getTransactionID());
+						map.put("Status", resp.getStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+
 			}
-			response.getWriter().println("<br/>");
-			response.getWriter().println(
-					"<a href='/merchant-sample/index.html'>Home</a>");
-			response.getWriter().println("<br/>");
-			response.getWriter().println("See also:");
-			response.getWriter().println("<br/>");
-			response.getWriter()
-					.println(
-							"<ul><li><a href='DoAuthorization'>DoAuthorization</a></li><li><a href='DoCapture'>DoCapture</a></li><li><a href='DoVoid'>DoVoid</a></li><li><a href='DoReauthorization'>DoReauthorization</a></li></ul>");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -289,5 +499,4 @@ public class SettlementServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -4,7 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,12 @@ import urn.ebay.api.PayPalAPI.DoExpressCheckoutPaymentResponseType;
 import urn.ebay.api.PayPalAPI.DoUATPExpressCheckoutPaymentReq;
 import urn.ebay.api.PayPalAPI.DoUATPExpressCheckoutPaymentRequestType;
 import urn.ebay.api.PayPalAPI.DoUATPExpressCheckoutPaymentResponseType;
+import urn.ebay.api.PayPalAPI.ExecuteCheckoutOperationsReq;
+import urn.ebay.api.PayPalAPI.ExecuteCheckoutOperationsRequestType;
+import urn.ebay.api.PayPalAPI.ExecuteCheckoutOperationsResponseType;
+import urn.ebay.api.PayPalAPI.ExternalRememberMeOptOutReq;
+import urn.ebay.api.PayPalAPI.ExternalRememberMeOptOutRequestType;
+import urn.ebay.api.PayPalAPI.ExternalRememberMeOptOutResponseType;
 import urn.ebay.api.PayPalAPI.GetExpressCheckoutDetailsReq;
 import urn.ebay.api.PayPalAPI.GetExpressCheckoutDetailsRequestType;
 import urn.ebay.api.PayPalAPI.GetExpressCheckoutDetailsResponseType;
@@ -29,18 +38,31 @@ import urn.ebay.api.PayPalAPI.SetExpressCheckoutReq;
 import urn.ebay.api.PayPalAPI.SetExpressCheckoutRequestType;
 import urn.ebay.api.PayPalAPI.SetExpressCheckoutResponseType;
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
-import urn.ebay.apis.eBLBaseComponents.AddressType;
+import urn.ebay.apis.eBLBaseComponents.ApprovalSubTypeType;
+import urn.ebay.apis.eBLBaseComponents.ApprovalTypeType;
+import urn.ebay.apis.eBLBaseComponents.AuthorizationRequestType;
 import urn.ebay.apis.eBLBaseComponents.BillingAgreementDetailsType;
+import urn.ebay.apis.eBLBaseComponents.BillingApprovalDetailsType;
 import urn.ebay.apis.eBLBaseComponents.BillingCodeType;
-import urn.ebay.apis.eBLBaseComponents.CountryCodeType;
+import urn.ebay.apis.eBLBaseComponents.BuyerDetailType;
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
 import urn.ebay.apis.eBLBaseComponents.DoExpressCheckoutPaymentRequestDetailsType;
-import urn.ebay.apis.eBLBaseComponents.ErrorType;
+import urn.ebay.apis.eBLBaseComponents.ExecuteCheckoutOperationsRequestDetailsType;
+import urn.ebay.apis.eBLBaseComponents.ExternalRememberMeOwnerDetailsType;
+import urn.ebay.apis.eBLBaseComponents.IdentificationInfoType;
+import urn.ebay.apis.eBLBaseComponents.InfoSharingDirectivesType;
+import urn.ebay.apis.eBLBaseComponents.ItemCategoryType;
+import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentCodeType;
+import urn.ebay.apis.eBLBaseComponents.MobileIDInfoType;
+import urn.ebay.apis.eBLBaseComponents.OrderDetailsType;
 import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsItemType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
+import urn.ebay.apis.eBLBaseComponents.PaymentDirectivesType;
+import urn.ebay.apis.eBLBaseComponents.PaymentInfoType;
+import urn.ebay.apis.eBLBaseComponents.RememberMeIDInfoType;
+import urn.ebay.apis.eBLBaseComponents.SetDataRequestType;
 import urn.ebay.apis.eBLBaseComponents.SetExpressCheckoutRequestDetailsType;
-import urn.ebay.apis.eBLBaseComponents.ShippingOptionType;
 
 import com.paypal.exception.ClientActionRequiredException;
 import com.paypal.exception.HttpErrorException;
@@ -74,19 +96,32 @@ public class CheckoutServlet extends HttpServlet {
 			getServletConfig().getServletContext()
 					.getRequestDispatcher("/Checkout/SetExpressCheckout.jsp")
 					.forward(request, response);
-		if (request.getRequestURI().contains("GetExpressCheckout"))
+		else if (request.getRequestURI().contains("GetExpressCheckout"))
 			getServletConfig().getServletContext()
 					.getRequestDispatcher("/Checkout/GetExpressCheckout.jsp")
 					.forward(request, response);
-		if (request.getRequestURI().contains("DoExpressCheckout"))
+		else if (request.getRequestURI().contains("DoExpressCheckout"))
 			getServletConfig().getServletContext()
 					.getRequestDispatcher("/Checkout/DoExpressCheckout.jsp")
 					.forward(request, response);
-		if (request.getRequestURI().contains("DoUATPExpressCheckoutPayment"))
+		else if (request.getRequestURI().contains(
+				"DoUATPExpressCheckoutPayment"))
 			getServletConfig()
 					.getServletContext()
 					.getRequestDispatcher(
 							"/Checkout/DoUATPExpressCheckoutPayment.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains("ExternalRememberMeOptOut"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/Checkout/ExternalRememberMeOptOut.jsp")
+					.forward(request, response);
+		else if (request.getRequestURI().contains("ExecuteCheckoutOperations"))
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/Checkout/ExecuteCheckoutOperations.jsp")
 					.forward(request, response);
 	}
 
@@ -97,6 +132,11 @@ public class CheckoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("url", request.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='EC/SetExpressCheckout'>SetExpressCheckout</a></li><li><a href='EC/GetExpressCheckout'>GetExpressCheckout</a></li><li><a href='EC/DoExpressCheckout'>DoExpressCheckout</a></li><li><a href='EC/DoUATPExpressCheckoutPayment'>DoUATPExpressCheckout</a></li></ul>");
 		response.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
@@ -146,6 +186,9 @@ public class CheckoutServlet extends HttpServlet {
 				item.setQuantity(new Integer(qtyItems));
 				item.setName(names);
 				item.setAmount(amt);
+				item.setItemCategory(ItemCategoryType.fromValue(request
+						.getParameter("itemCategory")));
+				lineItems.add(item);
 
 				if (request.getParameter("salesTax") != "") {
 					item.setTax(new BasicAmountType(CurrencyCodeType
@@ -260,39 +303,50 @@ public class CheckoutServlet extends HttpServlet {
 				 * address.setPostalCode(request.getParameter("postalCode"));
 				 * paydtl.setShipToAddress(address);
 				 */
-
+				/*
+				 * ExternalRememberMeOptInDetailsType externalRememberMeDetails
+				 * = new ExternalRememberMeOptInDetailsType();
+				 * externalRememberMeDetails.setExternalRememberMeOptIn("1");
+				 * ExternalRememberMeOwnerDetailsType externalRememberMeOwner =
+				 * new ExternalRememberMeOwnerDetailsType();
+				 * externalRememberMeOwner
+				 * .setExternalRememberMeOwnerID("jb-us-seller@paypal.com");
+				 * externalRememberMeOwner
+				 * .setExternalRememberMeOwnerID("Email");
+				 * externalRememberMeDetails
+				 * .setExternalRememberMeOwnerDetails(externalRememberMeOwner);
+				 * details
+				 * .setExternalRememberMeOptInDetails(externalRememberMeDetails
+				 * );
+				 */
 				setExpressCheckoutReq
 						.setSetExpressCheckoutRequestDetails(details);
-				setExpressCheckoutReq.setVersion("82");
+
 				SetExpressCheckoutReq expressCheckoutReq = new SetExpressCheckoutReq();
 				expressCheckoutReq
 						.setSetExpressCheckoutRequest(setExpressCheckoutReq);
 
 				SetExpressCheckoutResponseType setExpressCheckoutResponse = service
 						.setExpressCheckout(expressCheckoutReq);
-				response.setContentType("text/html");
+
 				if (setExpressCheckoutResponse != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (setExpressCheckoutResponse.getAck().toString()
 							.equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println(
-								"CorelationId : "
-										+ setExpressCheckoutResponse
-												.getCorrelationID());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Token : "
-												+ setExpressCheckoutResponse
-														.getToken());
-
-						response.getWriter()
-								.println(
-										"<a href=https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
-												+ setExpressCheckoutResponse
-														.getToken()
-												+ ">RedirectURL</a>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", setExpressCheckoutResponse.getAck());
+						map.put("Token", setExpressCheckoutResponse.getToken());
+						map.put("Redirect URL",
+								"<a href=https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+										+ setExpressCheckoutResponse.getToken()
+										+ ">https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+										+ setExpressCheckoutResponse.getToken()
+										+ "</a>");
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error",
 								setExpressCheckoutResponse.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
@@ -303,29 +357,25 @@ public class CheckoutServlet extends HttpServlet {
 				GetExpressCheckoutDetailsReq req = new GetExpressCheckoutDetailsReq();
 				GetExpressCheckoutDetailsRequestType reqType = new GetExpressCheckoutDetailsRequestType(
 						request.getParameter("token"));
-				reqType.setVersion("84");
 				req.setGetExpressCheckoutDetailsRequest(reqType);
 				GetExpressCheckoutDetailsResponseType resp = service
 						.getExpressCheckoutDetails(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Payer Id:"
-												+ resp.getGetExpressCheckoutDetailsResponseDetails()
-														.getPayerInfo()
-														.getPayerID());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Token:"
-												+ resp.getGetExpressCheckoutDetailsResponseDetails()
-														.getToken());
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Token", resp
+								.getGetExpressCheckoutDetailsResponseDetails()
+								.getToken());
+						map.put("Payer ID", resp
+								.getGetExpressCheckoutDetailsResponseDetails()
+								.getPayerInfo().getPayerID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -338,8 +388,7 @@ public class CheckoutServlet extends HttpServlet {
 				details.setToken(request.getParameter("token"));
 				details.setPayerID(request.getParameter("payerID"));
 				details.setPaymentAction(PaymentActionCodeType
-						.fromValue((String) request.getSession().getAttribute(
-								"paymentType")));
+						.fromValue(request.getParameter("paymentAction")));
 
 				PaymentDetailsType paymentDetails = new PaymentDetailsType();
 				BasicAmountType orderTotal = new BasicAmountType();
@@ -380,28 +429,31 @@ public class CheckoutServlet extends HttpServlet {
 						.doExpressCheckoutPayment(doExpressCheckoutPaymentReq);
 				response.setContentType("text/html");
 				if (doCheckoutPaymentResponseType != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (doCheckoutPaymentResponseType.getAck().toString()
 							.equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println(
-								"CorelationId : "
-										+ doCheckoutPaymentResponseType
-												.getCorrelationID());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Ack : "
-										+ doCheckoutPaymentResponseType
-												.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"ID : "
-												+ doCheckoutPaymentResponseType
-														.getDoExpressCheckoutPaymentResponseDetails()
-														.getPaymentInfo()
-														.get(0)
-														.getTransactionID());
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", doCheckoutPaymentResponseType.getAck());
+						Iterator<PaymentInfoType> iterator = doCheckoutPaymentResponseType
+								.getDoExpressCheckoutPaymentResponseDetails()
+								.getPaymentInfo().iterator();
+						int index = 1;
+						while (iterator.hasNext()) {
+							PaymentInfoType result = (PaymentInfoType) iterator
+									.next();
+							map.put("Transaction ID" + index,
+									result.getTransactionID());
+							index++;
+						}
+						map.put("Billing Agreement ID",
+								doCheckoutPaymentResponseType
+										.getDoExpressCheckoutPaymentResponseDetails()
+										.getBillingAgreementID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
+
 						session.setAttribute("Error",
 								doCheckoutPaymentResponseType.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
@@ -412,11 +464,12 @@ public class CheckoutServlet extends HttpServlet {
 					.contains("DoUATPExpressCheckout")) {
 				DoUATPExpressCheckoutPaymentReq req = new DoUATPExpressCheckoutPaymentReq();
 				DoUATPExpressCheckoutPaymentRequestType reqType = new DoUATPExpressCheckoutPaymentRequestType();
-				reqType.setVersion("82");
+
 				DoExpressCheckoutPaymentRequestDetailsType checkoutDetails = new DoExpressCheckoutPaymentRequestDetailsType();
-				checkoutDetails.setPayerID("EJTLSVJNCUC7E");
-				checkoutDetails.setToken("EC-85T68611V3712474E");
-				checkoutDetails.setPaymentAction(PaymentActionCodeType.ORDER);
+				checkoutDetails.setPayerID(request.getParameter("payerID"));
+				checkoutDetails.setToken(request.getParameter("token"));
+				checkoutDetails.setPaymentAction(PaymentActionCodeType
+						.fromValue(request.getParameter("paymentAction")));
 				BasicAmountType amount = new BasicAmountType(
 						CurrencyCodeType.fromValue(request
 								.getParameter("currencyID")),
@@ -432,28 +485,143 @@ public class CheckoutServlet extends HttpServlet {
 						.doUATPExpressCheckoutPayment(req);
 
 				if (resp != null) {
-					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")
-							|| resp.getAck().toString()
-									.equalsIgnoreCase("SUCCESSWITHWARNING")) {
-						response.getWriter().println("Ack : " + resp.getAck());
-						response.getWriter().println("<br/>");
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("UATP Number", resp.getUATPDetails()
+								.getUATPNumber());
+						map.put("Expiry Month", resp.getUATPDetails()
+								.getExpMonth());
+						map.put("Expiry Year", resp.getUATPDetails()
+								.getExpYear());
+						Iterator<PaymentInfoType> iterator = resp
+								.getDoExpressCheckoutPaymentResponseDetails()
+								.getPaymentInfo().iterator();
+						int index = 1;
+						while (iterator.hasNext()) {
+							PaymentInfoType result = (PaymentInfoType) iterator
+									.next();
+							map.put("Transaction ID" + index,
+									result.getTransactionID());
+							index++;
+						}
+						map.put("Billing Agreement ID", resp
+								.getDoExpressCheckoutPaymentResponseDetails()
+								.getBillingAgreementID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 
 					} else {
-						HttpSession session = request.getSession();
+
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+			} else if (request.getRequestURI().contains(
+					"ExternalRememberMeOptOut")) {
+				ExternalRememberMeOptOutReq req = new ExternalRememberMeOptOutReq();
+				ExternalRememberMeOptOutRequestType reqType = new ExternalRememberMeOptOutRequestType(
+						request.getParameter("externalRememberMeID"));
+				ExternalRememberMeOwnerDetailsType externalRememberMeOwner = new ExternalRememberMeOwnerDetailsType();
+				externalRememberMeOwner
+						.setExternalRememberMeOwnerIDType(request
+								.getParameter("ownerIDType"));
+				externalRememberMeOwner.setExternalRememberMeOwnerID(request
+						.getParameter("ownerID"));
+				reqType.setExternalRememberMeOwnerDetails(externalRememberMeOwner);
+				req.setExternalRememberMeOptOutRequest(reqType);
+				ExternalRememberMeOptOutResponseType resp = service
+						.externalRememberMeOptOut(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+			} else if (request.getRequestURI().contains(
+					"ExecuteCheckoutOperations")) {
+				ExecuteCheckoutOperationsReq req = new ExecuteCheckoutOperationsReq();
+				SetDataRequestType setDataRequest = new SetDataRequestType();
+				List<BillingApprovalDetailsType> billingApprovalList = new ArrayList<BillingApprovalDetailsType>();
+				BillingApprovalDetailsType billingApproval = new BillingApprovalDetailsType(
+						ApprovalTypeType.fromValue(request
+								.getParameter("billingApprovalType")));
+				billingApproval.setApprovalSubType(ApprovalSubTypeType
+						.fromValue(request
+								.getParameter("billingApprovalSubType")));
+				OrderDetailsType orderDetails = new OrderDetailsType();
+				orderDetails.setMaxAmount(new BasicAmountType(CurrencyCodeType
+						.fromValue(request.getParameter("currencyID")), request
+						.getParameter("amt")));
+				billingApproval.setOrderDetails(orderDetails);
+				PaymentDirectivesType paymentDirectives = new PaymentDirectivesType();
+				paymentDirectives.setPaymentType(MerchantPullPaymentCodeType
+						.fromValue(request.getParameter("paymentType")));
+				billingApproval.setPaymentDirectives(paymentDirectives);
+				billingApprovalList.add(billingApproval);
+				setDataRequest.setBillingApprovalDetails(billingApprovalList);
+
+				BuyerDetailType buyerDetail = new BuyerDetailType();
+				IdentificationInfoType identificationInfo = new IdentificationInfoType();
+				if (request.getParameter("externalRememberMeID") != "") {
+					RememberMeIDInfoType rememberMeIDInfo = new RememberMeIDInfoType();
+					rememberMeIDInfo.setExternalRememberMeID(request
+							.getParameter("externalRememberMeID"));
+					identificationInfo.setRememberMeIDInfo(rememberMeIDInfo);
+				}
+				if (request.getParameter("sessionToken") != "") {
+					MobileIDInfoType mobileIDInfo = new MobileIDInfoType();
+					mobileIDInfo.setSessionToken(request
+							.getParameter("sessionToken"));
+					identificationInfo.setMobileIDInfo(mobileIDInfo);
+				}
+				buyerDetail.setIdentificationInfo(identificationInfo);
+				setDataRequest.setBuyerDetail(buyerDetail);
+
+				InfoSharingDirectivesType infoSharingDirectives = new InfoSharingDirectivesType();
+				infoSharingDirectives.setReqBillingAddress(request
+						.getParameter("reqBillingAddress"));
+				setDataRequest.setInfoSharingDirectives(infoSharingDirectives);
+
+				ExecuteCheckoutOperationsRequestDetailsType reqDetails = new ExecuteCheckoutOperationsRequestDetailsType(
+						setDataRequest);
+
+				AuthorizationRequestType authRequest = new AuthorizationRequestType(
+						Boolean.parseBoolean(request
+								.getParameter("isRequested")));
+				reqDetails.setAuthorizationRequest(authRequest);
+
+				ExecuteCheckoutOperationsRequestType reqType = new ExecuteCheckoutOperationsRequestType(
+						reqDetails);
+				req.setExecuteCheckoutOperationsRequest(reqType);
+				ExecuteCheckoutOperationsResponseType resp = service
+						.executeCheckoutOperations(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Token", resp
+								.getExecuteCheckoutOperationsResponseDetails()
+								.getSetDataResponse().getToken());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
 			}
-			response.getWriter().println("<br/>");
-			response.getWriter().println(
-					"<a href='/merchant-sample/index.html'>Home</a>");
-			response.getWriter().println("<br/>");
-			response.getWriter().println("See also:");
-			response.getWriter().println("<br/>");
-			response.getWriter()
-					.println(
-							"<ul><li><a href='SetExpressCheckout'>SetExpressCheckout</a></li><li><a href='GetExpressCheckout'>GetExpressCheckout</a></li><li><a href='DoExpressCheckout'>DoExpressCheckout</a></li><li><a href='DoUATPExpressCheckoutPayment'>DoUATPExpressCheckout</a></li></ul>");
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -484,12 +652,4 @@ public class CheckoutServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
-	private float round(float Rval, int Rpl) {
-		float p = (float) Math.pow(10, Rpl);
-		Rval = Rval * p;
-		float tmp = Math.round(Rval);
-		return (float) tmp / p;
-	}
-
 }

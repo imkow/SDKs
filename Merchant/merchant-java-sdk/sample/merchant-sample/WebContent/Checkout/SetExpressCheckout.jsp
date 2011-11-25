@@ -136,8 +136,8 @@
 
 						<td><div class="param_value">
 								<select name="itemCategory">
-									<option Value="PHYSICAL">Physical</option>
-									<option Value="DIGITAL">Digital</option>
+									<option Value="Physical">Physical</option>
+									<option Value="Digital">Digital</option>
 								</select>
 							</div>
 						</td>

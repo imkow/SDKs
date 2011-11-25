@@ -1,21 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http//www.w3.org/1999/xhtml">
-<head id="head1">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <title>PayPal SDK - BillAgreementUpdate</title>
 </head>
 <body>
 	<div id="wrapper">
 		<div id="header">
 			<h3>BillAgreementUpdate</h3>
-			<div id="BillAgreementUpdate">
-				<p><b>The BAUpdate API operation updates or deletes a billing agreement.</b></p>
+			<div id="header">
+				<p>
+					<b>BAUpdate API operation updates or deletes a billing
+						agreement.</b>
+				</p>
 			</div>
 		</div>
 		<form id="form1" method="post">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">ReferenceID:(billing agreement ID or a reference transaction ID that is associated with a billing agreement)</div>
+					<div class="param_name">
+						ReferenceID:(Billing agreement ID or a reference transaction ID
+						that is associated with a billing agreement, get it via <a
+							href="../EC/SetExpressCheckout">ExpressCheckout</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="referenceID" value="" />
 					</div>
@@ -24,8 +31,8 @@
 					<div class="param_name">BillingAgreement Status:</div>
 					<div class="param_value">
 						<select name="billingAgreementStatus">
-							<option value="Active">ACTIVE</option>
-							<option value="Canceled">CANCELED</option>
+							<option value="Active">Active</option>
+							<option value="Canceled">Canceled</option>
 						</select>
 					</div>
 				</div>
@@ -36,7 +43,8 @@
 					</div>
 				</div>
 				<div class="submit">
-					<input id="Submit1" type="submit" name="submit" value="submit" /><br />
+					<input type="submit" name="BillAgreementUpdateBtn"
+						value="BillAgreementUpdate" /><br />
 				</div>
 				<a href="/merchant-sample/index.html">Home</a>
 			</div>
@@ -44,7 +52,11 @@
 		<div id="relatedcalls">
 			See also:
 			<ul>
-			   <li><a href="RT/GetBillingAgreementCustomerDetails"></a>GetBillingAgreementCustomerDetails</li>
+				<li><a href="RT/GetBillingAgreementCustomerDetails"></a>GetBillingAgreementCustomerDetails</li>
+				
+				<li><a href="RT/BillUser">BillUser</a></li>
+				<li><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a>
+				</li>
 			</ul>
 		</div>
 	</div>

@@ -31,9 +31,21 @@
 		<div id="relatedcalls">
 			See also
 			<ul>
-				<li><a href="DoCapture">DoCapture</a></li>
-				<li><a href="DoAuthorization">DoAuthorization</a></li>
-				<li><a href="DoReauthorization">DoReauthorization</a></li>
+				<li><a href="DoCapture">DoCapture</a>
+				</li>
+				<li><a href="DoAuthorization">DoAuthorization</a>
+				</li>
+				<li><a href="DoReauthorization">DoReauthorization</a>
+				</li>
+				<li><a href="Refund">Refund</a></li>
+				<li><a href="DoUATPAuthorization">DoUATPAuthorization</a></li>
+				<li><a href="ReverseTransaction">ReverseTransaction</a>
+				
+				</li>
+				<li><a href="DoNonReferencedCredit">DoNonReferencedCredit</a>
+				</li>
+				<li><a href="ManagePendingTransactionStatus">ManagePendingTransactionStatus</a>
+				</li>
 			</ul>
 		</div>
 	</div>

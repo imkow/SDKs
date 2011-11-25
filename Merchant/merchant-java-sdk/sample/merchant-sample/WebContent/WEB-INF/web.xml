@@ -24,13 +24,12 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>TransactionReportingServlet</display-name>
-		<servlet-name>TransactionReportingServlet</servlet-name>
-		<servlet-class>com.sample.merchant.TransactionReportingServlet</servlet-class>
+		<display-name>ReportingServlet</display-name>
+		<servlet-name>ReportingServlet</servlet-name>
+		<servlet-class>com.sample.merchant.ReportingServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>
-	TransactionReportingServlet</servlet-name>
+		<servlet-name>ReportingServlet</servlet-name>
 		<url-pattern>/Report/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
@@ -63,7 +62,6 @@
 		<servlet-name>SettlementServlet</servlet-name>
 		<url-pattern>/Settlement/*</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<description></description>
 		<display-name>CheckoutServlet</display-name>
@@ -93,5 +91,15 @@
 	<servlet-mapping>
 		<servlet-name>ReferenceTransactionServlet</servlet-name>
 		<url-pattern>/RT/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>OnboardingServlet</display-name>
+		<servlet-name>OnboardingServlet</servlet-name>
+		<servlet-class>com.sample.merchant.OnboardingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OnboardingServlet</servlet-name>
+		<url-pattern>/Onboarding/*</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -11,55 +11,57 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<h3>SetExpressCheckout</h3>
+			<h3>DoUATPExpressCheckoutPayment</h3>
 			<div id="apidetails">Used to make checkout payment for airline
 				merchants.</div>
 		</div>
 		<form method="POST">
-		<div id="request_form">
-			<div class="params">
-				<div class="param_name">Payment Action</div>
-				<div class="param_value">
-					<select name="paymentAction">
-						<option value="None">None</option>
-						<option value="Authorization">Authorization</option>
-						<option value="Sale">Sale</option>
-						<option value="Order">Order</option>
-					</select>
+			<div id="request_form">
+				<div class="params">
+					<div class="param_name">Payment Action</div>
+					<div class="param_value">
+						<select name="paymentAction">
+							<option value="None">None</option>
+							<option value="Authorization">Authorization</option>
+							<option value="Sale">Sale</option>
+							<option value="Order">Order</option>
+						</select>
+					</div>
 				</div>
-			</div>
-			<div class="params">
-				<div class="param_name">PayerID</div>
-				<div class="param_value">
-					<input type="text" name="payerID" value="" size="50"
-						maxlength="260" />
+				<div class="params">
+					<div class="param_name">PayerID</div>
+					<div class="param_value">
+						<input type="text" name="payerID" value="" size="50"
+							maxlength="260" />
+					</div>
 				</div>
-			</div>
-			<div class="params">
-				<div class="param_name">EC Token</div>
-				<div class="param_value">
-					<input type="text" name="token" value="" size="50" maxlength="260" />
+				<div class="params">
+					<div class="param_name">
+						EC Token(Get Token via <a href="SetExpressCheckout">SetExpressCheckout</a>)
+					</div>
+					<div class="param_value">
+						<input type="text" name="token" value="" size="50" maxlength="260" />
+					</div>
 				</div>
-			</div>
-			<div class="params">
-				<div class="param_name">CurrencyID</div>
-				<div class="param_value">
-					<input type="text" name="currencyID" value="" size="50"
-						maxlength="260" />
+				<div class="params">
+					<div class="param_name">CurrencyID</div>
+					<div class="param_value">
+						<input type="text" name="currencyID" value="" size="50"
+							maxlength="260" />
+					</div>
 				</div>
-			</div>
-			<div class="params">
-				<div class="param_name">Amount</div>
-				<div class="param_value">
-					<input type="text" name="amt" value="" size="50" maxlength="260" />
+				<div class="params">
+					<div class="param_name">Amount</div>
+					<div class="param_value">
+						<input type="text" name="amt" value="" size="50" maxlength="260" />
+					</div>
 				</div>
+				<div class="submit">
+					<input type="submit" name="DoUATPExpressCheckoutPaymentBtn"
+						value="DoUATPExpressCheckoutPayment" /><br />
+				</div>
+				<a href="/merchant-sample/index.html">Home</a>
 			</div>
-			<div class="submit">
-				<input type="submit" name="DoUATPExpressCheckoutPaymentBtn"
-					value="DoUATPExpressCheckoutPayment" /><br />
-			</div>
-			<a href="/merchant-sample/index.html">Home</a>
-</div>
 		</form>
 		<div id="relatedcalls">
 			See also
@@ -69,6 +71,6 @@
 				<li><a href="SetExpressCheckout">SetExpressCheckout</a></li>
 			</ul>
 		</div>
-		</div>
+	</div>
 </body>
 </html>

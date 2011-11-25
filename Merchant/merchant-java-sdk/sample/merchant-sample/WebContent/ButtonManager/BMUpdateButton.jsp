@@ -28,14 +28,16 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">HostedID</div>
+					<div class="param_name">
+						HostedID*(Get hosted ID via <a href='BMCreateButton'>BMCreateButton</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="hostedID" value="" size="50"
 							maxlength="260" />
 					</div>
 				</div>
 				<div class="params">
-					<div class="param_name">ButtonType</div>
+					<div class="param_name">ButtonType*</div>
 					<div class="param_value">
 						<select name="buttonType">
 							<option value="AUTOBILLING">AutoBilling</option>
@@ -52,7 +54,7 @@
 					</div>
 				</div>
 				<div class="params">
-					<div class="param_name">ButtonCode</div>
+					<div class="param_name">ButtonCode*</div>
 					<div class="param_value">
 						<select name="buttonCode">
 							<option value="HOSTED">Hosted</option>

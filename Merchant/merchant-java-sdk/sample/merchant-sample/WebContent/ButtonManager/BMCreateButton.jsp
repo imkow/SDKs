@@ -28,7 +28,7 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">ButtonType</div>
+					<div class="param_name">ButtonType*</div>
 					<div class="param_value">
 						<select name="buttonType">
 							<option value="AUTOBILLING">AutoBilling</option>
@@ -45,7 +45,7 @@
 					</div>
 				</div>
 				<div class="params">
-					<div class="param_name">ButtonCode</div>
+					<div class="param_name">ButtonCode*</div>
 					<div class="param_value">
 						<select name="buttonCode">
 							<option value="CLEARTEXT">ClearText</option>
@@ -94,14 +94,12 @@
 					</tr>
 					<tr>
 						<td class="param_value"><input type="text"
-							name="billingCycles" value="3" size="25" maxlength="260" />
-						</td>
+							name="billingCycles" value="3" size="25" maxlength="260" /></td>
 						<td class="param_value"><input type="text"
 							name="installmentAmt" value="3.00" size="25" maxlength="260" />
 						</td>
 						<td class="param_value"><input type="text" name="billingFreq"
-							value="3" size="25" maxlength="260" />
-						</td>
+							value="3" size="25" maxlength="260" /></td>
 						<td class="param_value"><select name="billingPeriod">
 								<option value="NoBillingPeriodType">NoBillingPeriodType</option>
 								<option value="Day">Day</option>
@@ -109,15 +107,13 @@
 								<option value="SemiMonth">SemiMonth</option>
 								<option value="Month">Month</option>
 								<option value="Year">Year</option>
-						</select>
-						</td>
+						</select></td>
 						<td class="param_value"><select name="optionType">
 								<option value="NoOptionType">NoOptionType</option>
 								<option value="FULL">Full</option>
 								<option value="EMI">EMI</option>
 								<option value="VARIABLE">Variable</option>
-						</select>
-						</td>
+						</select></td>
 					</tr>
 				</table>
 				<p>For Gift Certificate Button</p>
@@ -153,18 +149,15 @@
 					</tr>
 					<tr>
 						<td class="param_value"><input type="text" name="subAmt"
-							value="3.00" size="25" maxlength="260" />
-						</td>
+							value="3.00" size="25" maxlength="260" /></td>
 						<td class="param_value"><input type="text" name="subPeriod"
-							value="3" size="25" maxlength="260" />
-						</td>
+							value="3" size="25" maxlength="260" /></td>
 						<td class="param_value"><select name="subInterval">
 								<option value="D">Day</option>
 								<option value="W">Week</option>
 								<option value="M">Month</option>
 								<option value="Y">Year</option>
-						</select>
-						</td>
+						</select></td>
 					</tr>
 				</table>
 				<div class="submit">
@@ -184,18 +177,12 @@
 		<div id="relatedcalls">
 			See also
 			<ul>
-				<li><a href="BMUpdateButton">BMUpdateButton</a>
-				</li>
-				<li><a href="BMButtonSearch">BMButtonSearch</a>
-				</li>
-				<li><a href="BMGetButtonDetails">BMGetButtonDetails</a>
-				</li>
-				<li><a href="BMManageButtonStatus">BMManageButtonStatus</a>
-				</li>
-				<li><a href="BMSetInventory">BMSetInventory</a>
-				</li>
-				<li><a href="BMGetInventory">BMGetInventory</a>
-				</li>
+				<li><a href="BMUpdateButton">BMUpdateButton</a></li>
+				<li><a href="BMButtonSearch">BMButtonSearch</a></li>
+				<li><a href="BMGetButtonDetails">BMGetButtonDetails</a></li>
+				<li><a href="BMManageButtonStatus">BMManageButtonStatus</a></li>
+				<li><a href="BMSetInventory">BMSetInventory</a></li>
+				<li><a href="BMGetInventory">BMGetInventory</a></li>
 			</ul>
 		</div>
 	</div>

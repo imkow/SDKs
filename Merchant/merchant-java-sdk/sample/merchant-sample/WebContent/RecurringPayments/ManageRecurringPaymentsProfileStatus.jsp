@@ -19,14 +19,15 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">Profile ID</div>
+					<div class="param_name">Profile ID*(Get Profile ID via <a
+							href='CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a>)</div>
 					<div class="param_value">
 						<input type="text" name="profileID" value="" size="50"
 							maxlength="260" />
 					</div>
 				</div>
 				<div class="params">
-					<div class="param_name">Action</div>
+					<div class="param_name">Action*</div>
 					<div class="param_value">
 						<select name="action"><option value="Cancel">Cancel</option>
 							<option value="Suspend">Suspend</option>

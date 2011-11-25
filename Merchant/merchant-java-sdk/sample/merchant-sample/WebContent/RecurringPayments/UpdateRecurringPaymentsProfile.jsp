@@ -25,7 +25,10 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">Profile ID *</div>
+					<div class="param_name">
+						Profile ID *(Get Profile ID via <a
+							href='CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="profileID" value="" size="50"
 							maxlength="260" />
@@ -46,8 +49,7 @@
 						<td><div class="param_value">
 								<input type="text" name="creditCardNumber" id="creditCardNumber"
 									value="" />
-							</div>
-						</td>
+							</div></td>
 						<td><div class="param_value">
 								<select name="expMonth">
 									<option value="1">Jan</option>
@@ -68,12 +70,10 @@
 									<option value="2013">2013</option>
 									<option value="2014">2014</option>
 								</select>
-							</div>
-						</td>
+							</div></td>
 						<td><div class="param_value">
 								<input type="text" name="cardOnName" id="cardOnName" value="" />
-							</div>
-						</td>
+							</div></td>
 						<td><div class="param_value">
 								<select name="creditCardType">
 									<option value="Visa">Visa</option>
@@ -81,12 +81,10 @@
 									<option value="Discover">Discover</option>
 									<option value="Amex">Amex</option>
 								</select>
-							</div>
-						</td>
+							</div></td>
 						<td><div class="param_value">
 								<input type="text" name="cvv" id="cvv" />
-							</div>
-						</td>
+							</div></td>
 					</tr>
 				</table>
 				<div class="param_name">Subscriber Name</div>
@@ -114,22 +112,29 @@
 					</tr>
 					<tr>
 						<td><span class="param_value"> <input type="text"
-								id="shippingName" name="shippingName" value="" /> </span></td>
+								id="shippingName" name="shippingName" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingStreet1" name="shippingStreet1" value="" /> </span></td>
+								id="shippingStreet1" name="shippingStreet1" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingStreet2" name="shippingStreet2" value="" /> </span></td>
+								id="shippingStreet2" name="shippingStreet2" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingCity" name="shippingCity" value="" /> </span></td>
+								id="shippingCity" name="shippingCity" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingState" name="shippingState" value="" /> </span></td>
+								id="shippingState" name="shippingState" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
 								id="shippingPostalCode" name="shippingPostalCode" value="" /> </span>
 						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingCountry" name="shippingCountry" value="" /> </span></td>
+								id="shippingCountry" name="shippingCountry" value="" /> </span>
+						</td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingPhone" name="shippingPhone" value="" /> </span></td>
+								id="shippingPhone" name="shippingPhone" value="" /> </span>
+						</td>
 					</tr>
 				</table>
 
@@ -150,14 +155,18 @@
 					</tr>
 					<tr>
 						<td><span class="param_value"> <input id="amount"
-								name="amount" /> </span></td>
+								name="amount" /> </span>
+						</td>
 						<td><span class="param_value"> <input
-								id="shippingAmount" name="shippingAmount" /> </span></td>
+								id="shippingAmount" name="shippingAmount" /> </span>
+						</td>
 						<td><span class="param_value"> <input id="taxAmount"
-								name="taxAmount" /> </span></td>
+								name="taxAmount" /> </span>
+						</td>
 						<td><span class="param_value"> <input
 								id="additionalBillingCycles" name="additionalBillingCycles" />
-						</span></td>
+						</span>
+						</td>
 					</tr>
 				</table>
 
@@ -174,8 +183,7 @@
 					<tr>
 						<td><span class="param_value"> <input type="text"
 								id="trialBillingFrequency" name="trialBillingFrequency"
-								value="10" /> </span>
-						</td>
+								value="10" /> </span></td>
 						<td><span class="param_value"> <select
 								name="trialBillingPeriod">
 									<option value="Day">Day</option>
@@ -183,23 +191,18 @@
 									<option value="SemiMonth">SemiMonth</option>
 									<option value="Month">Month</option>
 									<option value="Year">Year</option>
-							</select> </span>
-						</td>
+							</select> </span></td>
 						<td><span class="param_value"> <input type="text"
 								id="trialBillingCycles" name="trialBillingCycles" value="2" />
-						</span>
-						</td>
+						</span></td>
 						<td><span class="param_value"> <input type="text"
 								id="trialBillingAmount" name="trialBillingAmount" value="2.0" />
-						</span>
-						</td>
+						</span></td>
 						<td><span class="param_value"> <input type="text"
 								id="trialShippingAmount" name="trialShippingAmount" value="0.0" />
-						</span>
-						</td>
+						</span></td>
 						<td><span class="param_value"> <input type="text"
-								id="trialTaxAmount" name="trialTaxAmount" value="0.0" /> </span>
-						</td>
+								id="trialTaxAmount" name="trialTaxAmount" value="0.0" /> </span></td>
 					</tr>
 				</table>
 
@@ -215,8 +218,7 @@
 					</tr>
 					<tr>
 						<td><span class="param_value"> <input type="text"
-								id="billingFrequency" name="billingFrequency" value="10" /> </span>
-						</td>
+								id="billingFrequency" name="billingFrequency" value="10" /> </span></td>
 						<td><span class="param_value"> <select
 								name="billingPeriod">
 									<option value="Day">Day</option>
@@ -224,21 +226,16 @@
 									<option value="SemiMonth">SemiMonth</option>
 									<option value="Month">Month</option>
 									<option value="Year">Year</option>
-							</select> </span>
-						</td>
+							</select> </span></td>
 						<td><span class="param_value"> <input type="text"
 								id="totalBillingCycles" name="totalBillingCycles" value="8" />
-						</span>
-						</td>
+						</span></td>
 						<td><span class="param_value"> <input type="text"
-								id="billingAmount" name="billingAmount" value="5.0" /> </span>
-						</td>
+								id="billingAmount" name="billingAmount" value="5.0" /> </span></td>
 						<td><span class="param_value"> <input type="text"
-								id="shippingAmount" name="shippingAmount" value="1.0" /> </span>
-						</td>
+								id="shippingAmount" name="shippingAmount" value="1.0" /> </span></td>
 						<td><span class="param_value"> <input type="text"
-								id="taxAmount" name="taxAmount" value="0.0" /> </span>
-						</td>
+								id="taxAmount" name="taxAmount" value="0.0" /> </span></td>
 					</tr>
 				</table>
 				<div class="params">
@@ -272,7 +269,8 @@
 				</li>
 				<li><a href="GetRecurringPaymentsProfileDetails">GetRecurringPaymentsProfileDetails</a>
 				</li>
-				<li><a href="BillOutstandingAmount">BillOutstandingAmount</a></li>
+				<li><a href="BillOutstandingAmount">BillOutstandingAmount</a>
+				</li>
 			</ul>
 		</div>
 	</div>

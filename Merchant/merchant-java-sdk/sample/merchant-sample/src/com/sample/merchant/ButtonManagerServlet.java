@@ -1,13 +1,14 @@
 package com.sample.merchant;
 
 import java.io.FileNotFoundException;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.Authenticator.RequestorType;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,21 +40,15 @@ import urn.ebay.api.PayPalAPI.BMSetInventoryResponseType;
 import urn.ebay.api.PayPalAPI.BMUpdateButtonReq;
 import urn.ebay.api.PayPalAPI.BMUpdateButtonRequestType;
 import urn.ebay.api.PayPalAPI.BMUpdateButtonResponseType;
-import urn.ebay.api.PayPalAPI.InitiateRecoupReq;
-import urn.ebay.api.PayPalAPI.InitiateRecoupRequestType;
-import urn.ebay.api.PayPalAPI.InitiateRecoupResponseType;
 import urn.ebay.api.PayPalAPI.InstallmentDetailsType;
 import urn.ebay.api.PayPalAPI.OptionDetailsType;
 import urn.ebay.api.PayPalAPI.OptionSelectionDetailsType;
 import urn.ebay.api.PayPalAPI.PayPalAPIInterfaceServiceService;
-import urn.ebay.apis.EnhancedDataTypes.EnhancedInitiateRecoupRequestDetailsType;
 import urn.ebay.apis.eBLBaseComponents.BillingPeriodType;
 import urn.ebay.apis.eBLBaseComponents.ButtonCodeType;
 import urn.ebay.apis.eBLBaseComponents.ButtonSearchResultType;
 import urn.ebay.apis.eBLBaseComponents.ButtonStatusType;
-import urn.ebay.apis.eBLBaseComponents.ButtonSubTypeType;
 import urn.ebay.apis.eBLBaseComponents.ButtonTypeType;
-import urn.ebay.apis.eBLBaseComponents.ErrorType;
 import urn.ebay.apis.eBLBaseComponents.ItemTrackingDetailsType;
 import urn.ebay.apis.eBLBaseComponents.OptionTypeListType;
 
@@ -111,6 +106,11 @@ public class ButtonManagerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		session.setAttribute("url", req.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='BM/BMCreateButton'>BMCreateButton</a></li><li><a href='BM/BMUpdateButton'>BMUpdateButton</a></li><li><a href='BM/BMButtonSearch'>BMButtonSearch</a></li><li><a href='BM/BMGetButtonDetails'>BMGetButtonDetails</a></li><li><a href='BM/BMManageButtonStatus'>BMManageButtonStatus</a></li><li><a href='BM/BMSetInventory'>BMSetInventory</a></li><li><a href='BM/BMGetInventory'>BMGetInventory</a></li></ul>");
 		res.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
@@ -120,8 +120,6 @@ public class ButtonManagerServlet extends HttpServlet {
 
 				BMCreateButtonReq request = new BMCreateButtonReq();
 				BMCreateButtonRequestType reqType = new BMCreateButtonRequestType();
-
-				reqType.setVersion("78");
 
 				reqType.setButtonType(ButtonTypeType.fromValue(req
 						.getParameter("buttonType")));
@@ -187,14 +185,15 @@ public class ButtonManagerServlet extends HttpServlet {
 						.bMCreateButton(request);
 
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"HostedButtonID" + resp.getHostedButtonID());
-						res.getWriter().println(resp.getWebsite().toString());
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Hosted Button ID", resp.getHostedButtonID());
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -202,8 +201,6 @@ public class ButtonManagerServlet extends HttpServlet {
 			} else if (req.getRequestURI().contains("BMUpdateButton")) {
 				BMUpdateButtonReq request = new BMUpdateButtonReq();
 				BMUpdateButtonRequestType reqType = new BMUpdateButtonRequestType();
-
-				reqType.setVersion("82");
 
 				reqType.setButtonType(ButtonTypeType.fromValue(req
 						.getParameter("buttonType")));
@@ -265,14 +262,15 @@ public class ButtonManagerServlet extends HttpServlet {
 						.bMUpdateButton(request);
 
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"HostedButtonID" + resp.getHostedButtonID());
-						res.getWriter().println(resp.getWebsite().toString());
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Hosted Button ID", resp.getHostedButtonID());
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -280,7 +278,6 @@ public class ButtonManagerServlet extends HttpServlet {
 			} else if (req.getRequestURI().contains("BMButtonSearch")) {
 				BMButtonSearchReq request = new BMButtonSearchReq();
 				BMButtonSearchRequestType reqType = new BMButtonSearchRequestType();
-				reqType.setVersion("82");
 				reqType.setStartDate(req.getParameter("startDate")
 						+ "T00:00:00.000Z");
 				reqType.setEndDate(req.getParameter("endDate")
@@ -289,38 +286,33 @@ public class ButtonManagerServlet extends HttpServlet {
 				BMButtonSearchResponseType resp = service
 						.bMButtonSearch(request);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-						Iterator iterator = resp.getButtonSearchResult()
-								.iterator();
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						Iterator<ButtonSearchResultType> iterator = resp
+								.getButtonSearchResult().iterator();
 						while (iterator.hasNext()) {
 							ButtonSearchResultType result = (ButtonSearchResultType) iterator
 									.next();
-							res.getWriter().println(
-									"ButtonType : " + result.getButtonType());
-							res.getWriter().println("<br/>");
-							res.getWriter()
-									.println(
-											"Hosted ID : "
-													+ result.getHostedButtonID());
-							res.getWriter().println("<br/>");
-							res.getWriter().println(
-									"Item Name : " + result.getItemName());
-							res.getWriter().println("<br/>");
+							map.put("ButtonType", result.getButtonType());
+							map.put("Hosted Button ID",
+									result.getHostedButtonID());
+							map.put("Item Name", result.getItemName());
 						}
+
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
-
 					}
 				}
+
 			} else if (req.getRequestURI().contains("BMGetButtonDetails")) {
 				BMGetButtonDetailsReq request = new BMGetButtonDetailsReq();
 				BMGetButtonDetailsRequestType reqType = new BMGetButtonDetailsRequestType();
-
-				reqType.setVersion("82");
 
 				reqType.setHostedButtonID(req.getParameter("hostedID"));
 
@@ -328,31 +320,25 @@ public class ButtonManagerServlet extends HttpServlet {
 				BMGetButtonDetailsResponseType resp = service
 						.bMGetButtonDetails(request);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"ButtonType : " + resp.getButtonType());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"ButtonCode : " + resp.getButtonCode());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"Website : " + resp.getWebsite());
-						res.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("ButtonType", resp.getButtonType());
+						map.put("ButtonCode", resp.getButtonCode());
+						map.put("Website", resp.getWebsite());
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
+
 			} else if (req.getRequestURI().contains("BMManageButtonStatus")) {
 				BMManageButtonStatusReq request = new BMManageButtonStatusReq();
 				BMManageButtonStatusRequestType reqType = new BMManageButtonStatusRequestType();
-
-				reqType.setVersion("82");
-
 				reqType.setHostedButtonID(req.getParameter("hostedID"));
 				reqType.setButtonStatus(ButtonStatusType.fromValue(req
 						.getParameter("buttonStatus")));
@@ -360,12 +346,14 @@ public class ButtonManagerServlet extends HttpServlet {
 				BMManageButtonStatusResponseType resp = service
 						.bMManageButtonStatus(request);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -374,41 +362,34 @@ public class ButtonManagerServlet extends HttpServlet {
 			} else if (req.getRequestURI().contains("BMGetInventory")) {
 				BMGetInventoryReq request = new BMGetInventoryReq();
 				BMGetInventoryRequestType reqType = new BMGetInventoryRequestType();
-
-				reqType.setVersion("82");
-
 				reqType.setHostedButtonID(req.getParameter("hostedID"));
 				request.setBMGetInventoryRequest(reqType);
 				BMGetInventoryResponseType resp = service
 						.bMGetInventory(request);
-				res.setContentType("text/html");
+
 				if (resp != null) {
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"TrackInv : " + resp.getTrackInv());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"TrackPnl : " + resp.getTrackPnl());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"Hosted Button ID : "
-										+ resp.getHostedButtonID());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"Item Cost : "
-										+ resp.getItemTrackingDetails()
-												.getItemCost());
-						res.getWriter().println("<br/>");
-						res.getWriter().println(
-								"Item Quantity : "
-										+ resp.getItemTrackingDetails()
-												.getItemQty());
-						res.getWriter().println("<br/>");
+						session.setAttribute("lastReq",
+								service.getLastRequest());
+						session.setAttribute("lastResp",
+								service.getLastResponse());
+						if (resp.getAck().toString()
+								.equalsIgnoreCase("SUCCESS")) {
+							Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+							map.put("Ack", resp.getAck());
+							map.put("TrackInv", resp.getTrackInv());
+							map.put("TrackPnl", resp.getTrackPnl());
+							map.put("Hosted Button ID",
+									resp.getHostedButtonID());
+							map.put("Item Cost", resp.getItemTrackingDetails()
+									.getItemCost());
+							map.put("Item Quantity", resp
+									.getItemTrackingDetails().getItemQty());
+							session.setAttribute("map", map);
+							res.sendRedirect("/merchant-sample/Response.jsp");
+						}
 
 					} else {
-						HttpSession session = req.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -431,26 +412,22 @@ public class ButtonManagerServlet extends HttpServlet {
 						.bMSetInventory(request);
 				res.setContentType("text/html");
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						res.getWriter().println("Ack : " + resp.getAck());
-						res.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Transaction ID", resp.getTransactionID());
+						session.setAttribute("map", map);
+						res.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = req.getSession();
+
 						session.setAttribute("Error", resp.getErrors());
 						res.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
 			}
-			res.getWriter().println("<br/>");
-			res.getWriter().println(
-					"<a href='/merchant-sample/index.html'>Home</a>");
-			res.getWriter().println("<br/>");
-			res.getWriter().println("See also:");
-			res.getWriter().println("<br/>");
-			res.getWriter()
-					.println(
-							"<ul><li><a href='BMCreateButton'>BMCreateButton</a></li><li><a href='BMUpdateButton'>BMUpdateButton</a></li><li><a href='BMButtonSearch'>BMButtonSearch</a></li><li><a href='BMGetButtonDetails'>BMGetButtonDetails</a></li><li><a href='BMManageButtonStatus'>BMManageButtonStatus</a></li><li><a href='BMSetInventory'>BMSetInventory</a></li><li><a href='BMGetInventory'>BMGetInventory</a></li></ul>");
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

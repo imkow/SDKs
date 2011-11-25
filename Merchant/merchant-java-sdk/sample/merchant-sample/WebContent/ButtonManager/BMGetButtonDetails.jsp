@@ -19,7 +19,9 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">HostedID</div>
+					<div class="param_name">
+						HostedID*(Get hosted ID via <a href='BMCreateButton'>BMCreateButton</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="hostedID" value="" size="50"
 							maxlength="260" />
@@ -35,18 +37,12 @@
 		<div id="relatedcalls">
 			See also
 			<ul>
-				<li><a href="BMCreateButton">BMCreateButton</a>
-				</li>
-				<li><a href="BMUpdateButton">BMUpdateButton</a>
-				</li>
-				<li><a href="BMButtonSearch">BMButtonSearch</a>
-				</li>
-				<li><a href="BMManageButtonStatus">BMManageButtonStatus</a>
-				</li>
-				<li><a href="BMSetInventory">BMSetInventory</a>
-				</li>
-				<li><a href="BMGetInventory">BMGetInventory</a>
-				</li>
+				<li><a href="BMCreateButton">BMCreateButton</a></li>
+				<li><a href="BMUpdateButton">BMUpdateButton</a></li>
+				<li><a href="BMButtonSearch">BMButtonSearch</a></li>
+				<li><a href="BMManageButtonStatus">BMManageButtonStatus</a></li>
+				<li><a href="BMSetInventory">BMSetInventory</a></li>
+				<li><a href="BMGetInventory">BMGetInventory</a></li>
 			</ul>
 		</div>
 	</div>

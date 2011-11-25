@@ -2,7 +2,9 @@ package com.sample.merchant;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +15,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.paypal.exception.ClientActionRequiredException;
-import com.paypal.exception.HttpErrorException;
-import com.paypal.exception.InvalidCredentialException;
-import com.paypal.exception.InvalidResponseDataException;
-import com.paypal.exception.MissingCredentialException;
-import com.paypal.exception.SSLConfigurationException;
-import com.paypal.sdk.exceptions.OAuthException;
-
 import urn.ebay.api.PayPalAPI.MassPayReq;
 import urn.ebay.api.PayPalAPI.MassPayRequestItemType;
 import urn.ebay.api.PayPalAPI.MassPayRequestType;
@@ -28,8 +22,15 @@ import urn.ebay.api.PayPalAPI.MassPayResponseType;
 import urn.ebay.api.PayPalAPI.PayPalAPIInterfaceServiceService;
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
-import urn.ebay.apis.eBLBaseComponents.PayerInfoType;
 import urn.ebay.apis.eBLBaseComponents.ReceiverInfoCodeType;
+
+import com.paypal.exception.ClientActionRequiredException;
+import com.paypal.exception.HttpErrorException;
+import com.paypal.exception.InvalidCredentialException;
+import com.paypal.exception.InvalidResponseDataException;
+import com.paypal.exception.MissingCredentialException;
+import com.paypal.exception.SSLConfigurationException;
+import com.paypal.sdk.exceptions.OAuthException;
 
 /**
  * Servlet implementation class MassPayServlet
@@ -64,6 +65,10 @@ public class MassPayServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("url", request.getRequestURI());
+		session.setAttribute("relatedUrl",
+				"<ul><li><a href='MassPay'>MassPay</a></li></ul>");
 		MassPayReq req = new MassPayReq();
 
 		List<MassPayRequestItemType> massPayItem = new ArrayList<MassPayRequestItemType>();
@@ -80,17 +85,29 @@ public class MassPayServlet extends HttpServlet {
 						.getParameter("currencyCode3")),
 				request.getParameter("amount3"));
 		MassPayRequestItemType item1 = new MassPayRequestItemType(amount1);
-		item1.setReceiverEmail(request.getParameter("mail1"));
-		massPayItem.add(item1);
 		MassPayRequestItemType item2 = new MassPayRequestItemType(amount2);
-		item2.setReceiverEmail(request.getParameter("mail2"));
-		massPayItem.add(item2);
 		MassPayRequestItemType item3 = new MassPayRequestItemType(amount3);
-		item3.setReceiverEmail(request.getParameter("mail3"));
+		if (request.getParameter("receiverInfoCode").equalsIgnoreCase("Email")) {
+			item1.setReceiverEmail(request.getParameter("mail1"));
+			item2.setReceiverEmail(request.getParameter("mail2"));
+			item3.setReceiverEmail(request.getParameter("mail3"));
+		} else if (request.getParameter("receiverInfoCode").equalsIgnoreCase(
+				"Phone")) {
+			item1.setReceiverPhone(request.getParameter("phone1"));
+			item2.setReceiverPhone(request.getParameter("phone2"));
+			item3.setReceiverPhone(request.getParameter("phone3"));
+		} else if (request.getParameter("receiverInfoCode").equalsIgnoreCase(
+				"UserID")) {
+			item1.setReceiverID(request.getParameter("id1"));
+			item2.setReceiverID(request.getParameter("id2"));
+			item3.setReceiverID(request.getParameter("id3"));
+		}
+		massPayItem.add(item1);
+		massPayItem.add(item2);
 		massPayItem.add(item3);
 		MassPayRequestType reqType = new MassPayRequestType(massPayItem);
-		reqType.setVersion("84.0");
-		reqType.setReceiverType(ReceiverInfoCodeType.EMAILADDRESS);
+		reqType.setReceiverType(ReceiverInfoCodeType.fromValue(request
+				.getParameter("receiverInfoCode")));
 		req.setMassPayRequest(reqType);
 		PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
 				this.getServletContext().getRealPath("/")
@@ -99,23 +116,19 @@ public class MassPayServlet extends HttpServlet {
 			response.setContentType("text/html");
 			MassPayResponseType resp = service.massPay(req);
 			if (resp != null) {
+				session.setAttribute("lastReq", service.getLastRequest());
+				session.setAttribute("lastResp", service.getLastResponse());
 				if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-					response.getWriter().println("Ack : " + resp.getAck());
-					response.getWriter().println("<br/>");
-
+					Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+					map.put("Ack", resp.getAck());
+					session.setAttribute("map", map);
+					response.sendRedirect("/merchant-sample/Response.jsp");
 				} else {
-					HttpSession session = request.getSession();
 					session.setAttribute("Error", resp.getErrors());
 					response.sendRedirect("/merchant-sample/Error.jsp");
 				}
 			}
-			response.getWriter().println("<br/>");
-			response.getWriter().println("<a href='index.html'>Home</a>");
-			response.getWriter().println("<br/>");
-			response.getWriter().println("See also:");
-			response.getWriter().println("<br/>");
-			response.getWriter().println(
-					"<ul><li><a href='MassPay'></a></li></ul>");
+
 		} catch (SSLConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

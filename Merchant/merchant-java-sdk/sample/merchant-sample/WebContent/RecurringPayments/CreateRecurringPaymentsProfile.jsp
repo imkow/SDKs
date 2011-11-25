@@ -30,7 +30,10 @@
 				<div class="note">You must set either Token or Credit Card
 					number</div>
 				<div class="params">
-					<div class="param_name">Express Checkout Token *</div>
+					<div class="param_name">
+						Express Checkout Token *(Get Token via <a
+							href="../EC/SetExpressCheckout">ExpressCheckout</a>)
+					</div>
 					<div class="param_value">
 						<input type="text" name="token" id="token" value="" />
 					</div>

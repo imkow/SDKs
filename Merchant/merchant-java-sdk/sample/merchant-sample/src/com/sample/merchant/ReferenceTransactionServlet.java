@@ -3,12 +3,14 @@ package com.sample.merchant;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -16,6 +18,9 @@ import org.xml.sax.SAXException;
 import urn.ebay.api.PayPalAPI.BAUpdateRequestType;
 import urn.ebay.api.PayPalAPI.BAUpdateResponseType;
 import urn.ebay.api.PayPalAPI.BillAgreementUpdateReq;
+import urn.ebay.api.PayPalAPI.BillUserReq;
+import urn.ebay.api.PayPalAPI.BillUserRequestType;
+import urn.ebay.api.PayPalAPI.BillUserResponseType;
 import urn.ebay.api.PayPalAPI.DoReferenceTransactionReq;
 import urn.ebay.api.PayPalAPI.DoReferenceTransactionRequestType;
 import urn.ebay.api.PayPalAPI.DoReferenceTransactionResponseType;
@@ -30,8 +35,8 @@ import urn.ebay.apis.eBLBaseComponents.CreditCardNumberTypeType;
 import urn.ebay.apis.eBLBaseComponents.CreditCardTypeType;
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
 import urn.ebay.apis.eBLBaseComponents.DoReferenceTransactionRequestDetailsType;
-import urn.ebay.apis.eBLBaseComponents.ErrorType;
 import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentCodeType;
+import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentType;
 import urn.ebay.apis.eBLBaseComponents.MerchantPullStatusCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
@@ -73,19 +78,35 @@ public class ReferenceTransactionServlet extends HttpServlet {
 					.getRequestDispatcher(
 							"/ReferenceTransactions/GetBillingAgreementCustomerDetails.jsp")
 					.forward(request, response);
-		}
-		if (request.getRequestURI().contains("BillAgreementUpdate")) {
+		} else if (request.getRequestURI().contains("BillAgreementUpdate")) {
 			getServletConfig()
 					.getServletContext()
 					.getRequestDispatcher(
 							"/ReferenceTransactions/BillAgreementUpdate.jsp")
 					.forward(request, response);
-		}
-		if (request.getRequestURI().contains("DoReferenceTransaction")) {
+		} else if (request.getRequestURI().contains(
+				"SetCustomerBillingAgreement")) {
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/ReferenceTransactions/DeprecatedBillingAgreement.jsp")
+					.forward(request, response);
+		} else if (request.getRequestURI().contains("CreateBillingAgreement")) {
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher(
+							"/ReferenceTransactions/DeprecatedBillingAgreement.jsp")
+					.forward(request, response);
+		} else if (request.getRequestURI().contains("DoReferenceTransaction")) {
 			getServletConfig()
 					.getServletContext()
 					.getRequestDispatcher(
 							"/ReferenceTransactions/DoReferenceTransaction.jsp")
+					.forward(request, response);
+		} else if (request.getRequestURI().contains("BillUser")) {
+			getServletConfig()
+					.getServletContext()
+					.getRequestDispatcher("/ReferenceTransactions/BillUser.jsp")
 					.forward(request, response);
 		}
 
@@ -98,6 +119,11 @@ public class ReferenceTransactionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("url", request.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='RT/SetCustomerBillingAgreement'>SetCustomerBillingAgreement</a></li><li><a href='RT/CreateBillingAgreement'>CreateBillingAgreement</a></li><li><a href='RT/GetBillingAgreementCustomerDetails'>GetBillingAgreementCustomerDetails</a></li><li><a href='RT/BillAgreementUpdate'>BillAgreementUpdate</a></li><li><a href='RT/DoReferenceTransaction'>DoReferenceTransaction</a></li><li><a href='RT/BillUser'>BillUser</a></li></ul>");
 		response.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
@@ -108,67 +134,31 @@ public class ReferenceTransactionServlet extends HttpServlet {
 
 				GetBillingAgreementCustomerDetailsReq gReq = new GetBillingAgreementCustomerDetailsReq();
 				GetBillingAgreementCustomerDetailsRequestType gRequestType = new GetBillingAgreementCustomerDetailsRequestType();
-
 				gRequestType.setToken(request.getParameter("token"));
-				gRequestType.setVersion("82.0");
 				gReq.setGetBillingAgreementCustomerDetailsRequest(gRequestType);
 				GetBillingAgreementCustomerDetailsResponseType txnresponse = service
 						.getBillingAgreementCustomerDetails(gReq);
 
 				if (txnresponse != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (txnresponse.getAck().toString()
 							.equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println(
-								"Ack : " + txnresponse.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"CorrelationID : "
-										+ txnresponse.getCorrelationID());
-						response.getWriter().println("<br/>");
-						if (txnresponse
-								.getGetBillingAgreementCustomerDetailsResponseDetails()
-								.getPayerInfo() != null) {
-							response.getWriter()
-									.println(
-											"<b>BillingAgreement User detail :</b><br/>");
-							response.getWriter()
-									.println(
-											"Payer Id : "
-													+ txnresponse
-															.getGetBillingAgreementCustomerDetailsResponseDetails()
-															.getPayerInfo().getPayerID());
-							response.getWriter().println("<br/>");
-							response.getWriter()
-									.println(
-											"Contact phone No : "
-													+ txnresponse
-															.getGetBillingAgreementCustomerDetailsResponseDetails()
-															.getPayerInfo().getContactPhone());
-							response.getWriter().println("<br/>");
-							response.getWriter()
-									.println(
-											"Payer : "
-													+ txnresponse
-															.getGetBillingAgreementCustomerDetailsResponseDetails()
-															.getPayerInfo().getPayer());
-							response.getWriter().println("<br/>");
-							response.getWriter()
-									.println(
-											"Payer Country Name : "
-													+ txnresponse
-															.getGetBillingAgreementCustomerDetailsResponseDetails()
-															.getPayerInfo().getPayerCountry());
-						}
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", txnresponse.getAck());
+						map.put("Payer Mail",
+								txnresponse
+										.getGetBillingAgreementCustomerDetailsResponseDetails()
+										.getPayerInfo().getPayer());
+						map.put("Address Owner",
+								txnresponse
+										.getGetBillingAgreementCustomerDetailsResponseDetails()
+										.getBillingAddress().getAddressOwner());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						List<ErrorType> errorList = txnresponse.getErrors();
-						for (ErrorType e : errorList) {
-							response.getWriter().println(
-									"Short Err Msg : " + e.getShortMessage());
-							response.getWriter().println("<br/>");
-							response.getWriter().println(
-									"Long Err Msg : " + e.getLongMessage());
-						}
+						session.setAttribute("Error", txnresponse.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
 
@@ -176,7 +166,6 @@ public class ReferenceTransactionServlet extends HttpServlet {
 
 				BillAgreementUpdateReq bReq = new BillAgreementUpdateReq();
 				BAUpdateRequestType baUpdateRequestType = new BAUpdateRequestType();
-				baUpdateRequestType.setVersion("82.0");
 				baUpdateRequestType.setReferenceID(request
 						.getParameter("referenceID"));
 				baUpdateRequestType
@@ -185,45 +174,38 @@ public class ReferenceTransactionServlet extends HttpServlet {
 				baUpdateRequestType.setBillingAgreementDescription(request
 						.getParameter("billingAgreementDescription"));
 				bReq.setBAUpdateRequest(baUpdateRequestType);
-
 				BAUpdateResponseType txnresponse = service
 						.billAgreementUpdate(bReq);
 
 				if (txnresponse != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (txnresponse.getAck().toString()
 							.equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println(
-								"Ack : " + txnresponse.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"CorrelationID : "
-										+ txnresponse.getCorrelationID());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"Billing Agreement Status : "
-										+ txnresponse
-												.getBAUpdateResponseDetails()
-												.getBillingAgreementStatus());
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", txnresponse.getAck());
+						map.put("Billing Agreement ID", txnresponse
+								.getBAUpdateResponseDetails()
+								.getBillingAgreementID());
+						map.put("Billing Agreement Description", txnresponse
+								.getBAUpdateResponseDetails()
+								.getBillingAgreementDescription());
+						map.put("Billing Agreement Status", txnresponse
+								.getBAUpdateResponseDetails()
+								.getBillingAgreementStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						List<ErrorType> errorList = txnresponse.getErrors();
-						for (ErrorType e : errorList) {
-							response.getWriter().println(
-									"Short Err Msg : " + e.getShortMessage());
-							response.getWriter().println("<br/>");
-							response.getWriter().println(
-									"Long Err Msg : " + e.getLongMessage());
-						}
+						session.setAttribute("Error", txnresponse.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
-
 			} else if (request.getRequestURI().contains(
 					"DoReferenceTransaction")) {
 				DoReferenceTransactionReq doReq = new DoReferenceTransactionReq();
 				DoReferenceTransactionRequestType doRequestType = new DoReferenceTransactionRequestType();
 				DoReferenceTransactionRequestDetailsType doDetailsType = new DoReferenceTransactionRequestDetailsType();
 
-				doRequestType.setVersion("82.0");
 				doDetailsType.setPaymentAction(PaymentActionCodeType
 						.fromValue(request.getParameter("paymentAction")));
 				String pt = request.getParameter("paymentType");
@@ -300,57 +282,92 @@ public class ReferenceTransactionServlet extends HttpServlet {
 				doRequestType
 						.setDoReferenceTransactionRequestDetails(doDetailsType);
 				doReq.setDoReferenceTransactionRequest(doRequestType);
-
 				DoReferenceTransactionResponseType txnresponse = null;
 				txnresponse = service.doReferenceTransaction(doReq);
 				response.setContentType("text/html");
 				if (txnresponse != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (txnresponse.getAck().toString()
 							.equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println(
-								"Ack : " + txnresponse.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"CorrelationID : "
-										+ txnresponse.getCorrelationID());
-						response.getWriter().println("<br/>");
-						response.getWriter().println(
-								"<b>Reference Transaction detail :</b><br/>");
-						response.getWriter()
-								.println(
-										"BillingAgreementID : "
-												+ txnresponse
-														.getDoReferenceTransactionResponseDetails()
-														.getBillingAgreementID());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"TransactionID : "
-												+ txnresponse
-														.getDoReferenceTransactionResponseDetails()
-														.getTransactionID());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Amount : "
-												+ txnresponse
-														.getDoReferenceTransactionResponseDetails()
-														.getAmount().getValue());
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", txnresponse.getAck());
+						map.put("Transaction ID", txnresponse
+								.getDoReferenceTransactionResponseDetails()
+								.getTransactionID());
+						map.put("Billing Agreement ID", txnresponse
+								.getDoReferenceTransactionResponseDetails()
+								.getBillingAgreementID());
+						map.put("",
+								txnresponse
+										.getDoReferenceTransactionResponseDetails()
+										.getAmount().getValue()
+										+ " "
+										+ txnresponse
+												.getDoReferenceTransactionResponseDetails()
+												.getAmount().getCurrencyID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						List<ErrorType> errorList = txnresponse.getErrors();
-						for (ErrorType e : errorList) {
-							response.getWriter().println(
-									"Short Err Msg : " + e.getShortMessage());
-							response.getWriter().println("<br/>");
-							response.getWriter().println(
-									"Long Err Msg : " + e.getLongMessage());
-						}
+						session.setAttribute("Error", txnresponse.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
+					}
+				}
+			} else if (request.getRequestURI().contains("BillUser")) {
+				BillUserReq req = new BillUserReq();
+				BillUserRequestType reqType = new BillUserRequestType();
+				MerchantPullPaymentType merchantPullPayment = new MerchantPullPaymentType();
+				merchantPullPayment.setMpID(request
+						.getParameter("billingAgreementID"));
+				merchantPullPayment.setPaymentType(MerchantPullPaymentCodeType
+						.fromValue(request.getParameter("paymentCodeType")));
+				merchantPullPayment.setItemName(request
+						.getParameter("itemName"));
+				merchantPullPayment.setItemNumber(request
+						.getParameter("itemNum"));
+				merchantPullPayment.setAmount(new BasicAmountType(
+						CurrencyCodeType.fromValue(request
+								.getParameter("currencyID")), request
+								.getParameter("amt")));
+				merchantPullPayment.setMemo(request.getParameter("memo"));
+				merchantPullPayment.setTax(new BasicAmountType(CurrencyCodeType
+						.fromValue(request.getParameter("currencyID")), request
+						.getParameter("tax")));
+				merchantPullPayment.setShipping(new BasicAmountType(
+						CurrencyCodeType.fromValue(request
+								.getParameter("currencyID")), request
+								.getParameter("shipping")));
+				merchantPullPayment.setHandling(new BasicAmountType(
+						CurrencyCodeType.fromValue(request
+								.getParameter("currencyID")), request
+								.getParameter("handling")));
+				merchantPullPayment.setEmailSubject(request
+						.getParameter("mailSubject"));
+				reqType.setMerchantPullPaymentDetails(merchantPullPayment);
+				req.setBillUserRequest(reqType);
+				BillUserResponseType resp = service.billUser(req);
+				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
+					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Payer Mail", resp.getBillUserResponseDetails()
+								.getPayerInfo().getPayer());
+						map.put("Merchant Pull Status", resp
+								.getBillUserResponseDetails()
+								.getMerchantPullInfo().getMpStatus());
+						map.put("Transaction ID", resp
+								.getBillUserResponseDetails().getPaymentInfo()
+								.getTransactionID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
+					} else {
+						session.setAttribute("Error", resp.getErrors());
+						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
 			}
-			response.getWriter().println("<br/>");
-			response.getWriter().println("<a href='/merchant-sample/index.html'>Home</a>");
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -381,5 +398,4 @@ public class ReferenceTransactionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

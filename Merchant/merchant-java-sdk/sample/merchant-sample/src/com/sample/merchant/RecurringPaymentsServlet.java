@@ -3,6 +3,8 @@ package com.sample.merchant;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -116,6 +118,11 @@ public class RecurringPaymentsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute("url", request.getRequestURI());
+		session.setAttribute(
+				"relatedUrl",
+				"<ul><li><a href='RP/CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a></li><li><a href='RP/GetRecurringPaymentsProfileDetails'>GetRecurringPaymentsProfileDetails</a></li><li><a href='RP/ManageRecurringPaymentsProfileStatus'>ManageRecurringPaymentsProfileStatus</a></li><li><a href='RP/UpdateRecurringPaymentsProfile'>UpdateRecurringPaymentsProfile</a></li><li><a href='RP/BillOutstandingAmount'>BillOutstandingAmount</a></li></ul>");
 		response.setContentType("text/html");
 		CurrencyCodeType currency = CurrencyCodeType.fromValue("USD");
 		try {
@@ -251,24 +258,28 @@ public class RecurringPaymentsServlet extends HttpServlet {
 				}
 
 				reqType.setCreateRecurringPaymentsProfileRequestDetails(reqDetails);
-				reqType.setVersion("84");
 
 				req.setCreateRecurringPaymentsProfileRequest(reqType);
 				CreateRecurringPaymentsProfileResponseType resp = service
 						.createRecurringPaymentsProfile(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Profile ID: "
-												+ resp.getCreateRecurringPaymentsProfileResponseDetails()
-														.getProfileID());
-						response.getWriter().println("<br/>");
-
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Profile ID",
+								resp.getCreateRecurringPaymentsProfileResponseDetails()
+										.getProfileID());
+						map.put("Transaction ID",
+								resp.getCreateRecurringPaymentsProfileResponseDetails()
+										.getTransactionID());
+						map.put("Profile Status",
+								resp.getCreateRecurringPaymentsProfileResponseDetails()
+										.getProfileStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -279,34 +290,24 @@ public class RecurringPaymentsServlet extends HttpServlet {
 				GetRecurringPaymentsProfileDetailsReq req = new GetRecurringPaymentsProfileDetailsReq();
 				GetRecurringPaymentsProfileDetailsRequestType reqType = new GetRecurringPaymentsProfileDetailsRequestType(
 						request.getParameter("profileID"));
-				reqType.setVersion("84");
 				req.setGetRecurringPaymentsProfileDetailsRequest(reqType);
 				GetRecurringPaymentsProfileDetailsResponseType resp = service
 						.getRecurringPaymentsProfileDetails(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Profile ID: "
-												+ resp.getGetRecurringPaymentsProfileDetailsResponseDetails()
-														.getProfileID());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Description : "
-												+ resp.getGetRecurringPaymentsProfileDetailsResponseDetails()
-														.getDescription());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Final Payment Due Date : "
-												+ resp.getGetRecurringPaymentsProfileDetailsResponseDetails()
-														.getFinalPaymentDueDate());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Profile ID",
+								resp.getGetRecurringPaymentsProfileDetailsResponseDetails()
+										.getProfileID());
+						map.put("Profile Status",
+								resp.getGetRecurringPaymentsProfileDetailsResponseDetails()
+										.getProfileStatus());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -322,22 +323,21 @@ public class RecurringPaymentsServlet extends HttpServlet {
 								.getParameter("action")));
 				reqDetails.setNote("change");
 				reqType.setManageRecurringPaymentsProfileStatusRequestDetails(reqDetails);
-				reqType.setVersion("84");
 				req.setManageRecurringPaymentsProfileStatusRequest(reqType);
 				ManageRecurringPaymentsProfileStatusResponseType resp = service
 						.manageRecurringPaymentsProfileStatus(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Profile ID: "
-												+ resp.getManageRecurringPaymentsProfileStatusResponseDetails()
-														.getProfileID());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Profile ID",
+								resp.getManageRecurringPaymentsProfileStatusResponseDetails()
+										.getProfileID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -346,7 +346,6 @@ public class RecurringPaymentsServlet extends HttpServlet {
 					"UpdateRecurringPaymentsProfile")) {
 				UpdateRecurringPaymentsProfileReq req = new UpdateRecurringPaymentsProfileReq();
 				UpdateRecurringPaymentsProfileRequestType reqType = new UpdateRecurringPaymentsProfileRequestType();
-				reqType.setVersion("84");
 				UpdateRecurringPaymentsProfileRequestDetailsType reqDetails = new UpdateRecurringPaymentsProfileRequestDetailsType(
 						request.getParameter("profileID"));
 				reqDetails.setNote("change");
@@ -481,17 +480,17 @@ public class RecurringPaymentsServlet extends HttpServlet {
 				UpdateRecurringPaymentsProfileResponseType resp = service
 						.updateRecurringPaymentsProfile(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Profile ID: "
-												+ resp.getUpdateRecurringPaymentsProfileResponseDetails()
-														.getProfileID());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Profile ID",
+								resp.getUpdateRecurringPaymentsProfileResponseDetails()
+										.getProfileID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
@@ -511,31 +510,23 @@ public class RecurringPaymentsServlet extends HttpServlet {
 				BillOutstandingAmountResponseType resp = service
 						.billOutstandingAmount(req);
 				if (resp != null) {
+					session.setAttribute("lastReq", service.getLastRequest());
+					session.setAttribute("lastResp", service.getLastResponse());
 					if (resp.getAck().toString().equalsIgnoreCase("SUCCESS")) {
-						response.getWriter().println("Ack: " + resp.getAck());
-						response.getWriter().println("<br/>");
-						response.getWriter()
-								.println(
-										"Profile ID: "
-												+ resp.getBillOutstandingAmountResponseDetails()
-														.getProfileID());
-						response.getWriter().println("<br/>");
+						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+						map.put("Ack", resp.getAck());
+						map.put("Profile ID", resp
+								.getBillOutstandingAmountResponseDetails()
+								.getProfileID());
+						session.setAttribute("map", map);
+						response.sendRedirect("/merchant-sample/Response.jsp");
 					} else {
-						HttpSession session = request.getSession();
 						session.setAttribute("Error", resp.getErrors());
 						response.sendRedirect("/merchant-sample/Error.jsp");
 					}
 				}
 			}
-			response.getWriter().println("<br/>");
-			response.getWriter().println(
-					"<a href='/merchant-sample/index.html'>Home</a>");
-			response.getWriter().println("<br/>");
-			response.getWriter().println("See also:");
-			response.getWriter().println("<br/>");
-			response.getWriter()
-					.println(
-							"<ul><li><a href='CreateRecurringPaymentsProfile'>CreateRecurringPaymentsProfile</a></li><li><a href=GetRecurringPaymentsProfileDetails'>GetRecurringPaymentsProfileDetails</a></li><li><a href='ManageRecurringPaymentsProfileStatus'>ManageRecurringPaymentsProfileStatus</a></li><li><a href='UpdateRecurringPaymentsProfile'>UpdateRecurringPaymentsProfile</a></li><li><a href='BillOutstandingAmount'>BillOutstandingAmount</a></li></ul>");
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

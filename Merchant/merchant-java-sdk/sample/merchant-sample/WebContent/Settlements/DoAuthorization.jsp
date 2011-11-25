@@ -16,7 +16,12 @@
 		<form method="POST">
 			<div id="request_form">
 				<div class="params">
-					<div class="param_name">TransactionID(Order)</div>
+					<div class="param_name">
+						TransactionID(Order)*(Get Transaction ID via <a
+							href="../DCC/DirectPayment">Direct Payment</a> or <a
+							href="../EC/SetExpressCheckout">ExpressCheckout</a> with
+						PaymentType "Order")
+					</div>
 					<div class="param_value">
 						<input type="text" name="transID" value="" size="50"
 							maxlength="260" />
@@ -49,6 +54,16 @@
 				<li><a href="DoCapture">DoCapture</a></li>
 				<li><a href="DoVoid">DoVoid</a></li>
 				<li><a href="DoReauthorization">DoReauthorization</a></li>
+				<li><a href="Refund">Refund</a>
+				</li>
+				<li><a href="DoUATPAuthorization">DoUATPAuthorization</a>
+				</li>
+				<li><a href="ReverseTransaction">ReverseTransaction</a>
+				</li>
+				<li><a href="DoNonReferencedCredit">DoNonReferencedCredit</a>
+				</li>
+				<li><a href="ManagePendingTransactionStatus">ManagePendingTransactionStatus</a>
+				</li>
 			</ul>
 		</div>
 	</div>

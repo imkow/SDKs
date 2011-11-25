@@ -16,14 +16,31 @@
 		<form method="POST">
 			<div class="params">
 				<div id="request_form">
+					<div class="params">
+						<div class="param_name">Receiver Info Code Type</div>
+						<div class="param_value">
+							<select name=receiverInfoCode>
+								<option value=EmailAddress>Email</option>
+								<option value=UserID>UserID</option>
+								<option value=PhoneNumber>Phone</option>
+							</select>
+						</div>
+					</div>
 					<table class="params">
 						<tr>
 							<th class="param_name">Mail</th>
+							<th class="param_name">UserID</th>
+							<th class="param_name">Phone Number</th>
 							<th class="param_name">Amount</th>
+							<th class="param_name">Currency Code</th>
 						</tr>
 						<tr>
 							<td class="param_value"><input type="text" name="mail1"
 								value="enduser_biz@gmail.com" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="id1"
+								value="" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="phone1"
+								value="" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text" name="amount1"
 								value="3.00" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text"
@@ -32,6 +49,10 @@
 						<tr>
 							<td class="param_value"><input type="text" name="mail2"
 								value="sdk-three@paypal.com" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="id2"
+								value="" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="phone2"
+								value="" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text" name="amount2"
 								value="3.00" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text"
@@ -40,6 +61,10 @@
 						<tr>
 							<td class="param_value"><input type="text" name="mail3"
 								value="jb-us-seller@paypal.com" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="id3"
+								value="" size="25" maxlength="260" /></td>
+							<td class="param_value"><input type="text" name="phone3"
+								value="" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text" name="amount3"
 								value="3.00" size="25" maxlength="260" /></td>
 							<td class="param_value"><input type="text"
