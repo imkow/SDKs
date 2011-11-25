@@ -15,21 +15,21 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum RefundSourceCodeType {
 
-ANY("any"),
-DEFAULT("default"),
-INSTANT("instant"),
-ECHECK("echeck"),
-	;
-private String value;
-RefundSourceCodeType(String val){
-value=val;
-}public String getValue(){
-return value;
-}
-public static RefundSourceCodeType fromValue(String v) {
+	ANY("any"), DEFAULT("default"), INSTANT("instant"), ECHECK("echeck"), ;
+	private String value;
+
+	RefundSourceCodeType(String val) {
+		value = val;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public static RefundSourceCodeType fromValue(String v) {
 		for (RefundSourceCodeType c : values())
 			if (c.value.equals(v))
 				return c;
-throw new IllegalArgumentException(v);
-}
+		throw new IllegalArgumentException(v);
+	}
 }
