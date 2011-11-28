@@ -8,21 +8,22 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum RefundType {
 
-OTHER("Other"),
-FULL("Full"),
-PARTIAL("Partial"),
-EXTERNALDISPUTE("ExternalDispute"),
-	;
-private String value;
-RefundType(String val){
-value=val;
-}public String getValue(){
-return value;
-}
-public static RefundType fromValue(String v) {
+	OTHER("Other"), FULL("Full"), PARTIAL("Partial"), EXTERNALDISPUTE(
+			"ExternalDispute"), ;
+	private String value;
+
+	RefundType(String val) {
+		value = val;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public static RefundType fromValue(String v) {
 		for (RefundType c : values())
 			if (c.value.equals(v))
 				return c;
-throw new IllegalArgumentException(v);
-}
+		throw new IllegalArgumentException(v);
+	}
 }
