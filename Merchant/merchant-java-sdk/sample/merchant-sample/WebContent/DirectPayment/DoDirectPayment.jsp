@@ -84,7 +84,7 @@
 					<div class="param_name">Payment Type:</div>
 					<div class="param_value">
 						<select name=paymentType>
-							<option value=Authorization selected>Sale</option>
+							<option value=Sale selected>Sale</option>
 							<option value=Authorization>Authorization</option>
 						</select>
 					</div>
