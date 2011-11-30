@@ -183,7 +183,8 @@
 			
 			
 		</div>
-		<input type="submit" name="MerchantBtn" value="DoDirectPayment" />
+		<input type="submit" name="MerchantBtn" value="DoDirectPayment" class="button"
+		        runat="server" onserverclick="Submit_Click" />
 		<br /> 
     </form>
 </body>

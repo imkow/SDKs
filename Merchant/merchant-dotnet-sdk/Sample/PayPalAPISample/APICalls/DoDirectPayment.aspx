@@ -1,0 +1,150 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DoDirectPayment.aspx.cs" Inherits="PayPalAPISample.APICalls.DoDirectPayment" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>PayPal SDK - DoDirectPayment</title>
+    <link href="sdk.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">       
+        function popupCalendar() {
+            var dateField = document.getElementById('dateField');
+            if (dateField.style.display == 'none')
+                dateField.style.display = 'block';
+            else
+                dateField.style.display = 'none';
+        }
+    </script>
+    
+</head>
+<body>
+    <div id="wrapper">
+    <div id="header">
+        <h3>DoDirectPayment</h3>
+        <div id="apidetails">Process a credit card payment.</div>
+    </div>
+    <form id="form1" runat="server">
+        <div id="request_form">
+			<div class="params">
+				<div class="param_name">First name</div>
+				<div class="param_value">
+					<input type="text" id="firstName" name="firstName" value="John" runat="server"/>
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Last name</div>
+				<div class="param_value">
+					<input type="text" id="lastName" name="lastName" value="Doe" runat="server"/>
+				</div>
+			</div>
+
+			<div class="params">
+				<div class="param_name">Card type</div>
+				<div class="param_value">
+					<asp:DropDownList id="creditCardType" runat="server">
+						<asp:ListItem Value="VISA" Text="Visa"/>
+						<asp:ListItem Value="MASTERCARD" Text="MasterCard"/>
+						<asp:ListItem Value="DISCOVER" Text="Discover"/>
+						<asp:ListItem Value="AMEX" Text="Amex"/>
+					</asp:DropDownList>
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Card number</div>
+				<div class="param_value">
+					<input type="text" id="creditCardNumber" name="creditCardNumber" runat="server"/>
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Card expiration date</div>
+				<div class="param_value">
+                    <div id="dateField" style="display:none;">
+                        <asp:Calendar id="calDate"
+                            OnSelectionChanged="calDate_SelectionChanged"
+                            Runat="server" />
+                    </div>
+                    <asp:TextBox id="cardExpiryDate" runat="server" />
+                    <img src="calendar_icon.png" alt="calendar" onclick="popupCalendar()" />
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Card Verification Number</div>
+				<div class="param_value">
+					<input type="text" id="cvv2Number" name="cvv2Number" value="962" runat="server"/>
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Payment type</div>
+				<div class="param_value">
+					<asp:DropDownList id="paymentType" runat="server">
+						<asp:ListItem Text="Sale" Value="SALE"/>
+						<asp:ListItem Text="Authorization" Value="AUTHORIZATION"/>
+					</asp:DropDownList>
+				</div>
+			</div>
+			<div class="params">
+				<div class="param_name">Amount</div>
+				<div class="param_value">
+					<input type="text" id="amount" name="amount" value="1.00" runat="server"/>
+					<asp:DropDownList ID="currencyCode" runat="server">
+                        <asp:ListItem Text="-Select a value-" Value="" />
+                        <asp:ListItem Text="AUD" Value="AUD" />
+                        <asp:ListItem Text="EUR" Value="EUR" />
+                        <asp:ListItem Text="GBP" Value="GBP" />
+                        <asp:ListItem Text="JPY" Value="JPY" />
+                        <asp:ListItem Text="USD" Value="USD" Selected="True" />
+                        <asp:ListItem Text="SGD" Value="SGD" />
+                        <asp:ListItem Text="HKD" Value="HKD" />
+                    </asp:DropDownList>
+				</div>
+			</div>				
+			<div class="section_header">Shipping Address</div>
+            <table class="line_item">
+                <tr>
+                    <th>Name</th>
+                    <th>Street 1</th>
+                    <th>Street 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Postal Code</th>
+                    <th>Country</th>
+                    <th>Phone</th>
+                </tr>
+                <tr>
+                    <td><span class="param_value">
+                        <input type="text" id="name" name="name" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="street1" name="street1" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="street2" name="street2" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="city" name="city" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="state" name="state" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="postalCode" name="postalCode" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="country" name="country" runat="server" />
+                    </span></td>
+                    <td><span class="param_value">
+                        <input type="text" id="phone" name="phone" runat="server" />
+                    </span></td>                    
+                </tr>
+                </table>
+
+				<div class="submit">
+					<input type="submit" name="DirectPaymentBtn" value="DirectPayment" /><br />
+				</div>
+        </div>
+    </form>
+    <div id="relatedcalls"> 
+    </div>
+    </div>
+</body>
+</html>                        

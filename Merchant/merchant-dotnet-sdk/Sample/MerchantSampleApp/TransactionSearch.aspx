@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>TransactionSearch</h2>
-    <form id="form1" runat="server" action="MerchantHandler.ashx">
+    <form id="form1" runat="server" >
     <div class="params">
 			<div class="param_name">StartDate(YYYY-MM-DD)</div>
 			<div class="param_value">

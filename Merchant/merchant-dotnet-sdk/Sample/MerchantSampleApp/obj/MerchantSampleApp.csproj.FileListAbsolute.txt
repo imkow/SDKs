@@ -1,9 +1,0 @@
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\MerchantSampleApp.dll
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\MerchantSampleApp.pdb
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\PayPal_Merchant_SDK.dll
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\log4net.dll
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\log4net.xml
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\bin\PayPal_Merchant_SDK.pdb
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\obj\Debug\MerchantSampleApp.dll
-C:\Documents and Settings\lvairamani\Desktop\SDKs\Merchant\Sample\MerchantSampleApp\obj\Debug\MerchantSampleApp.pdb

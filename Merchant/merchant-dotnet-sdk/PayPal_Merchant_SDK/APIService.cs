@@ -67,9 +67,8 @@ namespace PayPal
             ConnectionManager conn = ConnectionManager.Instance;            
             HttpWebRequest httpRequest = conn.getConnection(uri);
             httpRequest.Method = RequestMethod;
-
-            // Set up Headers
             
+            // Set up Headers            
             if(accessToken != null && accessTokenSecret != null)
                 authHandler.SetOAuthToken(accessToken, accessTokenSecret);
             authHandler.SetAuthenticationParams(httpRequest, uri);
@@ -92,10 +91,17 @@ namespace PayPal
                 }
             }
             // Adding payLoad to HttpWebRequest object
-            using (StreamWriter myWriter = new StreamWriter(httpRequest.GetRequestStream()))
+            try
             {
-                myWriter.Write(requestPayload);                    
-                log.Debug(requestPayload);                    
+                using (StreamWriter myWriter = new StreamWriter(httpRequest.GetRequestStream()))
+                {
+                    myWriter.Write(requestPayload);
+                    log.Debug(requestPayload);
+                }
+            }
+            catch (WebException ex)
+            {
+                throw new ConnectionException(ex.Message);
             }
 
             // Fire request. Retry if configured to do so

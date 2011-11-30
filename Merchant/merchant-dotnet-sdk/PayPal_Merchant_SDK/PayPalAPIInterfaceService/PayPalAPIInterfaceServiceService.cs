@@ -11,21 +11,36 @@ namespace PayPal.PayPalAPIInterfaceService {
 	using PayPal.Manager;
 	using PayPal.PayPalAPIInterfaceService.Model;
 
-	public partial class PayPalAPIInterfaceServiceService :BasePayPalService{
+	public partial class PayPalAPIInterfaceServiceService : BasePayPalService {
 
 		private static string serviceName = "PayPalAPIInterfaceService";
+        private static string serviceVersion = "84.0";
 
-
-		 public PayPalAPIInterfaceServiceService() : base(serviceName)
+		public PayPalAPIInterfaceServiceService() : base(serviceName, serviceVersion)
         {}
+
+        /// <summary>
+        /// Sets standard parameters common to all requests
+        /// </summary>
+        private void setStandardParams(AbstractRequestType request)
+        {
+            if (request.Version == null)
+            {
+                request.Version = serviceVersion;
+            }
+            if(request.ErrorLanguage != null && ConfigManager.Instance.GetProperty("languageCode") != null)
+            {
+                request.ErrorLanguage = ConfigManager.Instance.GetProperty("languageCode");
+            }            
+        }
+
 		/**
 		 *
 		 */
 		public RefundTransactionResponseType RefundTransaction(RefundTransactionReq RefundTransactionReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("RefundTransaction", RefundTransactionReq.toXMLString(), apiUsername);
-
+            setStandardParams(RefundTransactionReq.RefundTransactionRequest);			
+			string resp = call("RefundTransaction", RefundTransactionReq.toXMLString(), apiUsername);
 			return new RefundTransactionResponseType(resp);
 		}
 
@@ -38,9 +53,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public InitiateRecoupResponseType InitiateRecoup(InitiateRecoupReq InitiateRecoupReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("InitiateRecoup", InitiateRecoupReq.toXMLString(), apiUsername);
-
+            setStandardParams(InitiateRecoupReq.InitiateRecoupRequest);
+			string resp = call("InitiateRecoup", InitiateRecoupReq.toXMLString(), apiUsername);
 			return new InitiateRecoupResponseType(resp);
 		}
 
@@ -53,9 +67,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public CompleteRecoupResponseType CompleteRecoup(CompleteRecoupReq CompleteRecoupReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CompleteRecoup", CompleteRecoupReq.toXMLString(), apiUsername);
-
+            setStandardParams(CompleteRecoupReq.CompleteRecoupRequest);
+			string resp = call("CompleteRecoup", CompleteRecoupReq.toXMLString(), apiUsername);
 			return new CompleteRecoupResponseType(resp);
 		}
 
@@ -68,9 +81,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public CancelRecoupResponseType CancelRecoup(CancelRecoupReq CancelRecoupReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CancelRecoup", CancelRecoupReq.toXMLString(), apiUsername);
-
+            setStandardParams(CancelRecoupReq.CancelRecoupRequest);
+			string resp = call("CancelRecoup", CancelRecoupReq.toXMLString(), apiUsername);
 			return new CancelRecoupResponseType(resp);
 		}
 
@@ -83,9 +95,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetTransactionDetailsResponseType GetTransactionDetails(GetTransactionDetailsReq GetTransactionDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetTransactionDetails", GetTransactionDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetTransactionDetailsReq.GetTransactionDetailsRequest);
+			string resp = call("GetTransactionDetails", GetTransactionDetailsReq.toXMLString(), apiUsername);
 			return new GetTransactionDetailsResponseType(resp);
 		}
 
@@ -98,9 +109,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMCreateButtonResponseType BMCreateButton(BMCreateButtonReq BMCreateButtonReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMCreateButton", BMCreateButtonReq.toXMLString(), apiUsername);
-
+			setStandardParams(BMCreateButtonReq.BMCreateButtonRequest);
+			string resp = call("BMCreateButton", BMCreateButtonReq.toXMLString(), apiUsername);
 			return new BMCreateButtonResponseType(resp);
 		}
 
@@ -113,9 +123,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMUpdateButtonResponseType BMUpdateButton(BMUpdateButtonReq BMUpdateButtonReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMUpdateButton", BMUpdateButtonReq.toXMLString(), apiUsername);
-
+            setStandardParams(BMUpdateButtonReq.BMUpdateButtonRequest);
+			string resp = call("BMUpdateButton", BMUpdateButtonReq.toXMLString(), apiUsername);
 			return new BMUpdateButtonResponseType(resp);
 		}
 
@@ -128,9 +137,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMManageButtonStatusResponseType BMManageButtonStatus(BMManageButtonStatusReq BMManageButtonStatusReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMManageButtonStatus", BMManageButtonStatusReq.toXMLString(), apiUsername);
-
+			setStandardParams(BMManageButtonStatusReq.BMManageButtonStatusRequest);
+			string resp = call("BMManageButtonStatus", BMManageButtonStatusReq.toXMLString(), apiUsername);
 			return new BMManageButtonStatusResponseType(resp);
 		}
 
@@ -143,9 +151,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMGetButtonDetailsResponseType BMGetButtonDetails(BMGetButtonDetailsReq BMGetButtonDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMGetButtonDetails", BMGetButtonDetailsReq.toXMLString(), apiUsername);
-
+			setStandardParams(BMGetButtonDetailsReq.BMGetButtonDetailsRequest);
+			string resp = call("BMGetButtonDetails", BMGetButtonDetailsReq.toXMLString(), apiUsername);
 			return new BMGetButtonDetailsResponseType(resp);
 		}
 
@@ -158,9 +165,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMSetInventoryResponseType BMSetInventory(BMSetInventoryReq BMSetInventoryReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMSetInventory", BMSetInventoryReq.toXMLString(), apiUsername);
-
+			setStandardParams(BMSetInventoryReq.BMSetInventoryRequest);
+			string resp = call("BMSetInventory", BMSetInventoryReq.toXMLString(), apiUsername);
 			return new BMSetInventoryResponseType(resp);
 		}
 
@@ -173,9 +179,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMGetInventoryResponseType BMGetInventory(BMGetInventoryReq BMGetInventoryReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMGetInventory", BMGetInventoryReq.toXMLString(), apiUsername);
-
+			setStandardParams(BMGetInventoryReq.BMGetInventoryRequest);
+			string resp = call("BMGetInventory", BMGetInventoryReq.toXMLString(), apiUsername);
 			return new BMGetInventoryResponseType(resp);
 		}
 
@@ -188,10 +193,9 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BMButtonSearchResponseType BMButtonSearch(BMButtonSearchReq BMButtonSearchReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BMButtonSearch", BMButtonSearchReq.toXMLString(), apiUsername);
-
-			return new BMButtonSearchResponseType(resp);
+            setStandardParams(BMButtonSearchReq.BMButtonSearchRequest);
+			string resp = call("BMButtonSearch", BMButtonSearchReq.toXMLString(), apiUsername);
+            return new BMButtonSearchResponseType(resp);
 		}
 
 		public BMButtonSearchResponseType BMButtonSearch(BMButtonSearchReq BMButtonSearchReq) 
@@ -203,9 +207,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BillUserResponseType BillUser(BillUserReq BillUserReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BillUser", BillUserReq.toXMLString(), apiUsername);
-
+			setStandardParams(BillUserReq.BillUserRequest);
+			string resp = call("BillUser", BillUserReq.toXMLString(), apiUsername);
 			return new BillUserResponseType(resp);
 		}
 
@@ -218,9 +221,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public TransactionSearchResponseType TransactionSearch(TransactionSearchReq TransactionSearchReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("TransactionSearch", TransactionSearchReq.toXMLString(), apiUsername);
-
+			setStandardParams(TransactionSearchReq.TransactionSearchRequest);
+			string resp = call("TransactionSearch", TransactionSearchReq.toXMLString(), apiUsername);
 			return new TransactionSearchResponseType(resp);
 		}
 
@@ -233,9 +235,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public MassPayResponseType MassPay(MassPayReq MassPayReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("MassPay", MassPayReq.toXMLString(), apiUsername);
-
+			setStandardParams(MassPayReq.MassPayRequest);
+			string resp = call("MassPay", MassPayReq.toXMLString(), apiUsername);
 			return new MassPayResponseType(resp);
 		}
 
@@ -248,9 +249,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BAUpdateResponseType BillAgreementUpdate(BillAgreementUpdateReq BillAgreementUpdateReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BillAgreementUpdate", BillAgreementUpdateReq.toXMLString(), apiUsername);
-
+			setStandardParams(BillAgreementUpdateReq.BAUpdateRequest);
+			string resp = call("BillAgreementUpdate", BillAgreementUpdateReq.toXMLString(), apiUsername);
 			return new BAUpdateResponseType(resp);
 		}
 
@@ -263,9 +263,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public AddressVerifyResponseType AddressVerify(AddressVerifyReq AddressVerifyReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("AddressVerify", AddressVerifyReq.toXMLString(), apiUsername);
-
+			setStandardParams(AddressVerifyReq.AddressVerifyRequest);
+			string resp = call("AddressVerify", AddressVerifyReq.toXMLString(), apiUsername);
 			return new AddressVerifyResponseType(resp);
 		}
 
@@ -278,9 +277,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public EnterBoardingResponseType EnterBoarding(EnterBoardingReq EnterBoardingReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("EnterBoarding", EnterBoardingReq.toXMLString(), apiUsername);
-
+			setStandardParams(EnterBoardingReq.EnterBoardingRequest);
+			string resp = call("EnterBoarding", EnterBoardingReq.toXMLString(), apiUsername);
 			return new EnterBoardingResponseType(resp);
 		}
 
@@ -293,9 +291,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetBoardingDetailsResponseType GetBoardingDetails(GetBoardingDetailsReq GetBoardingDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetBoardingDetails", GetBoardingDetailsReq.toXMLString(), apiUsername);
-
+			setStandardParams(GetBoardingDetailsReq.GetBoardingDetailsRequest);
+			string resp = call("GetBoardingDetails", GetBoardingDetailsReq.toXMLString(), apiUsername);
 			return new GetBoardingDetailsResponseType(resp);
 		}
 
@@ -308,9 +305,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public CreateMobilePaymentResponseType CreateMobilePayment(CreateMobilePaymentReq CreateMobilePaymentReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CreateMobilePayment", CreateMobilePaymentReq.toXMLString(), apiUsername);
-
+			setStandardParams(CreateMobilePaymentReq.CreateMobilePaymentRequest);
+			string resp = call("CreateMobilePayment", CreateMobilePaymentReq.toXMLString(), apiUsername);
 			return new CreateMobilePaymentResponseType(resp);
 		}
 
@@ -323,9 +319,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetMobileStatusResponseType GetMobileStatus(GetMobileStatusReq GetMobileStatusReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetMobileStatus", GetMobileStatusReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetMobileStatusReq.GetMobileStatusRequest);
+			string resp = call("GetMobileStatus", GetMobileStatusReq.toXMLString(), apiUsername);
 			return new GetMobileStatusResponseType(resp);
 		}
 
@@ -338,9 +333,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public SetMobileCheckoutResponseType SetMobileCheckout(SetMobileCheckoutReq SetMobileCheckoutReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SetMobileCheckout", SetMobileCheckoutReq.toXMLString(), apiUsername);
-
+            setStandardParams(SetMobileCheckoutReq.SetMobileCheckoutRequest);
+			string resp = call("SetMobileCheckout", SetMobileCheckoutReq.toXMLString(), apiUsername);
 			return new SetMobileCheckoutResponseType(resp);
 		}
 
@@ -353,9 +347,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoMobileCheckoutPaymentResponseType DoMobileCheckoutPayment(DoMobileCheckoutPaymentReq DoMobileCheckoutPaymentReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoMobileCheckoutPayment", DoMobileCheckoutPaymentReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoMobileCheckoutPaymentReq.DoMobileCheckoutPaymentRequest);
+			string resp = call("DoMobileCheckoutPayment", DoMobileCheckoutPaymentReq.toXMLString(), apiUsername);
 			return new DoMobileCheckoutPaymentResponseType(resp);
 		}
 
@@ -368,9 +361,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetBalanceResponseType GetBalance(GetBalanceReq GetBalanceReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetBalance", GetBalanceReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetBalanceReq.GetBalanceRequest);
+			string resp = call("GetBalance", GetBalanceReq.toXMLString(), apiUsername);
 			return new GetBalanceResponseType(resp);
 		}
 
@@ -383,9 +375,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetPalDetailsResponseType GetPalDetails(GetPalDetailsReq GetPalDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetPalDetails", GetPalDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetPalDetailsReq.GetPalDetailsRequest);
+			string resp = call("GetPalDetails", GetPalDetailsReq.toXMLString(), apiUsername);
 			return new GetPalDetailsResponseType(resp);
 		}
 
@@ -398,9 +389,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoExpressCheckoutPaymentResponseType DoExpressCheckoutPayment(DoExpressCheckoutPaymentReq DoExpressCheckoutPaymentReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoExpressCheckoutPayment", DoExpressCheckoutPaymentReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoExpressCheckoutPaymentReq.DoExpressCheckoutPaymentRequest);
+			string resp = call("DoExpressCheckoutPayment", DoExpressCheckoutPaymentReq.toXMLString(), apiUsername);
 			return new DoExpressCheckoutPaymentResponseType(resp);
 		}
 
@@ -413,9 +403,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoUATPExpressCheckoutPaymentResponseType DoUATPExpressCheckoutPayment(DoUATPExpressCheckoutPaymentReq DoUATPExpressCheckoutPaymentReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoUATPExpressCheckoutPayment", DoUATPExpressCheckoutPaymentReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoUATPExpressCheckoutPaymentReq.DoUATPExpressCheckoutPaymentRequest);
+			string resp = call("DoUATPExpressCheckoutPayment", DoUATPExpressCheckoutPaymentReq.toXMLString(), apiUsername);
 			return new DoUATPExpressCheckoutPaymentResponseType(resp);
 		}
 
@@ -428,9 +417,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public SetAuthFlowParamResponseType SetAuthFlowParam(SetAuthFlowParamReq SetAuthFlowParamReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SetAuthFlowParam", SetAuthFlowParamReq.toXMLString(), apiUsername);
-
+            setStandardParams(SetAuthFlowParamReq.SetAuthFlowParamRequest);
+			string resp = call("SetAuthFlowParam", SetAuthFlowParamReq.toXMLString(), apiUsername);
 			return new SetAuthFlowParamResponseType(resp);
 		}
 
@@ -443,9 +431,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetAuthDetailsResponseType GetAuthDetails(GetAuthDetailsReq GetAuthDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetAuthDetails", GetAuthDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetAuthDetailsReq.GetAuthDetailsRequest);
+			string resp = call("GetAuthDetails", GetAuthDetailsReq.toXMLString(), apiUsername);
 			return new GetAuthDetailsResponseType(resp);
 		}
 
@@ -458,9 +445,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public SetAccessPermissionsResponseType SetAccessPermissions(SetAccessPermissionsReq SetAccessPermissionsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SetAccessPermissions", SetAccessPermissionsReq.toXMLString(), apiUsername);
-
+            setStandardParams(SetAccessPermissionsReq.SetAccessPermissionsRequest);
+			string resp = call("SetAccessPermissions", SetAccessPermissionsReq.toXMLString(), apiUsername);
 			return new SetAccessPermissionsResponseType(resp);
 		}
 
@@ -473,9 +459,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public UpdateAccessPermissionsResponseType UpdateAccessPermissions(UpdateAccessPermissionsReq UpdateAccessPermissionsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("UpdateAccessPermissions", UpdateAccessPermissionsReq.toXMLString(), apiUsername);
-
+            setStandardParams(UpdateAccessPermissionsReq.UpdateAccessPermissionsRequest);
+			string resp = call("UpdateAccessPermissions", UpdateAccessPermissionsReq.toXMLString(), apiUsername);
 			return new UpdateAccessPermissionsResponseType(resp);
 		}
 
@@ -488,9 +473,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetAccessPermissionDetailsResponseType GetAccessPermissionDetails(GetAccessPermissionDetailsReq GetAccessPermissionDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetAccessPermissionDetails", GetAccessPermissionDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetAccessPermissionDetailsReq.GetAccessPermissionDetailsRequest);
+			string resp = call("GetAccessPermissionDetails", GetAccessPermissionDetailsReq.toXMLString(), apiUsername);
 			return new GetAccessPermissionDetailsResponseType(resp);
 		}
 
@@ -503,9 +487,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetIncentiveEvaluationResponseType GetIncentiveEvaluation(GetIncentiveEvaluationReq GetIncentiveEvaluationReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetIncentiveEvaluation", GetIncentiveEvaluationReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetIncentiveEvaluationReq.GetIncentiveEvaluationRequest);
+			string resp = call("GetIncentiveEvaluation", GetIncentiveEvaluationReq.toXMLString(), apiUsername);
 			return new GetIncentiveEvaluationResponseType(resp);
 		}
 
@@ -518,9 +501,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public SetExpressCheckoutResponseType SetExpressCheckout(SetExpressCheckoutReq SetExpressCheckoutReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SetExpressCheckout", SetExpressCheckoutReq.toXMLString(), apiUsername);
-
+            setStandardParams(SetExpressCheckoutReq.SetExpressCheckoutRequest);
+			string resp = call("SetExpressCheckout", SetExpressCheckoutReq.toXMLString(), apiUsername);
 			return new SetExpressCheckoutResponseType(resp);
 		}
 
@@ -533,8 +515,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public ExecuteCheckoutOperationsResponseType ExecuteCheckoutOperations(ExecuteCheckoutOperationsReq ExecuteCheckoutOperationsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("ExecuteCheckoutOperations", ExecuteCheckoutOperationsReq.toXMLString(), apiUsername);
+            setStandardParams(ExecuteCheckoutOperationsReq.ExecuteCheckoutOperationsRequest);
+			string resp = call("ExecuteCheckoutOperations", ExecuteCheckoutOperationsReq.toXMLString(), apiUsername);
 
 			return new ExecuteCheckoutOperationsResponseType(resp);
 		}
@@ -548,9 +530,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetExpressCheckoutDetailsResponseType GetExpressCheckoutDetails(GetExpressCheckoutDetailsReq GetExpressCheckoutDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetExpressCheckoutDetails", GetExpressCheckoutDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetExpressCheckoutDetailsReq.GetExpressCheckoutDetailsRequest);
+			string resp = call("GetExpressCheckoutDetails", GetExpressCheckoutDetailsReq.toXMLString(), apiUsername);
 			return new GetExpressCheckoutDetailsResponseType(resp);
 		}
 
@@ -563,9 +544,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoDirectPaymentResponseType DoDirectPayment(DoDirectPaymentReq DoDirectPaymentReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoDirectPayment", DoDirectPaymentReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoDirectPaymentReq.DoDirectPaymentRequest);
+			string resp = call("DoDirectPayment", DoDirectPaymentReq.toXMLString(), apiUsername);
 			return new DoDirectPaymentResponseType(resp);
 		}
 
@@ -578,9 +558,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public ManagePendingTransactionStatusResponseType ManagePendingTransactionStatus(ManagePendingTransactionStatusReq ManagePendingTransactionStatusReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("ManagePendingTransactionStatus", ManagePendingTransactionStatusReq.toXMLString(), apiUsername);
-
+            setStandardParams(ManagePendingTransactionStatusReq.ManagePendingTransactionStatusRequest);
+			string resp = call("ManagePendingTransactionStatus", ManagePendingTransactionStatusReq.toXMLString(), apiUsername);
 			return new ManagePendingTransactionStatusResponseType(resp);
 		}
 
@@ -593,9 +572,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoCaptureResponseType DoCapture(DoCaptureReq DoCaptureReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoCapture", DoCaptureReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoCaptureReq.DoCaptureRequest);
+			string resp = call("DoCapture", DoCaptureReq.toXMLString(), apiUsername);
 			return new DoCaptureResponseType(resp);
 		}
 
@@ -608,9 +586,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoReauthorizationResponseType DoReauthorization(DoReauthorizationReq DoReauthorizationReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoReauthorization", DoReauthorizationReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoReauthorizationReq.DoReauthorizationRequest);
+			string resp = call("DoReauthorization", DoReauthorizationReq.toXMLString(), apiUsername);
 			return new DoReauthorizationResponseType(resp);
 		}
 
@@ -623,9 +600,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoVoidResponseType DoVoid(DoVoidReq DoVoidReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoVoid", DoVoidReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoVoidReq.DoVoidRequest);
+			string resp = call("DoVoid", DoVoidReq.toXMLString(), apiUsername);
 			return new DoVoidResponseType(resp);
 		}
 
@@ -638,9 +614,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoAuthorizationResponseType DoAuthorization(DoAuthorizationReq DoAuthorizationReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoAuthorization", DoAuthorizationReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoAuthorizationReq.DoAuthorizationRequest);
+			string resp = call("DoAuthorization", DoAuthorizationReq.toXMLString(), apiUsername);
 			return new DoAuthorizationResponseType(resp);
 		}
 
@@ -653,9 +628,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public SetCustomerBillingAgreementResponseType SetCustomerBillingAgreement(SetCustomerBillingAgreementReq SetCustomerBillingAgreementReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("SetCustomerBillingAgreement", SetCustomerBillingAgreementReq.toXMLString(), apiUsername);
-
+            setStandardParams(SetCustomerBillingAgreementReq.SetCustomerBillingAgreementRequest);
+			string resp = call("SetCustomerBillingAgreement", SetCustomerBillingAgreementReq.toXMLString(), apiUsername);
 			return new SetCustomerBillingAgreementResponseType(resp);
 		}
 
@@ -668,9 +642,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetBillingAgreementCustomerDetailsResponseType GetBillingAgreementCustomerDetails(GetBillingAgreementCustomerDetailsReq GetBillingAgreementCustomerDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetBillingAgreementCustomerDetails", GetBillingAgreementCustomerDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetBillingAgreementCustomerDetailsReq.GetBillingAgreementCustomerDetailsRequest);
+			string resp = call("GetBillingAgreementCustomerDetails", GetBillingAgreementCustomerDetailsReq.toXMLString(), apiUsername);
 			return new GetBillingAgreementCustomerDetailsResponseType(resp);
 		}
 
@@ -683,9 +656,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public CreateBillingAgreementResponseType CreateBillingAgreement(CreateBillingAgreementReq CreateBillingAgreementReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CreateBillingAgreement", CreateBillingAgreementReq.toXMLString(), apiUsername);
-
+            setStandardParams(CreateBillingAgreementReq.CreateBillingAgreementRequest);
+			string resp = call("CreateBillingAgreement", CreateBillingAgreementReq.toXMLString(), apiUsername);
 			return new CreateBillingAgreementResponseType(resp);
 		}
 
@@ -698,9 +670,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoReferenceTransactionResponseType DoReferenceTransaction(DoReferenceTransactionReq DoReferenceTransactionReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoReferenceTransaction", DoReferenceTransactionReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoReferenceTransactionReq.DoReferenceTransactionRequest);
+			string resp = call("DoReferenceTransaction", DoReferenceTransactionReq.toXMLString(), apiUsername);
 			return new DoReferenceTransactionResponseType(resp);
 		}
 
@@ -713,9 +684,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoNonReferencedCreditResponseType DoNonReferencedCredit(DoNonReferencedCreditReq DoNonReferencedCreditReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoNonReferencedCredit", DoNonReferencedCreditReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoNonReferencedCreditReq.DoNonReferencedCreditRequest);
+			string resp = call("DoNonReferencedCredit", DoNonReferencedCreditReq.toXMLString(), apiUsername);
 			return new DoNonReferencedCreditResponseType(resp);
 		}
 
@@ -728,9 +698,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public DoUATPAuthorizationResponseType DoUATPAuthorization(DoUATPAuthorizationReq DoUATPAuthorizationReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("DoUATPAuthorization", DoUATPAuthorizationReq.toXMLString(), apiUsername);
-
+            setStandardParams(DoUATPAuthorizationReq.DoUATPAuthorizationRequest);
+			string resp = call("DoUATPAuthorization", DoUATPAuthorizationReq.toXMLString(), apiUsername);
 			return new DoUATPAuthorizationResponseType(resp);
 		}
 
@@ -743,10 +712,9 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public CreateRecurringPaymentsProfileResponseType CreateRecurringPaymentsProfile(CreateRecurringPaymentsProfileReq CreateRecurringPaymentsProfileReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("CreateRecurringPaymentsProfile", CreateRecurringPaymentsProfileReq.toXMLString(), apiUsername);
-
-			return new CreateRecurringPaymentsProfileResponseType(resp);
+            setStandardParams(CreateRecurringPaymentsProfileReq.CreateRecurringPaymentsProfileRequest);
+			string resp = call("CreateRecurringPaymentsProfile", CreateRecurringPaymentsProfileReq.toXMLString(), apiUsername);
+            return new CreateRecurringPaymentsProfileResponseType(resp);
 		}
 
 		public CreateRecurringPaymentsProfileResponseType CreateRecurringPaymentsProfile(CreateRecurringPaymentsProfileReq CreateRecurringPaymentsProfileReq) 
@@ -758,9 +726,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public GetRecurringPaymentsProfileDetailsResponseType GetRecurringPaymentsProfileDetails(GetRecurringPaymentsProfileDetailsReq GetRecurringPaymentsProfileDetailsReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("GetRecurringPaymentsProfileDetails", GetRecurringPaymentsProfileDetailsReq.toXMLString(), apiUsername);
-
+            setStandardParams(GetRecurringPaymentsProfileDetailsReq.GetRecurringPaymentsProfileDetailsRequest);
+			string resp = call("GetRecurringPaymentsProfileDetails", GetRecurringPaymentsProfileDetailsReq.toXMLString(), apiUsername);
 			return new GetRecurringPaymentsProfileDetailsResponseType(resp);
 		}
 
@@ -773,9 +740,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public ManageRecurringPaymentsProfileStatusResponseType ManageRecurringPaymentsProfileStatus(ManageRecurringPaymentsProfileStatusReq ManageRecurringPaymentsProfileStatusReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("ManageRecurringPaymentsProfileStatus", ManageRecurringPaymentsProfileStatusReq.toXMLString(), apiUsername);
-
+            setStandardParams(ManageRecurringPaymentsProfileStatusReq.ManageRecurringPaymentsProfileStatusRequest);
+			string resp = call("ManageRecurringPaymentsProfileStatus", ManageRecurringPaymentsProfileStatusReq.toXMLString(), apiUsername);
 			return new ManageRecurringPaymentsProfileStatusResponseType(resp);
 		}
 
@@ -788,9 +754,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public BillOutstandingAmountResponseType BillOutstandingAmount(BillOutstandingAmountReq BillOutstandingAmountReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("BillOutstandingAmount", BillOutstandingAmountReq.toXMLString(), apiUsername);
-
+            setStandardParams(BillOutstandingAmountReq.BillOutstandingAmountRequest);
+			string resp = call("BillOutstandingAmount", BillOutstandingAmountReq.toXMLString(), apiUsername);
 			return new BillOutstandingAmountResponseType(resp);
 		}
 
@@ -803,9 +768,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public UpdateRecurringPaymentsProfileResponseType UpdateRecurringPaymentsProfile(UpdateRecurringPaymentsProfileReq UpdateRecurringPaymentsProfileReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("UpdateRecurringPaymentsProfile", UpdateRecurringPaymentsProfileReq.toXMLString(), apiUsername);
-
+            setStandardParams(UpdateRecurringPaymentsProfileReq.UpdateRecurringPaymentsProfileRequest);
+			string resp = call("UpdateRecurringPaymentsProfile", UpdateRecurringPaymentsProfileReq.toXMLString(), apiUsername);
 			return new UpdateRecurringPaymentsProfileResponseType(resp);
 		}
 
@@ -818,9 +782,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public ReverseTransactionResponseType ReverseTransaction(ReverseTransactionReq ReverseTransactionReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("ReverseTransaction", ReverseTransactionReq.toXMLString(), apiUsername);
-
+            setStandardParams(ReverseTransactionReq.ReverseTransactionRequest);
+			string resp = call("ReverseTransaction", ReverseTransactionReq.toXMLString(), apiUsername);
 			return new ReverseTransactionResponseType(resp);
 		}
 
@@ -833,9 +796,8 @@ namespace PayPal.PayPalAPIInterfaceService {
 		 */
 		public ExternalRememberMeOptOutResponseType ExternalRememberMeOptOut(ExternalRememberMeOptOutReq ExternalRememberMeOptOutReq, string apiUsername) 
 		{
-			BasePayPalService service = new BasePayPalService(serviceName);
-			string resp = service.call("ExternalRememberMeOptOut", ExternalRememberMeOptOutReq.toXMLString(), apiUsername);
-
+            setStandardParams(ExternalRememberMeOptOutReq.ExternalRememberMeOptOutRequest);
+			string resp = call("ExternalRememberMeOptOut", ExternalRememberMeOptOutReq.toXMLString(), apiUsername);
 			return new ExternalRememberMeOptOutResponseType(resp);
 		}
 
