@@ -1,0 +1,4 @@
+PayPal  Java Merchant SDK - 1.84.0
+Release Date  - 1-Dec-2011
+This release contains new Merchant SDK (SOAP) and samples for Merchant api's.
+==========================================================================================================
