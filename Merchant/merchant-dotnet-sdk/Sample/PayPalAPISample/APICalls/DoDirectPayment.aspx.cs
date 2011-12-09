@@ -27,7 +27,6 @@ namespace PayPalAPISample.APICalls
             cardExpiryDate.Text = calDate.SelectedDate.ToString("MM/yyyy");
         }
 
-
         protected void Submit_Click(object sender, EventArgs e)
         {
             // Create request object

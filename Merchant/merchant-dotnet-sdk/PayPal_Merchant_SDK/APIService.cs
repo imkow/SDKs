@@ -72,17 +72,18 @@ namespace PayPal
             if(accessToken != null && accessTokenSecret != null)
                 authHandler.SetOAuthToken(accessToken, accessTokenSecret);
             authHandler.SetAuthenticationParams(httpRequest, uri);
-            if (configMgr.GetProperty("binding") =="SOAP")
+            if (configMgr.GetProperty("binding") == "SOAP")
                 requestPayload = authHandler.appendSoapHeaders(requestPayload, accessToken, accessTokenSecret);
             else
-            {
-                httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE, BaseConstants.XPAYPALSOURCE);
+            {                
                 httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTDATAFORMAT, BaseConstants.RequestDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALRESPONSEDATAFORMAT, BaseConstants.ResponseDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALDEVICEIPADDRESS, configMgr.GetProperty("IPAddress"));
             }
-            // This header is used to track the calls from PayPal SDKs            
-            
+            // Add tracking header           
+            httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTSOURCE, 
+                    BaseConstants.SDK_NAME + "-" + BaseConstants.SDK_VERSION);
+
             if (log.IsDebugEnabled)
             {
                 foreach (string headerName in httpRequest.Headers)

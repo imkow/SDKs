@@ -4,13 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>PayPal SDK - Do Reference Transaction</title>
+    <title>PayPal SDK - DoReferenceTransaction</title>
     <link rel="stylesheet" type="text/css" href="sdk.css" />
 </head>
 <body>
     <div id="wrapper">
     <div id="header">
-        <h3>Do Reference Transaction</h3>
+        <h3>DoReferenceTransaction</h3>
         <div id="apidetails">Process a payment from a buyer’s account based on a previous transaction.</div>
     </div>
     <form id="form1" runat="server">

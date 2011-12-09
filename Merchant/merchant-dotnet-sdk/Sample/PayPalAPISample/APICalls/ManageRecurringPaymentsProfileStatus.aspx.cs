@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -27,8 +28,6 @@ namespace PayPalAPISample.APICalls
             
             ManageRecurringPaymentsProfileStatusRequestType request =
                 new ManageRecurringPaymentsProfileStatusRequestType();
-            request.Version = "84.0";
-
             ManageRecurringPaymentsProfileStatusRequestDetailsType details =
                 new ManageRecurringPaymentsProfileStatusRequestDetailsType();
             request.ManageRecurringPaymentsProfileStatusRequestDetails = details;
@@ -49,7 +48,29 @@ namespace PayPalAPISample.APICalls
 
 
             // Check for API return status
+            setKeyResponseObjects(service, manageProfileStatusResponse);
+        }
 
+        private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, ManageRecurringPaymentsProfileStatusResponseType response)
+        {
+            Dictionary<string, string> responseParams = new Dictionary<string, string>();
+            responseParams.Add("API Status", response.Ack.ToString());
+            Session["Response_redirectURL"] = null;
+            if (response.Ack.Equals(AckCodeType.FAILURE) ||
+                (response.Errors != null && response.Errors.Count > 0))
+            {
+                Session["Response_error"] = response.Errors;
+            }
+            else
+            {
+                Session["Response_error"] = null;
+                responseParams.Add("Profile Id", response.ManageRecurringPaymentsProfileStatusResponseDetails.ProfileID);                
+            }
+            Session["Response_keyResponseObject"] = responseParams;
+            Session["Response_apiName"] = "ManageRecurringPaymentsProfileStatus";
+            Session["Response_requestPayload"] = service.getLastRequest();
+            Session["Response_responsePayload"] = service.getLastResponse();
+            Response.Redirect("../APIResponse.aspx");
         }
 
     }

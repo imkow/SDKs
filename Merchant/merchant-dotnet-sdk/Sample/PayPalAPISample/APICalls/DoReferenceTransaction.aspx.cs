@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -25,7 +26,6 @@ namespace PayPalAPISample.APICalls
         {
             // Create request object
             DoReferenceTransactionRequestType request = new DoReferenceTransactionRequestType();
-            request.Version = "84.0";
             populateRequestObject(request);
 
             // Invoke the API
@@ -35,7 +35,38 @@ namespace PayPalAPISample.APICalls
             DoReferenceTransactionResponseType doReferenceTxnResponse = service.DoReferenceTransaction(wrapper);
 
             // Check for API return status
+            setKeyResponseObjects(service, doReferenceTxnResponse);
+        }
 
+        private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, DoReferenceTransactionResponseType response)
+        {
+            Session["Response_apiName"] = "DoReferenceTransaction";
+            Session["Response_redirectURL"] = null;
+            Session["Response_requestPayload"] = service.getLastRequest();
+            Session["Response_responsePayload"] = service.getLastResponse();
+
+            Dictionary<string, string> responseParams = new Dictionary<string, string>();
+            responseParams.Add("Correlation Id", response.CorrelationID);
+            responseParams.Add("API Result", response.Ack.ToString());
+
+            if (response.Ack.Equals(AckCodeType.FAILURE) ||
+                (response.Errors != null && response.Errors.Count > 0))
+            {
+                Session["Response_error"] = response.Errors;
+            }
+            else
+            {
+                Session["Response_error"] = null;
+                DoReferenceTransactionResponseDetailsType transactionDetails = response.DoReferenceTransactionResponseDetails;
+                responseParams.Add("Transaction ID", transactionDetails.TransactionID);
+                responseParams.Add("Payment status", transactionDetails.PaymentInfo.PaymentStatus.ToString());
+                if (transactionDetails.PaymentInfo.PendingReason != null)
+                {
+                    responseParams.Add("Pending reason", transactionDetails.PaymentInfo.PendingReason.ToString());
+                }
+            }
+            Session["Response_keyResponseObject"] = responseParams;
+            Response.Redirect("../APIResponse.aspx");
         }
 
         private void populateRequestObject(DoReferenceTransactionRequestType request)

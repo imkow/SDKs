@@ -90,7 +90,10 @@
 						value="USD"  runat="server"/></td>
 				</tr>
 			</table>        
-        </div>
+	        <div class="submit">
+                <input id="submitBtn" type="submit" name="submitBtn" value="Submit" runat="server" onserverclick="Submit_Click"/>
+            </div>			
+        </div>        
     </form>
     <div id="relatedcalls"> 
     </div>

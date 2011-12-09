@@ -12,12 +12,12 @@ namespace PayPalAPISample.APICalls {
     
     
     /// <summary>
-    /// GetRecurringPaymentsProfile class.
+    /// GetRecurringPaymentsProfileDetails class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class GetRecurringPaymentsProfile {
+    public partial class GetRecurringPaymentsProfileDetails {
         
         /// <summary>
         /// Head1 control.

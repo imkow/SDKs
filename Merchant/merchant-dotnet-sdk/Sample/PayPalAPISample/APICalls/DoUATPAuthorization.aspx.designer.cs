@@ -12,12 +12,12 @@ namespace PayPalAPISample.APICalls {
     
     
     /// <summary>
-    /// DoNonReferencedCredit class.
+    /// DoUATPAuthorization class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class DoNonReferencedCredit {
+    public partial class DoUATPAuthorization {
         
         /// <summary>
         /// Head1 control.
@@ -38,102 +38,66 @@ namespace PayPalAPISample.APICalls {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// creditCardNumber control.
+        /// uatpNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText creditCardNumber;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText uatpNumber;
         
         /// <summary>
-        /// calDate control.
+        /// expMonth control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText expMonth;
         
         /// <summary>
-        /// cardExpiryDate control.
+        /// expYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cardExpiryDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText expYear;
         
         /// <summary>
-        /// creditCardType control.
+        /// amount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList creditCardType;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText amount;
         
         /// <summary>
-        /// cvv control.
+        /// currencyID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText cvv;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText currencyID;
         
         /// <summary>
-        /// comment control.
+        /// transactionEntity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText comment;
+        protected global::System.Web.UI.WebControls.DropDownList transactionEntity;
         
         /// <summary>
-        /// itemAmount control.
+        /// submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText itemAmount;
-        
-        /// <summary>
-        /// shippingAMount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText shippingAMount;
-        
-        /// <summary>
-        /// taxAmount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText taxAmount;
-        
-        /// <summary>
-        /// currencyId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText currencyId;
-        
-        /// <summary>
-        /// submitBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit submitBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit submit;
     }
 }

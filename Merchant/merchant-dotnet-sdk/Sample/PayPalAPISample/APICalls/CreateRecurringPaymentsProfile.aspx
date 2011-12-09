@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>PayPal SDK - Create Recurring Payments Profile</title>
+    <title>PayPal SDK - CreateRecurringPaymentsProfile</title>
     <link href="sdk.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript">       
         function popupCalendar() {
@@ -19,13 +19,13 @@
 <body>
     <div id="wrapper">
     <div id="header">
-        <h3>Create Recurring Payments Profile</h3>
+        <h3>CreateRecurringPaymentsProfile</h3>
         <div id="apidetails">Creates a recurring payment profile. With recurring payments, you can bill customers on a regular basis at intervals that you choose.</div>
     </div>
     <form id="form1" runat="server">
         <div id="request_form">
             <div class="note">You must set either Token or Credit Card number</div>
-            <div class="param_name">Express Checkout Token *</div>
+            <div class="param_name">Express Checkout Token * <a href="SetExpressCheckout.aspx?billingType=RECURRINGPAYMENTS">Get a token</a></div>
             <div class="param_value">
                 <input type="text" name="token" id="token" value="" runat="server" />
             </div>

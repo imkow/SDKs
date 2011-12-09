@@ -15,11 +15,11 @@
     </div>
     <form id="form1" runat="server">
         <div id="request_form">
-            <div class="param_name">Return URL</div>
+            <div class="param_name">Return URL *</div>
             <div class="param_value">
                 <input type="text" name="returnUrl" id="returnUrl" value="" runat="server" />
             </div>            
-            <div class="param_name">Cancel URL</div>
+            <div class="param_name">Cancel URL *</div>
             <div class="param_value">
                 <input type="text" name="cancelUrl" id="cancelUrl" value="" runat="server" />
             </div>

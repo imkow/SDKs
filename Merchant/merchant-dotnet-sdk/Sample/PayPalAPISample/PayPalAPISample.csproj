@@ -60,12 +60,14 @@
     <Content Include="APICalls\DoNonReferencedCredit.aspx" />
     <Content Include="APICalls\DoReauthorization.aspx" />
     <Content Include="APICalls\DoReferenceTransaction.aspx" />
+    <Content Include="APICalls\DoUATPAuthorization.aspx" />
+    <Content Include="APICalls\DoUATPExpressCheckoutPayment.aspx" />
     <Content Include="APICalls\EnterBoarding.aspx" />
     <Content Include="APICalls\GetBalance.aspx" />
     <Content Include="APICalls\GetBoardingDetails.aspx" />
     <Content Include="APICalls\GetExpressCheckoutDetails.aspx" />
     <Content Include="APICalls\GetPalDetails.aspx" />
-    <Content Include="APICalls\GetRecurringPaymentsProfile.aspx" />
+    <Content Include="APICalls\GetRecurringPaymentsProfileDetails.aspx" />
     <Content Include="APICalls\GetTransactionDetails.aspx" />
     <Content Include="APICalls\ManagePendingTransactionStatus.aspx" />
     <Content Include="APICalls\ManageRecurringPaymentsProfileStatus.aspx" />
@@ -218,6 +220,20 @@
     <Compile Include="APICalls\DoReferenceTransaction.aspx.designer.cs">
       <DependentUpon>DoReferenceTransaction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="APICalls\DoUATPAuthorization.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>DoUATPAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APICalls\DoUATPAuthorization.aspx.designer.cs">
+      <DependentUpon>DoUATPAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APICalls\DoUATPExpressCheckoutPayment.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>DoUATPExpressCheckoutPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APICalls\DoUATPExpressCheckoutPayment.aspx.designer.cs">
+      <DependentUpon>DoUATPExpressCheckoutPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="APICalls\EnterBoarding.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>EnterBoarding.aspx</DependentUpon>
@@ -253,12 +269,12 @@
     <Compile Include="APICalls\GetPalDetails.aspx.designer.cs">
       <DependentUpon>GetPalDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APICalls\GetRecurringPaymentsProfile.aspx.cs">
+    <Compile Include="APICalls\GetRecurringPaymentsProfileDetails.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>GetRecurringPaymentsProfile.aspx</DependentUpon>
+      <DependentUpon>GetRecurringPaymentsProfileDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="APICalls\GetRecurringPaymentsProfile.aspx.designer.cs">
-      <DependentUpon>GetRecurringPaymentsProfile.aspx</DependentUpon>
+    <Compile Include="APICalls\GetRecurringPaymentsProfileDetails.aspx.designer.cs">
+      <DependentUpon>GetRecurringPaymentsProfileDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="APICalls\GetTransactionDetails.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

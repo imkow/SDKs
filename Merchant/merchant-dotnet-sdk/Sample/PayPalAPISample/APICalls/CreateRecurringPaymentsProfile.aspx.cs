@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -28,7 +29,6 @@ namespace PayPalAPISample.APICalls
         {
             // Create request object
             CreateRecurringPaymentsProfileRequestType request = new CreateRecurringPaymentsProfileRequestType();
-            request.Version = "84.0";
             populateRequest(request);
 
             // Invoke the API
@@ -37,9 +37,9 @@ namespace PayPalAPISample.APICalls
             PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
             CreateRecurringPaymentsProfileResponseType createRPProfileResponse = service.CreateRecurringPaymentsProfile(wrapper);
 
-            // Check for API return status
+            // Check for API return status            
+            setKeyResponseObjects(service, createRPProfileResponse);
         }
-
 
         private void populateRequest(CreateRecurringPaymentsProfileRequestType request)
         {
@@ -92,6 +92,7 @@ namespace PayPalAPISample.APICalls
                 {
                     shippingAddr.Phone = shippingPhone.Value;
                 }
+                rpProfileDetails.SubscriberShippingAddress = shippingAddr;
             }
 
 
@@ -167,6 +168,29 @@ namespace PayPalAPISample.APICalls
             }
         }
 
+        private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, CreateRecurringPaymentsProfileResponseType response)
+        {
+            Dictionary<string, string> responseParams = new Dictionary<string, string>();
+            responseParams.Add("API Status", response.Ack.ToString());
+            Session["Response_redirectURL"] = null;
+            if (response.Ack.Equals(AckCodeType.FAILURE) ||
+                (response.Errors != null && response.Errors.Count > 0))
+            {
+                Session["Response_error"] = response.Errors;
+            }
+            else
+            {
+                Session["Response_error"] = null;
+                responseParams.Add("Transaction Id", response.CreateRecurringPaymentsProfileResponseDetails.TransactionID);
+                responseParams.Add("Profile Id", response.CreateRecurringPaymentsProfileResponseDetails.ProfileID);
+                responseParams.Add("Profile Status", response.CreateRecurringPaymentsProfileResponseDetails.ProfileStatus.ToString());
+            }
+            Session["Response_keyResponseObject"] = responseParams;
+            Session["Response_apiName"] = "CreateRecurringPaymentsProfile";
+            Session["Response_requestPayload"] = service.getLastRequest();
+            Session["Response_responsePayload"] = service.getLastResponse();
+            Response.Redirect("../APIResponse.aspx");
+        }
 
     }
 }

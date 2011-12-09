@@ -3,13 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>PayPal SDK - Manage Recurring Payments Profile Status</title>
+    <title>PayPal SDK - ManageRecurringPaymentsProfileStatus</title>
     <link href="sdk.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
     <div id="header">
-        <h3>Manage Recurring Payments Profile Status</h3>
+        <h3>ManageRecurringPaymentsProfileStatus</h3>
         <div id="apidetails">Cancel, suspend or reactivate a recurring payments profile.</div>
     </div>
     <form id="form1" runat="server">

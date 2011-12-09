@@ -24,10 +24,8 @@ namespace PayPalAPISample.APICalls
         protected void Submit_Click(object sender, EventArgs e)
         {
             // Create request object
-
             DoVoidRequestType request =
-                new DoVoidRequestType();
-            request.Version = "84.0";            
+                new DoVoidRequestType();     
             request.AuthorizationID = authorizationId.Value;
             if (note.Value != "")
             {

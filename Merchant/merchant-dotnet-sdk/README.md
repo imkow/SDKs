@@ -1,74 +1,57 @@
-PayPal C# Merchant SDK
-======================
+
+PayPal Merchant SDK for .NET
+============================
+
+	The PayPal merchant SDK allows .NET developers to invoke "PayPal API's for implementing
+solutions such as "Web Payments Pro", "Express Checkout", "Mass Pay" etc. While the API is described
+through a publicly available WSDL document and can be invoked directly, this SDK eases the 
+development process by handling some of the plumbing code such as authentication, HTTP request 
+processing etc.
+
+Contents 
+--------
+
+	The SDK download comes as a Visual Studio solution that contains 
+
+		1. the PayPal Merchant SDK project, and 
+		2. a sample C# web application that demonstrates use of the SDK. 
+	
+Please refer to the readme file under the sample project to understand how the sample application
+can be run.
+
 
 Prerequisites
 -------------
 
-PayPal's C# Merchant SDK requires 
+   1. Microsoft .NET framework 2.0
+   2. Microsoft Visual Studio 2005 Standard edition
 
- * Visual Studio 2005
- * NUnit 2.5.10.11092 (only for running the test cases) 
-  
 
 Using the SDK
 -------------
 
-To use the SDK, 
+	To use the SDK in your application, you must do the following
+	
+	1. Create a Business/Personal account as appropriate and obtain API credentials from your
+	   account profile.
+	2. Add the PayPal_Merchant_SDK.dll file as a reference to your project.	   
+	3. Configure the SDK through the Web.Config or App.Config file. You can refer to the config
+	   file available in the sample.
+	4. Invoke an api method using a similar code snippet
+	
+		    // Create request object and set request parameters
+            DoVoidRequestType request = new DoVoidRequestType();     
+            request.AuthorizationID = authorizationId.Value;
+            .......            
+            DoVoidReq wrapper = new DoVoidReq();
+            wrapper.DoVoidRequest = request;
+            
+            // Invoke the API
+            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
+            DoVoidResponseType doVoidResponse = service.DoVoid(wrapper);
 
- * Copy the SDK DLL file into your project and add a reference.
- * Create a service wrapper object
- * Create a request object as per your project's needs. All the API request and response classes are available in PayPalAPIInterfaceServiceStubs.cs
- * Invoke the appropriate method on the request object.
-
-
-For example,
-
-	using PayPal.PayPalAPIInterfaceService;
-	using PayPal.PayPalAPIInterfaceService.Model;
-
-
-	CreatePayPalAPIInterfaceServiceRequest req = new CreatePayPalAPIInterfaceServiceRequest();
-	req.PayPalAPIInterfaceService = new PayPalAPIInterfaceService(..);
-	......
-
-	PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
-	TransactionSearchResponseType cir = service.TransactionSearch(cr);
- 
-	if(cir.ack == AckCode.SUCCESS) {
-		// Success
-	}
-  
- 
-
-SDK Configuration
------------------
-
-The SDK DLL uses the Web.Config files. You can use the configuration file to configure
-
- * (Multiple) API account credentials.
- * Service endpoint and other HTTP connection parameters 
-
-
-A sample configuration file has been provided with the unit tests. Adding PayPal specific configuration items to the App.Config/Web.Config file involves two steps
-
- * Adding a configSection to your config file
-
-    &lt;configSections&gt;
-
-      &lt;section name="paypal" type="PayPal.Manager.SDKConfigHandler, PayPal_Merchant_SDK" /&gt;
-
-    &lt;/configSections&gt;
-
- * Adding the actual configuration 
-
-    &lt;paypal&gt;  
-
-      &lt;settings&gt;...&lt;/settings&gt;
-
-      &lt;accounts&gt;
-
-      &lt;account .../&gt;
-
-      &lt;/accounts&gt;
-
-    &lt;/paypal&gt;
+			// Check API return status
+			if(doVoidResponse.Ack.Equals(AckCodeType.FAILURE))
+			{
+			   .......
+			}

@@ -1,16 +1,16 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetRecurringPaymentsProfile.aspx.cs" Inherits="PayPalAPISample.APICalls.GetRecurringPaymentsProfile" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetRecurringPaymentsProfileDetails.aspx.cs" Inherits="PayPalAPISample.APICalls.GetRecurringPaymentsProfileDetails" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>PayPal SDK - Get Recurring Payments Profile</title>
+    <title>PayPal SDK - GetRecurringPaymentsProfileDetails</title>
     <link href="sdk.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
     <div id="header">
-        <h3>Get Recurring Payments Profile</h3>
+        <h3>GetRecurringPaymentsProfileDetails</h3>
         <div id="apidetails">Obtain information about a recurring payments profile..</div>
     </div>
     <form id="form1" runat="server">

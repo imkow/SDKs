@@ -22072,10 +22072,11 @@ Unique account ID of the payment recipient (the
 				this.ProfileReferenceField = value;
 			}
 		}
-
+        
 		public RecurringPaymentsProfileDetailsType(string BillingStartDate) {
 			this.BillingStartDate = BillingStartDate;
 		}
+        
 		public RecurringPaymentsProfileDetailsType() {
 		}
 
