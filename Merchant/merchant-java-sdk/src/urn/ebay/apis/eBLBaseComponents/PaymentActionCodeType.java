@@ -8,21 +8,21 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum PaymentActionCodeType {
 
-NONE("None"),
-AUTHORIZATION("Authorization"),
-SALE("Sale"),
-ORDER("Order"),
-	;
-private String value;
-PaymentActionCodeType(String val){
-value=val;
-}public String getValue(){
-return value;
-}
-public static PaymentActionCodeType fromValue(String v) {
+	NONE("None"), AUTHORIZATION("Authorization"), SALE("Sale"), ORDER("Order"), ;
+	private String value;
+
+	PaymentActionCodeType(String val) {
+		value = val;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public static PaymentActionCodeType fromValue(String v) {
 		for (PaymentActionCodeType c : values())
 			if (c.value.equals(v))
 				return c;
-throw new IllegalArgumentException(v);
-}
+		throw new IllegalArgumentException(v);
+	}
 }
