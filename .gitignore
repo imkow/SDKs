@@ -1,5 +1,6 @@
 # build Folders
 obj
+build
 
 # user specific files
 .user
