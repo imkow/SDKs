@@ -1,0 +1,7 @@
+# build Folders
+obj
+
+# user specific files
+.user
+.suo
+.pdb
