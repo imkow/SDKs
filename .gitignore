@@ -1,7 +1,11 @@
 # build Folders
 obj
+build
 
 # user specific files
 .user
 .suo
 .pdb
+
+# class files
+*.class
