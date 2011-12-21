@@ -3,9 +3,9 @@ obj
 build
 
 # user specific files
-.user
-.suo
-.pdb
+*.user
+*.suo
+*.pdb
 
 # class files
 *.class
