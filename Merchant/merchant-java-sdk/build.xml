@@ -40,6 +40,7 @@
 		<javadoc destdir="${javadoc.dir}" classpathref="lib.classpath" use="true" windowtitle="Merchant Java SDK v${release.version}" doctitle="Merchant Java SDK v${release.version}" header="Merchant Java SDK v${release.version}" bottom="Copyright 2011 PayPal, Inc. All Rights Reserved." private="no" breakiterator="yes">
 			<packageset dir="${src.java.dir}" defaultexcludes="yes">
 				<include name="com/paypal/**" />
+				<include name="urn/**" />
 				<exclude name="test/**" />
 				<exclude name="resource/**" />
 			</packageset>
