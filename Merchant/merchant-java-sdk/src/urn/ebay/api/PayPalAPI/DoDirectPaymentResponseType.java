@@ -1,4 +1,3 @@
-
 /**
  * Auto generated code
  */
@@ -54,19 +53,19 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	 * Address
 	 * Address only (no ZIP) 
 	 * B 
-	 * International “A”
+	 * International "A"
 	 * Address only (no ZIP)
 	 * C
-	 * International “N”
+	 * International "N"
 	 * None 
 	 * D
-	 * International “X” 
+	 * International "X" 
 	 * Address and Postal Code
 	 * E 
 	 * Not allowed for MOTO (Internet/Phone) transactions 
 	 * Not applicable
 	 * F 
-	 * UK-specific “X”
+	 * UK-specific "X"
 	 * Address and Postal Code 
 	 * G 
 	 * Global Unavailable
@@ -78,7 +77,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	 * No
 	 * None
 	 * P
-	 * Postal (International “Z”)
+	 * Postal (International "Z")
 	 * Postal Code only (no Address) 
 	 * R
 	 * Retry
