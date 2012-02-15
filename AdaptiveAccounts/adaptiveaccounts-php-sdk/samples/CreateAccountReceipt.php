@@ -2,17 +2,18 @@
 
 /********************************************
  CreateAccountReceipt.php
- Calls CreateAccount API of CreateAccounts webservices.
+Calls CreateAccount API of CreateAccounts webservices.
 
- Called by CreateAccount.php
- Calls  AdaptiveAccounts.php,and APIError.php.
- ********************************************/
+Called by CreateAccount.php
+Calls  AdaptiveAccounts.php,and APIError.php.
+********************************************/
 $path = '../lib';
 set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 require_once('services/AdaptiveAccounts/AdaptiveAccountsService.php');
 require_once('PPLoggingManager.php');
 require_once('Common/Constants.php');
 session_start();
+
 $logger = new PPLoggingManager('CreateAccount');
 try {
 	$serverName = $_SERVER['SERVER_NAME'];
@@ -24,8 +25,7 @@ try {
 	$preferredLanguageCode = 'en_US';
 	$registrationType = 'WEB';
 
-	if($_REQUEST['accountType']=="BUSINESS")
-	{
+	if($_REQUEST['accountType'] == "BUSINESS") {
 
 		$businessInfobusinessName = $_REQUEST['businessName'];
 		$businessInfobusinessAddressline1 = $_REQUEST['businessAddress1'];
@@ -45,10 +45,9 @@ try {
 		$businessInfoaveragePrice = $_REQUEST['avgPrice'];
 		$businessInfoaverageMonthlyVolume = $_REQUEST['averageMonthlyVolume'];
 		$businessInfopercentageRevenueFromOnline = $_REQUEST['percentageRevenueFromOnline'];
-		$businessInfosalesVenue = $_REQUEST['salesVenue'];
-			
-			
+		$businessInfosalesVenue = $_REQUEST['salesVenue'];			
 	}
+	
 	$requestEnvelope = new RequestEnvelope();
 	$requestEnvelope->errorLanguage = "en_US";
 
@@ -59,8 +58,8 @@ try {
 	$name->lastName = $_REQUEST['lastName'];
 
 	$address = new AddressType();
-	$address->line1 =  $_REQUEST['address1'];
-	$address->line2 =$_REQUEST['address2'];
+	$address->line1 =  $_REQUEST['line1'];
+	$address->line2 =$_REQUEST['line2'];
 	$address->city = $_REQUEST['city'];
 	$address->state =  $_REQUEST['state'];
 	$address->postalCode= $_REQUEST['postalCode'];
@@ -77,16 +76,16 @@ try {
 	$createAccountRequest->contactPhoneNumber = $_REQUEST['contactPhoneNumber'];
 	$createAccountRequest->registrationType = $registrationType;
 	$createAccountRequest->currencyCode = $_REQUEST['currencyCode'];;
-	$createAccountRequest->emailAddress = $_REQUEST['newemail'];
+	$createAccountRequest->emailAddress = $_REQUEST['emailAddress'];
 	$createAccountRequest->createAccountWebOptions =  $createAccountWebOptions;
 
-	$adaptiveAccounts  = new AdaptiveAccountsService();
-	$response = $adaptiveAccounts->CreateAccount($createAccountRequest);
+	$service  = new AdaptiveAccountsService();
+	$response = $service->CreateAccount($createAccountRequest);
 	//$logger->log("Received CreateAccount Response:");
 
 	$ack = strtoupper($response->responseEnvelope->ack);
 
-	if($ack!="SUCCESS"){
+	if($ack != "SUCCESS"){
 		$_SESSION['reshash']=$response;
 		$location = "APIError.php";
 		header("Location: $location");
