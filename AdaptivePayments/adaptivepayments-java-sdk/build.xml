@@ -13,7 +13,7 @@
 		<delete dir="${base.build.dir}" />
 		<delete dir="${dist.dir}" />
 		<delete dir="${javadoc.dir}" />
-		<delete dir="${test.report.dir}"/>
+		<delete dir="${test.report.dir}" />
 	</target>
 
 	<target name="compile" depends="clean">
@@ -28,7 +28,8 @@
 		<testng outputDir="${test.report.dir}" haltOnFailure="true" verbose="2">
 			<classpath>
 				<pathelement path="${base.build.dir}" />
-				<path refid="lib.classpath"></path>
+				<path refid="lib.classpath">
+				</path>
 			</classpath>
 			<classfileset dir="${base.build.dir}" includes="test/**/*.class" />
 		</testng>
@@ -58,7 +59,7 @@
 	</target>
 	<target name="all" depends="dist,test,doc">
 	</target>
-	
+
 	<target name="help">
 		<echo message="Usage: compile,test,doc,dist" />
 		<echo message="----------------------------------------------------------------------" />
