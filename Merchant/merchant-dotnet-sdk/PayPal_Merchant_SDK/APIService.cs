@@ -33,10 +33,12 @@ namespace PayPal
                                                 });
 
         private string serviceName;
+        private string serviceVersion;
 
-        public APIService(string serviceName)
+        public APIService(string serviceName, string serviceVersion)
         {
             this.serviceName = serviceName;
+            this.serviceVersion = serviceVersion;
         }
 
         /// <summary>
@@ -75,7 +77,7 @@ namespace PayPal
             if (configMgr.GetProperty("binding") == "SOAP")
                 requestPayload = authHandler.appendSoapHeaders(requestPayload, accessToken, accessTokenSecret);
             else
-            {                
+            {
                 httpRequest.Headers.Add(BaseConstants.XPAYPALREQUESTDATAFORMAT, BaseConstants.RequestDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALRESPONSEDATAFORMAT, BaseConstants.ResponseDataformat);
                 httpRequest.Headers.Add(BaseConstants.XPAYPALDEVICEIPADDRESS, configMgr.GetProperty("IPAddress"));
