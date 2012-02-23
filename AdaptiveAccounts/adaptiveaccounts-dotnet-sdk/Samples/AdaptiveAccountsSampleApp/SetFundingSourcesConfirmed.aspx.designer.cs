@@ -12,12 +12,12 @@ namespace AdaptiveAccountsSampleApp {
     
     
     /// <summary>
-    /// CreateAccount class.
+    /// SetFundingSourcesConfirmed class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class CreateAccount {
+    public partial class SetFundingSourcesConfirmed {
         
         /// <summary>
         /// Head1 control.
@@ -27,24 +27,6 @@ namespace AdaptiveAccountsSampleApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
-        /// <summary>
-        /// emailAddress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText emailAddress;
-        
-        /// <summary>
-        /// returnUrl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText returnUrl;
         
         /// <summary>
         /// AdaptiveAccountsBtn control.

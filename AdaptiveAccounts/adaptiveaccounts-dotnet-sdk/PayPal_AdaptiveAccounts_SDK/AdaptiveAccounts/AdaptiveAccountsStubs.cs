@@ -1963,6 +1963,19 @@ return null;
 			}
 		}
 
+		/**
+		 * tax id, ssn, itin, pan, cpf, acn, abn, etc.
+		 */
+		private string taxIdField;
+		public string taxId {
+			get {
+				return this.taxIdField;
+			}
+			set {
+				this.taxIdField = value;
+			}
+		}
+
 		private string partnerField1Field;
 		public string partnerField1 {
 			get {
@@ -2094,6 +2107,9 @@ return null;
 			}
 			if (this.performExtraVettingOnThisAccount != null) {
 				sb.Append(prefix).Append("performExtraVettingOnThisAccount").Append('=').Append(this.performExtraVettingOnThisAccount).Append('&');
+			}
+			if (this.taxId != null) {
+				sb.Append(prefix).Append("taxId").Append('=').Append(HttpUtility.UrlEncode(this.taxId, BaseConstants.ENCODING_FORMAT)).Append('&');
 			}
 			if (this.partnerField1 != null) {
 				sb.Append(prefix).Append("partnerField1").Append('=').Append(HttpUtility.UrlEncode(this.partnerField1, BaseConstants.ENCODING_FORMAT)).Append('&');
@@ -2806,6 +2822,20 @@ return null;
 			}
 		}
 
+		/**
+		 * Info about PayPal user such as emailAddress,
+		 * accountId, firstName, lastName etc. 
+		 */
+		private UserInfoType userInfoField;
+		public UserInfoType userInfo {
+			get {
+				return this.userInfoField;
+			}
+			set {
+				this.userInfoField = value;
+			}
+		}
+
 		private List<ErrorData> errorField = new List<ErrorData>();
 		public List<ErrorData> error {
 			get {
@@ -2829,6 +2859,10 @@ return null;
 			key = prefix + "countryCode";
 			if (map.ContainsKey(key)) {
 				this.countryCode = map[key];
+			}
+			key = prefix + "userInfo";
+			if (map.ContainsKey(key + ".emailAddress")) {
+				this.userInfo = new UserInfoType(map, key + '.');
 			}
 			for (int i = 0; i < 10; i++) {
 				key = prefix + "error" + '(' + i + ")";
@@ -2920,6 +2954,29 @@ return null;
 			return sb.ToString();
 		}
 
+	 public NameType(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			key = prefix + "salutation";
+			if (map.ContainsKey(key)) {
+				this.salutation = map[key];
+			}
+			key = prefix + "firstName";
+			if (map.ContainsKey(key)) {
+				this.firstName = map[key];
+			}
+			key = prefix + "middleName";
+			if (map.ContainsKey(key)) {
+				this.middleName = map[key];
+			}
+			key = prefix + "lastName";
+			if (map.ContainsKey(key)) {
+				this.lastName = map[key];
+			}
+			key = prefix + "suffix";
+			if (map.ContainsKey(key)) {
+				this.suffix = map[key];
+			}
+		}
 	}
 
 
@@ -3189,6 +3246,105 @@ return null;
 [Description("DIRECTOR")]DIRECTOR,
 [Description("NO_BENEFICIAL_OWNER")]NOBENEFICIALOWNER,
 	}
+	/**
+	 * Info about PayPal user such as emailAddress,
+	 * accountId, firstName, lastName etc. 
+	 */
+	public partial class UserInfoType {
+
+		/**
+		 * Returns emailAddress belonging to PayPal account.
+		 */
+		private string emailAddressField;
+		public string emailAddress {
+			get {
+				return this.emailAddressField;
+			}
+			set {
+				this.emailAddressField = value;
+			}
+		}
+
+		/**
+		 * Valid values are: Personal, Premier, and
+		 * Business (not case-sensitive).
+		 */
+		private string accountTypeField;
+		public string accountType {
+			get {
+				return this.accountTypeField;
+			}
+			set {
+				this.accountTypeField = value;
+			}
+		}
+
+		/**
+		 * Identifies a PayPal account. Only premier and business 
+		 * accounts have an accountId
+		 */
+		private string accountIdField;
+		public string accountId {
+			get {
+				return this.accountIdField;
+			}
+			set {
+				this.accountIdField = value;
+			}
+		}
+
+		/**
+		 * Identifies a PayPal user, like firstName, lastName.
+		 */
+		private NameType nameField;
+		public NameType name {
+			get {
+				return this.nameField;
+			}
+			set {
+				this.nameField = value;
+			}
+		}
+
+		/**
+		 * Business Name of the PayPal account holder.
+		 */
+		private string businessNameField;
+		public string businessName {
+			get {
+				return this.businessNameField;
+			}
+			set {
+				this.businessNameField = value;
+			}
+		}
+
+	 public UserInfoType(Dictionary<string, string> map, string prefix) {
+			string key = "";
+			key = prefix + "emailAddress";
+			if (map.ContainsKey(key)) {
+				this.emailAddress = map[key];
+			}
+			key = prefix + "accountType";
+			if (map.ContainsKey(key)) {
+				this.accountType = map[key];
+			}
+			key = prefix + "accountId";
+			if (map.ContainsKey(key)) {
+				this.accountId = map[key];
+			}
+			key = prefix + "name";
+			if (map.ContainsKey(key + ".salutation")) {
+				this.name = new NameType(map, key + '.');
+			}
+			key = prefix + "businessName";
+			if (map.ContainsKey(key)) {
+				this.businessName = map[key];
+			}
+		}
+	}
+
+
 	/**
 	 */
 	public partial class WebOptionsType {
