@@ -1,71 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-<title>Adaptive Accounts - Get User Agreement</title>
-<link href="Common/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="sdk.css" />
-<script type="text/javascript" src="sdk.js"></script>
-</head>
+<?php
+$path = '../lib';
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+require_once('services/AdaptiveAccounts/AdaptiveAccountsService.php');
+require_once('PPLoggingManager.php');
+require_once('Common/Constants.php');
+session_start();
 
-<body>
-	<div id="wrapper">
-		<div id="header">
-			<h3>Get User Agreement</h3>
-			<div id="apidetails"></div>
-		</div>
-		<form method="post" action="GetUserAgreementReceipt.php">
-			<div id="request_form">
-				<div class="note">If you specify CreateAccount key, do not pass a
-					country code or language code. Doing so will result in an error.</div>
-				<div class="params">
-					<div class="param_name">
-						CreateAccountKey (<a href="CreateAccount.php">Get CreateAccountKey</a>)</div>
-					<div class="param_value">
-						<input type="text" name="createAccountKey" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Country Code</div>
-					<div class="param_value">
-						<select name="countryCode">
-							<option value="US">US - United States *</option>
-							<option value="AU">AU - Australia</option>
-							<option value="AT">AT - Austria</option>
-							<option value="CA">CA - Canada</option>
-							<option value="CZ">CZ - Czech Republic</option>
-							<option value="EU">EU - European Union *</option>
-							<option value="FR">FR - France</option>
-							<option value="DE">DE - Germany</option>
-							<option value="GB">GB - Great Britain</option>
-							<option value="GR">GR - Greece</option>
-							<option value="IE">IE - Ireland</option>
-							<option value="IL">IL - Israel</option>
-							<option value="IT">IT - Italy</option>
-							<option value="JP">JP - Japan</option>
-							<option value="NL">NL - Netherlands</option>
-							<option value="NZ">NZ - New Zealand (Aotearoa)</option>
-							<option value="PL">PL - Poland</option>
-							<option value="PT">PT - Portugal</option>
-							<option value="RU">RU - Russian Federation</option>
-							<option value="SG">SG - Singapore</option>
-							<option value="ZA">ZA - South Africa</option>
-							<option value="ES">ES - Spain</option>
-							<option value="CH">CH - Switzerland</option>							
-						</select>
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Language Code</div>
-					<div class="param_value">
-						<input type="text" name="languageCode" value="" />
-					</div>
-				</div>
+$logger = new PPLoggingManager('GetUserAgreement');
+try {
+	
+	$getUserAgreement = new GetUserAgreementRequest();
+	$getUserAgreement->countryCode  = $_REQUEST['countryCode'];
+	$getUserAgreement->createAccountKey = $_REQUEST['createAccountKey'];
+	$getUserAgreement->languageCode = $_REQUEST['languageCode'];
 
-				<div class="submit">
-					<input type="submit" name="submit" value="Submit" /><br />
-				</div>
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+	$service  = new AdaptiveAccountsService();
+	$response = $service->GetUserAgreement($getUserAgreement);
+
+	$ack = strtoupper($response->responseEnvelope->ack);
+
+	if($ack != "SUCCESS"){
+		$_SESSION['reshash']=$response;
+		$location = "APIError.php";
+		header("Location: $location");
+	}
+	else
+	{
+
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
+
+	}
+
+}
+catch(Exception $ex) {
+	throw new Exception('Error occurred in GetUserAgreement method');
+}

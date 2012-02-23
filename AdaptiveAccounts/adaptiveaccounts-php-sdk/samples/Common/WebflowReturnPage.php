@@ -9,8 +9,6 @@
         <br/>
         <div id="jive-wrapper">
            
-		<?php 
-require_once 'menu.html';?>
 <div id="request_form">
 
 <div>
@@ -32,6 +30,7 @@ foreach($_GET as $variable => $value)
 ?>
 
 </table>
+<a href="../index.php">Home</a>
 </div>
 </div>
 </div>

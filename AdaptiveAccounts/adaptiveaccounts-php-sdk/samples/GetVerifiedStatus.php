@@ -1,61 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-<title>Adaptive Accounts - Get Verified Status</title>
-<link href="Common/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="sdk.css" />
-<script type="text/javascript" src="sdk.js"></script>
-</head>
+<?php
+$path = '../lib';
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+require_once('services/AdaptiveAccounts/AdaptiveAccountsService.php');
+require_once('PPLoggingManager.php');
+require_once('Common/Constants.php');
+session_start();
 
-<body>
-	<div id="wrapper">
-		<div id="header">
-			<h3>Get Verified Status</h3>
-			<div id="apidetails">Check if a PayPal account status is verified. A PayPal account gains verified status under a variety of circumstances, such as when an
-				account is linked to a verified funding source. Verified status serves to indicate a trust relationship.</div>
-		</div>
-		<form method="post" action="GetVerifiedStatusReceipt.php">
-			<div id="request_form">
-				<div class="submit">
-					<div class="params">
-						<div class="param_name">Email Address of the account holder *</div>
-						<div class="param_value">
-							<input type="text" name="emailAddress" value="platfo@paypal.com" />
-						</div>
-					</div>
-					
-					<div class="params">
-						<div class="param_name">Match Criteria</div>
-						<div class="param_value">
-							<select name="matchCriteria">
-								<option value="">--Select--</option>
-								<option value="NAME" selected="selected">Name</option>
-								<option value="NONE">None</option>
-							</select>
-						</div>
-						<span class="note">NOTE: To use Match criteria NONE you must
-						request and be granted advanced permission levels.</span>
-					</div>
-					<div class="params">
-						<div class="param_name">First Name (Required if matchCriteria is
-							NAME)</div>
-						<div class="param_value">
-							<input type="text" name="firstName" value="Bonzop" />
-						</div>
-					</div>
-					<div class="params">
-						<div class="param_name">Last Name (Required if matchCriteria is
-							NAME)</div>
-						<div class="param_value">
-							<input type="text" name="lastName" value="Zaius" />
-						</div>
-					</div>
+$logger = new PPLoggingManager('GetVerifiedStatus');
+try {
 
-					<input type="submit" name="submit" value="Submit" /><br />
-				</div>
-			</div>
-		</form>
-		<a href="index.php">Home</a>
-	</div>
-</body>
-</html>
+	$getVerifiedStatus = new GetVerifiedStatusRequest();
+	$getVerifiedStatus->emailAddress = $_REQUEST['emailAddress'];
+	$getVerifiedStatus->firstName = $_REQUEST['firstName'];
+	$getVerifiedStatus->lastName = $_REQUEST['lastName'];
+	$getVerifiedStatus->matchCriteria = $_REQUEST['matchCriteria'];
+	$service  = new AdaptiveAccountsService();
+	$response = $service->GetVerifiedStatus($getVerifiedStatus);
+
+	$ack = strtoupper($response->responseEnvelope->ack);
+
+	if($ack != "SUCCESS"){
+		$_SESSION['reshash']=$response;
+		$location = "APIError.php";
+		header("Location: $location");
+	}
+	else
+	{
+
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
+
+	}
+
+}
+catch(Exception $ex) {
+	throw new Exception('Error occurred in GetVerifiedStatus method');
+}

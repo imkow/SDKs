@@ -1,207 +1,91 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-<title>Adaptive Accounts - Add Bank Account</title>
-<link href="Common/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="sdk.css" />
-<script type="text/javascript" src="sdk.js"></script>
-</head>
+<?php
+$path = '../lib';
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);
+require_once('services/AdaptiveAccounts/AdaptiveAccountsService.php');
+require_once('PPLoggingManager.php');
+require_once('Common/Constants.php');
+session_start();
 
-<body>
-	<div id="wrapper">
-		<div id="header">
-			<h3>Add Bank Account</h3>
-			<div id="apidetails">Set up bank accounts as funding sources for
-				PayPal accounts.</div>
-		</div>
-		<form method="post" action="AddBankAccountReceipt.php">
-			<div id="request_form">
-				<div class="input_header">Account ID or email Address of your paypal
-					account *</div>
-				<table class="params">
-					<tr>
-						<th>Account ID</th>
-						<th>Email address</th>
-					</tr>
-					<tr>
-						<td><input type="text" name="accountID" value="" /></td>
-						<td><input type="text" name="emailAddress" value="" /></td>
-					</tr>
-				</table>
-				<div class="params">
-					<div class="param_name">
-						Create Account Key ( <a href='CreateAccount.php'>Get
-							CreateAccountKey</a>)
-					</div>
-					<div class="param_value">
-						<input type="text" name="createAccountKey" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank country code *</div>
-					<div class="param_value">
-						<input type="text" name="bankCountryCode" value="US" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank name *</div>
-					<div class="param_value">
-						<input type="text" name="bankName" value="Huntington Bank" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank routing number *</div>
-					<div class="param_value">
-						<input type="text" name="routingNumber" value="021473030" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank account type</div>
-					<div class="param_name">
-						<select name="bankAccountType">
-							<option value="CHECKING">CHECKING</option>
-							<option value="SAVINGS" selected="selected">SAVINGS</option>
-							<option value="BUSINESS_CHECKING">BUSINESS_CHECKING</option>
-							<option value="BUSINESS_SAVINGS">BUSINESS_SAVINGS</option>
-							<option value="NORMAL">NORMAL</option>
-							<option value="UNKNOWN">UNKNOWN</option>
-						</select>
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank account number (BBAN)</div>
-					<div class="param_value">
-						<input type="text" name="bankAccountNumber" value="162951" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">International Bank Account Number (IBAN)</div>
-					<div class="param_value">
-						<input type="text" name="iban" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">CLABE (Bank information for countries like
-						Mexico)</div>
-					<div class="param_value">
-						<input type="text" name="clabe" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">BSB Number (Bank State Branch number)</div>
-					<div class="param_value">
-						<input type="text" name="bsbNumber" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Branch location</div>
-					<div class="param_value">
-						<input type="text" name="branchLocation" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Branch sort code</div>
-					<div class="param_value">
-						<input type="text" name="sortCode" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Branch transit number</div>
-					<div class="param_value">
-						<input type="text" name="bankTransitNumber" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Institution number</div>
-					<div class="param_value">
-						<input type="text" name="institutionNumber" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Branch code</div>
-					<div class="param_value">
-						<input type="text" name="branchCode" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Agency number (Brazil only)</div>
-					<div class="param_value">
-						<input type="text" name="agencyNumber" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Bank code</div>
-					<div class="param_value">
-						<input type="text" name="bankCode" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">RIB Key</div>
-					<div class="param_value">
-						<input type="text" name="ribKey" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Control digit</div>
-					<div class="param_value">
-						<input type="text" name="controlDigit" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Tax id type of CNPJ or CPF (Brazil only)</div>
-					<div class="param_value">
-						<input type="text" name="taxIdType" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Tax id number for Brazil</div>
-					<div class="param_value">
-						<input type="text" name="taxIdNumber" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Account holder date of birth</div>
-					<div class="param_value">
-						<input type="text" name="accountHolderDateOfBirth" value="" />
-					</div>
-				</div>
-				<div class="params">
-					<div class="param_name">Confirmation type * (ConfirmationType NONE
-						requires advanced permission levels. You must pass the
-						createAccount key.)</div>
-					<div class="param_value">
-						<select name="confirmationType">
-							<option value="WEB">WEB</option>
-							<option value="MOBILE">MOBILE</option>
-							<option value="NONE">NONE</option>
-						</select>
-					</div>
-				</div>
-				<div class="section_header">Web options (For Confirmation Type WEB
-					only)</div>
-				<table class="params">
-					<tr>
-						<th class="param_name">Return URL</th>
-						<th class="param_name">Return URL description</th>
-						<th class="param_name">Cancel URL</th>
-						<th class="param_name">Cancel URL description</th>
-					</tr>
-					<tr>
-						<td class="param_value"><input type="text" name="returnURL"
-							value="" /></td>
-						<td class="param_value"><input type="text"
-							name="returnURLDescription" value="" /></td>
-						<td class="param_value"><input type="text" name="cancelURL"
-							value="" /></td>
-						<td class="param_value"><input type="text"
-							name="cancelURLDescription" value="" /></td>
-					</tr>
-				</table>
-				<div class="submit">
-					<input type="submit" name="submit" value="Submit" /><br />
-				</div>
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+$logger = new PPLoggingManager('AddBankAccount');
+
+try {
+
+	$addBankAccount = new AddBankAccountRequest();
+	$addBankAccount->accountId = $_REQUEST['accountID'];
+	$addBankAccount->emailAddress = $_REQUEST['emailAddress'];
+	$addBankAccount->createAccountKey  = $_REQUEST['createAccountKey'];
+	$addBankAccount->bankCountryCode  = $_REQUEST['bankCountryCode'];
+
+	$addBankAccount->bankName  = $_REQUEST['bankName'];
+	$addBankAccount->routingNumber  = $_REQUEST['routingNumber'];
+	$addBankAccount->bankAccountType  = $_REQUEST['bankAccountType'];
+	$addBankAccount->bankAccountNumber = $_REQUEST['bankAccountNumber'];
+	$addBankAccount->iban = $_REQUEST['iban'];
+	$addBankAccount->clabe  = $_REQUEST['clabe'];
+	$addBankAccount->bsbNumber  = $_REQUEST['bsbNumber'];
+	$addBankAccount->branchLocation = $_REQUEST['branchLocation'];
+	$addBankAccount->sortCode  = $_REQUEST['sortCode'];
+	$addBankAccount->bankTransitNumber = $_REQUEST['bankTransitNumber'];
+	$addBankAccount->institutionNumber = $_REQUEST['institutionNumber'];
+	$addBankAccount->branchCode = $_REQUEST['branchCode'];
+	$addBankAccount->agencyNumber = $_REQUEST['agencyNumber'];
+	$addBankAccount->bankCode = $_REQUEST['bankCode'];
+	$addBankAccount->ribKey = $_REQUEST['ribKey'];
+	$addBankAccount->controlDigit = $_REQUEST['controlDigit'];
+	$addBankAccount->accountHolderDateOfBirth = $_REQUEST['accountHolderDateOfBirth'];
+	$addBankAccount->confirmationType = $_REQUEST['confirmationType'];
+
+	if($addBankAccount->confirmationType == 'WEB')
+	{
+		$serverName = $_SERVER['SERVER_NAME'];
+		$serverPort = $_SERVER['SERVER_PORT'];
+		$url=dirname('http://'.$serverName.':'.$serverPort.$_SERVER['REQUEST_URI']);
+		if($_REQUEST['returnURL']!=null)
+		{
+			$returnURL = $_REQUEST['returnURL'];
+		}
+		else
+		$returnURL = $url."/Common/WebflowReturnPage.php";
+
+		if($_REQUEST['cancelURL']!=null)
+		{
+			$cancelURL = $_REQUEST['cancelURL'];
+		}
+		else
+		$cancelURL = $url. "/AddBankAccount.html.php" ;
+
+		$webOption = new WebOptionsType();
+		$webOption->cancelUrl = $cancelURL;
+		$webOption->cancelUrlDescription = $_REQUEST['returnURLDescription'];
+		$webOption->returnUrl = $returnURL;
+		$webOption->returnUrlDescription = $_REQUEST['cancelURLDescription'];
+		$addBankAccount->webOptions = $webOption;
+	}
+
+
+	$service  = new AdaptiveAccountsService();
+	$response = $service->AddBankAccount($addBankAccount);
+
+	$ack = strtoupper($response->responseEnvelope->ack);
+
+	if($ack != "SUCCESS"){
+		$_SESSION['reshash']=$response;
+		$location = "APIError.php";
+		header("Location: $location");
+	}
+	else
+	{
+
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
+		$payPalURL = $response->redirectURL;
+		echo" <a href=$payPalURL><b>* Redirect URL to Add Bank Account </b></a><br>";
+		
+
+	}
+
+}
+catch(Exception $ex) {
+	throw new Exception('Error occurred in AddBankAccount method');
+}
