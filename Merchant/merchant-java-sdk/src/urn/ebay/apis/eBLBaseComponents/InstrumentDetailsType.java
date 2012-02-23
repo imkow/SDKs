@@ -26,8 +26,7 @@ import org.xml.sax.SAXException;
 public class InstrumentDetailsType {
 
 	/**
-	 * This field holds the category of the instrument only when it is
-	 * promotional. Return value 1 represents BML.
+	 * This field holds the category of the instrument only when it is promotional. Return value 1 represents BML.
 	 */
 	private String InstrumentCategory;
 	public String getInstrumentCategory() {

@@ -10,22 +10,14 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 
 /**
- * The value of a previously authorized transaction
- * identification number returned by a PayPal product. You can
- * obtain a buyer's transaction number from the TransactionID
- * element of the PayerInfo structure returned by
- * GetTransactionDetailsResponse.
+ * The value of a previously authorized transaction identification number returned by a PayPal product. You can obtain a buyer's transaction number from the TransactionID element of the PayerInfo structure returned by GetTransactionDetailsResponse. 
  * Required
  * Character length and limits: 19 single-byte characters maximum
  */
 public class DoReauthorizationRequestType extends AbstractRequestType{
 
 	/**
-	 * The value of a previously authorized transaction
-	 * identification number returned by a PayPal product. You can
-	 * obtain a buyer's transaction number from the TransactionID
-	 * element of the PayerInfo structure returned by
-	 * GetTransactionDetailsResponse.
+The value of a previously authorized transaction identification number returned by a PayPal product. You can obtain a buyer's transaction number from the TransactionID element of the PayerInfo structure returned by GetTransactionDetailsResponse. 
 	 * Required
 	 * Character length and limits: 19 single-byte characters maximum
 	 *
@@ -40,11 +32,9 @@ public class DoReauthorizationRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Amount to reauthorize.
+Amount to reauthorize. 
 	 * Required
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and
-	 * the thousands separator must be a comma (,).
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
 	 *
 	 * @Required
 	 */

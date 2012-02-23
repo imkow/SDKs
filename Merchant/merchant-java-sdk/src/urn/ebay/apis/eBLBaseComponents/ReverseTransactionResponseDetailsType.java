@@ -20,15 +20,13 @@ import org.xml.sax.SAXException;
 
 
 /**
- * Unique transaction identifier of the reversal transaction
- * created.
+ * Unique transaction identifier of the reversal transaction created.
  * Character length and limitations:17 single-byte characters
  */
 public class ReverseTransactionResponseDetailsType {
 
 	/**
-	 * Unique transaction identifier of the reversal transaction
-	 * created.
+Unique transaction identifier of the reversal transaction created.
 	 * Character length and limitations:17 single-byte characters
 	 */
 	private String ReverseTransactionID;
@@ -40,7 +38,7 @@ public class ReverseTransactionResponseDetailsType {
 	}
 
 	/**
-	 * Status of reversal request.
+Status of reversal request.
 	 * Required
 	 *
 	 * @Required

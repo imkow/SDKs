@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 
 /**
- * OptionType
+ * OptionType 
  * PayPal item options for shopping cart.
  */
 public class OptionType {

@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * PaymentCodeType
+ * PaymentCodeType 
  * This is the type of PayPal payment which matches the output from IPN.
  */
 package urn.ebay.apis.eBLBaseComponents;

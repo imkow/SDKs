@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 
 /**
- * AuctionInfoType
+ * AuctionInfoType 
  * Basic information about an auction.
  */
 public class AuctionInfoType {

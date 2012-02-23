@@ -1,9 +1,7 @@
 /**
  * Auto generated code
- * IncentiveRequestType
- * This identifies the type of request for the API call. The type of
- * request may be used to determine whether the request is for
- * evaluating incentives in pre-checkout or in-checkout phase.
+ * IncentiveRequestType 
+ * This identifies the type of request for the API call. The type of request may be used to determine whether the request is for evaluating incentives in pre-checkout or in-checkout phase.
  */
 package urn.ebay.apis.eBLBaseComponents;
 

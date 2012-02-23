@@ -12,14 +12,12 @@ import urn.ebay.apis.eBLBaseComponents.PaymentDirectivesType;
 
 
 /**
- * The Type of Approval requested - Billing Agreement
- * or Profile
+ * The Type of Approval requested - Billing Agreement or Profile
  */
 public class BillingApprovalDetailsType {
 
 	/**
-The Type of Approval requested - Billing Agreement
-	 * or Profile	 *
+The Type of Approval requested - Billing Agreement or Profile	 *
 	 * @Required
 	 */
 	private ApprovalTypeType ApprovalType;
@@ -31,9 +29,7 @@ The Type of Approval requested - Billing Agreement
 	}
 
 	/**
-The Approval subtype - Must be
-	 * MerchantInitiatedBilling for BillingAgreement ApprovalType
-	 */
+The Approval subtype - Must be MerchantInitiatedBilling for BillingAgreement ApprovalType	 */
 	private ApprovalSubTypeType ApprovalSubType;
 	public ApprovalSubTypeType getApprovalSubType() {
 		return ApprovalSubType;
@@ -53,8 +49,7 @@ Description about the Order	 */
 	}
 
 	/**
-Directives about the type of payment
-	 */
+Directives about the type of payment	 */
 	private PaymentDirectivesType PaymentDirectives;
 	public PaymentDirectivesType getPaymentDirectives() {
 		return PaymentDirectives;
@@ -64,9 +59,7 @@ Directives about the type of payment
 	}
 
 	/**
-Client may pass in its identification of this
-	 * Billing Agreement. It used for the client's tracking purposes.
-	 */
+Client may pass in its identification of this Billing Agreement. It used for the client's tracking purposes.	 */
 	private String Custom;
 	public String getCustom() {
 		return Custom;

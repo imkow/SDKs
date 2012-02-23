@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * PaymentStatusCodeType
- * This is the status of a PayPal Payment which matches the output from
- * IPN
+ * PaymentStatusCodeType 
+ * This is the status of a PayPal Payment which matches the output from IPN
  */
 package urn.ebay.apis.eBLBaseComponents;
 
@@ -23,6 +22,8 @@ EXPIRED("Expired"),
 INPROGRESS("In-Progress"),
 CREATED("Created"),
 COMPLETEDFUNDSHELD("Completed-Funds-Held"),
+INSTANT("Instant"),
+DELAYED("Delayed"),
 	;
 private String value;
 PaymentStatusCodeType(String val){

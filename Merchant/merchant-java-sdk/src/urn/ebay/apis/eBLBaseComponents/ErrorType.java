@@ -24,10 +24,8 @@ import urn.ebay.apis.eBLBaseComponents.SeverityCodeType;
 
 
 /**
- * Error code can be used by a receiving application to debugging a
- * response
- * message. These codes will need to be uniquely defined for each
- * application. 
+ * Error code can be used by a receiving application to debugging a response 
+ * message. These codes will need to be uniquely defined for each application. 
  */
 public class ErrorType {
 
@@ -52,10 +50,8 @@ public class ErrorType {
 	}
 
 	/**
-	 * Error code can be used by a receiving application to debugging a
-	 * response
-	 * message. These codes will need to be uniquely defined for each
-	 * application. 
+	 * Error code can be used by a receiving application to debugging a response 
+	 * message. These codes will need to be uniquely defined for each application. 
 	 */
 	private String ErrorCode;
 	public String getErrorCode() {
@@ -78,12 +74,9 @@ public class ErrorType {
 	}
 
 	/**
-	 * This optional element may carry additional application-specific
-	 * error variables
-	 * that indicate specific information about the error condition
-	 * particularly in the
-	 * cases where there are multiple instances of the ErrorType which
-	 * require
+	 * This optional element may carry additional application-specific error variables 
+	 * that indicate specific information about the error condition particularly in the 
+	 * cases where there are multiple instances of the ErrorType which require 
 	 * additional context.
 	 */
 	private List<ErrorParameterType> ErrorParameters = new ArrayList<ErrorParameterType>();

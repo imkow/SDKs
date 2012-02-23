@@ -11,18 +11,16 @@ import urn.ebay.apis.eBLBaseComponents.AddressType;
 
 
 /**
- * URL to which the customer's browser is returned after choosing
- * to login with PayPal.
+ * URL to which the customer's browser is returned after choosing to login with PayPal.
  * Required
- * Character length and limitations: no limit.
+ * Character length and limitations: no limit. 
  */
 public class SetAccessPermissionsRequestDetailsType {
 
 	/**
-	 * URL to which the customer's browser is returned after choosing
-	 * to login with PayPal.
+URL to which the customer's browser is returned after choosing to login with PayPal.
 	 * Required
-	 * Character length and limitations: no limit.
+	 * Character length and limitations: no limit. 
 	 */
 	private String ReturnURL;
 	public String getReturnURL() {
@@ -33,8 +31,7 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * URL to which the customer is returned if he does not approve the
-	 * use of PayPal login.
+URL to which the customer is returned if he does not approve the use of PayPal login. 
 	 * Required
 	 * Character length and limitations: no limit
 	 */
@@ -47,10 +44,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * URL to which the customer's browser is returned after user logs
-	 * out from PayPal.
+URL to which the customer's browser is returned after user logs out from PayPal. 
 	 * Required
-	 * Character length and limitations: no limit.
+	 * Character length and limitations: no limit. 
 	 */
 	private String LogoutURL;
 	public String getLogoutURL() {
@@ -61,10 +57,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * The type of the flow.
+The type of the flow.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String InitFlowType;
 	public String getInitFlowType() {
@@ -75,10 +70,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * The used to decide SkipLogin allowed or not.
+The used to decide SkipLogin allowed or not.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String SkipLoginPage;
 	public String getSkipLoginPage() {
@@ -113,9 +107,8 @@ public class SetAccessPermissionsRequestDetailsType {
 	/**
 	 * Locale of pages displayed by PayPal during Authentication Login.
 	 * Optional
-	 * Character length and limitations: Five single-byte alphabetic
-	 * characters, upper- or lowercase.
-	 * Allowable values:
+	 * Character length and limitations: Five single-byte alphabetic characters, upper- or lowercase. 
+	 * Allowable values: 
 	 * AU or en_AU
 	 * DE or de_DE
 	 * FR or fr_FR
@@ -133,15 +126,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * Sets the Custom Payment Page Style for flow pages associated
-	 * with this button/link. PageStyle corresponds to the HTML
-	 * variable page_style for customizing flow pages. The value is the
-	 * same as the Page Style Name you chose when adding or editing the
-	 * page style from the Profile subtab of the My Account tab of your
-	 * PayPal account.
+Sets the Custom Payment Page Style for flow pages associated with this button/link. PageStyle corresponds to the HTML variable page_style for customizing flow pages. The value is the same as the Page Style Name you chose when adding or editing the page style from the Profile subtab of the My Account tab of your PayPal account. 
 	 * Optional
-	 * Character length and limitations: 30 single-byte alphabetic
-	 * characters.
+	 * Character length and limitations: 30 single-byte alphabetic characters.
 	 */
 	private String PageStyle;
 	public String getPageStyle() {
@@ -152,10 +139,7 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * A URL for the image you want to appear at the top left of the
-	 * flow page. The image has a maximum size of 750 pixels wide by 90
-	 * pixels high. PayPal recommends that you provide an image that is
-	 * stored on a secure (https) server.
+	 * A URL for the image you want to appear at the top left of the flow page. The image has a maximum size of 750 pixels wide by 90 pixels high. PayPal recommends that you provide an image that is stored on a secure (https) server. 
 	 * Optional
 	 * Character length and limitations: 127
 	 */
@@ -168,12 +152,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * Sets the border color around the header of the flow page. The
-	 * border is a 2-pixel perimeter around the header space, which is
-	 * 750 pixels wide by 90 pixels high.
+	 * Sets the border color around the header of the flow page. The border is a 2-pixel perimeter around the header space, which is 750 pixels wide by 90 pixels high. 
 	 * Optional
-	 * Character length and limitations: Six character HTML hexadecimal
-	 * color code in ASCII
+	 * Character length and limitations: Six character HTML hexadecimal color code in ASCII
 	 */
 	private String cppheaderbordercolor;
 	public String getCppheaderbordercolor() {
@@ -184,10 +165,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * Sets the background color for the header of the flow page.
+	 * Sets the background color for the header of the flow page. 
 	 * Optional
-	 * Character length and limitation: Six character HTML hexadecimal
-	 * color code in ASCII
+	 * Character length and limitation: Six character HTML hexadecimal color code in ASCII
 	 */
 	private String cppheaderbackcolor;
 	public String getCppheaderbackcolor() {
@@ -198,10 +178,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * Sets the background color for the payment page.
+	 * Sets the background color for the payment page. 
 	 * Optional
-	 * Character length and limitation: Six character HTML hexadecimal
-	 * color code in ASCII
+	 * Character length and limitation: Six character HTML hexadecimal color code in ASCII
 	 */
 	private String cpppayflowcolor;
 	public String getCpppayflowcolor() {
@@ -212,11 +191,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * First Name of the user, this information is used if user chooses
-	 * to signup with PayPal.
+First Name of the user, this information is used if user chooses to signup with PayPal.
 	 * Optional
-	 * Character length and limitation: Six character HTML hexadecimal
-	 * color code in ASCII
+	 * Character length and limitation: Six character HTML hexadecimal color code in ASCII
 	 */
 	private String FirstName;
 	public String getFirstName() {
@@ -227,11 +204,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * Last Name of the user, this information is used if user chooses
-	 * to signup with PayPal.
+Last Name of the user, this information is used if user chooses to signup with PayPal.
 	 * Optional
-	 * Character length and limitation: Six character HTML hexadecimal
-	 * color code in ASCII
+	 * Character length and limitation: Six character HTML hexadecimal color code in ASCII
 	 */
 	private String LastName;
 	public String getLastName() {
@@ -242,12 +217,9 @@ public class SetAccessPermissionsRequestDetailsType {
 	}
 
 	/**
-	 * User address, this information is used when user chooses to
-	 * signup for PayPal.
+User address, this information is used when user chooses to signup for PayPal.
 	 * Optional
-	 * If you include a shipping address and set the AddressOverride
-	 * element on the request, PayPal returns this same address in
-	 * GetExpressCheckoutDetailsResponse.
+	 * If you include a shipping address and set the AddressOverride element on the request, PayPal returns this same address in GetExpressCheckoutDetailsResponse. 
 	 */
 	private AddressType Address;
 	public AddressType getAddress() {

@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * PaymentTransactionStatusCodeType
+ * PaymentTransactionStatusCodeType 
  * The status of the PayPal payment.
  */
 package urn.ebay.apis.eBLBaseComponents;

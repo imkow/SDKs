@@ -86,8 +86,7 @@ public class DoReferenceTransactionResponseDetailsType {
 	}
 
 	/**
-	 * Response code from the processor when a recurring transaction is
-	 * declined
+	 * Response code from the processor when a recurring transaction is declined
 	 */
 	private String PaymentAdviceCode;
 	public String getPaymentAdviceCode() {

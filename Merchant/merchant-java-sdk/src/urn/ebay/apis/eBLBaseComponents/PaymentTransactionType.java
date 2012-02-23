@@ -28,14 +28,13 @@ import urn.ebay.apis.eBLBaseComponents.UserSelectedOptionType;
 
 
 /**
- * PaymentTransactionType
+ * PaymentTransactionType 
  * Information about a PayPal payment from the seller side
  */
 public class PaymentTransactionType {
 
 	/**
-Information about the recipient of the payment
-	 */
+Information about the recipient of the payment 	 */
 	private ReceiverInfoType ReceiverInfo;
 	public ReceiverInfoType getReceiverInfo() {
 		return ReceiverInfo;
@@ -65,8 +64,7 @@ Information about the transaction 	 */
 	}
 
 	/**
-Information about an individual item in the
-	 * transaction	 */
+Information about an individual item in the transaction	 */
 	private PaymentItemInfoType PaymentItemInfo;
 	public PaymentItemInfoType getPaymentItemInfo() {
 		return PaymentItemInfo;

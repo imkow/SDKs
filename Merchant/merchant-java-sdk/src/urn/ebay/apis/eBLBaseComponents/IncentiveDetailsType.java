@@ -26,16 +26,13 @@ import urn.ebay.apis.eBLBaseComponents.IncentiveSiteAppliedOnType;
 
 
 /**
- * Information about the incentives that were applied from Ebay RYP page and
- * PayPal RYP page.
+ * Information about the incentives that were applied from Ebay RYP page and PayPal RYP page.
  */
 public class IncentiveDetailsType {
 
 	/**
-	 * Unique Identifier consisting of redemption code, user friendly
-	 * descripotion, incentive type, campaign code, incenitve
-	 * application order and site redeemed o
-	 * n.
+	 * Unique Identifier consisting of redemption code, user friendly descripotion, incentive type, campaign code, incenitve application order and site redeemed o
+n.
 	 */
 	private String UniqueIdentifier;
 	public String getUniqueIdentifier() {
@@ -57,8 +54,7 @@ public class IncentiveDetailsType {
 	}
 
 	/**
-	 * The total discount amount for the incentive, summation of discounts
-	 * up across all the buckets/items.
+	 * The total discount amount for the incentive, summation of discounts up across all the buckets/items.
 	 */
 	private BasicAmountType TotalDiscountAmount;
 	public BasicAmountType getTotalDiscountAmount() {
@@ -91,7 +87,7 @@ public class IncentiveDetailsType {
 	}
 
 	/**
-	 * Details of incentive application on individual bucket/item.
+	 * Details of incentive application on individual bucket/item.  
 	 */
 	private List<IncentiveAppliedDetailsType> IncentiveAppliedDetails = new ArrayList<IncentiveAppliedDetailsType>();
 	public List<IncentiveAppliedDetailsType> getIncentiveAppliedDetails() {

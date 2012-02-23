@@ -19,7 +19,7 @@ import urn.ebay.apis.eBLBaseComponents.PhoneNumberType;
 public class CreateMobilePaymentRequestDetailsType {
 
 	/**
-	 * Type of the payment
+Type of the payment
 	 * Required
 	 */
 	private MobilePaymentCodeType PaymentType;
@@ -31,13 +31,10 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * How you want to obtain payment. Defaults to Sale.
+	 * How you want to obtain payment.  Defaults to Sale.
 	 * Optional
-	 * Authorization indicates that this payment is a basic
-	 * authorization subject to settlement with PayPal Authorization
-	 * and Capture.
-	 * Sale indicates that this is a final sale for which you are
-	 * requesting payment.
+	 * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+	 * Sale indicates that this is a final sale for which you are requesting payment.
 	 */
 	private PaymentActionCodeType PaymentAction;
 	public PaymentActionCodeType getPaymentAction() {
@@ -48,7 +45,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Phone number of the user making the payment.
+Phone number of the user making the payment.
 	 * Required
 	 */
 	private PhoneNumberType SenderPhone;
@@ -60,7 +57,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Type of recipient specified, i.e., phone number or email address
+Type of recipient specified, i.e., phone number or email address
 	 * Required
 	 */
 	private MobileRecipientCodeType RecipientType;
@@ -72,7 +69,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Email address of the recipient
+Email address of the recipient
 	 */
 	private String RecipientEmail;
 	public String getRecipientEmail() {
@@ -83,7 +80,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Phone number of the recipipent
+Phone number of the recipipent
 	 * Required
 	 */
 	private PhoneNumberType RecipientPhone;
@@ -95,7 +92,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Amount of item before tax and shipping
+Amount of item before tax and shipping
 	 */
 	private BasicAmountType ItemAmount;
 	public BasicAmountType getItemAmount() {
@@ -106,8 +103,8 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * The tax charged on the transaction
-	 * Tax
+The tax charged on the transaction
+Tax
 	 * Optional
 	 */
 	private BasicAmountType Tax;
@@ -119,7 +116,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Per-transaction shipping charge
+Per-transaction shipping charge
 	 * Optional
 	 */
 	private BasicAmountType Shipping;
@@ -131,10 +128,9 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Name of the item being ordered
+Name of the item being ordered
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String ItemName;
 	public String getItemName() {
@@ -145,10 +141,9 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * SKU of the item being ordered
+SKU of the item being ordered
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String ItemNumber;
 	public String getItemNumber() {
@@ -159,10 +154,9 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Memo entered by sender in PayPal Website Payments note field.
+Memo entered by sender in PayPal Website Payments note field.
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String Note;
 	public String getNote() {
@@ -173,10 +167,9 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Unique ID for the order. Required for non-P2P transactions
+Unique ID for the order.  Required for non-P2P transactions
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String CustomID;
 	public String getCustomID() {
@@ -187,8 +180,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Indicates whether the sender's phone number will be shared with
-	 * recipient
+Indicates whether the sender's phone number will be shared with recipient
 	 * Optional
 	 */
 	private Integer SharePhoneNumber;
@@ -200,8 +192,7 @@ public class CreateMobilePaymentRequestDetailsType {
 	}
 
 	/**
-	 * Indicates whether the sender's home address will be shared with
-	 * recipient
+Indicates whether the sender's home address will be shared with recipient
 	 * Optional
 	 */
 	private Integer ShareHomeAddress;

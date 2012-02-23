@@ -8,16 +8,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * An optional set of values related to flow-specific
- * details.
+ * An optional set of values related to flow-specific details.
  */
 public class FlowControlDetailsType {
 
 	/**
-	 * The URL to redirect to for an unpayable
-	 * transaction. This field is currently used only
-	 * for the inline
-	 * checkout flow.
+	 * The URL to redirect to for an unpayable transaction.  This field is currently used only
+	 * for the inline checkout flow.
 	 */
 	private String ErrorURL;
 	public String getErrorURL() {
@@ -28,10 +25,8 @@ public class FlowControlDetailsType {
 	}
 
 	/**
-	 * The URL to redirect to after a user clicks the
-	 * "Pay" or "Continue" button on the merchant's
-	 * site. This field is
-	 * currently used only for the inline checkout flow.
+	 * The URL to redirect to after a user clicks the "Pay" or "Continue" button on the merchant's
+	 * site.  This field is currently used only for the inline checkout flow.
 	 */
 	private String InContextReturnURL;
 	public String getInContextReturnURL() {

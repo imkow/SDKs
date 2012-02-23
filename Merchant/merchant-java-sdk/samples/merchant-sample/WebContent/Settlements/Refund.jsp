@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="params">
-					<div class="param_name">Refund Type*(default value is "Full"</div>
+					<div class="param_name">Refund Type*(default value is "Full")</div>
 					<div class="param_value">
 						<select name="refundType">
 							<option value=""></option>
@@ -63,7 +63,7 @@
 				<div class="params">
 					<div class="param_name">Currency Code*</div>
 					<div class="param_value">
-						<input type="text" name="currencyID" value="" size="50"
+						<input type="text" name="currencyID" value="USD" size="50"
 							maxlength="260" />
 					</div>
 				</div>
@@ -94,10 +94,8 @@
 				<li><a href="DoCapture">DoCapture</a></li>
 				<li><a href="DoVoid">DoVoid</a></li>
 				<li><a href="DoReauthorization">DoReauthorization</a></li>
-				<li><a href="DoAuthorization">DoAuthorization</a>
-				</li>
-				<li><a href="DoUATPAuthorization">DoUATPAuthorization</a>
-				</li>
+				<li><a href="DoAuthorization">DoAuthorization</a></li>
+
 				<li><a href="ReverseTransaction">ReverseTransaction</a></li>
 				<li><a href="DoNonReferencedCredit">DoNonReferencedCredit</a></li>
 				<li><a href="ManagePendingTransactionStatus">ManagePendingTransactionStatus</a>

@@ -29,8 +29,7 @@ public class SetDataRequestType {
 	}
 
 	/**
-	 * Only needed if Auto Authorization is requested. The authentication
-	 * session token will be passed in here.
+	 * Only needed if Auto Authorization is requested. The authentication session token will be passed in here.
 	 */
 	private BuyerDetailType BuyerDetail;
 	public BuyerDetailType getBuyerDetail() {
@@ -41,9 +40,7 @@ public class SetDataRequestType {
 	}
 
 	/**
-	 * Requests for specific buyer information like Billing Address to be
-	 * returned through GetExpressCheckoutDetails should be specified
-	 * under this.
+	 * Requests for specific buyer information like Billing Address to be returned through GetExpressCheckoutDetails should be specified under this.
 	 */
 	private InfoSharingDirectivesType InfoSharingDirectives;
 	public InfoSharingDirectivesType getInfoSharingDirectives() {

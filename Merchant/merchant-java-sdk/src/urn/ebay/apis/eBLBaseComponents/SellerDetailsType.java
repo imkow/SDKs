@@ -26,7 +26,7 @@ public class SellerDetailsType {
 
 	/**
 	 * Unique identifier for the seller.
-	 * Optional
+	 * Optional 
 	 */
 	private String SellerId;
 	public String getSellerId() {
@@ -38,7 +38,7 @@ public class SellerDetailsType {
 
 	/**
 	 * The user name of the user at the marketplaces site.
-	 * Optional
+	 * Optional 
 	 */
 	private String SellerUserName;
 	public String getSellerUserName() {
@@ -50,7 +50,7 @@ public class SellerDetailsType {
 
 	/**
 	 * Date when the user registered with the marketplace.
-	 * Optional
+	 * Optional 
 	 */
 	private String SellerRegistrationDate;
 	public String getSellerRegistrationDate() {
@@ -61,8 +61,7 @@ public class SellerDetailsType {
 	}
 
 	/**
-	 * Seller Paypal Account Id contains the seller EmailId or PayerId or
-	 * PhoneNo passed during the Request. 
+	 * Seller Paypal Account Id contains the seller EmailId or PayerId or PhoneNo passed during the Request. 
 	 */
 	private String PayPalAccountID;
 	public String getPayPalAccountID() {
@@ -73,9 +72,7 @@ public class SellerDetailsType {
 	}
 
 	/**
-	 * Unique PayPal customer account identification number (of the seller).
-	 * This feild is meant for Response. This field is ignored, if
-	 * passed in the Request.
+	 * Unique PayPal customer account identification number (of the seller). This feild is meant for Response. This field is ignored, if passed in the Request.
 	 */
 	private String SecureMerchantAccountID;
 	public String getSecureMerchantAccountID() {

@@ -27,8 +27,7 @@ public class APICredentialsType {
 
 	/**
 	 * Merchant’s PayPal API username
-	 * Character length and limitations: 128 alphanumeric characters
-	 */
+Character length and limitations: 128 alphanumeric characters	 */
 	private String Username;
 	public String getUsername() {
 		return Username;
@@ -39,8 +38,7 @@ public class APICredentialsType {
 
 	/**
 	 * Merchant’s PayPal API password
-	 * Character length and limitations: 40 alphanumeric characters
-	 */
+Character length and limitations: 40 alphanumeric characters	 */
 	private String Password;
 	public String getPassword() {
 		return Password;
@@ -51,8 +49,7 @@ public class APICredentialsType {
 
 	/**
 	 * Merchant’s PayPal API signature, if one exists.
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String Signature;
 	public String getSignature() {
 		return Signature;
@@ -63,10 +60,8 @@ public class APICredentialsType {
 
 	/**
 	 * Merchant’s PayPal API certificate in PEM format, if one exists
-	 * The certificate consists of two parts: the private key (2,048
-	 * bytes) and the certificate proper (4,000 bytes).
-	 * Character length and limitations: 6,048 alphanumeric characters
-	 */
+	 * The certificate consists of two parts: the private key (2,048 bytes) and the certificate proper (4,000 bytes).
+	 * Character length and limitations: 6,048 alphanumeric characters	 */
 	private String Certificate;
 	public String getCertificate() {
 		return Certificate;
@@ -80,8 +75,7 @@ public class APICredentialsType {
 	 * Auth-None: no authentication mechanism on file
 	 * Cert: API certificate
 	 * Sign: API signature
-	 * Character length and limitations: 9 alphanumeric characters
-	 */
+	 * Character length and limitations: 9 alphanumeric characters	 */
 	private APIAuthenticationType Type;
 	public APIAuthenticationType getType() {
 		return Type;

@@ -21,8 +21,7 @@ public class EnterBoardingRequestDetailsType {
 	/**
 	 * Onboarding program code given to you by PayPal.
 	 * Required
-	 * Character length and limitations: 64 alphanumeric characters
-	 */
+	 * Character length and limitations: 64 alphanumeric characters	 */
 	private String ProgramCode;
 	public String getProgramCode() {
 		return ProgramCode;
@@ -32,21 +31,13 @@ public class EnterBoardingRequestDetailsType {
 	}
 
 	/**
-	 * A list of comma-separated values that indicate the PayPal
-	 * products you are implementing for this merchant:
-	 * Direct Payment (dp) allows payments by credit card without
-	 * requiring the customer to have a PayPal account.
-	 * Express Checkout (ec) allows customers to fund transactions with
-	 * their PayPal account.
-	 * Authorization and Capture (auth_settle) allows merchants to
-	 * verify availability of funds in a PayPal account, but capture
-	 * them at a later time.
-	 * Administrative APIs (admin_api) is a collection of the PayPal
-	 * APIs for transaction searching, getting transaction details,
-	 * refunding, and mass payments.
+	 * A list of comma-separated values that indicate the PayPal products you are implementing for this merchant:
+	 * Direct Payment (dp) allows payments by credit card without requiring the customer to have a PayPal account. 
+	 * Express Checkout (ec) allows customers to fund transactions with their PayPal account. 
+	 * Authorization and Capture (auth_settle) allows merchants to verify availability of funds in a PayPal account, but capture them at a later time. 
+	 * Administrative APIs (admin_api) is a collection of the PayPal APIs for transaction searching, getting transaction details, refunding, and mass payments. 
 	 * Required
-	 * Character length and limitations: 64 alphanumeric characters
-	 */
+	 * Character length and limitations: 64 alphanumeric characters	 */
 	private String ProductList;
 	public String getProductList() {
 		return ProductList;
@@ -58,8 +49,7 @@ public class EnterBoardingRequestDetailsType {
 	/**
 	 * Any custom information you want to store for this partner
 	 * Optional
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String PartnerCustom;
 	public String getPartnerCustom() {
 		return PartnerCustom;
@@ -69,11 +59,9 @@ public class EnterBoardingRequestDetailsType {
 	}
 
 	/**
-	 * The URL for the logo displayed on the PayPal Partner Welcome
-	 * Page.
+	 * The URL for the logo displayed on the PayPal Partner Welcome Page.
 	 * Optional
-	 * Character length and limitations: 2,048 alphanumeric characters
-	 */
+	 * Character length and limitations: 2,048 alphanumeric characters	 */
 	private String ImageUrl;
 	public String getImageUrl() {
 		return ImageUrl;
@@ -83,8 +71,7 @@ public class EnterBoardingRequestDetailsType {
 	}
 
 	/**
-	 * Marketing category tha configures the graphic displayed n the PayPal
-	 * Partner Welcome page.	 */
+	 * Marketing category tha configures the graphic displayed n the PayPal Partner Welcome page.	 */
 	private MarketingCategoryType MarketingCategory;
 	public MarketingCategoryType getMarketingCategory() {
 		return MarketingCategory;

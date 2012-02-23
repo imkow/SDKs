@@ -1,16 +1,14 @@
 /**
  * Auto generated code
- * ISO 4217 standard 3-letter currency code.
+ * ISO 4217 standard 3-letter currency code. 
  * The following currencies are supported by PayPal.
  * Code
- * Currency
- * Maximum Transaction Amount
+ * CurrencyMaximum Transaction Amount
  * AUD
  * Australian Dollar 
  * 12,500 AUD
  * CAD
- * Canadian Dollar
- * 12,500 CAD
+ * Canadian Dollar12,500 CAD
  * EUR
  * Euro
  * 8,000 EUR

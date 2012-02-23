@@ -9,16 +9,14 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 
 /**
- * A timestamped token, the value of which was returned by
- * SetAuthFlowParam Response.
+A timestamped token, the value of which was returned by SetAuthFlowParam Response. 
  * Required
  * Character length and limitations: 20 single-byte characters
  */
 public class GetAuthDetailsRequestType extends AbstractRequestType{
 
 	/**
-	 * A timestamped token, the value of which was returned by
-	 * SetAuthFlowParam Response.
+A timestamped token, the value of which was returned by SetAuthFlowParam Response. 
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 *

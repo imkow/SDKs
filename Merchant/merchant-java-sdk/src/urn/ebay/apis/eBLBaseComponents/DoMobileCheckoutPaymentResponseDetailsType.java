@@ -22,20 +22,16 @@ import urn.ebay.apis.eBLBaseComponents.PaymentInfoType;
 
 
 /**
- * A free-form field for your own use, such as a tracking number or
- * other value you want returned to you in IPN.
+ * A free-form field for your own use, such as a tracking number or other value you want returned to you in IPN.
  * Optional
- * Character length and limitations: 256 single-byte alphanumeric
- * characters
+ * Character length and limitations: 256 single-byte alphanumeric characters
  */
 public class DoMobileCheckoutPaymentResponseDetailsType {
 
 	/**
-	 * A free-form field for your own use, such as a tracking number or
-	 * other value you want returned to you in IPN.
+A free-form field for your own use, such as a tracking number or other value you want returned to you in IPN.
 	 * Optional
-	 * Character length and limitations: 256 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 256 single-byte alphanumeric characters
 	 */
 	private String Custom;
 	public String getCustom() {
@@ -46,10 +42,9 @@ public class DoMobileCheckoutPaymentResponseDetailsType {
 	}
 
 	/**
-	 * Your own unique invoice or tracking number.
+Your own unique invoice or tracking number.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {

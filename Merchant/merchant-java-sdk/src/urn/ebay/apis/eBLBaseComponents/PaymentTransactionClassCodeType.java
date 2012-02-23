@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * PaymentTransactionClassCodeType
+ * PaymentTransactionClassCodeType 
  * The Type of PayPal payment.
  */
 package urn.ebay.apis.eBLBaseComponents;

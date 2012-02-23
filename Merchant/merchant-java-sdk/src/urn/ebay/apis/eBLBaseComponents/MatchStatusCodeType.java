@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * MatchStatusCodeType
+ * MatchStatusCodeType 
  * This is the PayPal (street/zip) match code
  */
 package urn.ebay.apis.eBLBaseComponents;

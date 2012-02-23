@@ -21,15 +21,13 @@ import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
 
 
 /**
- * The authorization identification number you specified in the
- * request.
+ * The authorization identification number you specified in the request. 
  * Character length and limits: 19 single-byte characters
  */
 public class DoVoidResponseType extends AbstractResponseType{
 
 	/**
-	 * The authorization identification number you specified in the
-	 * request.
+The authorization identification number you specified in the request. 
 	 * Character length and limits: 19 single-byte characters
 	 *
 	 * @Required

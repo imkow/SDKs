@@ -149,8 +149,7 @@ public class UpdateRecurringPaymentsProfileRequestDetailsType {
 	}
 
 	/**
-	 * Information about the credit card to be charged (required if Direct
-	 * Payment)
+	 * Information about the credit card to be charged (required if Direct Payment)
 	 */
 	private CreditCardDetailsType CreditCard;
 	public CreditCardDetailsType getCreditCard() {

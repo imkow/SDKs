@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
 public class EbayItemPaymentDetailsItemType {
 
 	/**
-	 * Auction ItemNumber.
+	 * Auction ItemNumber. 
 	 * Optional
 	 * Character length and limitations: 765 single-byte characters
 	 */
@@ -39,7 +39,7 @@ public class EbayItemPaymentDetailsItemType {
 	}
 
 	/**
-	 * Auction Transaction ID.
+	 * Auction Transaction ID. 
 	 * Optional
 	 * Character length and limitations: 255 single-byte characters
 	 */
@@ -52,7 +52,7 @@ public class EbayItemPaymentDetailsItemType {
 	}
 
 	/**
-	 * Ebay Order ID.
+	 * Ebay Order ID. 
 	 * Optional
 	 * Character length and limitations: 64 single-byte characters
 	 */

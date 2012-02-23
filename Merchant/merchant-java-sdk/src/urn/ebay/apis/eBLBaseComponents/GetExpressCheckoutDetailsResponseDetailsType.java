@@ -30,19 +30,14 @@ import urn.ebay.apis.eBLBaseComponents.UserSelectedOptionType;
 
 
 /**
- * The timestamped token value that was returned by
- * SetExpressCheckoutResponse and passed on
- * GetExpressCheckoutDetailsRequest.
+ * The timestamped token value that was returned by SetExpressCheckoutResponse and passed on GetExpressCheckoutDetailsRequest. 
  * Character length and limitations: 20 single-byte characters
  */
 public class GetExpressCheckoutDetailsResponseDetailsType {
 
 	/**
-	 * The timestamped token value that was returned by
-	 * SetExpressCheckoutResponse and passed on
-	 * GetExpressCheckoutDetailsRequest.
-	 * Character length and limitations: 20 single-byte characters
-	 */
+	 * The timestamped token value that was returned by SetExpressCheckoutResponse and passed on GetExpressCheckoutDetailsRequest. 
+	 * Character length and limitations: 20 single-byte characters	 */
 	private String Token;
 	public String getToken() {
 		return Token;
@@ -62,11 +57,8 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * A free-form field for your own use, as set by you in the Custom
-	 * element of SetExpressCheckoutRequest.
-	 * Character length and limitations: 256 single-byte alphanumeric
-	 * characters
-	 */
+	 * A free-form field for your own use, as set by you in the Custom element of SetExpressCheckoutRequest. 
+	 * Character length and limitations: 256 single-byte alphanumeric characters	 */
 	private String Custom;
 	public String getCustom() {
 		return Custom;
@@ -76,10 +68,8 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Your own invoice or tracking number, as set by you in the
-	 * InvoiceID element of SetExpressCheckoutRequest.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Your own invoice or tracking number, as set by you in the InvoiceID element of SetExpressCheckoutRequest. 
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
@@ -90,9 +80,7 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Payer's contact telephone number. PayPal returns a contact telephone
-	 * number only if your Merchant account profile settings require
-	 * that the buyer enter one.	 */
+	 * Payer's contact telephone number. PayPal returns a contact telephone number only if your Merchant account profile settings require that the buyer enter one.	 */
 	private String ContactPhone;
 	public String getContactPhone() {
 		return ContactPhone;
@@ -122,12 +110,9 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Customer's billing address.
+Customer's billing address.
 	 * Optional
-	 * If you have credit card mapped in your account then billing
-	 * address of the credit card is returned otherwise your primary
-	 * address is returned , PayPal returns this address in
-	 * GetExpressCheckoutDetailsResponse.
+	 * If you have credit card mapped in your account then billing address of the credit card is returned otherwise your primary address is returned , PayPal returns this address in GetExpressCheckoutDetailsResponse.
 	 */
 	private AddressType BillingAddress;
 	public AddressType getBillingAddress() {
@@ -150,9 +135,7 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 
 	/**
 	 * Returns the status of the EC checkout session.
-	 * Values include 'PaymentActionNotInitiated',
-	 * 'PaymentActionFailed', 'PaymentActionInProgress',
-	 * 'PaymentCompleted'.
+	 * Values include 'PaymentActionNotInitiated', 'PaymentActionFailed', 'PaymentActionInProgress', 'PaymentCompleted'.
 	 */
 	private String CheckoutStatus;
 	public String getCheckoutStatus() {
@@ -163,10 +146,7 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * PayPal may offer a discount or gift certificate to the buyer, which
-	 * will be represented by a negativeamount. If the buyer has a
-	 * negative balance, PayPal will add that amount to the current
-	 * charges, which will be represented as a positive amount.
+	 * PayPal may offer a discount or gift certificate to the buyer, which will be represented by a negativeamount. If the buyer has a negative balance, PayPal will add that amount to the current charges, which will be represented as a positive amount.
 	 */
 	private BasicAmountType PayPalAdjustment;
 	public BasicAmountType getPayPalAdjustment() {
@@ -199,8 +179,7 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Information about the incentives that were applied from Ebay RYP page and
-	 * PayPal RYP page.
+	 * Information about the incentives that were applied from Ebay RYP page and PayPal RYP page.
 	 */
 	private List<IncentiveDetailsType> IncentiveDetails = new ArrayList<IncentiveDetailsType>();
 	public List<IncentiveDetailsType> getIncentiveDetails() {
@@ -299,8 +278,7 @@ public class GetExpressCheckoutDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Response information resulting from opt-in operation or current login
-	 * bypass status.
+	 * Response information resulting from opt-in operation or current login bypass status.
 	 */
 	private ExternalRememberMeStatusDetailsType ExternalRememberMeStatusDetails;
 	public ExternalRememberMeStatusDetailsType getExternalRememberMeStatusDetails() {

@@ -24,8 +24,7 @@ import urn.ebay.apis.eBLBaseComponents.PaymentTransactionSearchResultType;
 
 
 /**
- * Results of a Transaction Search.
- */
+Results of a Transaction Search. */
 public class TransactionSearchResponseType extends AbstractResponseType{
 
 	/**

@@ -17,7 +17,7 @@ import urn.ebay.apis.eBLBaseComponents.PhoneNumberType;
 public class SetMobileCheckoutRequestDetailsType {
 
 	/**
-	 * The phone number of the buyer's mobile device, if available.
+The phone number of the buyer's mobile device, if available.
 	 * Optional
 	 */
 	private PhoneNumberType BuyerPhone;
@@ -30,8 +30,7 @@ public class SetMobileCheckoutRequestDetailsType {
 
 	/**
 	 * Cost of this item before tax and shipping.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Required
 	 *
 	 * @Required
@@ -46,8 +45,7 @@ public class SetMobileCheckoutRequestDetailsType {
 
 	/**
 	 * Tax amount for this item.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
 	 */
 	private BasicAmountType Tax;
@@ -60,8 +58,7 @@ public class SetMobileCheckoutRequestDetailsType {
 
 	/**
 	 * Shipping amount for this item.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
 	 */
 	private BasicAmountType Shipping;
@@ -73,10 +70,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * Description of the item that the customer is purchasing.
+Description of the item that the customer is purchasing. 
 	 * Required
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 *
 	 * @Required
 	 */
@@ -89,10 +85,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * Reference number of the item that the customer is purchasing.
+Reference number of the item that the customer is purchasing. 
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String ItemNumber;
 	public String getItemNumber() {
@@ -103,11 +98,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * A free-form field for your own use, such as a tracking number or
-	 * other value you want returned to you in IPN.
+A free-form field for your own use, such as a tracking number or other value you want returned to you in IPN.
 	 * Optional
-	 * Character length and limitations: 256 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 256 single-byte alphanumeric characters
 	 */
 	private String Custom;
 	public String getCustom() {
@@ -118,10 +111,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * Your own unique invoice or tracking number.
+Your own unique invoice or tracking number.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
@@ -132,13 +124,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * URL to which the customer's browser is returned after choosing
-	 * to pay with PayPal. PayPal recommends that the value of
-	 * ReturnURL be the final review page on which the customer
-	 * confirms the order and payment.
+URL to which the customer's browser is returned after choosing to pay with PayPal. PayPal recommends that the value of ReturnURL be the final review page on which the customer confirms the order and payment. 
 	 * Required
-	 * Character length and limitations: no limit.
-	 *
+	 * Character length and limitations: no limit. 	 *
 	 * @Required
 	 */
 	private String ReturnURL;
@@ -150,10 +138,7 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * URL to which the customer is returned if he does not approve the
-	 * use of PayPal to pay you. PayPal recommends that the value of
-	 * CancelURL be the original page on which the customer chose to
-	 * pay with PayPal.
+URL to which the customer is returned if he does not approve the use of PayPal to pay you. PayPal recommends that the value of CancelURL be the original page on which the customer chose to pay with PayPal. 
 	 * Optional
 	 * Character length and limitations: no limit
 	 */
@@ -166,10 +151,7 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * The value 1 indicates that you require that the customer's
-	 * shipping address on file with PayPal be a confirmed address.
-	 * Setting this element overrides the setting you have specified in
-	 * your Merchant Account Profile.
+The value 1 indicates that you require that the customer's shipping address on file with PayPal be a confirmed address. Setting this element overrides the setting you have specified in your Merchant Account Profile. 
 	 * Optional
 	 */
 	private Integer AddressDisplayOptions;
@@ -181,9 +163,7 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * The value 1 indicates that you require that the customer
-	 * specifies a contact phone for the transactxion. Default is 0 /
-	 * none required.
+The value 1 indicates that you require that the customer specifies a contact phone for the transactxion.  Default is 0 / none required.
 	 * Optional
 	 */
 	private Integer SharePhone;
@@ -195,7 +175,7 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * Customer's shipping address.
+Customer's shipping address. 
 	 * Optional
 	 */
 	private AddressType ShipToAddress;
@@ -207,12 +187,9 @@ public class SetMobileCheckoutRequestDetailsType {
 	}
 
 	/**
-	 * Email address of the buyer as entered during checkout. PayPal
-	 * uses this value to pre-fill the login portion of the PayPal
-	 * login page.
+	 * Email address of the buyer as entered during checkout. PayPal uses this value to pre-fill the login portion of the PayPal login page. 
 	 * Optional
-	 * Character length and limit: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limit: 127 single-byte alphanumeric characters 
 	 */
 	private String BuyerEmail;
 	public String getBuyerEmail() {

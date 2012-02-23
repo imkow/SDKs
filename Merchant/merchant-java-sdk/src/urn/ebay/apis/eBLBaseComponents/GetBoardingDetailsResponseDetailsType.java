@@ -26,8 +26,8 @@ import urn.ebay.apis.eBLBaseComponents.UserWithdrawalLimitTypeType;
 /**
  * Status of merchant's onboarding process:
  * Completed
- * Cancelled
- * Pending
+Cancelled
+Pending
  * Character length and limitations: Eight alphabetic characters
  */
 public class GetBoardingDetailsResponseDetailsType {
@@ -35,10 +35,9 @@ public class GetBoardingDetailsResponseDetailsType {
 	/**
 	 * Status of merchant's onboarding process:
 	 * Completed
-	 * Cancelled
-	 * Pending
-	 * Character length and limitations: Eight alphabetic characters
-	 */
+Cancelled
+Pending
+	 * Character length and limitations: Eight alphabetic characters	 */
 	private BoardingStatusType Status;
 	public BoardingStatusType getStatus() {
 		return Status;
@@ -58,8 +57,7 @@ public class GetBoardingDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Date the merchant’s status or progress was last updated
-	 */
+	 * Date the merchant’s status or progress was last updated	 */
 	private String LastUpdated;
 	public String getLastUpdated() {
 		return LastUpdated;
@@ -70,8 +68,7 @@ public class GetBoardingDetailsResponseDetailsType {
 
 	/**
 	 * Reason for merchant’s cancellation of sign-up.
-	 * Character length and limitations: 1,024 alphanumeric characters
-	 */
+	 * Character length and limitations: 1,024 alphanumeric characters	 */
 	private String Reason;
 	public String getReason() {
 		return Reason;
@@ -111,8 +108,7 @@ public class GetBoardingDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Indicates if there is a limitation on the amount of money the business
-	 * can withdraw from PayPal	 */
+	 * Indicates if there is a limitation on the amount of money the business can withdraw from PayPal	 */
 	private UserWithdrawalLimitTypeType UserWithdrawalLimit;
 	public UserWithdrawalLimitTypeType getUserWithdrawalLimit() {
 		return UserWithdrawalLimit;
@@ -123,8 +119,7 @@ public class GetBoardingDetailsResponseDetailsType {
 
 	/**
 	 * Custom information you set on the EnterBoarding API call
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String PartnerCustom;
 	public String getPartnerCustom() {
 		return PartnerCustom;
@@ -154,8 +149,7 @@ public class GetBoardingDetailsResponseDetailsType {
 	}
 
 	/**
-	 * The APIs that this merchant has granted the business partner
-	 * permission to call on his behalf.
+	 * The APIs that this merchant has granted the business partner permission to call on his behalf.
 	 * For example:
 	 * SetExpressCheckout,GetExpressCheckoutDetails,DoExpressCheckoutPayment
 	 */
@@ -168,8 +162,7 @@ public class GetBoardingDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Primary email verification status. Confirmed, Unconfirmed
-	 */
+	 * Primary email verification status. Confirmed, Unconfirmed	 */
 	private String EmailVerificationStatus;
 	public String getEmailVerificationStatus() {
 		return EmailVerificationStatus;
@@ -180,8 +173,7 @@ public class GetBoardingDetailsResponseDetailsType {
 
 	/**
 	 * Gives VettingStatus - Pending, Cancelled, Approved, UnderReview
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String VettingStatus;
 	public String getVettingStatus() {
 		return VettingStatus;
@@ -192,8 +184,7 @@ public class GetBoardingDetailsResponseDetailsType {
 
 	/**
 	 * Gives BankAccountVerificationStatus - Added, Confirmed
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String BankAccountVerificationStatus;
 	public String getBankAccountVerificationStatus() {
 		return BankAccountVerificationStatus;

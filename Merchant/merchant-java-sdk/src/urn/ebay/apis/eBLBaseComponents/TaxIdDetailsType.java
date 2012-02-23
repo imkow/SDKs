@@ -20,8 +20,7 @@ import org.xml.sax.SAXException;
 
 
 /**
- * Details about the payer's tax info passed in by the merchant or
- * partner.
+ * Details about the payer's tax info passed in by the merchant or partner.
  * Optional.
  */
 public class TaxIdDetailsType {

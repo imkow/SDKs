@@ -24,13 +24,13 @@ import urn.ebay.apis.eBLBaseComponents.OptionType;
 
 
 /**
- * PaymentItemType
+ * PaymentItemType 
  * Information about a Payment Item.
  */
 public class PaymentItemType {
 
 	/**
-	 * eBay Auction Transaction ID of the Item
+	 * eBay Auction Transaction ID of the Item 
 	 * Optional
 	 * Character length and limitations: 255 single-byte characters
 	 */
@@ -43,9 +43,8 @@ public class PaymentItemType {
 	}
 
 	/**
-	 * Item name set by you or entered by the customer.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Item name set by you or entered by the customer. 
+Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String Name;
 	public String getName() {
@@ -56,10 +55,8 @@ public class PaymentItemType {
 	}
 
 	/**
-	 * Item number set by you.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
-	 */
+	 * Item number set by you. 
+	 * Character length and limitations: 127 single-byte alphanumeric characters	 */
 	private String Number;
 	public String getNumber() {
 		return Number;
@@ -69,9 +66,8 @@ public class PaymentItemType {
 	}
 
 	/**
-	 * Quantity set by you or entered by the customer.
-	 * Character length and limitations: no limit
-	 */
+	 * Quantity set by you or entered by the customer. 
+	 * Character length and limitations: no limit	 */
 	private String Quantity;
 	public String getQuantity() {
 		return Quantity;

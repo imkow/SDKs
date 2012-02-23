@@ -27,7 +27,7 @@ public class IncentiveInfoType {
 	}
 
 	/**
-	 * Defines which bucket or item that the incentive should be applied to.
+	 * Defines which bucket or item that the incentive should be applied to. 
 	 */
 	private List<IncentiveApplyIndicationType> ApplyIndication = new ArrayList<IncentiveApplyIndicationType>();
 	public List<IncentiveApplyIndicationType> getApplyIndication() {

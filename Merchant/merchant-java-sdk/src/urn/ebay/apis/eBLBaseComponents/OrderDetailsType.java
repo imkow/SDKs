@@ -24,8 +24,7 @@ Description of the Order.	 */
 	}
 
 	/**
-Expected maximum amount that the merchant may pull
-	 * using DoReferenceTransaction	 */
+Expected maximum amount that the merchant may pull using DoReferenceTransaction	 */
 	private BasicAmountType MaxAmount;
 	public BasicAmountType getMaxAmount() {
 		return MaxAmount;

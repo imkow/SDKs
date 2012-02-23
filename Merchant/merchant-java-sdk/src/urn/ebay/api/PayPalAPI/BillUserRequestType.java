@@ -10,8 +10,7 @@ import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentType;
 
 
 /**
- * This flag indicates that the response should
- * include FMFDetails
+ * This flag indicates that the response should include FMFDetails
  */
 public class BillUserRequestType extends AbstractRequestType{
 
@@ -26,8 +25,7 @@ public class BillUserRequestType extends AbstractRequestType{
 	}
 
 	/**
-This flag indicates that the response should
-	 * include FMFDetails	 */
+This flag indicates that the response should include FMFDetails	 */
 	private Integer ReturnFMFDetails;
 	public Integer getReturnFMFDetails() {
 		return ReturnFMFDetails;

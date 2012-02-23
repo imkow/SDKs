@@ -21,16 +21,14 @@ import urn.ebay.apis.eBLBaseComponents.PaymentInfoType;
 
 
 /**
- * The authorization identification number you specified in the
- * request.
- * Character length and limits: 19 single-byte characters maximum
+ * The authorization identification number you specified in the request. 
+Character length and limits: 19 single-byte characters maximum
  */
 public class DoCaptureResponseDetailsType {
 
 	/**
-	 * The authorization identification number you specified in the
-	 * request.
-	 * Character length and limits: 19 single-byte characters maximum
+The authorization identification number you specified in the request. 
+Character length and limits: 19 single-byte characters maximum
 	 */
 	private String AuthorizationID;
 	public String getAuthorizationID() {

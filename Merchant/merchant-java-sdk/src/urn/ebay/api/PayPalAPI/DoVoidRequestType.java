@@ -9,22 +9,16 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 
 /**
- * The value of the original authorization identification number
- * returned by a PayPal product.
- * If you are voiding a transaction that has been reauthorized,
- * use the ID from the original authorization, and not the
- * reauthorization.
+ * The value of the original authorization identification number returned by a PayPal product. 
+ * If you are voiding a transaction that has been reauthorized, use the ID from the original authorization, and not the reauthorization.
  * Required
  * Character length and limits: 19 single-byte characters
  */
 public class DoVoidRequestType extends AbstractRequestType{
 
 	/**
-	 * The value of the original authorization identification number
-	 * returned by a PayPal product.
-	 * If you are voiding a transaction that has been reauthorized,
-	 * use the ID from the original authorization, and not the
-	 * reauthorization.
+The value of the original authorization identification number returned by a PayPal product. 
+	 * If you are voiding a transaction that has been reauthorized, use the ID from the original authorization, and not the reauthorization.
 	 * Required
 	 * Character length and limits: 19 single-byte characters
 	 *
@@ -39,8 +33,7 @@ public class DoVoidRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * An informational note about this settlement that is displayed
-	 * to the payer in email and in transaction history.
+An informational note about this settlement that is displayed to the payer in email and in  transaction history. 
 	 * Optional
 	 * Character length and limits: 255 single-byte characters
 	 */

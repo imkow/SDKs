@@ -37,8 +37,8 @@
 			<ul>
 				<li><a href="SetExpressCheckout">SetExpressCheckout</a></li>
 				<li><a href="DoExpressCheckout">DoExpressCheckout</a></li>
-				<li><a href="DoUATPExpressCheckoutPayment">DoUATPExpressCheckout</a>
-				</li>
+		
+				
 			</ul>
 		</div>
 	</div>

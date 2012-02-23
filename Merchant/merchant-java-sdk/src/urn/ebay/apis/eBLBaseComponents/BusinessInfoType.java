@@ -21,8 +21,7 @@ import urn.ebay.apis.eBLBaseComponents.SalesVenueType;
 public class BusinessInfoType {
 
 	/**
-	 * Type of business, such as corporation or sole proprietorship
-	 */
+	 * Type of business, such as corporation or sole proprietorship	 */
 	private BusinessTypeType Type;
 	public BusinessTypeType getType() {
 		return Type;
@@ -33,8 +32,7 @@ public class BusinessInfoType {
 
 	/**
 	 * Official name of business
-	 * Character length and limitations: 75 alphanumeric characters
-	 */
+	 * Character length and limitations: 75 alphanumeric characters	 */
 	private String Name;
 	public String getName() {
 		return Name;
@@ -55,8 +53,7 @@ public class BusinessInfoType {
 
 	/**
 	 * Business’s primary telephone number
-	 * Character length and limitations: 20 alphanumeric characters
-	 */
+	 * Character length and limitations: 20 alphanumeric characters	 */
 	private String WorkPhone;
 	public String getWorkPhone() {
 		return WorkPhone;
@@ -89,7 +86,7 @@ public class BusinessInfoType {
 	 * Average transaction price, as defined by the enumerations.
 	 * Enumeration
 	 * Meaning
-	 * AverageTransactionPrice-Not-Applicable
+	 * AverageTransactionPrice-Not-Applicable	
 	 * AverageTransactionPrice-Range1
 	 * Less than $25 USD
 	 * AverageTransactionPrice-Range2
@@ -157,8 +154,7 @@ public class BusinessInfoType {
 
 	/**
 	 * Primary URL of business
-	 * Character length and limitations: 2,048 alphanumeric characters
-	 */
+	 * Character length and limitations: 2,048 alphanumeric characters	 */
 	private String Website;
 	public String getWebsite() {
 		return Website;
@@ -168,11 +164,10 @@ public class BusinessInfoType {
 	}
 
 	/**
-	 * Percentage of revenue attributable to online sales, as defined
-	 * by the enumerations
+	 * Percentage of revenue attributable to online sales, as defined by the enumerations
 	 * Enumeration
 	 * Meaning
-	 * PercentageRevenueFromOnlineSales-Not-Applicable
+	 * PercentageRevenueFromOnlineSales-Not-Applicable	
 	 * PercentageRevenueFromOnlineSales-Range1
 	 * Less than 25%
 	 * PercentageRevenueFromOnlineSales-Range2
@@ -202,8 +197,7 @@ public class BusinessInfoType {
 
 	/**
 	 * Email address to contact business’s customer service
-	 * Character length and limitations: 127 alphanumeric characters
-	 */
+	 * Character length and limitations: 127 alphanumeric characters	 */
 	private String CustomerServiceEmail;
 	public String getCustomerServiceEmail() {
 		return CustomerServiceEmail;
@@ -214,8 +208,7 @@ public class BusinessInfoType {
 
 	/**
 	 * Telephone number to contact business’s customer service
-	 * Character length and limitations: 32 alphanumeric characters
-	 */
+	 * Character length and limitations: 32 alphanumeric characters	 */
 	private String CustomerServicePhone;
 	public String getCustomerServicePhone() {
 		return CustomerServicePhone;

@@ -5,26 +5,27 @@
 
 package urn.ebay.api.PayPalAPI;
 
+import java.util.ArrayList;
+import java.util.List;
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
+import urn.ebay.apis.eBLBaseComponents.InvoiceItemType;
 import urn.ebay.apis.eBLBaseComponents.MerchantStoreDetailsType;
 import urn.ebay.apis.eBLBaseComponents.RefundSourceCodeType;
 import urn.ebay.apis.eBLBaseComponents.RefundType;
 
 
 /**
- * Unique identifier of the transaction you are refunding.
+ * Unique identifier of the  transaction you are refunding.
  * Required
- * Character length and limitations: 17 single-byte alphanumeric
- * characters
+ * Character length and limitations: 17 single-byte alphanumeric characters 
  */
 public class RefundTransactionRequestType extends AbstractRequestType{
 
 	/**
-	 * Unique identifier of the transaction you are refunding.
+Unique identifier of the  transaction you are refunding.
 	 * Required
-	 * Character length and limitations: 17 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 17 single-byte alphanumeric characters 
 	 */
 	private String TransactionID;
 	public String getTransactionID() {
@@ -35,11 +36,7 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Invoice number corresponding to transaction details for
-	 * tracking the refund of a payment. This parameter is passed by
-	 * the merchant or recipient while refunding the transaction.
-	 * This parameter does not affect the business logic, it is
-	 * persisted in the DB for transaction reference
+Invoice number corresponding to transaction details for tracking the refund of a payment. This parameter is passed by the merchant or recipient while refunding the transaction. This parameter does not affect the business logic, it is persisted in the DB for transaction reference
 	 * Optional
 	 */
 	private String InvoiceID;
@@ -51,7 +48,7 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Type of refund you are making
+Type of refund you are making
 	 * Required
 	 */
 	private RefundType RefundType;
@@ -63,10 +60,8 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Refund amount.
-	 * Amount is
-	 * required
-	 * if RefundType is Partial.
+Refund amount. 
+	 * Amount is required  if RefundType is Partial.
 	 * NOTE: If RefundType is Full, do not set Amount.
 	 */
 	private BasicAmountType Amount;
@@ -78,10 +73,9 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Custom memo about the refund.
+Custom memo about the refund. 
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String Memo;
 	public String getMemo() {
@@ -92,7 +86,7 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * The maximum time till which refund must be tried.
+The maximum time till which refund must be tried.
 	 * Optional
 	 */
 	private String RetryUntil;
@@ -104,7 +98,7 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * The type of funding source for refund.
+The type of funding source for refund.
 	 * Optional
 	 */
 	private RefundSourceCodeType RefundSource;
@@ -116,8 +110,19 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * To pass the Merchant store information
+Flag to indicate that the customer was already given store credit for a given transaction. This will allow us to make sure we do not double refund.
 	 * Optional
+	 */
+	private Boolean RefundAdvice;
+	public Boolean getRefundAdvice() {
+		return RefundAdvice;
+	}
+	public void setRefundAdvice(Boolean value) {
+		this.RefundAdvice = value;
+	}
+
+	/**
+To pass the Merchant store informationOptional
 	 */
 	private MerchantStoreDetailsType MerchantStoreDetails;
 	public MerchantStoreDetailsType getMerchantStoreDetails() {
@@ -125,6 +130,17 @@ public class RefundTransactionRequestType extends AbstractRequestType{
 	}
 	public void setMerchantStoreDetails(MerchantStoreDetailsType value) {
 		this.MerchantStoreDetails = value;
+	}
+
+	/**
+Information about the individual details of the items to be refunded.Optional
+	 */
+	private List<InvoiceItemType> RefundItemDetails = new ArrayList<InvoiceItemType>();
+	public List<InvoiceItemType> getRefundItemDetails() {
+		return RefundItemDetails;
+	}
+	public void setRefundItemDetails(List<InvoiceItemType> value) {
+		this.RefundItemDetails = value;
 	}
 
 
@@ -161,10 +177,21 @@ sb.append(super.toXMLString());
 			sb.append("<urn:RefundSource>").append( RefundSource.getValue());
 			sb.append("</urn:RefundSource>");
 		}
+		if( RefundAdvice != null ) {
+			sb.append("<urn:RefundAdvice>").append(RefundAdvice);
+			sb.append("</urn:RefundAdvice>");
+		}
 		if( MerchantStoreDetails != null ) {
 			sb.append("<ebl:MerchantStoreDetails>");
 			sb.append(MerchantStoreDetails.toXMLString());
 			sb.append("</ebl:MerchantStoreDetails>");
+		}
+		if( RefundItemDetails != null ) {
+			for(int i=0; i<RefundItemDetails.size(); i++) {
+				sb.append("<ebl:RefundItemDetails>");
+				sb.append(RefundItemDetails.get(i).toXMLString());
+				sb.append("</ebl:RefundItemDetails>");
+			}
 		}
 		return sb.toString();
 	}

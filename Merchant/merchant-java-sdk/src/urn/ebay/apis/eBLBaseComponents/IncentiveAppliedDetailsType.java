@@ -21,13 +21,12 @@ import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 
 
 /**
- * Details of incentive application on individual bucket/item.
+ * Details of incentive application on individual bucket/item.  
  */
 public class IncentiveAppliedDetailsType {
 
 	/**
-	 * PaymentRequestID uniquely identifies a bucket. It is the "bucket id" in the
-	 * world of EC API.
+	 * PaymentRequestID uniquely identifies a bucket. It is the "bucket id" in the world of EC API.
 	 */
 	private String PaymentRequestID;
 	public String getPaymentRequestID() {
@@ -49,7 +48,7 @@ public class IncentiveAppliedDetailsType {
 	}
 
 	/**
-	 * The item transaction id passed through by the merchant.
+	 * The item transaction id passed through by the merchant. 
 	 */
 	private String ExternalTxnId;
 	public String getExternalTxnId() {

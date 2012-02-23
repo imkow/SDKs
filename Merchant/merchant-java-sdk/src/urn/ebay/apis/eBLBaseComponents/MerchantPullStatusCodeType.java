@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * MerchantPullStatusCodeType
+ * MerchantPullStatusCodeType 
  * Status of the merchant pull
  */
 package urn.ebay.apis.eBLBaseComponents;

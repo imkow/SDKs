@@ -23,14 +23,12 @@ import urn.ebay.apis.eBLBaseComponents.ErrorType;
 
 
 /**
- * If Checkout session was initialized successfully, the
- * corresponding token is returned in this element.
+ * If Checkout session was initialized successfully, the corresponding token is returned in this element.
  */
 public class SetDataResponseType {
 
 	/**
-	 * If Checkout session was initialized successfully, the
-	 * corresponding token is returned in this element.
+	 * If Checkout session was initialized successfully, the corresponding token is returned in this element.
 	 */
 	private String Token;
 	public String getToken() {

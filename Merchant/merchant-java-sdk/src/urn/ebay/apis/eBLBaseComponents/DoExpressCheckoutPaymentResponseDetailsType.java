@@ -24,17 +24,13 @@ import urn.ebay.apis.eBLBaseComponents.UserSelectedOptionType;
 
 
 /**
- * The timestamped token value that was returned by
- * SetExpressCheckoutResponse and passed on
- * GetExpressCheckoutDetailsRequest.
+ * The timestamped token value that was returned by SetExpressCheckoutResponse and passed on GetExpressCheckoutDetailsRequest. 
  * Character length and limitations:20 single-byte characters
  */
 public class DoExpressCheckoutPaymentResponseDetailsType {
 
 	/**
-	 * The timestamped token value that was returned by
-	 * SetExpressCheckoutResponse and passed on
-	 * GetExpressCheckoutDetailsRequest.
+	 * The timestamped token value that was returned by SetExpressCheckoutResponse and passed on GetExpressCheckoutDetailsRequest. 
 	 * Character length and limitations:20 single-byte characters
 	 */
 	private String Token;
@@ -76,10 +72,9 @@ Information about the transaction 	 */
 	}
 
 	/**
-	 * Memo entered by sender in PayPal Review Page note field.
+Memo entered by sender in PayPal Review Page note field.
 	 * Optional
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
 	private String Note;
 	public String getNote() {
@@ -90,7 +85,7 @@ Information about the transaction 	 */
 	}
 
 	/**
-	 * Redirect back to PayPal, PayPal can host the success page.
+	 * Redirect back to PayPal, PayPal can host the success page. 	          
 	 */
 	private String SuccessPageRedirectRequested;
 	public String getSuccessPageRedirectRequested() {

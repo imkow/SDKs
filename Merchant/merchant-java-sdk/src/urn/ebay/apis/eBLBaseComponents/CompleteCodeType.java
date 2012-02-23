@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * CompleteCodeType
+ * CompleteCodeType 
  * This is the PayPal DoCapture CompleteType code
  */
 package urn.ebay.apis.eBLBaseComponents;

@@ -9,14 +9,12 @@ import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentCodeType;
 
 
 /**
- * Type of the Payment is it Instant or Echeck or
- * Any.
+ * Type of the Payment is it Instant or Echeck or Any.
  */
 public class PaymentDirectivesType {
 
 	/**
-Type of the Payment is it Instant or Echeck or
-	 * Any.	 */
+Type of the Payment is it Instant or Echeck or Any.	 */
 	private MerchantPullPaymentCodeType PaymentType;
 	public MerchantPullPaymentCodeType getPaymentType() {
 		return PaymentType;

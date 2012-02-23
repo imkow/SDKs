@@ -38,8 +38,7 @@ public class OfferDetailsType {
 	}
 
 	/**
-	 * Specific infromation for BML, Similar structure could be added
-	 * for sepcific
+	 * Specific infromation for BML, Similar structure could be added for sepcific
 	 * promotion needs like CrossPromotions
 	 */
 	private BMLOfferInfoType BMLOfferInfo;

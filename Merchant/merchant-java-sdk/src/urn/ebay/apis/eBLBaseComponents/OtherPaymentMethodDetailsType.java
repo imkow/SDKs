@@ -8,8 +8,7 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * Lists the Payment Methods (other than PayPal) that the use can pay
- * with e.g. Money Order.
+ * Lists the Payment Methods (other than PayPal) that the use can pay with e.g. Money Order. 
  * Optional.
  */
 public class OtherPaymentMethodDetailsType {
@@ -48,8 +47,7 @@ public class OtherPaymentMethodDetailsType {
 	}
 
 	/**
-	 * The short description of the Payment Method, goes along with the
-	 * label.
+	 * The short description of the Payment Method, goes along with the label.
 	 */
 	private String OtherPaymentMethodLabelDescription;
 	public String getOtherPaymentMethodLabelDescription() {
@@ -93,9 +91,7 @@ public class OtherPaymentMethodDetailsType {
 	}
 
 	/**
-	 * If this flag is true, then OtherPaymentMethodIcon is required to
-	 * have a valid value; the label will be hidden and only ICON will
-	 * be shown.
+	 * If this flag is true, then OtherPaymentMethodIcon is required to have a valid value; the label will be hidden and only ICON will be shown.
 	 */
 	private Boolean OtherPaymentMethodHideLabel;
 	public Boolean getOtherPaymentMethodHideLabel() {

@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * AverageMonthlyVolumeType
+ * AverageMonthlyVolumeType 
  * Enumeration
  * Meaning
  * AverageMonthlyVolume-Not-Applicable
@@ -21,27 +21,24 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum AverageMonthlyVolumeType {
 
-	AVERAGEMONTHLYVOLUMENOTAPPLICABLE("AverageMonthlyVolume-Not-Applicable"), AVERAGEMONTHLYVOLUMERANGE1(
-			"AverageMonthlyVolume-Range1"), AVERAGEMONTHLYVOLUMERANGE2(
-			"AverageMonthlyVolume-Range2"), AVERAGEMONTHLYVOLUMERANGE3(
-			"AverageMonthlyVolume-Range3"), AVERAGEMONTHLYVOLUMERANGE4(
-			"AverageMonthlyVolume-Range4"), AVERAGEMONTHLYVOLUMERANGE5(
-			"AverageMonthlyVolume-Range5"), AVERAGEMONTHLYVOLUMERANGE6(
-			"AverageMonthlyVolume-Range6"), ;
-	private String value;
-
-	AverageMonthlyVolumeType(String val) {
-		value = val;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public static AverageMonthlyVolumeType fromValue(String v) {
+AVERAGEMONTHLYVOLUMENOTAPPLICABLE("AverageMonthlyVolume-Not-Applicable"),
+AVERAGEMONTHLYVOLUMERANGE1("AverageMonthlyVolume-Range1"),
+AVERAGEMONTHLYVOLUMERANGE2("AverageMonthlyVolume-Range2"),
+AVERAGEMONTHLYVOLUMERANGE3("AverageMonthlyVolume-Range3"),
+AVERAGEMONTHLYVOLUMERANGE4("AverageMonthlyVolume-Range4"),
+AVERAGEMONTHLYVOLUMERANGE5("AverageMonthlyVolume-Range5"),
+AVERAGEMONTHLYVOLUMERANGE6("AverageMonthlyVolume-Range6"),
+	;
+private String value;
+AverageMonthlyVolumeType(String val){
+value=val;
+}public String getValue(){
+return value;
+}
+public static AverageMonthlyVolumeType fromValue(String v) {
 		for (AverageMonthlyVolumeType c : values())
 			if (c.value.equals(v))
 				return c;
-		throw new IllegalArgumentException(v);
-	}
+throw new IllegalArgumentException(v);
+}
 }

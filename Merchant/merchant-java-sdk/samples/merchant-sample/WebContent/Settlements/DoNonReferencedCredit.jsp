@@ -83,17 +83,13 @@
 					</tr>
 					<tr>
 						<td class="param_value"><input type="text" name="itemAmount"
-							value="0.50" />
-						</td>
+							value="0.50" /></td>
 						<td class="param_value"><input type="text"
-							name="shippingAmount" value="0.50" />
-						</td>
+							name="shippingAmount" value="0.50" /></td>
 						<td class="param_value"><input type="text" name="taxAmount"
-							value="0.0" />
-						</td>
+							value="0.0" /></td>
 						<td class="param_value"><input type="text" name="currencyID"
-							value="USD" />
-						</td>
+							value="USD" /></td>
 					</tr>
 				</table>
 				<div class="submit">
@@ -106,16 +102,12 @@
 		<div id="relatedcalls">
 			See also
 			<ul>
-				<li><a href="DoAuthorization">DoAuthorization</a>
-				</li>
-				<li><a href="DoVoid">DoVoid</a>
-				</li>
-				<li><a href="DoReauthorization">DoReauthorization</a>
-				</li>
+				<li><a href="DoAuthorization">DoAuthorization</a></li>
+				<li><a href="DoVoid">DoVoid</a></li>
+				<li><a href="DoReauthorization">DoReauthorization</a></li>
 				<li><a href="Refund">Refund</a></li>
-				<li><a href="DoUATPAuthorization">DoUATPAuthorization</a></li>
-				<li><a href="ReverseTransaction">ReverseTransaction</a>
-				</li>
+
+				<li><a href="ReverseTransaction">ReverseTransaction</a></li>
 				<li><a href="DoCapture">DoCapture</a></li>
 				<li><a href="ManagePendingTransactionStatus">ManagePendingTransactionStatus</a>
 				</li>

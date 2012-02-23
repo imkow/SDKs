@@ -32,9 +32,7 @@ import urn.ebay.apis.eBLBaseComponents.SubscribeTextType;
 
 /**
  * Type of button.
- * One of the following: BUYNOW, CART, GIFTCERTIFICATE.
- * SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or
- * UNSUBSCRIBE
+ * One of the following: BUYNOW, CART, GIFTCERTIFICATE. SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or UNSUBSCRIBE
  */
 public class BMGetButtonDetailsResponseType extends AbstractResponseType{
 
@@ -80,9 +78,7 @@ public class BMGetButtonDetailsResponseType extends AbstractResponseType{
 
 	/**
 	 * Type of button.
-	 * One of the following: BUYNOW, CART, GIFTCERTIFICATE.
-	 * SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or
-	 * UNSUBSCRIBE
+	 * One of the following: BUYNOW, CART, GIFTCERTIFICATE. SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or UNSUBSCRIBE
 	 */
 	private ButtonTypeType ButtonType;
 	public ButtonTypeType getButtonType() {
@@ -119,8 +115,7 @@ public class BMGetButtonDetailsResponseType extends AbstractResponseType{
 
 	/**
 	 * Button Variable information
-	 * Character length and limitations: 63 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 63 single-byte alphanumeric characters
 	 */
 	private List<String> ButtonVar = new ArrayList<String>();
 	public List<String> getButtonVar() {
@@ -212,8 +207,7 @@ public class BMGetButtonDetailsResponseType extends AbstractResponseType{
 
 	/**
 	 * Button language code.
-	 * Character length and limitations: 3 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 3 single-byte alphanumeric characters
 	 */
 	private String ButtonLanguage;
 	public String getButtonLanguage() {

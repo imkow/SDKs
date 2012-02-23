@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * ReversalReasonCodeType
- * Reason for a reversal on a PayPal transaction which matches the output
- * from IPN
+ * ReversalReasonCodeType 
+ * Reason for a reversal on a PayPal transaction which matches the output from IPN
  */
 package urn.ebay.apis.eBLBaseComponents;
 

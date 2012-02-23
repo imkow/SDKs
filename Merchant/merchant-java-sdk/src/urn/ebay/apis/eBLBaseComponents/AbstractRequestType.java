@@ -11,20 +11,16 @@ import urn.ebay.apis.eBLBaseComponents.DetailLevelCodeType;
 
 
 /**
- * Base type definition of request payload that can carry any type
- * of payload content with optional versioning information and detail
- * level
+ * Base type definition of request payload that can carry any type 
+ * of payload content with optional versioning information and detail level
  * requirements.
  */
 public class AbstractRequestType {
 
 	/**
-	 * This specifies the required detail level that is needed by a client
-	 * application pertaining to
-	 * a particular data component (e.g., Item, Transaction, etc.). The
-	 * detail level is specified in
-	 * the DetailLevelCodeType which has all the enumerated values of the
-	 * detail level for
+	 * This specifies the required detail level that is needed by a client application pertaining to
+	 * a particular data component (e.g., Item, Transaction, etc.). The detail level is specified in
+	 * the DetailLevelCodeType which has all the enumerated values of the detail level for 
 	 * each component.  
 	 */
 	private List<DetailLevelCodeType> DetailLevel = new ArrayList<DetailLevelCodeType>();
@@ -36,8 +32,7 @@ public class AbstractRequestType {
 	}
 
 	/**
-	 * This should be the standard RFC 3066 language identification tag,
-	 * e.g., en_US.
+	 * This should be the standard RFC 3066 language identification tag, e.g., en_US.
 	 */
 	private String ErrorLanguage;
 	public String getErrorLanguage() {

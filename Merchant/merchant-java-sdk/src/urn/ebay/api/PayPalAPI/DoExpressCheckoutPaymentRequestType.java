@@ -10,8 +10,7 @@ import urn.ebay.apis.eBLBaseComponents.DoExpressCheckoutPaymentRequestDetailsTyp
 
 
 /**
- * This flag indicates that the response should
- * include FMFDetails
+ * This flag indicates that the response should include FMFDetails
  */
 public class DoExpressCheckoutPaymentRequestType extends AbstractRequestType{
 
@@ -28,8 +27,7 @@ public class DoExpressCheckoutPaymentRequestType extends AbstractRequestType{
 	}
 
 	/**
-This flag indicates that the response should
-	 * include FMFDetails	 */
+This flag indicates that the response should include FMFDetails	 */
 	private Integer ReturnFMFDetails;
 	public Integer getReturnFMFDetails() {
 		return ReturnFMFDetails;

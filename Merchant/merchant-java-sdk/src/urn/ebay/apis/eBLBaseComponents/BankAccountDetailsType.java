@@ -15,8 +15,7 @@ public class BankAccountDetailsType {
 
 	/**
 	 * Name of bank
-	 * Character length and limitations: 192 alphanumeric characters
-	 */
+	 * Character length and limitations: 192 alphanumeric characters	 */
 	private String Name;
 	public String getName() {
 		return Name;
@@ -37,8 +36,7 @@ public class BankAccountDetailsType {
 
 	/**
 	 * Merchant’s bank routing number
-	 * Character length and limitations: 23 alphanumeric characters
-	 */
+	 * Character length and limitations: 23 alphanumeric characters	 */
 	private String RoutingNumber;
 	public String getRoutingNumber() {
 		return RoutingNumber;
@@ -49,8 +47,7 @@ public class BankAccountDetailsType {
 
 	/**
 	 * Merchant’s bank account number
-	 * Character length and limitations: 256 alphanumeric characters
-	 */
+	 * Character length and limitations: 256 alphanumeric characters	 */
 	private String AccountNumber;
 	public String getAccountNumber() {
 		return AccountNumber;

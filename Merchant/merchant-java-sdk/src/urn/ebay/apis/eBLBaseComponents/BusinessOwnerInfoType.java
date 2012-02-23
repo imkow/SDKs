@@ -25,8 +25,7 @@ public class BusinessOwnerInfoType {
 
 	/**
 	 * Business owner’s home telephone number
-	 * Character length and limitations: 32 alphanumeric characters
-	 */
+	 * Character length and limitations: 32 alphanumeric characters	 */
 	private String HomePhone;
 	public String getHomePhone() {
 		return HomePhone;
@@ -37,8 +36,7 @@ public class BusinessOwnerInfoType {
 
 	/**
 	 * Business owner’s mobile telephone number
-	 * Character length and limitations: 32 alphanumeric characters
-	 */
+	 * Character length and limitations: 32 alphanumeric characters	 */
 	private String MobilePhone;
 	public String getMobilePhone() {
 		return MobilePhone;
@@ -49,8 +47,7 @@ public class BusinessOwnerInfoType {
 
 	/**
 	 * Business owner’s social security number
-	 * Character length and limitations: 9 alphanumeric characters
-	 */
+	 * Character length and limitations: 9 alphanumeric characters	 */
 	private String SSN;
 	public String getSSN() {
 		return SSN;

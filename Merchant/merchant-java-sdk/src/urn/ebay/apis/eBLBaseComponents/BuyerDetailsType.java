@@ -10,8 +10,7 @@ import urn.ebay.apis.eBLBaseComponents.TaxIdDetailsType;
 
 
 /**
- * Details about the buyer's account passed in by the merchant or
- * partner.
+ * Details about the buyer's account passed in by the merchant or partner.
  * Optional.
  */
 public class BuyerDetailsType {
@@ -62,8 +61,7 @@ public class BuyerDetailsType {
 	}
 
 	/**
-	 * Contains information that identifies the buyer. e.g. email address or
-	 * the external remember me id.
+	 * Contains information that identifies the buyer. e.g. email address or the external remember me id.
 	 */
 	private IdentificationInfoType IdentificationInfo;
 	public IdentificationInfoType getIdentificationInfo() {
