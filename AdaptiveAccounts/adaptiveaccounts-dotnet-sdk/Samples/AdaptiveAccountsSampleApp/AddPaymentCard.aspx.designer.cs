@@ -12,12 +12,12 @@ namespace AdaptiveAccountsSampleApp {
     
     
     /// <summary>
-    /// CreateAccount class.
+    /// AddPaymentCard class.
     /// </summary>
     /// <remarks>
     /// Auto-generated class.
     /// </remarks>
-    public partial class CreateAccount {
+    public partial class AddPaymentCard {
         
         /// <summary>
         /// Head1 control.
@@ -29,22 +29,22 @@ namespace AdaptiveAccountsSampleApp {
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
-        /// emailAddress control.
+        /// returnURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText emailAddress;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText returnURL;
         
         /// <summary>
-        /// returnUrl control.
+        /// cancelURL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText returnUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cancelURL;
         
         /// <summary>
         /// AdaptiveAccountsBtn control.
