@@ -44,13 +44,6 @@
     <Content Include="APICalls\BillAgreementUpdate.aspx" />
     <Content Include="APICalls\BillOutstandingAmount.aspx" />
     <Content Include="APICalls\BillUser.aspx" />
-    <Content Include="APICalls\BMButtonSearch.aspx" />
-    <Content Include="APICalls\BMCreateButton.aspx" />
-    <Content Include="APICalls\BMGetButtonDetails.aspx" />
-    <Content Include="APICalls\BMGetInventory.aspx" />
-    <Content Include="APICalls\BMManageButtonStatus.aspx" />
-    <Content Include="APICalls\BMSetInventory.aspx" />
-    <Content Include="APICalls\BMUpdateButton.aspx" />
     <Content Include="APICalls\calendar_icon.png" />
     <Content Include="APICalls\CreateBillingAgreement.aspx" />
     <Content Include="APICalls\CreateRecurringPaymentsProfile.aspx" />
@@ -114,55 +107,6 @@
     </Compile>
     <Compile Include="APICalls\BillUser.aspx.designer.cs">
       <DependentUpon>BillUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMButtonSearch.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMButtonSearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMButtonSearch.aspx.designer.cs">
-      <DependentUpon>BMButtonSearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMCreateButton.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMCreateButton.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMCreateButton.aspx.designer.cs">
-      <DependentUpon>BMCreateButton.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMGetButtonDetails.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMGetButtonDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMGetButtonDetails.aspx.designer.cs">
-      <DependentUpon>BMGetButtonDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMGetInventory.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMGetInventory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMGetInventory.aspx.designer.cs">
-      <DependentUpon>BMGetInventory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMManageButtonStatus.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMManageButtonStatus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMManageButtonStatus.aspx.designer.cs">
-      <DependentUpon>BMManageButtonStatus.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMSetInventory.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMSetInventory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMSetInventory.aspx.designer.cs">
-      <DependentUpon>BMSetInventory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMUpdateButton.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>BMUpdateButton.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="APICalls\BMUpdateButton.aspx.designer.cs">
-      <DependentUpon>BMUpdateButton.aspx</DependentUpon>
     </Compile>
     <Compile Include="APICalls\CreateBillingAgreement.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

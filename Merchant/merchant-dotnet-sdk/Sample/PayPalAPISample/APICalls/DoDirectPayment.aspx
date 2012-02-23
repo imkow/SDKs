@@ -52,7 +52,7 @@
 			<div class="params">
 				<div class="param_name">Card number</div>
 				<div class="param_value">
-					<input type="text" id="creditCardNumber" name="creditCardNumber" runat="server"/>
+					<input type="text" id="creditCardNumber" name="creditCardNumber" runat="server" value="4111111111111111"/>
 				</div>
 			</div>
 			<div class="params">
@@ -98,7 +98,7 @@
                     </asp:DropDownList>
 				</div>
 			</div>				
-			<div class="section_header">Shipping Address</div>
+			<div class="section_header">Billing Address</div>
             <table class="line_item">
                 <tr>
                     <th>Name</th>
@@ -115,22 +115,22 @@
                         <input type="text" id="name" name="name" runat="server" />
                     </span></td>
                     <td><span class="param_value">
-                        <input type="text" id="street1" name="street1" runat="server" />
+                        <input type="text" id="street1" name="street1" value="1 Main St" runat="server" />
                     </span></td>
                     <td><span class="param_value">
                         <input type="text" id="street2" name="street2" runat="server" />
                     </span></td>
                     <td><span class="param_value">
-                        <input type="text" id="city" name="city" runat="server" />
+                        <input type="text" id="city" name="city" value="San Jose" runat="server" />
                     </span></td>
                     <td><span class="param_value">
-                        <input type="text" id="state" name="state" runat="server" />
+                        <input type="text" id="state" name="state" value="CA" runat="server" />
                     </span></td>
                     <td><span class="param_value">
-                        <input type="text" id="postalCode" name="postalCode" runat="server" />
+                        <input type="text" id="postalCode" name="postalCode" value="95131" runat="server" />
                     </span></td>
                     <td><span class="param_value">
-                        <input type="text" id="country" name="country" runat="server" />
+                        <input type="text" id="country" name="country" value="US" runat="server" />
                     </span></td>
                     <td><span class="param_value">
                         <input type="text" id="phone" name="phone" runat="server" />
@@ -138,9 +138,9 @@
                 </tr>
                 </table>
 
-				<div class="submit">
-					<input type="submit" name="DirectPaymentBtn" value="DirectPayment" /><br />
-				</div>
+                <div class="submit">
+                    <input id="submitBtn" type="submit" name="submitBtn" value="Submit" runat="server" onserverclick="Submit_Click"/>
+                </div>
         </div>
     </form>
     <div id="relatedcalls"> 

@@ -20,36 +20,34 @@
                         <li><a href="APICalls/GetExpressCheckoutDetails.aspx">GetExpressCheckoutDetails</a></li>
                         <li><a href="APICalls/DoExpressCheckoutPayment.aspx">DoExpressCheckoutPayment</a></li>
                     </ul>
-                </td>
-                <td>
-                    <div class="section_header">Direct Payment</div>
-                    <ul>
-                        <li><a href="APICalls/DoDirectPayment.aspx">DoDirectPayment</a></li>
-                    </ul>
-                </td>                   
+                </td>                                   
                 <td>
                     <div class="section_header">Transaction reporting</div>
                     <ul>
                         <li><a href="APICalls/GetTransactionDetails.aspx">GetTransactionDetails</a></li>
-                        <li><a href="APICalls/TransactionSearch.aspx">TransactionSearch</a></li>
+                        <li><a href="APICalls/TransactionSearch.aspx">TransactionSearch</a></li>                                                
+                        <li><a href="APICalls/GetBalance.aspx">GetBalance</a></li>
+                        <li><a href="APICalls/GetPalDetails.aspx">GetPalDetails</a></li>
+                        <li><a href="APICalls/ManagePendingTransactionStatus.aspx">ManagePendingTransactionStatus</a></li>
+                        <li><a href="APICalls/AddressVerify.aspx">AddressVerify</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <div class="section_header">Direct Payment (DCC)</div>
+                    <ul>
+                        <li><a href="APICalls/DoDirectPayment.aspx">DoDirectPayment</a></li>
                     </ul>
                 </td>
             </tr>
             <tr>
-
                 <td>
-                    <div class="section_header">Recurring Payments</div>
+                    <div class="section_header">Recurring Payments & Reference transactions</div>
                     <ul>
                         <li><a href="APICalls/BillOutStandingAmount.aspx">BillOutStandingAmount</a></li>                    
                         <li><a href="APICalls/CreateRecurringPaymentsProfile.aspx">CreateRecurringPaymentsProfile</a></li>
                         <li><a href="APICalls/GetRecurringPaymentsProfileDetails.aspx">GetRecurringPaymentsProfileDetails</a></li>
                         <li><a href="APICalls/ManageRecurringPaymentsProfileStatus.aspx">ManageRecurringPaymentsProfileStatus</a></li>
                         <li><a href="APICalls/UpdateRecurringPaymentsProfile.aspx">UpdateRecurringPaymentsProfile</a></li>                        
-                    </ul>
-                </td>                
-                <td>
-                    <div class="section_header">Reference Transaction</div>
-                    <ul>
                         <li><a href="APICalls/BillAgreementUpdate.aspx">BillAgreementUpdate</a></li>
                         <li><a href="APICalls/CreateBillingAgreement.aspx">CreateBillingAgreement</a></li>
                         <li><a href="APICalls/GetBillingAgreementCustomerDetails.aspx">GetBillingAgreementCustomerDetails</a></li>                    
@@ -67,53 +65,13 @@
                         <li><a href="APICalls/ReverseTransaction.aspx">ReverseTransaction</a></li>                        
                     </ul>
                 </td>                                
-            </tr>
-            <tr>
-                <td>
-                    <div class="section_header">Miscellaneous</div>
-                    <ul>
-                        <li><a href="APICalls/AddressVerify.aspx">AddressVerify</a></li>
-                        <li><a href="APICalls/DoNonReferencedCredit.aspx">DoNonReferencedCredit</a></li>
-                        <li><a href="APICalls/GetBalance.aspx">GetBalance</a></li>
-                        <li><a href="APICalls/GetPalDetails.aspx">GetPalDetails</a></li>
-                        <li><a href="APICalls/ManagePendingTransactionStatus.aspx">ManagePendingTransactionStatus</a></li>                        
-                    </ul>
-                </td>
-                <td>
-                    <div class="section_header">Merchant Onboarding</div>
-                    <ul>
-                        <li><a href="APICalls/EnterBoarding.aspx">EnterBoarding</a></li>
-                        <li><a href="APICalls/GetBoardingDetails.aspx">GetBoardingDetails</a></li>
-                    </ul>
-                </td>
                 <td>
                     <div class="section_header">Mass Pay</div>
                     <ul>
                         <li><a href="APICalls/MassPay.aspx">MassPay</a></li>
                     </ul>
                 </td>                                
-            </tr> 
-            <tr>
-                <td>
-                    <div class="section_header">Airline specific</div>
-                    <ul>
-                        <li><a href="APICalls/DoUATPAuthorization.aspx">DoUATPAuthorization</a></li>
-                        <li><a href="APICalls/DoUATPExpressCheckoutPayment.aspx">DoUATPExpressCheckoutPayment</a></li>
-                    </ul>
-                </td>            
-                <td>
-                    <div class="section_header">Button Manager</div>
-                    <ul>
-                        <li><a href="APICalls/BMButtonSearch.aspx">BMButtonSearch</a></li>
-                        <li><a href="APICalls/BMCreateButton.aspx">BMCreateButton</a></li>
-                        <li><a href="APICalls/BMGetButtonDetails.aspx">BMGetButtonDetails</a></li>
-                        <li><a href="APICalls/BMGetInventory.aspx">BMGetInventory</a></li>                        
-                        <li><a href="APICalls/BMSetInventory.aspx">BMSetInventory</a></li>                                                
-                        <li><a href="APICalls/BMManageButtonStatus.aspx">BMManageButtonStatus</a></li>
-                        <li><a href="APICalls/BMUpdateButton.aspx">BMUpdateButton</a></li>
-                    </ul>
-                </td>                            
-            </tr>           
+            </tr>            
         </table>
     </div>
     </form>

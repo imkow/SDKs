@@ -39,7 +39,7 @@ namespace PayPalAPISample.APICalls
             
             // Populate card requestDetails
             CreditCardDetailsType creditCard = new CreditCardDetailsType();
-            
+            requestDetails.CreditCard = creditCard;
             PayerInfoType payer = new PayerInfoType();
             PersonNameType name = new PersonNameType();
             name.FirstName = firstName.Value;
@@ -52,24 +52,31 @@ namespace PayPalAPISample.APICalls
                 Enum.Parse(typeof(CreditCardTypeType), creditCardType.SelectedValue);
             creditCard.CVV2 = cvv2Number.Value;
             string[] cardExpiryDetails = cardExpiryDate.Text.Split(new char[] { '/' });
-            creditCard.ExpMonth = Int32.Parse(cardExpiryDetails[0]);
-            creditCard.ExpYear = Int32.Parse(cardExpiryDetails[1]);
+            if (cardExpiryDetails.Length == 2)
+            {
+                creditCard.ExpMonth = Int32.Parse(cardExpiryDetails[0]);
+                creditCard.ExpYear = Int32.Parse(cardExpiryDetails[1]);
+            }
 
-            // Populate shipping address, if given
-            AddressType shipTo = new AddressType();
-            shipTo.Name = firstName.Value + " " + lastName.Value;
-            shipTo.Street1 = street1.Value;
-            shipTo.Street2 = street2.Value;
-            shipTo.CityName = city.Value;
-            shipTo.StateOrProvince = state.Value;
-            shipTo.Country = (CountryCodeType) Enum.Parse( typeof(CountryCodeType), country.Value);
-            shipTo.PostalCode = postalCode.Value;
-            requestDetails.PaymentDetails.ShipToAddress = shipTo;
+            requestDetails.PaymentDetails = new PaymentDetailsType();
+            AddressType billingAddr = new AddressType();
+            if (firstName.Value != "" && lastName.Value != ""
+                && street1.Value != "" && country.Value != "")
+            {
+                billingAddr.Name = firstName.Value + " " + lastName.Value;
+                billingAddr.Street1 = street1.Value;
+                billingAddr.Street2 = street2.Value;
+                billingAddr.CityName = city.Value;
+                billingAddr.StateOrProvince = state.Value;
+                billingAddr.Country = (CountryCodeType)Enum.Parse(typeof(CountryCodeType), country.Value);
+                billingAddr.PostalCode = postalCode.Value;
+                payer.Address = billingAddr;
+            }
 
             // Populate payment requestDetails
             CurrencyCodeType currency = (CurrencyCodeType)
                 Enum.Parse(typeof(CurrencyCodeType), currencyCode.SelectedValue);
-            BasicAmountType paymentAmount = new BasicAmountType(currency, amount.Value);
+            BasicAmountType paymentAmount = new BasicAmountType(currency, amount.Value);            
             requestDetails.PaymentDetails.OrderTotal = paymentAmount;
 
 
