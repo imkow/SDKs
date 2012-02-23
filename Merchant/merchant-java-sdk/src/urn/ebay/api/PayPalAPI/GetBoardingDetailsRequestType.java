@@ -9,23 +9,17 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 
 /**
- * A unique token returned by the EnterBoarding API call that
- * identifies this boarding session.
+ * A unique token returned by the EnterBoarding API call that identifies this boarding session. 
  * Required
- * Character length and limitations: 64 alphanumeric characters.
- * The token has the following format:
- * OB-61characterstring
- */
+ * Character length and limitations: 64 alphanumeric characters. The token has the following format:
+ * OB-61characterstring */
 public class GetBoardingDetailsRequestType extends AbstractRequestType{
 
 	/**
-	 * A unique token returned by the EnterBoarding API call that
-	 * identifies this boarding session.
+	 * A unique token returned by the EnterBoarding API call that identifies this boarding session. 
 	 * Required
-	 * Character length and limitations: 64 alphanumeric characters.
-	 * The token has the following format:
-	 * OB-61characterstring
-	 *
+	 * Character length and limitations: 64 alphanumeric characters. The token has the following format:
+	 * OB-61characterstring	 *
 	 * @Required
 	 */
 	private String Token;

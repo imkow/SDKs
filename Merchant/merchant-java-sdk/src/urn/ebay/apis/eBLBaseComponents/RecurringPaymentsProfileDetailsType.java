@@ -21,12 +21,12 @@ import urn.ebay.apis.eBLBaseComponents.AddressType;
 
 
 /**
- * Subscriber name - if missing, will use name in buyer's account
+ * Subscriber name - if missing, will use name in buyer's account 
  */
 public class RecurringPaymentsProfileDetailsType {
 
 	/**
-	 * Subscriber name - if missing, will use name in buyer's account
+	 * Subscriber name - if missing, will use name in buyer's account 
 	 */
 	private String SubscriberName;
 	public String getSubscriberName() {
@@ -61,10 +61,9 @@ public class RecurringPaymentsProfileDetailsType {
 	}
 
 	/**
-	 * Your own unique invoice or tracking number.
+Your own unique invoice or tracking number.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String ProfileReference;
 	public String getProfileReference() {

@@ -47,14 +47,13 @@
 				<a href="/merchant-sample/index.html">Home</a>
 			</div>
 		</form>
-		div id="relatedcalls"> See also
+		<div id="relatedcalls"> See also
 		<ul>
 			<li><a href="GetExpressCheckout">GetExpressCheckout</a>
 			</li>
 			<li><a href="DoExpressCheckout">DoExpressCheckout</a>
 			</li>
-			<li><a href="DoUATPExpressCheckoutPayment">DoUATPExpressCheckout</a>
-			</li>
+		
 		</ul>
 	</div>
 	</div>

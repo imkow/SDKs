@@ -61,7 +61,7 @@
 				<li><a href="DoReauthorization">DoReauthorization</a>
 				</li>
 				<li><a href="Refund">Refund</a></li>
-				<li><a href="DoUATPAuthorization">DoUATPAuthorization</a></li>
+			
 				<li><a href="ReverseTransaction">ReverseTransaction</a>
 				</li>
 				<li><a href="DoNonReferencedCredit">DoNonReferencedCredit</a></li>

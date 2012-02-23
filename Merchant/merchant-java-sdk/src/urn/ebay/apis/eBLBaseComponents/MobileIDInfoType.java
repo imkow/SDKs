@@ -8,14 +8,12 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * The Session token returned during buyer
- * authentication.
+ * The Session token returned during buyer authentication.
  */
 public class MobileIDInfoType {
 
 	/**
-The Session token returned during buyer
-	 * authentication.	 */
+The Session token returned during buyer authentication.	 */
 	private String SessionToken;
 	public String getSessionToken() {
 		return SessionToken;

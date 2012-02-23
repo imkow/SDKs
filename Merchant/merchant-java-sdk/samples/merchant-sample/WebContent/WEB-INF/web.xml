@@ -44,16 +44,6 @@
 	</servlet-mapping>
 	<servlet>
 		<description></description>
-		<display-name>ButtonManagerServlet</display-name>
-		<servlet-name>ButtonManagerServlet</servlet-name>
-		<servlet-class>com.sample.merchant.ButtonManagerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ButtonManagerServlet</servlet-name>
-		<url-pattern>/BM/*</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
 		<display-name>SettlementServlet</display-name>
 		<servlet-name>SettlementServlet</servlet-name>
 		<servlet-class>com.sample.merchant.SettlementServlet</servlet-class>
@@ -81,15 +71,6 @@
 	<servlet-mapping>
 		<servlet-name>RecurringPaymentsServlet</servlet-name>
 		<url-pattern>/RP/*</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description></description>
-		<display-name>ReferenceTransactionServlet</display-name>
-		<servlet-name>ReferenceTransactionServlet</servlet-name>
-		<servlet-class>com.sample.merchant.ReferenceTransactionServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ReferenceTransactionServlet</servlet-name>
 		<url-pattern>/RT/*</url-pattern>
 	</servlet-mapping>
 	<servlet>

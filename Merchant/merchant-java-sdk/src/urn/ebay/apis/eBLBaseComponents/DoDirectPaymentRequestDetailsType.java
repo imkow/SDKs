@@ -11,31 +11,22 @@ import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
 
 
 /**
- * How you want to obtain payment.
+ * How you want to obtain payment. 
  * Required
- * Authorization indicates that this payment is a basic
- * authorization subject to settlement with PayPal Authorization
- * and Capture.
- * Sale indicates that this is a final sale for which you are
- * requesting payment.
+ * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+ * Sale indicates that this is a final sale for which you are requesting payment.
  * NOTE: Order is not allowed for Direct Payment.
- * Character length and limit: Up to 13 single-byte alphabetic
- * characters
+ * Character length and limit: Up to 13 single-byte alphabetic characters
  */
 public class DoDirectPaymentRequestDetailsType {
 
 	/**
-	 * How you want to obtain payment.
+	 * How you want to obtain payment. 
 	 * Required
-	 * Authorization indicates that this payment is a basic
-	 * authorization subject to settlement with PayPal Authorization
-	 * and Capture.
-	 * Sale indicates that this is a final sale for which you are
-	 * requesting payment.
+	 * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+	 * Sale indicates that this is a final sale for which you are requesting payment.
 	 * NOTE: Order is not allowed for Direct Payment.
-	 * Character length and limit: Up to 13 single-byte alphabetic
-	 * characters
-	 */
+	 * Character length and limit: Up to 13 single-byte alphabetic characters	 */
 	private PaymentActionCodeType PaymentAction;
 	public PaymentActionCodeType getPaymentAction() {
 		return PaymentAction;
@@ -45,7 +36,7 @@ public class DoDirectPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Information about the payment
+	 * Information about the payment 
 	 * Required
 	 */
 	private PaymentDetailsType PaymentDetails;
@@ -57,7 +48,7 @@ public class DoDirectPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Information about the credit card to be charged.
+	 * Information about the credit card to be charged. 
 	 * Required
 	 */
 	private CreditCardDetailsType CreditCard;
@@ -69,12 +60,9 @@ public class DoDirectPaymentRequestDetailsType {
 	}
 
 	/**
-	 * IP address of the payer's browser as recorded in its HTTP
-	 * request to your website. PayPal records this IP addresses as a
-	 * means to detect possible fraud.
+	 * IP address of the payer's browser as recorded in its HTTP request to your website. PayPal records this IP addresses as a means to detect possible fraud. 
 	 * Required
-	 * Character length and limitations: 15 single-byte characters,
-	 * including periods, in dotted-quad format: ???.???.???.???
+	 * Character length and limitations: 15 single-byte characters, including periods, in dotted-quad format: ???.???.???.???
 	 */
 	private String IPAddress;
 	public String getIPAddress() {
@@ -85,13 +73,9 @@ public class DoDirectPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Your customer session identification token. PayPal records this
-	 * optional session identification token as an additional means to
-	 * detect possible fraud.
+	 * Your customer session identification token. PayPal records this optional session identification token as an additional means to detect possible fraud. 
 	 * Optional
-	 * Character length and limitations: 64 single-byte numeric
-	 * characters
-	 */
+	 * Character length and limitations: 64 single-byte numeric characters	 */
 	private String MerchantSessionId;
 	public String getMerchantSessionId() {
 		return MerchantSessionId;

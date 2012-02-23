@@ -136,7 +136,7 @@ public class CheckoutServlet extends HttpServlet {
 		session.setAttribute("url", request.getRequestURI());
 		session.setAttribute(
 				"relatedUrl",
-				"<ul><li><a href='EC/SetExpressCheckout'>SetExpressCheckout</a></li><li><a href='EC/GetExpressCheckout'>GetExpressCheckout</a></li><li><a href='EC/DoExpressCheckout'>DoExpressCheckout</a></li><li><a href='EC/DoUATPExpressCheckoutPayment'>DoUATPExpressCheckout</a></li></ul>");
+				"<ul><li><a href='EC/SetExpressCheckout'>SetExpressCheckout</a></li><li><a href='EC/GetExpressCheckout'>GetExpressCheckout</a></li><li><a href='EC/DoExpressCheckout'>DoExpressCheckout</a></li></ul>");
 		response.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
@@ -334,16 +334,23 @@ public class CheckoutServlet extends HttpServlet {
 				details.setPayerID(request.getParameter("payerID"));
 				details.setPaymentAction(PaymentActionCodeType
 						.fromValue(request.getParameter("paymentAction")));
-
+				double itemTotalAmt = 0.00;
+				double orderTotalAmt = 0.00;
+				String amt = request.getParameter("amt");
+				String quantity = request.getParameter("itemQuantity");
+				itemTotalAmt = Double.parseDouble(amt)
+						* Double.parseDouble(quantity);
+				orderTotalAmt += itemTotalAmt;
 				PaymentDetailsType paymentDetails = new PaymentDetailsType();
 				BasicAmountType orderTotal = new BasicAmountType();
-				orderTotal.setValue(request.getParameter("amt"));
+				orderTotal.setValue(Double.toString(orderTotalAmt));
 				orderTotal.setCurrencyID(CurrencyCodeType.fromValue(request
 						.getParameter("currencyCode")));
 				paymentDetails.setOrderTotal(orderTotal);
 
 				BasicAmountType itemTotal = new BasicAmountType();
-				itemTotal.setValue(request.getParameter("amt"));
+				itemTotal.setValue(Double.toString(itemTotalAmt));
+
 				itemTotal.setCurrencyID(CurrencyCodeType.fromValue(request
 						.getParameter("currencyCode")));
 				paymentDetails.setItemTotal(itemTotal);

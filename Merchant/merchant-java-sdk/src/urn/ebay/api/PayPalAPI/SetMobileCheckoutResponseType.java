@@ -21,17 +21,13 @@ import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
 
 
 /**
- * A timestamped token by which you identify to PayPal that you
- * are processing this payment with Mobile Checkout. The token
- * expires after three hours.
+A timestamped token by which you identify to PayPal that you are processing this payment with Mobile Checkout. The token expires after three hours.
  * Character length and limitations: 20 single-byte characters
  */
 public class SetMobileCheckoutResponseType extends AbstractResponseType{
 
 	/**
-	 * A timestamped token by which you identify to PayPal that you
-	 * are processing this payment with Mobile Checkout. The token
-	 * expires after three hours.
+A timestamped token by which you identify to PayPal that you are processing this payment with Mobile Checkout. The token expires after three hours.
 	 * Character length and limitations: 20 single-byte characters
 	 *
 	 * @Required

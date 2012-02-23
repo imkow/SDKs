@@ -26,14 +26,14 @@ import urn.ebay.apis.eBLBaseComponents.TaxIdDetailsType;
 
 
 /**
- * PayerInfoType
+ * PayerInfoType 
  * Payer information
  */
 public class PayerInfoType {
 
 	/**
-	 * Email address of payer
-	 * Character length and limitations: 127 single-byte characters
+	 * Email address of payer 
+Character length and limitations: 127 single-byte characters
 	 */
 	private String Payer;
 	public String getPayer() {
@@ -44,8 +44,8 @@ public class PayerInfoType {
 	}
 
 	/**
-	 * Unique customer ID
-	 * Character length and limitations: 17 single-byte characters
+	 * Unique customer ID 
+Character length and limitations: 17 single-byte characters
 	 */
 	private String PayerID;
 	public String getPayerID() {
@@ -77,9 +77,8 @@ public class PayerInfoType {
 	}
 
 	/**
-	 * Payment sender's country of residence using standard two-character ISO
-	 * 3166 country codes.
-	 * Character length and limitations: Two single-byte characters
+	 * Payment sender's country of residence using standard two-character ISO 3166 country codes. 
+Character length and limitations: Two single-byte characters
 	 */
 	private CountryCodeType PayerCountry;
 	public CountryCodeType getPayerCountry() {
@@ -90,9 +89,8 @@ public class PayerInfoType {
 	}
 
 	/**
-	 * Payer's business name.
-	 * Character length and limitations: 127 single-byte characters
-	 */
+	 * Payer's business name. 
+Character length and limitations: 127 single-byte characters	 */
 	private String PayerBusiness;
 	public String getPayerBusiness() {
 		return PayerBusiness;
@@ -134,8 +132,7 @@ Business contact telephone number	 */
 	}
 
 	/**
-Holds any enhanced information about the payer
-	 */
+Holds any enhanced information about the payer	 */
 	private EnhancedPayerInfoType EnhancedPayerInfo;
 	public EnhancedPayerInfoType getEnhancedPayerInfo() {
 		return EnhancedPayerInfo;

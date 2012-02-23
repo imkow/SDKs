@@ -8,7 +8,7 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * Defines which bucket or item that the incentive should be applied to.
+ * Defines which bucket or item that the incentive should be applied to.  
  */
 public class IncentiveApplyIndicationType {
 

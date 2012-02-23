@@ -24,16 +24,6 @@ import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
  */
 public class BMSetInventoryResponseType extends AbstractResponseType{
 
-	/**
-	 */
-	private String TransactionID;
-	public String getTransactionID() {
-		return TransactionID;
-	}
-	public void setTransactionID(String value) {
-		this.TransactionID = value;
-	}
-
 
 	public BMSetInventoryResponseType() {
 	}
@@ -97,12 +87,5 @@ public class BMSetInventoryResponseType extends AbstractResponseType{
 		 Document document = builder.parse(inStream);
 		 NodeList nodeList= null; 
 		 String xmlString ="";
-		 if(document.getElementsByTagName("TransactionID").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("TransactionID").item(0))){ 
-		 nodeList = document.getElementsByTagName("TransactionID");
-			 String value = nodeList.item(0).getTextContent(); 
-		 this.TransactionID =value;
-
-}
-	}
 	}
 }

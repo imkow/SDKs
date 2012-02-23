@@ -32,19 +32,15 @@ import urn.ebay.apis.eBLBaseComponents.ShippingServiceCodeType;
 
 
 /**
- * PaymentDetailsType
- * Information about a payment. Used by DCC and Express Checkout.
+ * PaymentDetailsType 
+ * Information about a payment.  Used by DCC and Express Checkout.
  */
 public class PaymentDetailsType {
 
 	/**
-	 * Total of order, including shipping, handling, and tax.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and the
-	 * thousands separator must be a comma (,).
-	 */
+	 * Total of order, including shipping, handling, and tax. 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,). 	 */
 	private BasicAmountType OrderTotal;
 	public BasicAmountType getOrderTotal() {
 		return OrderTotal;
@@ -54,9 +50,8 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Sum of cost of all items in this order.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+	 * Sum of cost of all items in this order. 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
 	 * separator must be a comma (,).
 	 */
@@ -69,13 +64,10 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Total shipping costs for this order.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+	 * Total shipping costs for this order. 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and the
-	 * thousands separator must be a comma (,).
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
 	 */
 	private BasicAmountType ShippingTotal;
 	public BasicAmountType getShippingTotal() {
@@ -86,13 +78,10 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Total handling costs for this order.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+	 * Total handling costs for this order. 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and the
-	 * thousands separator must be a comma (,).
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
 	 */
 	private BasicAmountType HandlingTotal;
 	public BasicAmountType getHandlingTotal() {
@@ -103,13 +92,10 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Sum of tax for all items in this order.
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+	 * Sum of tax for all items in this order. 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies.
 	 * Optional
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and the
-	 * thousands separator must be a comma (,).
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
 	 */
 	private BasicAmountType TaxTotal;
 	public BasicAmountType getTaxTotal() {
@@ -120,10 +106,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Description of items the customer is purchasing.
+	 * Description of items the customer is purchasing. 
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String OrderDescription;
 	public String getOrderDescription() {
@@ -134,10 +119,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * A free-form field for your own use.
+	 * A free-form field for your own use. 
 	 * Optional
-	 * Character length and limitations: 256 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 256 single-byte alphanumeric characters
 	 */
 	private String Custom;
 	public String getCustom() {
@@ -148,10 +132,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Your own invoice or tracking number.
+	 * Your own invoice or tracking number. 
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
@@ -162,11 +145,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * An identification code for use by third-party applications to
-	 * identify transactions.
+	 * An identification code for use by third-party applications to identify transactions. 
 	 * Optional
-	 * Character length and limitations: 32 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 32 single-byte alphanumeric characters
 	 */
 	private String ButtonSource;
 	public String getButtonSource() {
@@ -177,13 +158,10 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Your URL for receiving Instant Payment Notification (IPN) about
-	 * this transaction.
+	 * Your URL for receiving Instant Payment Notification (IPN) about this transaction. 
 	 * Optional
-	 * If you do not specify NotifyURL in the request, the notification
-	 * URL from your Merchant Profile is used, if one exists.
-	 * Character length and limitations: 2,048 single-byte alphanumeric
-	 * characters
+	 * If you do not specify NotifyURL in the request, the notification URL from your Merchant Profile is used, if one exists. 
+	 * Character length and limitations: 2,048 single-byte alphanumeric characters
 	 */
 	private String NotifyURL;
 	public String getNotifyURL() {
@@ -194,10 +172,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Address the order will be shipped to.
+	 * Address the order will be shipped to. 
 	 * Optional
-	 * If you include the ShipToAddress element, the AddressType
-	 * elements are required:
+	 * If you include the ShipToAddress element, the AddressType elements are required: 
 	 * Name
 	 * Street1
 	 * CityName
@@ -223,8 +200,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Date and time (in GMT in the format yyyy-MM-ddTHH:mm:ssZ) at which
-	 * address was changed by the user. 
+	 * Date and time (in GMT in the format yyyy-MM-ddTHH:mm:ssZ) at which address was changed by the user. 
 	 */
 	private String ProfileAddressChangeDate;
 	public String getProfileAddressChangeDate() {
@@ -257,8 +233,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Shipping discount for this order, specified as a negative
-	 * number.
+	 * Shipping discount for this order, specified as a negative number.
 	 * Optional
 	 */
 	private BasicAmountType ShippingDiscount;
@@ -306,7 +281,7 @@ public class PaymentDetailsType {
 
 	/**
 	 * Details about the seller.
-	 * Optional
+	 * Optional 
 	 */
 	private SellerDetailsType SellerDetails;
 	public SellerDetailsType getSellerDetails() {
@@ -317,10 +292,9 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Note to recipient/seller.
-	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters.
+	 * Note to recipient/seller. 
+	 * Optional 
+	 * Character length and limitations: 127 single-byte alphanumeric characters.
 	 */
 	private String NoteText;
 	public String getNoteText() {
@@ -331,8 +305,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * PayPal Transaction Id, returned once DoExpressCheckout is
-	 * completed.
+	 * PayPal Transaction Id, returned once DoExpressCheckout is completed. 
 	 */
 	private String TransactionId;
 	public String getTransactionId() {
@@ -345,19 +318,11 @@ public class PaymentDetailsType {
 	/**
 	 * How you want to obtain payment.
 	 * This payment action input will be used for split payments
-	 * Authorization indicates that this payment is a basic
-	 * authorization subject to settlement with PayPal Authorization
-	 * and Capture.
-	 * Order indicates that this payment is is an order authorization
-	 * subject to settlement with PayPal Authorization and Capture.
-	 * Sale indicates that this is a final sale for which you are
-	 * requesting payment.
-	 * IMPORTANT: You cannot set PaymentAction to Sale on
-	 * SetExpressCheckoutRequest and then change PaymentAction to
-	 * Authorization on the final Express Checkout API,
-	 * DoExpressCheckoutPaymentRequest.
-	 * Character length and limit: Up to 13 single-byte alphabetic
-	 * characters
+	 * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+	 * Order indicates that this payment is is an order authorization subject to settlement with PayPal Authorization and Capture.
+	 * Sale indicates that this is a final sale for which you are requesting payment.
+	 * IMPORTANT: You cannot set PaymentAction to Sale on SetExpressCheckoutRequest and then change PaymentAction to Authorization on the final Express Checkout API, DoExpressCheckoutPaymentRequest.
+	 * Character length and limit: Up to 13 single-byte alphabetic characters
 	 */
 	private PaymentActionCodeType PaymentAction;
 	public PaymentActionCodeType getPaymentAction() {
@@ -368,8 +333,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Unique identifier and mandatory for the particular payment request in
-	 * case of multiple payment
+	 * Unique identifier and mandatory for the particular payment request in case of multiple payment
 	 */
 	private String PaymentRequestID;
 	public String getPaymentRequestID() {
@@ -380,7 +344,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * URL on Merchant site pertaining to this invoice.
+	 * URL on Merchant site pertaining to this invoice. 
 	 * Optional
 	 */
 	private String OrderURL;
@@ -392,8 +356,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order
-	 * this will be ignored.
+	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order this will be ignored.
 	 */
 	private String SoftDescriptor;
 	public String getSoftDescriptor() {
@@ -406,8 +369,7 @@ public class PaymentDetailsType {
 	/**
 	 * BranchLevel is used to identify chain payment.
 	 * If BranchLevel is 0 or 1, this payment is where money moves to.
-	 * If BranchLevel greater than 1, this payment contains the actual
-	 * seller info.
+	 * If BranchLevel greater than 1, this payment contains the actual seller info.	
 	 * Optional
 	 */
 	private Integer BranchLevel;
@@ -419,8 +381,7 @@ public class PaymentDetailsType {
 	}
 
 	/**
-	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order
-	 * this will be ignored.
+	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order this will be ignored.
 	 */
 	private OfferDetailsType OfferDetails;
 	public OfferDetailsType getOfferDetails() {

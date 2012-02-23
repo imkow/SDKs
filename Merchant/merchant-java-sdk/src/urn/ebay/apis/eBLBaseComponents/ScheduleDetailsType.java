@@ -52,8 +52,7 @@ public class ScheduleDetailsType {
 	}
 
 	/**
-	 * The max number of payments the buyer can fail before this Recurring
-	 * Payments profile is cancelled
+	 * The max number of payments the buyer can fail before this Recurring Payments profile is cancelled
 	 */
 	private Integer MaxFailedPayments;
 	public Integer getMaxFailedPayments() {

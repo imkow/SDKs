@@ -11,16 +11,14 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 /**
  * Hosted Button ID of the button to return inventory for.
  * Required
- * Character length and limitations: 10 single-byte numeric
- * characters
+ * Character length and limitations: 10 single-byte numeric characters
  */
 public class BMGetInventoryRequestType extends AbstractRequestType{
 
 	/**
 	 * Hosted Button ID of the button to return inventory for.
 	 * Required
-	 * Character length and limitations: 10 single-byte numeric
-	 * characters
+	 * Character length and limitations: 10 single-byte numeric characters
 	 *
 	 * @Required
 	 */

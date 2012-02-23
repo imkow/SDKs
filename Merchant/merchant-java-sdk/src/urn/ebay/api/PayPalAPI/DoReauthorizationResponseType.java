@@ -23,13 +23,13 @@ import urn.ebay.apis.eBLBaseComponents.AuthorizationInfoType;
 
 /**
  * A new authorization identification number.
- * Character length and limits: 19 single-byte characters
+ * Character length and limits: 19 single-byte characters 
  */
 public class DoReauthorizationResponseType extends AbstractResponseType{
 
 	/**
-	 * A new authorization identification number.
-	 * Character length and limits: 19 single-byte characters
+A new authorization identification number.
+	 * Character length and limits: 19 single-byte characters 
 	 *
 	 * @Required
 	 */

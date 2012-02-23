@@ -1,9 +1,7 @@
 /**
  * Auto generated code
- * IncentiveRequestDetailLevelType
- * This identifies the granularity of information requested by the client
- * application. This information will be used to define the contents
- * and details of the response.
+ * IncentiveRequestDetailLevelType 
+ * This identifies the granularity of information requested by the client application. This information will be used to define the contents and details of the response.
  */
 package urn.ebay.apis.eBLBaseComponents;
 

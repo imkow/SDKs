@@ -38,12 +38,9 @@ public class GetBillingAgreementCustomerDetailsResponseDetailsType {
 	}
 
 	/**
-	 * Customer's billing address.
+Customer's billing address.
 	 * Optional
-	 * If you have a credit card mapped in your PayPal account, PayPal
-	 * returns the billing address of the credit billing address
-	 * otherwise your primary address as billing address in
-	 * GetBillingAgreementCustomerDetails.
+	 * If you have a credit card mapped in your PayPal account, PayPal returns the billing address of the credit billing address otherwise your primary address as billing address in GetBillingAgreementCustomerDetails.
 	 */
 	private AddressType BillingAddress;
 	public AddressType getBillingAddress() {

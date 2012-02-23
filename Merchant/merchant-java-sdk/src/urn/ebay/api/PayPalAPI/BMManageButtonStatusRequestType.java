@@ -12,16 +12,14 @@ import urn.ebay.apis.eBLBaseComponents.ButtonStatusType;
 /**
  * Button ID of Hosted button.
  * Required
- * Character length and limitations: 10 single-byte numeric
- * characters
+ * Character length and limitations: 10 single-byte numeric characters
  */
 public class BMManageButtonStatusRequestType extends AbstractRequestType{
 
 	/**
 	 * Button ID of Hosted button.
 	 * Required
-	 * Character length and limitations: 10 single-byte numeric
-	 * characters
+	 * Character length and limitations: 10 single-byte numeric characters
 	 */
 	private String HostedButtonID;
 	public String getHostedButtonID() {
@@ -34,8 +32,7 @@ public class BMManageButtonStatusRequestType extends AbstractRequestType{
 	/**
 	 * Requested Status change for hosted button.
 	 * Required
-	 * Character length and limitations: 1 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 1 single-byte alphanumeric characters
 	 */
 	private ButtonStatusType ButtonStatus;
 	public ButtonStatusType getButtonStatus() {

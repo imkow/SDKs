@@ -8,16 +8,12 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * If Billing Address should be returned in
- * GetExpressCheckoutDetails response, this parameter should be set
- * to yes here
+ * If Billing Address should be returned in GetExpressCheckoutDetails response, this parameter should be set to yes here
  */
 public class InfoSharingDirectivesType {
 
 	/**
-If Billing Address should be returned in
-	 * GetExpressCheckoutDetails response, this parameter should be set
-	 * to yes here	 */
+If Billing Address should be returned in GetExpressCheckoutDetails response, this parameter should be set to yes here	 */
 	private String ReqBillingAddress;
 	public String getReqBillingAddress() {
 		return ReqBillingAddress;

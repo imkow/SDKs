@@ -10,27 +10,17 @@ import urn.ebay.apis.eBLBaseComponents.SetDataRequestType;
 
 
 /**
- * On your first invocation of ExecuteCheckoutOperationsRequest,
- * the value of this token is returned by
- * ExecuteCheckoutOperationsResponse.
+ * On your first invocation of ExecuteCheckoutOperationsRequest, the value of this token is returned by ExecuteCheckoutOperationsResponse.
  * Optional
- * Include this element and its value only if you want to modify an
- * existing checkout session with another invocation of
- * ExecuteCheckoutOperationsRequest; for example, if you want the
- * customer to edit his shipping address on PayPal.
+ * Include this element and its value only if you want to modify an existing checkout session with another invocation of ExecuteCheckoutOperationsRequest; for example, if you want the customer to edit his shipping address on PayPal.
  * Character length and limitations: 20 single-byte characters
  */
 public class ExecuteCheckoutOperationsRequestDetailsType {
 
 	/**
-	 * On your first invocation of ExecuteCheckoutOperationsRequest,
-	 * the value of this token is returned by
-	 * ExecuteCheckoutOperationsResponse.
+	 * On your first invocation of ExecuteCheckoutOperationsRequest, the value of this token is returned by ExecuteCheckoutOperationsResponse.
 	 * Optional
-	 * Include this element and its value only if you want to modify an
-	 * existing checkout session with another invocation of
-	 * ExecuteCheckoutOperationsRequest; for example, if you want the
-	 * customer to edit his shipping address on PayPal.
+	 * Include this element and its value only if you want to modify an existing checkout session with another invocation of ExecuteCheckoutOperationsRequest; for example, if you want the customer to edit his shipping address on PayPal.
 	 * Character length and limitations: 20 single-byte characters
 	 */
 	private String Token;
@@ -42,8 +32,7 @@ public class ExecuteCheckoutOperationsRequestDetailsType {
 	}
 
 	/**
-	 * All the Data required to initiate the checkout session is passed in
-	 * this element.
+	 * All the Data required to initiate the checkout session is passed in this element.
 	 *
 	 * @Required
 	 */
@@ -56,8 +45,7 @@ public class ExecuteCheckoutOperationsRequestDetailsType {
 	}
 
 	/**
-	 * If auto authorization is required, this should be passed in with
-	 * IsRequested set to yes.
+	 * If auto authorization is required, this should be passed in with IsRequested set to yes.
 	 */
 	private AuthorizationRequestType AuthorizationRequest;
 	public AuthorizationRequestType getAuthorizationRequest() {

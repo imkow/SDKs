@@ -21,14 +21,13 @@ import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 
 
 /**
- * PaymentTransactionSearchResultType
+ * PaymentTransactionSearchResultType 
  * Results from a PaymentTransaction search
  */
 public class PaymentTransactionSearchResultType {
 
 	/**
-The date and time (in UTC/GMT format) the
-	 * transaction occurred	 */
+The date and time (in UTC/GMT format) the transaction occurred	 */
 	private String Timestamp;
 	public String getTimestamp() {
 		return Timestamp;
@@ -98,8 +97,7 @@ The status of the transaction	 */
 	}
 
 	/**
-The total gross amount charged, including any
-	 * profile shipping cost and taxes	 */
+The total gross amount charged, including any profile shipping cost and taxes	 */
 	private BasicAmountType GrossAmount;
 	public BasicAmountType getGrossAmount() {
 		return GrossAmount;
@@ -109,8 +107,7 @@ The total gross amount charged, including any
 	}
 
 	/**
-The fee that PayPal charged for the transaction
-	 */
+The fee that PayPal charged for the transaction 	 */
 	private BasicAmountType FeeAmount;
 	public BasicAmountType getFeeAmount() {
 		return FeeAmount;

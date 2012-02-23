@@ -9,16 +9,14 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 
 /**
- * Unique PayPal customer account number, the value of which was
- * returned by GetAuthDetails Response.
+ * Unique PayPal customer account number, the value of which was returned by GetAuthDetails Response.
  * Required
  * Character length and limitations: 20 single-byte characters
  */
 public class UpdateAccessPermissionsRequestType extends AbstractRequestType{
 
 	/**
-	 * Unique PayPal customer account number, the value of which was
-	 * returned by GetAuthDetails Response.
+Unique PayPal customer account number, the value of which was returned by GetAuthDetails Response.
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 *

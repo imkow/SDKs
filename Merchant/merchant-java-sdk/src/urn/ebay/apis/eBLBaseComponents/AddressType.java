@@ -23,16 +23,14 @@ import urn.ebay.apis.eBLBaseComponents.CountryCodeType;
 
 
 /**
- * Person's name associated with this address.
- * Character length and limitations: 32 single-byte alphanumeric
- * characters
+ * Person's name associated with this address. 
+Character length and limitations: 32 single-byte alphanumeric characters
  */
 public class AddressType {
 
 	/**
-	 * Person's name associated with this address.
-	 * Character length and limitations: 32 single-byte alphanumeric
-	 * characters
+	 * Person's name associated with this address. 
+Character length and limitations: 32 single-byte alphanumeric characters
 	 */
 	private String Name;
 	public String getName() {
@@ -43,9 +41,8 @@ public class AddressType {
 	}
 
 	/**
-	 * First street address.
-	 * Character length and limitations: 300 single-byte alphanumeric
-	 * characters
+	 * First street address. 
+Character length and limitations: 300 single-byte alphanumeric characters
 	 */
 	private String Street1;
 	public String getStreet1() {
@@ -56,9 +53,8 @@ public class AddressType {
 	}
 
 	/**
-	 * Second street address.
-	 * Character length and limitations: 300 single-byte alphanumeric
-	 * characters
+	 * Second street address. 
+Character length and limitations: 300 single-byte alphanumeric characters
 	 */
 	private String Street2;
 	public String getStreet2() {
@@ -69,10 +65,8 @@ public class AddressType {
 	}
 
 	/**
-	 * Name of city.
-	 * Character length and limitations: 120 single-byte alphanumeric
-	 * characters
-	 */
+	 * Name of city. 
+Character length and limitations: 120 single-byte alphanumeric characters	 */
 	private String CityName;
 	public String getCityName() {
 		return CityName;
@@ -82,11 +76,9 @@ public class AddressType {
 	}
 
 	/**
-	 * State or province.
-	 * Character length and limitations: 120 single-byte alphanumeric
-	 * characters
-	 * For Canada and the USA, StateOrProvince must be the standard
-	 * 2-character abbreviation of a state or province.
+	 * State or province. 
+Character length and limitations: 120 single-byte alphanumeric characters
+	 * For Canada and the USA, StateOrProvince must be the standard 2-character abbreviation of a state or province.
 	 * Canadian Provinces
 	 * Alberta
 	 * AB 
@@ -116,7 +108,7 @@ public class AddressType {
 	 * YK
 	 * United States
 	 * Alabama
-	 * AL
+	 * AL 
 	 * Alaska
 	 * AK
 	 * American_Samoa
@@ -250,8 +242,7 @@ public class AddressType {
 
 	/**
 	 * ISO 3166 standard country code
-	 * Character limit: Two single-byte characters.
-	 */
+	 * Character limit: Two single-byte characters. 	 */
 	private CountryCodeType Country;
 	public CountryCodeType getCountry() {
 		return Country;
@@ -261,15 +252,11 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
-	 * This element should only be used in response elements and
-	 * typically
-	 * should not be used in creating request messages which specify the
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
+	 * This element should only be used in response elements and typically
+	 * should not be used in creating request messages which specify the 
 	 * name of a country using the Country element (which refers to a
-	 * 2-letter country code).
+	 * 2-letter country code).      
 	 */
 	private String CountryName;
 	public String getCountryName() {
@@ -300,10 +287,7 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile, or
-	 * UpdateRecurringPaymentsProfile.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile, or UpdateRecurringPaymentsProfile.
 	 */
 	private String AddressID;
 	public String getAddressID() {
@@ -314,10 +298,7 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
 	 */
 	private AddressOwnerCodeType AddressOwner;
 	public AddressOwnerCodeType getAddressOwner() {
@@ -328,10 +309,7 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
 	 */
 	private String ExternalAddressID;
 	public String getExternalAddressID() {
@@ -342,12 +320,8 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
-	 * Only applicable to SellerPaymentAddress today. Seller's
-	 * international name that is associated with the payment address.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
+	 * Only applicable to SellerPaymentAddress today. Seller's international name that is associated with the payment address. 
 	 */
 	private String InternationalName;
 	public String getInternationalName() {
@@ -358,12 +332,8 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
-	 * Only applicable to SellerPaymentAddress today. International
-	 * state and city for the seller's payment address.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
+	 * Only applicable to SellerPaymentAddress today. International state and city for the seller's payment address. 
 	 */
 	private String InternationalStateAndCity;
 	public String getInternationalStateAndCity() {
@@ -374,13 +344,8 @@ public class AddressType {
 	}
 
 	/**
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
-	 * Only applicable to SellerPaymentAddress today. Seller's
-	 * international street address that is associated with the payment
-	 * address.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
+	 * Only applicable to SellerPaymentAddress today. Seller's international street address that is associated with the payment address.
 	 */
 	private String InternationalStreet;
 	public String getInternationalStreet() {
@@ -392,10 +357,7 @@ public class AddressType {
 
 	/**
 	 * Status of the address on file with PayPal.
-	 * IMPORTANT: Do not set this element for SetExpressCheckout,
-	 * DoExpressCheckoutPayment, DoDirectPayment,
-	 * CreateRecurringPaymentsProfile or
-	 * UpdateRecurringPaymentsProfile.
+	 * IMPORTANT: Do not set this element for SetExpressCheckout, DoExpressCheckoutPayment, DoDirectPayment, CreateRecurringPaymentsProfile or UpdateRecurringPaymentsProfile.
 	 */
 	private AddressStatusCodeType AddressStatus;
 	public AddressStatusCodeType getAddressStatus() {

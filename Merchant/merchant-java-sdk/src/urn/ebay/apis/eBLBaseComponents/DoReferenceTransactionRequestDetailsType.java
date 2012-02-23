@@ -9,6 +9,7 @@ import urn.ebay.apis.eBLBaseComponents.MerchantPullPaymentCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentActionCodeType;
 import urn.ebay.apis.eBLBaseComponents.PaymentDetailsType;
 import urn.ebay.apis.eBLBaseComponents.ReferenceCreditCardDetailsType;
+import urn.ebay.apis.eBLBaseComponents.SenderDetailsType;
 
 
 /**
@@ -111,6 +112,16 @@ public class DoReferenceTransactionRequestDetailsType {
 		this.SoftDescriptor = value;
 	}
 
+	/**
+	 */
+	private SenderDetailsType SenderDetails;
+	public SenderDetailsType getSenderDetails() {
+		return SenderDetails;
+	}
+	public void setSenderDetails(SenderDetailsType value) {
+		this.SenderDetails = value;
+	}
+
 
 	public DoReferenceTransactionRequestDetailsType(String ReferenceID, PaymentActionCodeType PaymentAction, PaymentDetailsType PaymentDetails) {
 		this.ReferenceID = ReferenceID;
@@ -159,6 +170,11 @@ public class DoReferenceTransactionRequestDetailsType {
 		if( SoftDescriptor != null ) {
 			sb.append("<ebl:SoftDescriptor>").append(SoftDescriptor);
 			sb.append("</ebl:SoftDescriptor>");
+		}
+		if( SenderDetails != null ) {
+			sb.append("<ebl:SenderDetails>");
+			sb.append(SenderDetails.toXMLString());
+			sb.append("</ebl:SenderDetails>");
 		}
 		return sb.toString();
 	}

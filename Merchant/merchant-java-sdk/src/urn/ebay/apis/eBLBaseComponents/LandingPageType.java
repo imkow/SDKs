@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * LandingPageType
- * This is the PayPal payment Landing Page details type (used by Express
- * Checkout)
+ * LandingPageType 
+ * This is the PayPal payment Landing Page details type (used by Express Checkout)
  */
 package urn.ebay.apis.eBLBaseComponents;
 

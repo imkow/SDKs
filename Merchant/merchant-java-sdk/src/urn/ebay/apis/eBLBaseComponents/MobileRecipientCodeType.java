@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * MobileRecipientCodeType
- * These are the accepted types of recipients for mobile-originated
- * transactions
+ * MobileRecipientCodeType 
+ * These are the accepted types of recipients for mobile-originated transactions
  */
 package urn.ebay.apis.eBLBaseComponents;
 

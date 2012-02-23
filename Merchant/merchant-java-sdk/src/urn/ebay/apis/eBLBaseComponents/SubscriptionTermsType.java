@@ -21,7 +21,7 @@ import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 
 
 /**
- * SubscriptionTermsType
+ * SubscriptionTermsType 
  * Terms of a PayPal subscription.
  */
 public class SubscriptionTermsType {

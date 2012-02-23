@@ -5,30 +5,24 @@
 
 package urn.ebay.apis.CoreComponentTypes;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
 import urn.ebay.apis.eBLBaseComponents.CurrencyCodeType;
 
 
 /**
- * On requests, you must set the currencyID attribute to one of the
- * three-character currency codes for any of the supported PayPal
- * currencies.
- * Limitations: Must not exceed $10,000 USD in any currency. No
- * currency symbol. Decimal separator must be a period (.), and the
- * thousands separator must be a comma (,).
+On requests, you must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies. 
+ * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
  */
 public class BasicAmountType {
 

@@ -8,15 +8,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 
 /**
- * Store ID
- * Optional
+ * Store IDOptional
  * Character length and limits: 50 single-byte characters
  */
 public class MerchantStoreDetailsType {
 
 	/**
-	 * Store ID
-	 * Optional
+Store IDOptional
 	 * Character length and limits: 50 single-byte characters
 	 *
 	 * @Required
@@ -30,8 +28,7 @@ public class MerchantStoreDetailsType {
 	}
 
 	/**
-	 * Terminal ID
-	 * Optional
+Terminal IDOptional
 	 * Character length and limits: 50 single-byte characters
 	 */
 	private String TerminalID;

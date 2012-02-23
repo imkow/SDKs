@@ -144,7 +144,7 @@ public class SettlementServlet extends HttpServlet {
 		session.setAttribute("url", request.getRequestURI());
 		session.setAttribute(
 				"relatedUrl",
-				"<ul><li><a href='Settlement/DoAuthorization'>DoAuthorization</a></li><li><a href='Settlement/DoCapture'>DoCapture</a></li><li><a href='Settlement/DoVoid'>DoVoid</a></li><li><a href='Settlement/DoReauthorization'>DoReauthorization</a></li><li><a href='Settlement/DoUATPAuthorization'>DoUATPAuthorization</a></li><li><a href='Settlement/Refund'>Refund</a></li><li><a href='Settlement/ReverseTransaction'>ReverseTransaction</a></li><li><a href='Settlement/DoNonReferencedCredit'>DoNonReferencedCredit</a></li><li><a href='Settlement/ManagePendingTransactionStatus'>ManagePendingTransactionStatus</a></li></ul>");
+				"<ul><li><a href='Settlement/DoAuthorization'>DoAuthorization</a></li><li><a href='Settlement/DoCapture'>DoCapture</a></li><li><a href='Settlement/DoVoid'>DoVoid</a></li><li><a href='Settlement/DoReauthorization'>DoReauthorization</a></li><li><a href='Settlement/Refund'>Refund</a></li><li><a href='Settlement/ReverseTransaction'>ReverseTransaction</a></li><li><a href='Settlement/DoNonReferencedCredit'>DoNonReferencedCredit</a></li><li><a href='Settlement/ManagePendingTransactionStatus'>ManagePendingTransactionStatus</a></li></ul>");
 		response.setContentType("text/html");
 		try {
 			PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(

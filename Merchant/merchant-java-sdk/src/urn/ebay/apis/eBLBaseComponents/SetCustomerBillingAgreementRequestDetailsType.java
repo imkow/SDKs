@@ -119,12 +119,9 @@ public class SetCustomerBillingAgreementRequestDetailsType {
 	}
 
 	/**
-	 * The value 1 indicates that you require that the customer's
-	 * billing address on file. Setting this element overrides the
-	 * setting you have specified in Admin.
+The value 1 indicates that you require that the customer's billing address on file. Setting this element overrides the setting you have specified in Admin.
 	 * Optional
-	 * Character length and limitations: One single-byte numeric
-	 * character.
+	 * Character length and limitations: One single-byte numeric character.
 	 */
 	private String ReqBillingAddress;
 	public String getReqBillingAddress() {

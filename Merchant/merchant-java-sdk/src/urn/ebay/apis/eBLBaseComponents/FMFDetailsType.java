@@ -21,8 +21,7 @@ import urn.ebay.apis.eBLBaseComponents.RiskFilterListType;
 
 
 /**
- * Thes are filters that could result in
- * accept/deny/pending action.
+ * Thes are filters that could result in accept/deny/pending action.
  */
 public class FMFDetailsType {
 

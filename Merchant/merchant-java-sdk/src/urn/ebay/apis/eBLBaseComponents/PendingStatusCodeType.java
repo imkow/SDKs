@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * PendingStatusCodeType
- * The pending status for a PayPal Payment transaction which matches the
- * output from IPN
+ * PendingStatusCodeType 
+ * The pending status for a PayPal Payment transaction which matches the output from IPN
  */
 package urn.ebay.apis.eBLBaseComponents;
 

@@ -23,7 +23,7 @@ import urn.ebay.apis.eBLBaseComponents.ThreeDSecureRequestType;
 
 
 /**
- * CreditCardDetailsType
+ * CreditCardDetailsType 
  * Information about a Credit Card.
  */
 public class CreditCardDetailsType {

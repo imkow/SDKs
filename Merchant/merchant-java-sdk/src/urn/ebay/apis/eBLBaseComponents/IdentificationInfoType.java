@@ -15,8 +15,7 @@ import urn.ebay.apis.eBLBaseComponents.RememberMeIDInfoType;
 public class IdentificationInfoType {
 
 	/**
-Mobile specific buyer identification.
-	 */
+Mobile specific buyer identification.	 */
 	private MobileIDInfoType MobileIDInfo;
 	public MobileIDInfoType getMobileIDInfo() {
 		return MobileIDInfo;

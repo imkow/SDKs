@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * MobilePaymentCodeType
+ * MobilePaymentCodeType 
  * These are the accepted types of mobile payments
  */
 package urn.ebay.apis.eBLBaseComponents;

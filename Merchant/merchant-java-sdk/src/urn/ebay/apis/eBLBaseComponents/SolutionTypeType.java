@@ -1,8 +1,7 @@
 /**
  * Auto generated code
- * SolutionTypeType
- * This is the PayPal payment Solution details type (used by Express
- * Checkout)
+ * SolutionTypeType 
+ * This is the PayPal payment Solution details type (used by Express Checkout)
  */
 package urn.ebay.apis.eBLBaseComponents;
 

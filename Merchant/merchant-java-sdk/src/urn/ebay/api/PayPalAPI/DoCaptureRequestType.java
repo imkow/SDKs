@@ -13,16 +13,14 @@ import urn.ebay.apis.eBLBaseComponents.MerchantStoreDetailsType;
 
 
 /**
- * The authorization identification number of the payment you
- * want to capture.
+ * The authorization identification number of the payment you want to capture. 
  * Required
  * Character length and limits: 19 single-byte characters maximum
  */
 public class DoCaptureRequestType extends AbstractRequestType{
 
 	/**
-	 * The authorization identification number of the payment you
-	 * want to capture.
+The authorization identification number of the payment you want to capture. 
 	 * Required
 	 * Character length and limits: 19 single-byte characters maximum
 	 *
@@ -37,12 +35,9 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Amount to authorize. You must set the currencyID attribute to
-	 * USD.
+Amount to authorize. You must set the currencyID attribute to USD. 
 	 * Required
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and
-	 * the thousands separator must be a comma (,)
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,)
 	 *
 	 * @Required
 	 */
@@ -55,13 +50,9 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Indicates if this capture is the last capture you intend to
-	 * make. The default is Complete. If CompleteType is Complete,
-	 * any remaining amount of the original reauthorized transaction
-	 * is automatically voided.
+Indicates if this capture is the last capture you intend to make. The default is Complete. If CompleteType is Complete, any remaining amount of the original reauthorized transaction is automatically voided. 
 	 * Required
-	 * Character length and limits: 12 single-byte alphanumeric
-	 * characters
+	 * Character length and limits: 12 single-byte alphanumeric characters
 	 *
 	 * @Required
 	 */
@@ -74,8 +65,7 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * An informational note about this settlement that is displayed
-	 * to the payer in email and in transaction history.
+An informational note about this settlement that is displayed to the payer in email and in  transaction history. 
 	 * Optional
 	 * Character length and limits: 255 single-byte characters
 	 */
@@ -88,13 +78,10 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Your invoice number or other identification number.
-	 * The InvoiceID value is recorded only if the authorization you
-	 * are capturing is an order authorization, not a basic
-	 * authorization.
+Your invoice number or other identification number. 
+	 * The InvoiceID value is recorded only if the authorization you are capturing is an order authorization, not a basic authorization.
 	 * Optional
-	 * Character length and limits: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limits: 127 single-byte alphanumeric characters
 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
@@ -105,7 +92,7 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Contains enhanced data like airline itinerary information.
+Contains enhanced data like airline itinerary information.
 	 * Not Required
 	 */
 	private EnhancedDataType EnhancedData;
@@ -117,12 +104,10 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * dynamic descriptor
-	 * Dynamic descriptor is used for merchant to provide detail of a
-	 * transaction appears on statement
+dynamic descriptor
+	 * Dynamic descriptor is used for merchant to provide detail of a transaction appears on statement
 	 * Optional
-	 * Character length and limits: <18 characters alphanumeric
-	 * characters
+	 * Character length and limits: <18 characters alphanumeric characters
 	 */
 	private String Descriptor;
 	public String getDescriptor() {
@@ -133,8 +118,7 @@ public class DoCaptureRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * To pass the Merchant store information
-	 * Optional
+To pass the Merchant store informationOptional
 	 */
 	private MerchantStoreDetailsType MerchantStoreDetails;
 	public MerchantStoreDetailsType getMerchantStoreDetails() {

@@ -26,13 +26,13 @@ import urn.ebay.apis.eBLBaseComponents.ProductCategoryType;
 
 
 /**
- * PaymentDetailsItemType
+ * PaymentDetailsItemType 
  * Information about a Payment Item.
  */
 public class PaymentDetailsItemType {
 
 	/**
-	 * Item name.
+	 * Item name. 
 	 * Optional
 	 * Character length and limitations: 127 single-byte characters
 	 */
@@ -45,7 +45,7 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Item number.
+	 * Item number. 
 	 * Optional
 	 * Character length and limitations: 127 single-byte characters
 	 */
@@ -58,10 +58,9 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Item quantity.
+	 * Item quantity. 
 	 * Optional
-	 * Character length and limitations: Any positive integer
-	 */
+	 * Character length and limitations: Any positive integer	 */
 	private Integer Quantity;
 	public Integer getQuantity() {
 		return Quantity;
@@ -71,10 +70,9 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Item sales tax.
+	 * Item sales tax. 
 	 * Optional
-	 * Character length and limitations: any valid currency amount;
-	 * currency code is set the same as for OrderTotal.
+	 * Character length and limitations: any valid currency amount; currency code is set the same as for OrderTotal.
 	 */
 	private BasicAmountType Tax;
 	public BasicAmountType getTax() {
@@ -85,13 +83,10 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Cost of item
-	 * You must set the currencyID attribute to one of the three-character
-	 * currency codes for any of the supported PayPal currencies.
+	 * Cost of item 
+You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies. 
 	 * Optional
-	 * Limitations: Must not exceed $10,000 USD in any currency. No
-	 * currency symbol. Decimal separator must be a period (.), and the
-	 * thousands separator must be a comma (,).
+	 * Limitations: Must not exceed $10,000 USD in any currency. No currency symbol. Decimal separator must be a period (.), and the thousands separator must be a comma (,).
 	 */
 	private BasicAmountType Amount;
 	public BasicAmountType getAmount() {
@@ -114,8 +109,7 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Promotional financing code for item. Part of the Merchant Services
-	 * Promotion Financing feature.
+	 * Promotional financing code for item. Part of the Merchant Services Promotion Financing feature.
 	 */
 	private String PromoCode;
 	public String getPromoCode() {
@@ -136,7 +130,7 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Item description.
+	 * Item description. 
 	 * Optional
 	 * Character length and limitations: 127 single-byte characters
 	 */
@@ -218,7 +212,7 @@ public class PaymentDetailsItemType {
 	}
 
 	/**
-	 * Item category - physical or digital.
+	 * Item category - physical or digital. 
 	 * Optional
 	 */
 	private ItemCategoryType ItemCategory;

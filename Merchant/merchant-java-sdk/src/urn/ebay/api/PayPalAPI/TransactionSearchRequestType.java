@@ -14,15 +14,13 @@ import urn.ebay.apis.eBLBaseComponents.PersonNameType;
 
 
 /**
- * The earliest transaction date at which to start the search. No
- * wildcards are allowed.
+The earliest transaction date at which to start the search. No wildcards are allowed. 
  * Required
  */
 public class TransactionSearchRequestType extends AbstractRequestType{
 
 	/**
-	 * The earliest transaction date at which to start the search. No
-	 * wildcards are allowed.
+The earliest transaction date at which to start the search. No wildcards are allowed. 
 	 * Required
 	 *
 	 * @Required
@@ -36,7 +34,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * The latest transaction date to be included in the search
+The latest transaction date to be included in the search 
 	 * Optional
 	 */
 	private String EndDate;
@@ -48,10 +46,9 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by the buyer's email address
+Search by the buyer's email address 
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String Payer;
 	public String getPayer() {
@@ -62,9 +59,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by the receiver's email address. If the merchant
-	 * account has only one email, this is the primary email. Can
-	 * also be a non-primary email.
+Search by the receiver's email address. If the merchant account has only one email, this is the primary email. Can also be a non-primary email.
 	 * Optional
 	 */
 	private String Receiver;
@@ -76,7 +71,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by the PayPal Account Optional receipt ID
+Search by the PayPal Account Optional receipt ID
 	 * Optional
 	 */
 	private String ReceiptID;
@@ -88,12 +83,10 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by the transaction ID.
+Search by the transaction ID. 
 	 * Optional
-	 * The returned results are from the merchant's transaction
-	 * records.
-	 * Character length and limitations: 19 single-byte characters
-	 * maximum
+	 * The returned results are from the merchant's transaction records. 
+	 * Character length and limitations: 19 single-byte characters maximum
 	 */
 	private String TransactionID;
 	public String getTransactionID() {
@@ -104,9 +97,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by Recurring Payment Profile id. The ProfileID is
-	 * returned as part of the CreateRecurringPaymentsProfile API
-	 * response.
+Search by Recurring Payment Profile id.  The ProfileID is returned as part of the CreateRecurringPaymentsProfile API response. 
 	 * Optional
 	 */
 	private String ProfileID;
@@ -118,7 +109,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by the buyer's name
+Search by the buyer's name 
 	 * Optional
 	 * Salutation: 20 single-byte character limit.
 	 * FirstName: 25 single-byte character limit.
@@ -135,13 +126,9 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by item number of the purchased goods.
+Search by item number of the purchased goods.
 	 * Optional
-	 * To search for purchased items not related to auctions, set the
-	 * AuctionItemNumber element to the value of the HTML item_number
-	 * variable set in the shopping cart for the original
-	 * transaction.
-	 */
+	 * To search for purchased items not related to auctions, set the AuctionItemNumber element to the value of the HTML item_number variable set in the shopping cart for the original transaction.	 */
 	private String AuctionItemNumber;
 	public String getAuctionItemNumber() {
 		return AuctionItemNumber;
@@ -151,15 +138,10 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by invoice identification key, as set by you for the
-	 * original transaction. InvoiceID searches the invoice records
-	 * for items sold by the merchant, not the items purchased.
+Search by invoice identification key, as set by you for the original transaction. InvoiceID searches the invoice records for items sold by the merchant, not the items purchased. 
 	 * Optional
-	 * The value for InvoiceID must exactly match an invoice
-	 * identification number. No wildcards are allowed.
-	 * Character length and limitations: 127 single-byte characters
-	 * maximum
-	 */
+	 * The value for InvoiceID must exactly match an invoice identification number. No wildcards are allowed. 
+	 * Character length and limitations: 127 single-byte characters maximum	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
 		return InvoiceID;
@@ -179,10 +161,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by classification of transaction. Some kinds of
-	 * possible classes of transactions are not searchable with
-	 * TransactionSearchRequest. You cannot search for bank transfer
-	 * withdrawals, for example.
+	 * Search by classification of transaction. Some kinds of possible classes of transactions are not searchable with TransactionSearchRequest. You cannot search for bank transfer withdrawals, for example. 
 	 * Optional
 	 * All: all transaction classifications.
 	 * Sent: only payments sent.
@@ -197,14 +176,11 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	 * Dividend: only transactions involving dividends.
 	 * Billpay: only transactions involving BillPay Transactions.
 	 * Refund: only transactions involving funds.
-	 * CurrencyConversions: only transactions involving currency
-	 * conversions.
-	 * BalanceTransfer: only transactions involving balance
-	 * transfers.
+	 * CurrencyConversions: only transactions involving currency conversions.
+	 * BalanceTransfer: only transactions involving balance transfers.
 	 * Reversal: only transactions involving BillPay reversals.
 	 * Shipping: only transactions involving UPS shipping fees.
-	 * BalanceAffecting: only transactions that affect the account
-	 * balance.
+	 * BalanceAffecting: only transactions that affect the account balance.
 	 * ECheck: only transactions involving eCheck
 	 */
 	private PaymentTransactionClassCodeType TransactionClass;
@@ -216,12 +192,9 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by transaction amount
+Search by transaction amount 
 	 * Optional
-	 * You must set the currencyID attribute to one of the
-	 * three-character currency codes for any of the supported PayPal
-	 * currencies.
-	 */
+	 * You must set the currencyID attribute to one of the three-character currency codes for any of the supported PayPal currencies. 	 */
 	private BasicAmountType Amount;
 	public BasicAmountType getAmount() {
 		return Amount;
@@ -231,7 +204,7 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by currency code
+Search by currency code
 	 * Optional
 	 */
 	private CurrencyCodeType CurrencyCode;
@@ -243,20 +216,13 @@ public class TransactionSearchRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Search by transaction status
+Search by transaction status 
 	 * Optional
-	 * Pending: The payment is pending. The specific reason the
-	 * payment is pending is returned by the GetTransactionDetails
-	 * APIPendingReason element. For more information, see
-	 * PendingReason.
+	 * Pending: The payment is pending. The specific reason the payment is pending is returned by the GetTransactionDetails APIPendingReason element. For more information, see PendingReason.
 	 * Processing: The payment is being processed.
-	 * Success: The payment has been completed and the funds have
-	 * been added successfully to your account balance.
-	 * Denied: You denied the payment. This happens only if the
-	 * payment was previously pending.
-	 * Reversed: A payment was reversed due to a chargeback or other
-	 * type of reversal. The funds have been removed from your
-	 * account balance and returned to the buyer.
+	 * Success: The payment has been completed and the funds have been added successfully to your account balance.
+	 * Denied: You denied the payment. This happens only if the payment was previously pending.
+	 * Reversed: A payment was reversed due to a chargeback or other type of reversal. The funds have been removed from your account balance and returned to the buyer.
 	 */
 	private PaymentTransactionStatusCodeType Status;
 	public PaymentTransactionStatusCodeType getStatus() {

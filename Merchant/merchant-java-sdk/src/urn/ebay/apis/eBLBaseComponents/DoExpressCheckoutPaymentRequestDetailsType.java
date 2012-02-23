@@ -15,40 +15,24 @@ import urn.ebay.apis.eBLBaseComponents.UserSelectedOptionType;
 
 
 /**
- * How you want to obtain payment.
+ * How you want to obtain payment. 
  * Required
- * Authorization indicates that this payment is a basic
- * authorization subject to settlement with PayPal Authorization
- * and Capture.
- * Order indicates that this payment is is an order authorization
- * subject to settlement with PayPal Authorization and Capture.
- * Sale indicates that this is a final sale for which you are
- * requesting payment.
- * IMPORTANT: You cannot set PaymentAction to Sale on
- * SetExpressCheckoutRequest and then change PaymentAction to
- * Authorization on the final Express Checkout API,
- * DoExpressCheckoutPaymentRequest.
- * Character length and limit: Up to 13 single-byte alphabetic
- * characters
+ * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+ * Order indicates that this payment is is an order authorization subject to settlement with PayPal Authorization and Capture.
+ * Sale indicates that this is a final sale for which you are requesting payment.
+ * IMPORTANT: You cannot set PaymentAction to Sale on SetExpressCheckoutRequest and then change PaymentAction to Authorization on the final Express Checkout API, DoExpressCheckoutPaymentRequest.
+ * Character length and limit: Up to 13 single-byte alphabetic characters
  */
 public class DoExpressCheckoutPaymentRequestDetailsType {
 
 	/**
-	 * How you want to obtain payment.
+	 * How you want to obtain payment. 
 	 * Required
-	 * Authorization indicates that this payment is a basic
-	 * authorization subject to settlement with PayPal Authorization
-	 * and Capture.
-	 * Order indicates that this payment is is an order authorization
-	 * subject to settlement with PayPal Authorization and Capture.
-	 * Sale indicates that this is a final sale for which you are
-	 * requesting payment.
-	 * IMPORTANT: You cannot set PaymentAction to Sale on
-	 * SetExpressCheckoutRequest and then change PaymentAction to
-	 * Authorization on the final Express Checkout API,
-	 * DoExpressCheckoutPaymentRequest.
-	 * Character length and limit: Up to 13 single-byte alphabetic
-	 * characters
+	 * Authorization indicates that this payment is a basic authorization subject to settlement with PayPal Authorization and Capture.
+	 * Order indicates that this payment is is an order authorization subject to settlement with PayPal Authorization and Capture.
+	 * Sale indicates that this is a final sale for which you are requesting payment.
+	 * IMPORTANT: You cannot set PaymentAction to Sale on SetExpressCheckoutRequest and then change PaymentAction to Authorization on the final Express Checkout API, DoExpressCheckoutPaymentRequest.
+	 * Character length and limit: Up to 13 single-byte alphabetic characters
 	 */
 	private PaymentActionCodeType PaymentAction;
 	public PaymentActionCodeType getPaymentAction() {
@@ -59,12 +43,9 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * The timestamped token value that was returned by
-	 * SetExpressCheckoutResponse and passed on
-	 * GetExpressCheckoutDetailsRequest.
+	 * The timestamped token value that was returned by SetExpressCheckoutResponse and passed on GetExpressCheckoutDetailsRequest. 
 	 * Required
-	 * Character length and limitations: 20 single-byte characters
-	 */
+	 * Character length and limitations: 20 single-byte characters	 */
 	private String Token;
 	public String getToken() {
 		return Token;
@@ -74,8 +55,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Encrypted PayPal customer account identification number as
-	 * returned by GetExpressCheckoutDetailsResponse.
+	 * Encrypted PayPal customer account identification number as returned by GetExpressCheckoutDetailsResponse. 
 	 * Required
 	 * Character length and limitations: 127 single-byte characters.
 	 */
@@ -88,7 +68,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * URL on Merchant site pertaining to this invoice.
+	 * URL on Merchant site pertaining to this invoice. 
 	 * Optional
 	 */
 	private String OrderURL;
@@ -100,7 +80,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Information about the payment
+	 * Information about the payment 
 	 * Required
 	 */
 	private List<PaymentDetailsType> PaymentDetails = new ArrayList<PaymentDetailsType>();
@@ -112,8 +92,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Flag to indicate if previously set promoCode shall be overriden.
-	 * Value 1 indicates overriding.
+	 * Flag to indicate if previously set promoCode shall be overriden. Value 1 indicates overriding.
 	 */
 	private String PromoOverrideFlag;
 	public String getPromoOverrideFlag() {
@@ -124,8 +103,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Promotional financing code for item. Overrides any previous PromoCode
-	 * setting.
+	 * Promotional financing code for item. Overrides any previous PromoCode setting.
 	 */
 	private String PromoCode;
 	public String getPromoCode() {
@@ -147,8 +125,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order
-	 * this will be ignored.
+	 * Soft Descriptor supported for Sale and Auth in DEC only. For Order this will be ignored.
 	 */
 	private String SoftDescriptor;
 	public String getSoftDescriptor() {
@@ -247,11 +224,9 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * An identification code for use by third-party applications to
-	 * identify transactions.
+An identification code for use by third-party applications to identify transactions. 
 	 * Optional
-	 * Character length and limitations: 32 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 32 single-byte alphanumeric characters
 	 */
 	private String ButtonSource;
 	public String getButtonSource() {
@@ -262,8 +237,7 @@ public class DoExpressCheckoutPaymentRequestDetailsType {
 	}
 
 	/**
-	 * Merchant specified flag which indicates whether to create
-	 * billing agreement as part of DoEC or not.
+	 * Merchant specified flag which indicates whether to create billing agreement as part of DoEC or not.
 	 * Optional
 	 */
 	private Boolean SkipBACreation;

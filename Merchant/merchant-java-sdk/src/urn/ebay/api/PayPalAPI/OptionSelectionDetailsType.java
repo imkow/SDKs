@@ -26,16 +26,14 @@ import urn.ebay.apis.eBLBaseComponents.OptionTypeListType;
 /**
  * Option Selection.
  * Required
- * Character length and limitations: 12 single-byte alphanumeric
- * characters
+ * Character length and limitations: 12 single-byte alphanumeric characters
  */
 public class OptionSelectionDetailsType {
 
 	/**
 	 * Option Selection.
 	 * Required
-	 * Character length and limitations: 12 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 12 single-byte alphanumeric characters
 	 *
 	 * @Required
 	 */
@@ -49,7 +47,7 @@ public class OptionSelectionDetailsType {
 
 	/**
 	 * Option Price.
-	 * Optional
+	 * Optional     
 	 */
 	private String Price;
 	public String getPrice() {

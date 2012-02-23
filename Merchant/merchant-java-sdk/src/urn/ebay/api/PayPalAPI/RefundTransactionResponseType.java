@@ -19,16 +19,17 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
 import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
+import urn.ebay.apis.eBLBaseComponents.RefundInfoType;
 
 
 /**
- * Unique transaction ID of the refund.
+ * Unique transaction ID of the refund. 
  * Character length and limitations:17 single-byte characters
  */
 public class RefundTransactionResponseType extends AbstractResponseType{
 
 	/**
-	 * Unique transaction ID of the refund.
+Unique transaction ID of the refund. 
 	 * Character length and limitations:17 single-byte characters
 	 */
 	private String RefundTransactionID;
@@ -40,8 +41,7 @@ public class RefundTransactionResponseType extends AbstractResponseType{
 	}
 
 	/**
-Amount subtracted from PayPal balance of
-	 * original recipient of payment to make this refund
+Amount subtracted from PayPal balance of original recipient of payment to make this refund 
 	 */
 	private BasicAmountType NetRefundAmount;
 	public BasicAmountType getNetRefundAmount() {
@@ -52,8 +52,7 @@ Amount subtracted from PayPal balance of
 	}
 
 	/**
-Transaction fee refunded to original recipient
-	 * of payment 
+Transaction fee refunded to original recipient of payment 
 	 */
 	private BasicAmountType FeeRefundAmount;
 	public BasicAmountType getFeeRefundAmount() {
@@ -64,8 +63,7 @@ Transaction fee refunded to original recipient
 	}
 
 	/**
-Amount of money refunded to original payer
-	 */
+Amount of money refunded to original payer 	 */
 	private BasicAmountType GrossRefundAmount;
 	public BasicAmountType getGrossRefundAmount() {
 		return GrossRefundAmount;
@@ -82,6 +80,26 @@ Total of all previous refunds	 */
 	}
 	public void setTotalRefundedAmount(BasicAmountType value) {
 		this.TotalRefundedAmount = value;
+	}
+
+	/**
+Contains Refund Payment status information.	 */
+	private RefundInfoType RefundInfo;
+	public RefundInfoType getRefundInfo() {
+		return RefundInfo;
+	}
+	public void setRefundInfo(RefundInfoType value) {
+		this.RefundInfo = value;
+	}
+
+	/**
+Any general information like offer details that is reinstated or any other marketing data	 */
+	private String ReceiptData;
+	public String getReceiptData() {
+		return ReceiptData;
+	}
+	public void setReceiptData(String value) {
+		this.ReceiptData = value;
 	}
 
 
@@ -177,6 +195,18 @@ Total of all previous refunds	 */
 		 nodeList = document.getElementsByTagName("TotalRefundedAmount");
 			 xmlString = convertToXML(nodeList.item(0)); 
 			 this.TotalRefundedAmount =  new BasicAmountType(xmlString);
+
+}
+	}
+		 if(document.getElementsByTagName("RefundInfo").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("RefundInfo").item(0))){ 
+		 nodeList = document.getElementsByTagName("RefundInfo");
+			 xmlString = convertToXML(nodeList.item(0)); 
+			 this.RefundInfo =  new RefundInfoType(xmlString);
+
+}
+	}
+		 if(document.getElementsByTagName("ReceiptData").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("ReceiptData").item(0))){ 
+		 this.ReceiptData =(String)document.getElementsByTagName("ReceiptData").item(0).getTextContent();
 
 }
 	}

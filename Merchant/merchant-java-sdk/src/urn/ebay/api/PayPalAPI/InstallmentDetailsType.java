@@ -40,7 +40,7 @@ public class InstallmentDetailsType {
 
 	/**
 	 * Installment Frequency.
-	 * Optional
+	 * Optional     
 	 */
 	private Integer BillingFrequency;
 	public Integer getBillingFrequency() {
@@ -52,7 +52,7 @@ public class InstallmentDetailsType {
 
 	/**
 	 * Installment Cycles.
-	 * Optional
+	 * Optional     
 	 */
 	private Integer TotalBillingCycles;
 	public Integer getTotalBillingCycles() {
@@ -64,7 +64,7 @@ public class InstallmentDetailsType {
 
 	/**
 	 * Installment Amount.
-	 * Optional
+	 * Optional     
 	 */
 	private String Amount;
 	public String getAmount() {
@@ -76,7 +76,7 @@ public class InstallmentDetailsType {
 
 	/**
 	 * Installment Amount.
-	 * Optional
+	 * Optional     
 	 */
 	private String ShippingAmount;
 	public String getShippingAmount() {
@@ -88,7 +88,7 @@ public class InstallmentDetailsType {
 
 	/**
 	 * Installment Amount.
-	 * Optional
+	 * Optional     
 	 */
 	private String TaxAmount;
 	public String getTaxAmount() {

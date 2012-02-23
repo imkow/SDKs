@@ -394,7 +394,7 @@
 				<li><a href="BillAgreementUpdate">BillAgreementUpdate</a></li>
 				<li><a href="GetBillingAgreementCustomerDetails">GetBillingAgreementCustomerDetails</a>
 				</li>
-				<li><a href="BillUser">BillUser</a></li>
+				
 			</ul>
 		</div>
 	</div>

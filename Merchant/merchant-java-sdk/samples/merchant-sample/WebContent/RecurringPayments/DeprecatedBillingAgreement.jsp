@@ -22,7 +22,7 @@
 			<li><a href="RT/BillAgreementUpdate">BillAgreementUpdate</a></li>
 			<li><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a>
 			</li>
-			<li><a href="RT/BillUser">BillUser</a></li>
+			
 		</ul>
 	</div>
 </body>

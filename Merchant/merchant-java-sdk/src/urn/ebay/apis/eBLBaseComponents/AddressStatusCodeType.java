@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * AddressStatusCodeType
+ * AddressStatusCodeType 
  * This is the PayPal address status
  */
 package urn.ebay.apis.eBLBaseComponents;

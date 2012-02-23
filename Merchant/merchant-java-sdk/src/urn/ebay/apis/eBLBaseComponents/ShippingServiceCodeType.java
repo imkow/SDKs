@@ -1,8 +1,7 @@
 /**
  * Auto generated code
  * ShippingServiceCodeType
- * These are the possible codes to describe insurance option as part of
- * shipping
+ * These are the possible codes to describe insurance option as part of shipping
  * service.
  */
 package urn.ebay.apis.eBLBaseComponents;

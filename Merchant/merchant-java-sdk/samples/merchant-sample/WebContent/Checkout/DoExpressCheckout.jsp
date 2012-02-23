@@ -58,7 +58,7 @@
 							</div></td>
 						<td><div class="param_value">
 								<input type="text" name="currencyCode" id="currencyCode"
-									value="5.27" />
+									value="USD" />
 							</div></td>
 
 						<td><div class="param_value">
@@ -81,8 +81,8 @@
 		<ul>
 			<li><a href="SetExpressCheckout">SetExpressCheckout</a></li>
 			<li><a href="GetExpressCheckout">GetExpressCheckout</a></li>
-			<li><a href="DoUATPExpressCheckoutPayment">DoUATPExpressCheckout</a>
-			</li>
+			
+			
 		</ul>
 	</div>
 	</div>

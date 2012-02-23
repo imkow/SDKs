@@ -1,3 +1,4 @@
+
 /**
  * Auto generated code
  */
@@ -25,14 +26,11 @@ import urn.ebay.apis.eBLBaseComponents.ThreeDSecureResponseType;
 
 
 /**
- * The amount of the payment as specified by you on
- * DoDirectPaymentRequest.
- */
+ * The amount of the payment as specified by you on DoDirectPaymentRequest. */
 public class DoDirectPaymentResponseType extends AbstractResponseType{
 
 	/**
-	 * The amount of the payment as specified by you on
-	 * DoDirectPaymentRequest.	 *
+	 * The amount of the payment as specified by you on DoDirectPaymentRequest.	 *
 	 * @Required
 	 */
 	private BasicAmountType Amount;
@@ -44,64 +42,26 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * Address Verification System response code. Character limit:
-	 * One single-byte alphanumeric character
-	 * AVS Code
-	 * Meaning
-	 * Matched Details
-	 * A 
-	 * Address
-	 * Address only (no ZIP) 
-	 * B 
-	 * International "A"
-	 * Address only (no ZIP)
-	 * C
-	 * International "N"
-	 * None 
-	 * D
-	 * International "X" 
-	 * Address and Postal Code
-	 * E 
-	 * Not allowed for MOTO (Internet/Phone) transactions 
-	 * Not applicable
-	 * F 
-	 * UK-specific "X"
-	 * Address and Postal Code 
-	 * G 
-	 * Global Unavailable
-	 * Not applicable 
-	 * I 
-	 * International Unavailable
-	 * Not applicable 
-	 * N 
-	 * No
-	 * None
-	 * P
-	 * Postal (International "Z")
-	 * Postal Code only (no Address) 
-	 * R
-	 * Retry
-	 * Not applicable
-	 * S 
-	 * Service not Supported 
-	 * Not applicable 
-	 * U 
-	 * Unavailable
-	 * Not applicable 
-	 * W 
-	 * Whole ZIP
-	 * Nine-digit ZIP code (no Address) 
-	 * X 
-	 * Exact match 
-	 * Address and nine-digit ZIP code
-	 * Y 
-	 * Yes
-	 * Address and five-digit ZIP
-	 * Z 
-	 * ZIP
-	 * Five-digit ZIP code (no Address)
-	 * All others 
-	 * Error Not applicable
+	 * Address Verification System response code. Character limit: One single-byte alphanumeric character
+	 * AVS CodeMeaningMatched Details 
+A AddressAddress only (no ZIP)  
+B International “A”Address only (no ZIP)  
+CInternational “N” None  
+DInternational “X” Address and Postal Code  
+E Not allowed for MOTO (Internet/Phone) transactions Not applicable 
+F UK-specific “X”Address and Postal Code  
+G Global Unavailable Not applicable 
+I International UnavailableNot applicable  
+N NoNone  
+PPostal (International “Z”)Postal Code only (no Address)   
+RRetryNot applicable   
+S Service not Supported Not applicable 
+U UnavailableNot applicable  
+W Whole ZIPNine-digit ZIP code (no Address)  
+X Exact match Address and nine-digit ZIP code 
+Y YesAddress and five-digit ZIP  
+Z ZIP Five-digit ZIP code (no Address) 
+All others Error Not applicable
 	 *
 	 * @Required
 	 */
@@ -115,30 +75,14 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 
 	/**
 	 * Result of the CVV2 check by PayPal.
-	 * CVV2 Code
-	 * Meaning
-	 * Matched Details
-	 * M 
-	 * Match
-	 * CVV2 
-	 * N 
-	 * No match 
-	 * None
-	 * P 
-	 * Not Processed
-	 * Not applicable
-	 * S
-	 * Service not Supported
-	 * Not applicable
-	 * U 
-	 * Unavailable
-	 * Not applicable
-	 * X
-	 * No response
-	 * Not applicable
-	 * All others 
-	 * Error
-	 * Not applicable 
+	 * CVV2 CodeMeaningMatched Details   
+M MatchCVV2  
+N No match None 
+P Not ProcessedNot applicable  
+SService not SupportedNot applicable   
+U UnavailableNot applicable  
+XNo response  Not applicable 
+All others ErrorNot applicable  
 	 *
 	 * @Required
 	 */
@@ -152,8 +96,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 
 	/**
 	 * Transaction identification number.
-	 * Character length and limitations: 19 characters maximum.
-	 *
+	 * Character length and limitations: 19 characters maximum.	 *
 	 * @Required
 	 */
 	private String TransactionID;
@@ -207,8 +150,7 @@ public class DoDirectPaymentResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * Response code from the processor when a recurring transaction is
-	 * declined.
+	 * Response code from the processor when a recurring transaction is declined.
 	 */
 	private String PaymentAdviceCode;
 	public String getPaymentAdviceCode() {

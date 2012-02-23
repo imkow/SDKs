@@ -21,16 +21,14 @@ import urn.ebay.apis.eBLBaseComponents.SubscribeTextType;
 /**
  * Hosted Button id of the button to update.
  * Required
- * Character length and limitations: 10 single-byte numeric
- * characters
+ * Character length and limitations: 10 single-byte numeric characters
  */
 public class BMUpdateButtonRequestType extends AbstractRequestType{
 
 	/**
 	 * Hosted Button id of the button to update.
 	 * Required
-	 * Character length and limitations: 10 single-byte numeric
-	 * characters
+	 * Character length and limitations: 10 single-byte numeric characters
 	 *
 	 * @Required
 	 */
@@ -45,9 +43,7 @@ public class BMUpdateButtonRequestType extends AbstractRequestType{
 	/**
 	 * Type of Button to create.
 	 * Required
-	 * Must be one of the following: BUYNOW, CART, GIFTCERTIFICATE.
-	 * SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or
-	 * UNSUBSCRIBE
+	 * Must be one of the following: BUYNOW, CART, GIFTCERTIFICATE. SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or UNSUBSCRIBE
 	 */
 	private ButtonTypeType ButtonType;
 	public ButtonTypeType getButtonType() {
@@ -86,8 +82,7 @@ public class BMUpdateButtonRequestType extends AbstractRequestType{
 	/**
 	 * Button Variable information
 	 * At least one required recurring
-	 * Character length and limitations: 63 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 63 single-byte alphanumeric characters
 	 */
 	private List<String> ButtonVar = new ArrayList<String>();
 	public List<String> getButtonVar() {
@@ -135,8 +130,7 @@ public class BMUpdateButtonRequestType extends AbstractRequestType{
 	/**
 	 * Button URL for custom button image.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String ButtonImageURL;
 	public String getButtonImageURL() {
@@ -188,8 +182,7 @@ public class BMUpdateButtonRequestType extends AbstractRequestType{
 	/**
 	 * Button language code.
 	 * Optional
-	 * Character length and limitations: 2 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 2 single-byte alphanumeric characters
 	 */
 	private String ButtonLanguage;
 	public String getButtonLanguage() {

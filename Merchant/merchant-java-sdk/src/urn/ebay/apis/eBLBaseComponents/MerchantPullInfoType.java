@@ -22,7 +22,7 @@ import urn.ebay.apis.eBLBaseComponents.MerchantPullStatusCodeType;
 
 
 /**
- * MerchantPullInfoType
+ * MerchantPullInfoType 
  * Information about the merchant pull.
  */
 public class MerchantPullInfoType {
@@ -49,9 +49,7 @@ Monthly maximum payment amount	 */
 	}
 
 	/**
-The value of the mp_custom variable that you
-	 * specified in a FORM submission to PayPal during the creation or
-	 * updating of a customer billing agreement 
+The value of the mp_custom variable that you specified in a FORM submission to PayPal during the creation or updating of a customer billing agreement 
 	 */
 	private String MpCustom;
 	public String getMpCustom() {
@@ -62,8 +60,7 @@ The value of the mp_custom variable that you
 	}
 
 	/**
-The value of the mp_desc variable (description of
-	 * goods or services) associated with the billing agreement
+The value of the mp_desc variable (description of goods or services) associated with the billing agreement 
 	 */
 	private String Desc;
 	public String getDesc() {
@@ -74,8 +71,7 @@ The value of the mp_desc variable (description of
 	}
 
 	/**
-Invoice value as set by BillUserRequest API call
-	 */
+Invoice value as set by BillUserRequest API call 	 */
 	private String Invoice;
 	public String getInvoice() {
 		return Invoice;
@@ -85,8 +81,7 @@ Invoice value as set by BillUserRequest API call
 	}
 
 	/**
-Custom field as set by BillUserRequest API call
-	 */
+Custom field as set by BillUserRequest API call 	 */
 	private String Custom;
 	public String getCustom() {
 		return Custom;
@@ -96,8 +91,7 @@ Custom field as set by BillUserRequest API call
 	}
 
 	/**
-Note: This field is no longer used and is always
-	 * empty.	 */
+Note: This field is no longer used and is always empty.	 */
 	private String PaymentSourceID;
 	public String getPaymentSourceID() {
 		return PaymentSourceID;

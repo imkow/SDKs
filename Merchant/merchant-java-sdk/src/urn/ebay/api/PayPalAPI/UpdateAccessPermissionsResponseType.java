@@ -27,7 +27,7 @@ import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
 public class UpdateAccessPermissionsResponseType extends AbstractResponseType{
 
 	/**
-	 * The status of the update call, Success/Failure.
+The status of the update call, Success/Failure.
 	 * Character length and limitations: 20 single-byte characters
 	 *
 	 * @Required

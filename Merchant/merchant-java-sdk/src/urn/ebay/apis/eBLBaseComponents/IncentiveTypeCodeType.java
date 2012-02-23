@@ -1,6 +1,6 @@
 /**
  * Auto generated code
- * IncentiveType
+ * IncentiveType 
  * This identifies the type of INCENTIVE for the redemption code.
  */
 package urn.ebay.apis.eBLBaseComponents;

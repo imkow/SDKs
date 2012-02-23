@@ -26,7 +26,7 @@ import urn.ebay.apis.eBLBaseComponents.AbstractResponseType;
 public class GetMobileStatusResponseType extends AbstractResponseType{
 
 	/**
-	 * Indicates whether the phone is activated for mobile payments
+Indicates whether the phone is activated for mobile payments
 	 *
 	 * @Required
 	 */
@@ -39,7 +39,7 @@ public class GetMobileStatusResponseType extends AbstractResponseType{
 	}
 
 	/**
-	 * Indicates whether there is a payment pending from the phone
+Indicates whether there is a payment pending from the phone
 	 *
 	 * @Required
 	 */

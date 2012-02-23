@@ -10,16 +10,14 @@ package urn.ebay.apis.eBLBaseComponents;
 /**
  * Identifier of the transaction to reverse.
  * Required
- * Character length and limitations: 17 single-byte alphanumeric
- * characters
+ * Character length and limitations: 17 single-byte alphanumeric characters
  */
 public class ReverseTransactionRequestDetailsType {
 
 	/**
-	 * Identifier of the transaction to reverse.
+Identifier of the transaction to reverse.
 	 * Required
-	 * Character length and limitations: 17 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 17 single-byte alphanumeric characters
 	 */
 	private String TransactionID;
 	public String getTransactionID() {

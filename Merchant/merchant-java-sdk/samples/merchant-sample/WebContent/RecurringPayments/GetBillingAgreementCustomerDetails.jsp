@@ -39,8 +39,7 @@
 				</li>
 				<li><a href="RT/DoReferenceTransaction">DoReferenceTransaction</a>
 				</li>
-				<li><a href="RT/BillUser">BillUser</a>
-				</li>
+				
 			</ul>
 		</div>
 	</div>

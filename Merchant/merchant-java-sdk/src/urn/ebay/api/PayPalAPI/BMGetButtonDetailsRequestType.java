@@ -11,16 +11,14 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 /**
  * Button ID of button to return.
  * Required
- * Character length and limitations: 10 single-byte numeric
- * characters
+ * Character length and limitations: 10 single-byte numeric characters
  */
 public class BMGetButtonDetailsRequestType extends AbstractRequestType{
 
 	/**
 	 * Button ID of button to return.
 	 * Required
-	 * Character length and limitations: 10 single-byte numeric
-	 * characters
+	 * Character length and limitations: 10 single-byte numeric characters
 	 *
 	 * @Required
 	 */

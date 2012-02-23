@@ -25,16 +25,14 @@ import urn.ebay.apis.eBLBaseComponents.SubscriptionInfoType;
 
 
 /**
- * PaymentItemInfoType
+ * PaymentItemInfoType 
  * Information about a PayPal item.
  */
 public class PaymentItemInfoType {
 
 	/**
 	 * Invoice number you set in the original transaction.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
-	 */
+	 * Character length and limitations: 127 single-byte alphanumeric characters 	 */
 	private String InvoiceID;
 	public String getInvoiceID() {
 		return InvoiceID;
@@ -44,10 +42,8 @@ public class PaymentItemInfoType {
 	}
 
 	/**
-	 * Custom field you set in the original transaction.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
-	 */
+	 * Custom field you set in the original transaction. 
+	 * Character length and limitations: 127 single-byte alphanumeric characters	 */
 	private String Custom;
 	public String getCustom() {
 		return Custom;
@@ -57,11 +53,8 @@ public class PaymentItemInfoType {
 	}
 
 	/**
-	 * Memo entered by your customer in PayPal Website Payments note
-	 * field.
-	 * Character length and limitations: 255 single-byte alphanumeric
-	 * characters
-	 */
+	 * Memo entered by your customer in PayPal Website Payments note field. 
+	 * Character length and limitations: 255 single-byte alphanumeric characters	 */
 	private String Memo;
 	public String getMemo() {
 		return Memo;
@@ -91,8 +84,7 @@ public class PaymentItemInfoType {
 	}
 
 	/**
-	 * Information about the transaction if it was created via PayPal Subcriptions
-	 */
+	 * Information about the transaction if it was created via PayPal Subcriptions	 */
 	private SubscriptionInfoType Subscription;
 	public SubscriptionInfoType getSubscription() {
 		return Subscription;
@@ -102,8 +94,7 @@ public class PaymentItemInfoType {
 	}
 
 	/**
-	 * Information about the transaction if it was created via an auction
-	 */
+	 * Information about the transaction if it was created via an auction	 */
 	private AuctionInfoType Auction;
 	public AuctionInfoType getAuction() {
 		return Auction;

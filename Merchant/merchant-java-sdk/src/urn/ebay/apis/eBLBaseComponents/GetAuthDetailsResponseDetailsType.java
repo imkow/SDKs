@@ -21,16 +21,13 @@ import org.xml.sax.SAXException;
 
 /**
  * The first name of the User.
- * Character length and limitations: 127 single-byte alphanumeric
- * characters
+ * Character length and limitations: 127 single-byte alphanumeric characters
  */
 public class GetAuthDetailsResponseDetailsType {
 
 	/**
-	 * The first name of the User.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
-	 */
+The first name of the User.
+	 * Character length and limitations: 127 single-byte alphanumeric characters	 */
 	private String FirstName;
 	public String getFirstName() {
 		return FirstName;
@@ -40,9 +37,8 @@ public class GetAuthDetailsResponseDetailsType {
 	}
 
 	/**
-	 * The Last name of the user.
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+The Last name of the user.
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String LastName;
 	public String getLastName() {
@@ -54,8 +50,7 @@ public class GetAuthDetailsResponseDetailsType {
 
 	/**
 	 * The email address of the user.
-	 * Character length and limitations: 256 single-byte alphanumeric
-	 * characters.
+	 * Character length and limitations: 256 single-byte alphanumeric characters.
 	 */
 	private String Email;
 	public String getEmail() {

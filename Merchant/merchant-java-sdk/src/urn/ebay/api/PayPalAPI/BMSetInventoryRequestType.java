@@ -15,16 +15,14 @@ import urn.ebay.apis.eBLBaseComponents.OptionTrackingDetailsType;
 /**
  * Hosted Button ID of button you wish to change.
  * Required
- * Character length and limitations: 10 single-byte numeric
- * characters
+ * Character length and limitations: 10 single-byte numeric characters
  */
 public class BMSetInventoryRequestType extends AbstractRequestType{
 
 	/**
 	 * Hosted Button ID of button you wish to change.
 	 * Required
-	 * Character length and limitations: 10 single-byte numeric
-	 * characters
+	 * Character length and limitations: 10 single-byte numeric characters
 	 *
 	 * @Required
 	 */
@@ -79,8 +77,7 @@ public class BMSetInventoryRequestType extends AbstractRequestType{
 	/**
 	 * Option Index.
 	 * Optional
-	 * Character length and limitations: 1 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 1 single-byte alphanumeric characters
 	 */
 	private String OptionIndex;
 	public String getOptionIndex() {
@@ -103,8 +100,7 @@ public class BMSetInventoryRequestType extends AbstractRequestType{
 	/**
 	 * URL of page to display when an item is soldout.
 	 * Optional
-	 * Character length and limitations: 127 single-byte alphanumeric
-	 * characters
+	 * Character length and limitations: 127 single-byte alphanumeric characters
 	 */
 	private String SoldoutURL;
 	public String getSoldoutURL() {
@@ -139,11 +135,9 @@ public class BMSetInventoryRequestType extends AbstractRequestType{
 	}
 
 	/**
-	 * Zero or more digital download keys to distribute to customers
-	 * after transaction is completed.
+	 * Zero or more digital download keys to distribute to customers after transaction is completed.
 	 * Optional
-	 * Character length and limitations: 1000 single-byte
-	 * alphanumeric characters
+	 * Character length and limitations: 1000 single-byte alphanumeric characters
 	 */
 	private List<String> DigitalDownloadKeys = new ArrayList<String>();
 	public List<String> getDigitalDownloadKeys() {
