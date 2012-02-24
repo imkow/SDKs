@@ -52,7 +52,7 @@
 			<div class="params">
 				<div class="param_name">Card number</div>
 				<div class="param_value">
-					<input type="text" id="creditCardNumber" name="creditCardNumber" runat="server" value="4111111111111111"/>
+					<input type="text" id="creditCardNumber" name="creditCardNumber" runat="server" value="4825854086744369"/>
 				</div>
 			</div>
 			<div class="params">
@@ -63,7 +63,7 @@
                             OnSelectionChanged="calDate_SelectionChanged"
                             Runat="server" />
                     </div>
-                    <asp:TextBox id="cardExpiryDate" runat="server" />
+                    <asp:TextBox id="cardExpiryDate" runat="server" Text="04/2012"/>
                     <img src="calendar_icon.png" alt="calendar" onclick="popupCalendar()" />
 				</div>
 			</div>
@@ -112,7 +112,7 @@
                 </tr>
                 <tr>
                     <td><span class="param_value">
-                        <input type="text" id="name" name="name" runat="server" />
+                        <input type="text" id="payerName" name="payerName" runat="server" />
                     </span></td>
                     <td><span class="param_value">
                         <input type="text" id="street1" name="street1" value="1 Main St" runat="server" />
