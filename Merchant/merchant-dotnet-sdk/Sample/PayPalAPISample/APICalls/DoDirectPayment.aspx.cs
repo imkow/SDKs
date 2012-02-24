@@ -63,7 +63,7 @@ namespace PayPalAPISample.APICalls
             if (firstName.Value != "" && lastName.Value != ""
                 && street1.Value != "" && country.Value != "")
             {
-                billingAddr.Name = firstName.Value + " " + lastName.Value;
+                billingAddr.Name = payerName.Value;
                 billingAddr.Street1 = street1.Value;
                 billingAddr.Street2 = street2.Value;
                 billingAddr.CityName = city.Value;

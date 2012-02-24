@@ -128,13 +128,13 @@ namespace PayPalAPISample.APICalls {
         protected global::System.Web.UI.WebControls.DropDownList currencyCode;
         
         /// <summary>
-        /// name control.
+        /// payerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText name;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText payerName;
         
         /// <summary>
         /// street1 control.
