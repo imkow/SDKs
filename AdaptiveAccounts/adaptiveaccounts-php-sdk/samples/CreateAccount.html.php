@@ -19,7 +19,7 @@
 			<h3>Create Account</h3>
 			<div id="apidetails"></div>
 		</div>
-		<form method="post" action="CreateAccountReceipt.php">
+		<form method="post" action="CreateAccount.php">
 			<div id="request_form">
 				<div class="params">					
 					<div class="param_name">Account Type</div>

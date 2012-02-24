@@ -69,9 +69,12 @@ try {
 	$ack = strtoupper($response->responseEnvelope->ack);
 
 	if($ack != "SUCCESS"){
-		$_SESSION['reshash']=$response;
-		$location = "APIError.php";
-		header("Location: $location");
+		Echo "<b>Error </b>";
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
+		require_once 'Common/Response.php';
+	  
 	}
 	else
 	{
@@ -81,7 +84,7 @@ try {
 		echo "</pre>";
 		$payPalURL = $response->redirectURL;
 		echo" <a href=$payPalURL><b>* Redirect URL to Add Bank Account </b></a><br>";
-		
+		require_once 'Common/Response.php';
 
 	}
 
