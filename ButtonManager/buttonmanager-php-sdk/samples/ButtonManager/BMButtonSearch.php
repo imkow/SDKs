@@ -7,7 +7,7 @@ require_once('PPLoggingManager.php');
 $logger = new PPLoggingManager('Button Search');
 
 $buttonSearchRequest = new BMButtonSearchRequestType();
-$buttonSearchRequest->Version = 84.0;
+$buttonSearchRequest->Version = 86.0;
 $buttonSearchRequest->StartDate = $_REQUEST['startDate'];
 $buttonSearchRequest->EndDate = $_REQUEST['endDate'];
 

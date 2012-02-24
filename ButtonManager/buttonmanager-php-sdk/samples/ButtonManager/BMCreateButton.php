@@ -31,7 +31,7 @@ if($_REQUEST['buttonType'] == "PAYMENTPLAN")
 
 elseif($_REQUEST['buttonType'] == "AUTOBILLING")
 {
-	$buttonVar["min_amount"] =  $_REQUEST['minAmount'];
+	$buttonVar["min_amount"] =  $_REQUEST['minAmt'];
 }
 elseif($_REQUEST['buttonType'] == "GIFTCERTIFICATE")
 {
@@ -52,8 +52,8 @@ elseif($_REQUEST['buttonType'] == "SUBSCRIBE")
 $createButtonRequest = new BMCreateButtonRequestType();
 $createButtonRequest->ButtonCode = $_REQUEST['buttonCode'];
 $createButtonRequest->ButtonType = $_REQUEST['buttonType'];
-$createButtonRequest->Version = 84;
-$createButtonRequest->ButtonVar = $buttonVar;
+$createButtonRequest->Version = 86.0;
+$createButtonRequest->ButtonVar[0] = $buttonVar;
 if($_REQUEST['buttonType'] == "PAYMENTPLAN")
 {
 	$createButtonRequest->OptionDetails = $optionDetails;

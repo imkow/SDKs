@@ -72,7 +72,7 @@ try {
 		$businessStakeholder->dateOfBirth = $_REQUEST['stakeholderDateOfBirth'];
 		$businessStakeholder->name = $stkName;
 		$businessStakeholder->role =  $_REQUEST['role'];
-		$businessStakeholder->fullLegalName = $_REQUEST['fullLegalName']; 
+		$businessStakeholder->fullLegalName = $_REQUEST['fullLegalName'];
 
 		$businssinfo = new BusinessInfoType();
 		$businssinfo->businessAddress = $bizAddress;
@@ -138,17 +138,21 @@ try {
 	$ack = strtoupper($response->responseEnvelope->ack);
 
 	if($ack != "SUCCESS"){
-		$_SESSION['reshash']=$response;
-		$location = "APIError.php";
-		header("Location: $location");
+		Echo "<b>Error </b>";
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
+		require_once 'Common/Response.php';
 	}
 	else
 	{
-		var_dump($response);
+		echo "<pre>";
+		print_r($response);
+		echo "</pre>";
 
 		$payPalURL = $response->redirectURL;
 		echo" <a href=$payPalURL><b>* Redirect URL to Complete Account Creation </b></a><br>";
-
+		require_once 'Common/Response.php';
 	}
 }
 catch(Exception $ex) {

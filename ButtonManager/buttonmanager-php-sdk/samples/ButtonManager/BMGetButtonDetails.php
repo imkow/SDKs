@@ -8,7 +8,7 @@ $logger = new PPLoggingManager('BMGetButtonDetails');
 
 $BMGetButtonDetailsReqest = new BMGetButtonDetailsRequestType();
 $BMGetButtonDetailsReqest->HostedButtonID = $_REQUEST['hostedID'];
-$BMGetButtonDetailsReqest->Version = 84;
+$BMGetButtonDetailsReqest->Version = 86.0;
 
 $BMGetButtonDetailsReq = new BMGetButtonDetailsReq();
 $BMGetButtonDetailsReq->BMGetButtonDetailsRequest = $BMGetButtonDetailsReqest;
