@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -67,26 +66,27 @@ namespace PayPalAPISample.APICalls
         private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, DoCaptureResponseType doCaptureResponse)
         {
             Dictionary<string, string> responseParams = new Dictionary<string, string>();
-            Session["Response_keyResponseObject"] = responseParams;
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_keyResponseObject", responseParams);
 
-            Session["Response_apiName"] = "DoCapture";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            CurrContext.Items.Add("Response_apiName", "DoCapture");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             if (doCaptureResponse.Ack.Equals(AckCodeType.FAILURE) ||
                 (doCaptureResponse.Errors != null && doCaptureResponse.Errors.Count > 0))
             {
-                Session["Response_error"] = doCaptureResponse.Errors;
+                CurrContext.Items.Add("Response_error", doCaptureResponse.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 responseParams.Add("Transaction Id", doCaptureResponse.DoCaptureResponseDetails.PaymentInfo.TransactionID);
                 responseParams.Add("Payment status", doCaptureResponse.DoCaptureResponseDetails.PaymentInfo.PaymentStatus.ToString());
                 responseParams.Add("Pending reason", doCaptureResponse.DoCaptureResponseDetails.PaymentInfo.PendingReason.ToString());
             }
-            Response.Redirect("../APIResponse.aspx");
+            Server.Transfer("../APIResponse.aspx");
         }
 
     }

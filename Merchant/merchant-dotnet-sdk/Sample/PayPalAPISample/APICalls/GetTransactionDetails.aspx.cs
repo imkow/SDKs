@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -40,10 +39,11 @@ namespace PayPalAPISample.APICalls
 
         private void processResponse(PayPalAPIInterfaceServiceService service, GetTransactionDetailsResponseType response)
         {
-            Session["Response_apiName"] = "GetTransactionDetails";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_apiName", "GetTransactionDetails");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             Dictionary<string, string> keyResponseParameters = new Dictionary<string, string>();
             keyResponseParameters.Add("Correlation Id", response.CorrelationID);
@@ -52,11 +52,11 @@ namespace PayPalAPISample.APICalls
             if (response.Ack.Equals(AckCodeType.FAILURE) ||
                 (response.Errors != null && response.Errors.Count > 0))
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 PaymentTransactionType transactionDetails = response.PaymentTransactionDetails;
                 keyResponseParameters.Add("Payment receiver", transactionDetails.ReceiverInfo.Receiver);
                 keyResponseParameters.Add("Payer", transactionDetails.PayerInfo.Payer);
@@ -71,8 +71,8 @@ namespace PayPalAPISample.APICalls
                         transactionDetails.PaymentInfo.SettleAmount.value + transactionDetails.PaymentInfo.SettleAmount.currencyID.ToString());
                 }
             }
-            Session["Response_keyResponseObject"] = keyResponseParameters;
-            Response.Redirect("../APIResponse.aspx");
+            CurrContext.Items.Add("Response_keyResponseObject", keyResponseParameters);
+            Server.Transfer("../APIResponse.aspx");
 
         }
     }

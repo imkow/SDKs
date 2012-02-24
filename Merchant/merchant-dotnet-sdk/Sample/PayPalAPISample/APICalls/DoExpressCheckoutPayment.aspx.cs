@@ -3,7 +3,6 @@ using System.Data;
 using System.Configuration;
 using System.Collections;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -24,12 +23,17 @@ namespace PayPalAPISample.APICalls
 
         protected void Submit_Click(object sender, EventArgs e)
         {
+            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
+            GetExpressCheckoutDetailsReq getECWrapper = new GetExpressCheckoutDetailsReq();
+            getECWrapper.GetExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType(token.Value);
+            GetExpressCheckoutDetailsResponseType getECResponse = service.GetExpressCheckoutDetails(getECWrapper);
+
             // Create request object
             DoExpressCheckoutPaymentRequestType request = new DoExpressCheckoutPaymentRequestType();
             DoExpressCheckoutPaymentRequestDetailsType requestDetails = new DoExpressCheckoutPaymentRequestDetailsType();
             request.DoExpressCheckoutPaymentRequestDetails = requestDetails;
-            // TODO: 
-            requestDetails.PaymentDetails = (List<PaymentDetailsType>) Session["paymentDetails"];
+
+            requestDetails.PaymentDetails = getECResponse.GetExpressCheckoutDetailsResponseDetails.PaymentDetails;
             requestDetails.Token = token.Value;
             requestDetails.PayerID = payerId.Value;
             requestDetails.PaymentAction = (PaymentActionCodeType)
@@ -37,8 +41,7 @@ namespace PayPalAPISample.APICalls
 
             // Invoke the API
             DoExpressCheckoutPaymentReq wrapper = new DoExpressCheckoutPaymentReq();
-            wrapper.DoExpressCheckoutPaymentRequest = request;
-            PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService();
+            wrapper.DoExpressCheckoutPaymentRequest = request;            
             DoExpressCheckoutPaymentResponseType doECResponse = service.DoExpressCheckoutPayment(wrapper);
 
             // Check for API return status
@@ -52,15 +55,15 @@ namespace PayPalAPISample.APICalls
             Dictionary<string, string> responseParams = new Dictionary<string, string>();
             responseParams.Add("Correlation Id", doECResponse.CorrelationID);
             responseParams.Add("API Result", doECResponse.Ack.ToString());
-
+            HttpContext CurrContext = HttpContext.Current;
             if (doECResponse.Ack.Equals(AckCodeType.FAILURE) ||
                 (doECResponse.Errors != null && doECResponse.Errors.Count > 0))
             {
-                Session["Response_error"] = doECResponse.Errors;
+                CurrContext.Items.Add("Response_error", doECResponse.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 responseParams.Add("EC Token", doECResponse.DoExpressCheckoutPaymentResponseDetails.Token);
                 responseParams.Add("Transaction Id", doECResponse.DoExpressCheckoutPaymentResponseDetails.PaymentInfo[0].TransactionID);
                 responseParams.Add("Payment status", doECResponse.DoExpressCheckoutPaymentResponseDetails.PaymentInfo[0].PaymentStatus.ToString());
@@ -72,12 +75,12 @@ namespace PayPalAPISample.APICalls
                     responseParams.Add("Billing Agreement Id", doECResponse.DoExpressCheckoutPaymentResponseDetails.BillingAgreementID);
             }
 
-            Session["Response_keyResponseObject"] = responseParams;
-            Session["Response_apiName"] = "DoExpressChecoutPayment";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
-            Response.Redirect("../APIResponse.aspx");
+            CurrContext.Items.Add("Response_keyResponseObject", responseParams);
+            CurrContext.Items.Add("Response_apiName", "DoExpressChecoutPayment");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
+            Server.Transfer("../APIResponse.aspx");
         }
 
     }

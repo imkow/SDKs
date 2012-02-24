@@ -371,12 +371,12 @@ namespace PayPalAPISample.APICalls {
         protected global::System.Web.UI.HtmlControls.HtmlInputText taxAmount;
         
         /// <summary>
-        /// submit control.
+        /// submitBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit submit;
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit submitBtn;
     }
 }

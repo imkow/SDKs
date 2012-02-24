@@ -249,7 +249,7 @@
                 </tr>
             </table>                        
             <div class="submit">
-                <input id="submit" type="submit" name="submit" value="Submit" runat="server" onserverclick="Submit_Click"/>
+                <input id="submitBtn" type="submit" name="submitBtn" value="Submit" runat="server" onserverclick="Submit_Click"/>
             </div>            
         </div>
     </form>

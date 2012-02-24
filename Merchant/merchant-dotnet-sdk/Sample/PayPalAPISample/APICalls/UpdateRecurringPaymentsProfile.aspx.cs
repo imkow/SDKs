@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -166,21 +165,22 @@ namespace PayPalAPISample.APICalls
         {
             Dictionary<string, string> responseParams = new Dictionary<string, string>();
             responseParams.Add("API Status", response.Ack.ToString());
-            Session["Response_redirectURL"] = null;
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_redirectURL", null);
             if (response.Ack.Equals(AckCodeType.FAILURE) ||
                 (response.Errors != null && response.Errors.Count > 0))
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
             }
-            Session["Response_keyResponseObject"] = responseParams;
-            Session["Response_apiName"] = "UpdateRecurringPaymentsProfile";
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
-            Response.Redirect("../APIResponse.aspx");
+            CurrContext.Items.Add("Response_keyResponseObject", responseParams);
+            CurrContext.Items.Add("Response_apiName", "UpdateRecurringPaymentsProfile");
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
+            Server.Transfer("../APIResponse.aspx");
         }
 
     }

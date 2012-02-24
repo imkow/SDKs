@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -46,25 +45,26 @@ namespace PayPalAPISample.APICalls
         private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, ManagePendingTransactionStatusResponseType response)
         {
             Dictionary<string, string> responseParams = new Dictionary<string, string>();
-            Session["Response_keyResponseObject"] = responseParams;
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_keyResponseObject", responseParams);
 
-            Session["Response_apiName"] = "ManagePendingTransactionStatus";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            CurrContext.Items.Add("Response_apiName", "ManagePendingTransactionStatus");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             if (response.Ack.Equals(AckCodeType.FAILURE) ||
                 (response.Errors != null && response.Errors.Count > 0))
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 responseParams.Add("Transaction Id", response.TransactionID);
                 responseParams.Add("Status", response.Status);
             }
-            Response.Redirect("../APIResponse.aspx");
+            Server.Transfer("../APIResponse.aspx");
 
         }
     }

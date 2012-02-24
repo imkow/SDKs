@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -55,23 +54,24 @@ namespace PayPalAPISample.APICalls
         {
             Dictionary<string, string> keyResponseParameters = new Dictionary<string, string>();
             keyResponseParameters.Add("API Status", response.Ack.ToString());
+            HttpContext CurrContext = HttpContext.Current;
             if (response.Ack.Equals(AckCodeType.FAILURE) ||
                 (response.Errors != null && response.Errors.Count > 0))
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 keyResponseParameters.Add("Token", response.Token);
-                Session["Response_redirectURL"] = ConfigManager.Instance.GetProperty("paypalUrl")
-                    + "_customer-billing-agreement&token=" + response.Token;
+                CurrContext.Items.Add("Response_redirectURL", ConfigManager.Instance.GetProperty("paypalUrl")
+                    + "_customer-billing-agreement&token=" + response.Token);
             }            
-            Session["Response_keyResponseObject"] = keyResponseParameters;
-            Session["Response_apiName"] = "SetCustomerBillingAgreement";
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
-            Response.Redirect("../APIResponse.aspx");
+            CurrContext.Items.Add("Response_keyResponseObject", keyResponseParameters);
+            CurrContext.Items.Add("Response_apiName", "SetCustomerBillingAgreement");
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
+            Server.Transfer("../APIResponse.aspx");
         }
 
     }

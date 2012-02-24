@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -19,7 +18,8 @@ namespace PayPalAPISample.APICalls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.startDate.Text = DateTime.Now.AddDays(-1).ToString("yyyy-MM-ddTHH:mm:ss");
+            this.endDate.Text = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
         }
 
         protected void calDate_SelectionChanged(object sender, EventArgs e)
@@ -112,10 +112,11 @@ namespace PayPalAPISample.APICalls
 
         private void processResponse(PayPalAPIInterfaceServiceService service, TransactionSearchResponseType response)
         {
-            Session["Response_apiName"] = "TransactionSearch";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_apiName", "TransactionSearch");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             Dictionary<string, string> keyParameters = new Dictionary<string, string>();
             keyParameters.Add("Correlation Id", response.CorrelationID);
@@ -123,11 +124,11 @@ namespace PayPalAPISample.APICalls
 
             if (response.Errors != null && response.Errors.Count > 0)
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
             }
 
             if(!response.Ack.Equals(AckCodeType.FAILURE))
@@ -143,14 +144,20 @@ namespace PayPalAPISample.APICalls
                     keyParameters.Add(label + " Payment status", result.Status);
                     keyParameters.Add(label + " Payment timestamp", result.Timestamp);
                     keyParameters.Add(label + " Transaction type", result.Type);
-                    keyParameters.Add(label + " Net amount",
-                        result.NetAmount.value + result.NetAmount.currencyID.ToString());
-                    keyParameters.Add(label + " Gross amount",
-                        result.GrossAmount.value + result.GrossAmount.currencyID.ToString());
+                    if (result.NetAmount != null)
+                    {
+                        keyParameters.Add(label + " Net amount",
+                            result.NetAmount.value + result.NetAmount.currencyID.ToString());
+                    }
+                    if (result.GrossAmount != null)
+                    {
+                        keyParameters.Add(label + " Gross amount",
+                            result.GrossAmount.value + result.GrossAmount.currencyID.ToString());
+                    }
                 }
             }
-            Session["Response_keyResponseObject"] = keyParameters;
-            Response.Redirect("../APIResponse.aspx");
+            CurrContext.Items.Add("Response_keyResponseObject", keyParameters);
+            Server.Transfer("../APIResponse.aspx");
 
         }
     }

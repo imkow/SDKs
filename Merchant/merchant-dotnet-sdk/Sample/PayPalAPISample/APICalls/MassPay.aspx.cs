@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -78,10 +77,11 @@ namespace PayPalAPISample.APICalls
 
         private void processResponse(PayPalAPIInterfaceServiceService service, MassPayResponseType response)
         {
-            Session["Response_apiName"] = "MassPay";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_apiName", "MassPay");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             Dictionary<string, string> keyParameters = new Dictionary<string, string>();
             keyParameters.Add("Correlation Id", response.CorrelationID);
@@ -89,18 +89,18 @@ namespace PayPalAPISample.APICalls
 
             if (response.Errors != null && response.Errors.Count > 0)
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
             }
 
             if (!response.Ack.Equals(AckCodeType.FAILURE))
             {
             }
-            Session["Response_keyResponseObject"] = keyParameters;
-            Response.Redirect("../APIResponse.aspx");            
+            CurrContext.Items.Add("Response_keyResponseObject", keyParameters);
+            Server.Transfer("../APIResponse.aspx");            
         }
     }
 }

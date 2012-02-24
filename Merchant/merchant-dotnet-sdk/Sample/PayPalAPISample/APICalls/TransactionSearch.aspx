@@ -31,7 +31,7 @@
                         OnSelectionChanged="calDate_SelectionChanged"
                         Runat="server" />
                 </div>
-                <asp:TextBox id="startDate" runat="server" Text="2011-10-31T00:00:00"/>
+                <asp:TextBox id="startDate" runat="server"/>
                 <img src="calendar_icon.png" alt="calendar" onclick="popupCalendar('startDateField')" />					
             </div>
             <div class="param_name">Transaction End Date</div>
@@ -41,7 +41,7 @@
                         OnSelectionChanged="calDate_SelectionChanged"
                         Runat="server" />
                 </div>
-                <asp:TextBox id="endDate" runat="server" Text="2011-11-05T00:00:00"/>
+                <asp:TextBox id="endDate" runat="server"/>
                 <img src="calendar_icon.png" alt="calendar" onclick="popupCalendar('endDateField')" />					
             </div>            
             <div class="param_name">Payer EmailId</div>

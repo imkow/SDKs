@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
@@ -101,28 +100,29 @@ namespace PayPalAPISample.APICalls
         private void setKeyResponseObjects(PayPalAPIInterfaceServiceService service, BillUserResponseType response)
         {
             Dictionary<string, string> responseParams = new Dictionary<string, string>();
-            Session["Response_keyResponseObject"] = responseParams;
+            HttpContext CurrContext = HttpContext.Current;
+            CurrContext.Items.Add("Response_keyResponseObject", responseParams);
 
-            Session["Response_apiName"] = "BillUser";
-            Session["Response_redirectURL"] = null;
-            Session["Response_requestPayload"] = service.getLastRequest();
-            Session["Response_responsePayload"] = service.getLastResponse();
+            CurrContext.Items.Add("Response_apiName", "BillUser");
+            CurrContext.Items.Add("Response_redirectURL", null);
+            CurrContext.Items.Add("Response_requestPayload", service.getLastRequest());
+            CurrContext.Items.Add("Response_responsePayload", service.getLastResponse());
 
             if (response.Ack.Equals(AckCodeType.FAILURE) ||
                 (response.Errors != null && response.Errors.Count > 0))
             {
-                Session["Response_error"] = response.Errors;
+                CurrContext.Items.Add("Response_error", response.Errors);
             }
             else
             {
-                Session["Response_error"] = null;
+                CurrContext.Items.Add("Response_error", null);
                 responseParams.Add("Transaction Id", response.BillUserResponseDetails.PaymentInfo.TransactionID);
                 responseParams.Add("Gross amount", response.BillUserResponseDetails.PaymentInfo.GrossAmount.value +
                             response.BillUserResponseDetails.PaymentInfo.GrossAmount.currencyID);
                 responseParams.Add("Fees amount", response.BillUserResponseDetails.PaymentInfo.FeeAmount.value +
                                             response.BillUserResponseDetails.PaymentInfo.FeeAmount.currencyID);
             }
-            Response.Redirect("../APIResponse.aspx");
+            Server.Transfer("../APIResponse.aspx");
 
 
         }
