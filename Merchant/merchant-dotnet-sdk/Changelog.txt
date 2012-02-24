@@ -1,5 +1,5 @@
 
-PayPal Merchant SDK for .NET - v0.6.84
+PayPal Merchant SDK for .NET - v0.6.86
 --------------------------------------
 
 Release Date - 27-Feb-2012
