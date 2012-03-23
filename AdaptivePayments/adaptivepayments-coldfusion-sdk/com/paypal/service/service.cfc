@@ -29,6 +29,7 @@ component output="false" {
         httpService.addParam(type="header",name="X-PAYPAL-REQUEST-DATA-FORMAT",value="#arguments.requestFormat#",encoded="yes");
         httpService.addParam(type="header",name="X-PAYPAL-RESPONSE-DATA-FORMAT",value="#arguments.responseFormat#",encoded="yes");
         httpService.addParam(type="header",name="X-PAYPAL-VERSION",value="#request.paypalStruct['PAYPAL-VERSION']#",encoded="yes");
+		httpService.addParam(type="header",name="X-PAYPAL-REQUEST-SOURCE",value="#request.paypalStruct['PAYPAL-REQUEST-SOURCE']#",encoded="yes");
         httpService.addParam(type="header",name="X-PAYPAL-APPLICATION-ID",value="#request.paypalStruct['X-PAYPAL-APPLICATION-ID']#",encoded="yes");         
         
         httpService.addParam(type="body",value="#arguments.payload#",encoded="yes"); 
