@@ -1,0 +1,272 @@
+h2. The Adaptive Payments ColdFusion SDK is released as a beta sdk.  Please file any issues through the Github project.
+
+h1. Adaptive Payments ColdFusion SDK
+
+This SDK includes a ColdFusion component library for making API calls to PayPal Adaptive Payments API.  The Adaptive Payments API allows merchants and developers to pay almost anyone and set up automated payments. They can create applications that manage payments, payment preapprovals, and refunds. They can also send money peer-to-peer, split payments in both parallel and chained models. 
+
+The sample code contained in this project contains documentation, sample code for each method along with configuration information. This project contains several files and directories that are required for integration:
+
+* *com/paypal/adaptivepayments/lib/* - contains the ColdFusion components that represent all the PayPal objects needed to make PayPal API requests and parse the corresponding responses.
+* *com/paypal/service/service.cfc* - The component contains the method for making HTTP calls to PayPal servers with the appropriate headers information (i.e. credentials, appid, request and response format).
+* *com/paypal/service/adaptivepayments.cfc* - The component contains the methods for making each of the PayPal specific API calls.  The methods include pay, paymentdetails, preapproval, preapprovaldetails, cancelpreapproval, setpaymentoptions, getpaymentoptions, executepayment,refund, and convertcurrency.  Each method contains both required and optional arguments and will intelligently build your payload based on which arguments are passed.  Any arguments that accept multiple options, for example receiverEmail, should pass in a comma-separated list.
+* *samples/Application.cfc*  - The Application.cfc contains the customtag path for the com directory, it will run fine out of the box, but may need to be updated based on where your store your components.  You'll also find the API credentials and APP-ID in this file.  You can create an account at developer.paypal.com to create your own sandbox credentials for testing.
+* *samples/* - location for all the sample API calls and docs
+
+
+h2. Installation
+
+This example has been tested on the following CFML Engines:
+* ColdFusion 9.x or above
+* Railo 3.2 - with Railo you will need to configure the component path in the Web Administrator to point to the *lib and service* directory.
+
+h2. Getting Started
+
+Please follow the following steps for integration:
+* Download the full source to the webroot of you server.
+* Point your browser to http://www.youdomain.com/pathToThisSDK/adaptivepayments-coldfusion-sdk/samples/.  Click on any of the menu items to learn how to make an API call.
+
+
+h2. Reference
+
+h3. Application.cfc
+
+*customtagpath*
+this.customtagpaths = "#getDirectoryFromPath(ExpandPath('../com/paypal/adaptivepayments/lib/'))#";
+this.customtagpaths= ListAppend(this.customtagpaths, getDirectoryFromPath(ExpandPath('../com/paypal/service/')));
+this.customTagPaths = this.customtagpaths; 
+
+*onRequestStart*
+    
+var paypalStruct = StructNew();
+paypalStruct['X-PAYPAL-SECURITY-USERID'] = "sidney_1xxxxxxx_biz_api1.x.com";
+paypalStruct['X-PAYPAL-SECURITY-PASSWORD'] = "13xxxxxx99";
+paypalStruct['X-PAYPAL-SECURITY-SIGNATURE'] = "AsWOI0XsYOW6SY4xxxxxxxxxxxxxxxxnc2lLkNlYS6cilwiEc";
+paypalStruct['X-PAYPAL-DEVICE-IPADDRESS'] = cgi.remote_addr;
+paypalStruct['X-PAYPAL-APPLICATION-ID'] = "APP-80W284485P519543T";
+paypalStruct['PAYPAL-API-URL'] = "https://svcs.sandbox.paypal.com/";
+paypalStruct['PAYPAL-REDIRECT-URL'] = "https://www.sandbox.paypal.com/webscr&cmd=";
+paypalStruct['PAYPAL-VERSION'] = "85";
+request['paypalStruct'] = paypalStruct;
+
+h3. service.cfc
+
+This component will not be called directly.  It will be used by the methods in adaptivepayments.cfc.
+
+*doHttppost*
+Description: makes http post to PayPal servers.
+Returns: any
+Arguments:
+* required string endpoint
+* required string method
+* required string payload
+* string requestFormat='JSON'
+* string responseFormat='JSON'
+
+h3. adaptivepayments.cfc
+
+The adaptivepayments.cfc file contains functions to make an API call.  The following functions and arguments are available:
+
+*payRequest*
+Description: makes a request to the PAY method to send a  payment to a one or more receiver.
+Returns: any
+Arguments:
+* required string returnUrl 
+* required string cancelUrl 
+* required string receiverAmount (comma-separated list)
+* required string receiverEmail (comma-separated list)
+* required string actionType
+* required string currencyCode
+* string receiverPrimary (comma-separated list)
+* string errorLanguage="en_US"
+* string ipAddress
+* string deviceId
+* string applicationId
+* string model
+* string geoLocation
+* string customerType
+* string partnerName
+* string customerId
+* string feesPayer
+* string ipnNotificationUrl
+* string memo
+* string pin
+* string preapprovalKey
+* boolean reverseAllParallelPaymentsOnError
+* string senderEmail
+* string trackingId
+* boolean useCredentials
+* string email
+* string receiverCountryCode (comma-separated list)
+* string receiverPhoneNumber (comma-separated list)
+* string receiverExtension (comma-separated list)
+* string receiverInvoiceId (comma-separated list)
+* string receiverPaymentType (comma-separated list)
+* string receiverSubType (comma-separated list)
+* string fundingType (comma-separated list)
+* string returnObj='response'
+
+*paymentDetailsRequest*
+Description: Use the PaymentDetails API operation to obtain information about a payment. You can identify the payment by your tracking ID, the PayPal transaction ID in an IPN message, or the pay key associated with the payment.
+Returns: any
+Arguments:
+* string DetailLevelCode
+* Array errors
+* string errorLanguage="en_US"
+* string payKey
+* string transactionId
+* string trackingId
+* string returnObj='response'
+
+*preapprovalRequest*
+Description: Preapproved payments require the sender to log in to paypal.com to set up the payment agreement with a particular vendor. You control the interaction between your application and PayPal by specifying URLs for redirection in various situations.
+Returns: any
+Arguments:
+* required string returnUrl 
+* required string cancelUrl 
+* required string currencyCode
+* required string startingDate
+* string errorLanguage="en_US"
+* string ipAddress
+* string deviceId
+* string applicationId
+* string model
+* string geoLocation
+* string customerType
+* string partnerName
+* string customerId
+* string feesPayer
+* string ipnNotificationUrl
+* string memo
+* string senderEmail
+* string paymentPeriod
+* string pinType
+* string displayMaxTotalAmount
+* string DayOfWeek
+* numeric maxAmountPerPayment		
+* numeric maxNumberOfPayments
+* numeric maxNumberOfPaymentsPerPeriod
+* numeric maxTotalAmountOfAllPayments
+* string returnObj='response'
+
+*preapprovalDetailsRequest*
+Description: Use the PreapprovalDetails API operation to obtain information about an agreement between you and a sender for making payments on the sender's behalf.
+Returns: any
+Arguments:
+* required string preapprovalKey
+* string getBillingAddress
+* string errorLanguage="en_US"
+* string returnObj='response'
+		
+*cancelPreapprovalRequest*
+Description: Use the CancelPreapproval API operation to handle the canceling of preapprovals. Preapprovals can be canceled regardless of the state they are in, such as active, expired, deactivated, and previously canceled.
+Returns: any
+Arguments:
+* required string preapprovalKey
+* string errorLanguage="en_US"
+* string returnObj='response'
+
+*setPaymentOptionsRequest*
+Description: You use the SetPaymentOptions API operation to specify settings for a payment of the actionType CREATE. This actionType is specified in the PayRequest message.
+Returns: any
+Arguments:
+* required string payKey
+* string shippingAddressId
+* string errorLanguage="en_US"
+* string institutionId
+* string firstName
+* string lastName
+* string displayName
+* string institutionCustomerId
+* string countryCode
+* string email
+* string emailHeaderImageUrl
+* string emailMarketingImageUrl
+* string headerImageUrl
+* string businessName
+* boolean senderRequireShippingAddressSelection
+* string senderReferrerCode
+* string description
+* string customId
+* string receiverReferrerCode
+* string nameInvoiceItem (comma-separated list)
+* string identifierInvoiceItem (comma-separated list)
+* string priceInvoiceItem (comma-separated list)
+* string itemPriceInvoiceItem (comma-separated list)
+* string itemCountInvoiceItem (comma-separated list)
+* string emailAccountIdentifier
+* string countryCodeAccountIdentifier
+* string phoneNumberAccountIdentifier
+* string extensionAccountIdentifier
+* string returnObj='response'
+	
+	
+*getPaymentOptionsRequest*
+Description: You use the GetPaymentOptions API operation to retrieve the payment options passed with the SetPaymentOptionsRequest.
+Returns: any
+Arguments:
+* required string payKey
+* string errorLanguage="en_US"
+* string returnObj='response'
+	
+	
+*executePaymentRequest*
+Description: When doing a delayed payment, you can make an ExecutePayment method call to pay the secondary receivers at some later date.
+Returns: any
+Arguments:
+* required string payKey
+* string actionType
+* string fundingPlanId
+* string errorLanguage="en_US"
+* string returnObj='response'
+	
+	
+*refundRequest*
+Description: Use the Refund API operation to refund all or part of a payment. You can specify the amount of the refund and identify the accounts to receive the refund by the payment key or tracking ID, and optionally, by transaction ID or the receivers of the original payment.
+Returns: any
+Arguments:
+* string receiverAmount (comma-separated list)
+* string receiverEmail (comma-separated list)
+* string receiverCountryCode (comma-separated list)
+* string receiverExtension (comma-separated list)
+* string receiverPhoneNumber (comma-separated list)
+* string receiverPrimary (comma-separated list)
+* string receiverInvoiceId (comma-separated list)
+* string receiverPaymentType (comma-separated list)
+* string receiverPaymentSubType (comma-separated list)
+* string currencyCode
+* string payKey
+* string errorLanguage="en_US"
+* string transactionId
+* string trackingId
+* string returnObj='response'
+* ) {
+* 
+* 
+*convertCurrencyRequest*
+Description: Use the ConvertCurrency API operation to obtain the estimated current foreign exchange (FX) rate for a specific amount and currency. This is an estimated rate, which may be different from the FX rate used at the time of the transaction.
+Returns: any
+Arguments:
+* string conversionType
+* string countryCode
+* string errorLanguage="en_US"
+* required string fromCurrency
+* required string amount
+* required string toCurrency
+* string returnObj='response'
+	
+
+h2. Code Contributions
+
+Copyright 2012 X.commerce
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
