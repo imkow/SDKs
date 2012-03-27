@@ -28020,6 +28020,10 @@ Amount deposited into the account's primary
         CREATED,
         [Description("Completed-Funds-Held")]
         COMPLETEDFUNDSHELD,
+        [Description("Instant")]
+	INSTANT,
+	[Description("Delayed")]
+        DELAYED,
     }
     public enum PaymentTransactionClassCodeType
     {
