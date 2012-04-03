@@ -28,10 +28,10 @@ class PPConnectionManager
 		$connection = new PPHttpConnection();
 
 		$configMgr = PPConfigManager::getInstance();
-		if( ($configMgr->get("http.ConnectionTimeOut")) ) {
+		if($configMgr->get("http.ConnectionTimeOut") ) {
 			$connection->setHttpTimeout( $configMgr->get("http.ConnectionTimeOut") );
 		}
-		if( $configMgr->get("http.TrustAllConnection") === '1' ) {
+		if( $configMgr->get("http.TrustAllConnection") ) {
 			$connection->setHttpTrustAllConnection( $configMgr->get("http.TrustAllConnection") );
 		}
 		if( $configMgr->get("http.Proxy") ) {
