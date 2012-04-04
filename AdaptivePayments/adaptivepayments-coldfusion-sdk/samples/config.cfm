@@ -43,8 +43,13 @@
 			</tr>
 			<tr>
 				<td>Version</td>
-				<td>The PAYPAL-VERSION is currently set to 85</td>
+				<td>The PAYPAL-VERSION is currently set to 87</td>
 			</tr>
+			<tr>
+				<td>Request Source</td>
+				<td>The PAYPAL-REQUEST-SOURCE tells tech support with the version of the sdk you are running</td>
+			</tr>
+			
 		</tbody>
 	</table>
 	<ul>

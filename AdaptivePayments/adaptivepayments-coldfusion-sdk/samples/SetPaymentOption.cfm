@@ -17,8 +17,6 @@
 		<cfinvokeargument name="emailAccountIdentifier" value="max_1317246900_per@x.com"> 
 		<cfinvokeargument name="nameInvoiceItem" value="iPad,iPhone"> 
 		<cfinvokeargument name="priceInvoiceItem" value="400.00,200.00"> 
-
-		
 	</cfinvoke>
 
 
@@ -118,6 +116,21 @@ document.write(myJSON);
 								<tr>
 									<td>payKey</td>
 									<td>AP-06S18396CS9933906</td>
+								</tr>
+								
+								<tr>
+									<td>emailAccountIdentifier</td>
+									<td>max_1317246900_per@x.com</td>
+								</tr>
+								
+								<tr>
+									<td>priceInvoiceItem</td>
+									<td>499.00,299.00</td>
+								</tr>
+								
+								<tr>
+									<td>nameInvoiceItem</td>
+									<td>iPad,iPhone</td>
 								</tr>
 								
 								<tr>

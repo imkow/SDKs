@@ -41,27 +41,31 @@
 			<h2>Adaptive Payments SDK - ColdFusion</h2>
 
 			<cfinclude template="menu.cfm" >
+			
+			<h4>About</h4>
 			<p>
             This SDK includes a ColdFusion component library for making API calls to PayPal Adaptive Payments API.  The Adaptive Payments API allows merchants and developers to pay almost anyone and set up automated payments. They can create applications that manage payments, payment preapprovals, and refunds. They can also send money peer-to-peer, split payments in both parallel and chained models. 
 </p>
+
+<h4>Integration</h4>
 <p>
 The sample code contained in this project contains documentation, sample code for each method along with configuration information. This project contains several files and directories that are required for integration:
 </p>
 <ul>
-<li>com/paypal/adaptivepayments/lib/ - contains the ColdFusion components that represent all the PayPal objects needed to make PayPal API requests and parse the corresponding responses.</li>
+<li><b>com/paypal/adaptivepayments/lib/ </b>- contains the ColdFusion components that represent all the PayPal objects needed to make PayPal API requests and parse the corresponding responses.</li>
 
-<li>com/paypal/service/service.cfc - The component contains the method for making HTTP calls to PayPal servers with the appropriate headers information (i.e. credentials, appid, request and response format).
+<li><b>com/paypal/service/service.cfc</b> - The component contains the method for making HTTP calls to PayPal servers with the appropriate headers information (i.e. credentials, appid, request and response format).
 </li>
 
-<li>com/paypal/service/adaptivepayments.cfc - The component contains the methods for making each of the PayPal specific API calls.  The methods include pay, paymentdetails, preapproval, preapprovaldetails, cancelpreapproval, setpaymentoptions, getpaymentoptions, executepayment,refund, and convertcurrency.  Each method contains both required and optional arguments and will intelligently build your payload based on which arguments are passed.  Any arguments that accept multiple options, for example receiverEmail, should pass in a comma-separated list.
+<li><b>com/paypal/service/adaptivepayments.cfc </b>- The component contains the methods for making each of the PayPal specific API calls.  The methods include pay, paymentdetails, preapproval, preapprovaldetails, cancelpreapproval, setpaymentoptions, getpaymentoptions, executepayment,refund, and convertcurrency.  Each method contains both required and optional arguments and will intelligently build your payload based on which arguments are passed.  Any arguments that accept multiple options, for example receiverEmail, should pass in a comma-separated list.
 </li>
 
-<li>samples/Application.cfc  - The Application.cfc contains the customtag path for the com directory, it will run fine out of the box, but may need to be updated based on where your store your components.  You'll also find the API credentials and APP-ID in this file.  You can create an account at developer.paypal.com to create your own sandbox credentials for testing.
+<li><b>samples/Application.cfc</b>  - The Application.cfc contains the customtag path for the com directory, it will run fine out of the box, but may need to be updated based on where your store your components.  You'll also find the API credentials and APP-ID in this file.  You can create an account at developer.paypal.com to create your own sandbox credentials for testing.
 </li>
 
-<li>samples/ - location for all the sample API calls and docs</li>
+<li><b>samples/</b> - location for all the sample API calls and docs</li>
 </ul>			
-			<h3>Use the menu above to see the code run, source code and configuration information</h3>
+			<b>Use the menu above to see the code run, source code and configuration information</b>
 		</div>
 	</div>
 			

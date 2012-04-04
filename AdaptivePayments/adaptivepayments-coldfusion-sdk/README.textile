@@ -1,4 +1,5 @@
 h2. The Adaptive Payments ColdFusion SDK is released as a beta sdk.  Please file any issues through the Github project.
+version 0.1.86
 
 h1. Adaptive Payments ColdFusion SDK
 

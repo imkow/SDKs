@@ -63,8 +63,8 @@ component output="false" {
 		paypalStruct['X-PAYPAL-APPLICATION-ID'] = "APP-80W284485P519543T";
 		paypalStruct['PAYPAL-API-URL'] = "https://svcs.sandbox.paypal.com/";
 		paypalStruct['PAYPAL-REDIRECT-URL'] = "https://www.sandbox.paypal.com/webscr&cmd=";
-		paypalStruct['PAYPAL-VERSION'] = "85";
-		paypalStruct['PAYPAL-REQUEST-SOURCE'] = "ColdFusion_Adaptive_Payments_SDK_0.1";
+		paypalStruct['PAYPAL-VERSION'] = "87";
+		paypalStruct['PAYPAL-REQUEST-SOURCE'] = "ColdFusion_Adaptive_Payments_SDK_0.1.87";
 		
 		request['paypalStruct'] = paypalStruct;
 	
