@@ -1,5 +1,5 @@
 h2. The Adaptive Payments ColdFusion SDK is released as a beta sdk.  Please file any issues through the Github project.
-version 0.1.86
+version 0.1.87
 
 h1. Adaptive Payments ColdFusion SDK
 
@@ -46,7 +46,8 @@ paypalStruct['X-PAYPAL-DEVICE-IPADDRESS'] = cgi.remote_addr;
 paypalStruct['X-PAYPAL-APPLICATION-ID'] = "APP-80W284485P519543T";
 paypalStruct['PAYPAL-API-URL'] = "https://svcs.sandbox.paypal.com/";
 paypalStruct['PAYPAL-REDIRECT-URL'] = "https://www.sandbox.paypal.com/webscr&cmd=";
-paypalStruct['PAYPAL-VERSION'] = "85";
+paypalStruct['PAYPAL-VERSION'] = "87";
+paypalStruct['PAYPAL-REQUEST-SOURCE'] = "ColdFusion_Adaptive_Payments_SDK_0.1.86";
 request['paypalStruct'] = paypalStruct;
 
 h3. service.cfc
