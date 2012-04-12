@@ -15,13 +15,13 @@ YEAR("Year"),
 private String value;
 BillingPeriodType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static BillingPeriodType fromValue(String v) {
-		for (BillingPeriodType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static BillingPeriodType fromValue(String v) {
+			for (BillingPeriodType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

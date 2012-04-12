@@ -265,13 +265,13 @@ TL("TL"),
 private String value;
 CountryCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static CountryCodeType fromValue(String v) {
-		for (CountryCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static CountryCodeType fromValue(String v) {
+			for (CountryCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -13,13 +13,13 @@ PRECHECKOUT("PreCheckout"),
 private String value;
 IncentiveRequestCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static IncentiveRequestCodeType fromValue(String v) {
-		for (IncentiveRequestCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static IncentiveRequestCodeType fromValue(String v) {
+			for (IncentiveRequestCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

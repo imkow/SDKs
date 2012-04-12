@@ -29,13 +29,13 @@ CREDIT("credit"),
 private String value;
 PaymentTransactionCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static PaymentTransactionCodeType fromValue(String v) {
-		for (PaymentTransactionCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static PaymentTransactionCodeType fromValue(String v) {
+			for (PaymentTransactionCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

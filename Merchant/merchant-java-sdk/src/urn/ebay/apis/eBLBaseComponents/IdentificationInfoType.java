@@ -5,6 +5,7 @@
 
 package urn.ebay.apis.eBLBaseComponents;
 
+import urn.ebay.apis.eBLBaseComponents.IdentityTokenInfoType;
 import urn.ebay.apis.eBLBaseComponents.MobileIDInfoType;
 import urn.ebay.apis.eBLBaseComponents.RememberMeIDInfoType;
 
@@ -34,6 +35,16 @@ Contains login bypass information.	 */
 		this.RememberMeIDInfo = value;
 	}
 
+	/**
+Identity Access Token.	 */
+	private IdentityTokenInfoType IdentityTokenInfo;
+	public IdentityTokenInfoType getIdentityTokenInfo() {
+		return IdentityTokenInfo;
+	}
+	public void setIdentityTokenInfo(IdentityTokenInfoType value) {
+		this.IdentityTokenInfo = value;
+	}
+
 
 
 	public String toXMLString()  {
@@ -47,6 +58,11 @@ Contains login bypass information.	 */
 			sb.append("<ebl:RememberMeIDInfo>");
 			sb.append(RememberMeIDInfo.toXMLString());
 			sb.append("</ebl:RememberMeIDInfo>");
+		}
+		if( IdentityTokenInfo != null ) {
+			sb.append("<ebl:IdentityTokenInfo>");
+			sb.append(IdentityTokenInfo.toXMLString());
+			sb.append("</ebl:IdentityTokenInfo>");
 		}
 		return sb.toString();
 	}

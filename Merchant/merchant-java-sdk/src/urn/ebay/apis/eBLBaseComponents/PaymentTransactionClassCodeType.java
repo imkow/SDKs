@@ -31,13 +31,13 @@ ECHECK("ECheck"),
 private String value;
 PaymentTransactionClassCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static PaymentTransactionClassCodeType fromValue(String v) {
-		for (PaymentTransactionClassCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static PaymentTransactionClassCodeType fromValue(String v) {
+			for (PaymentTransactionClassCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -362,6 +362,26 @@ newsellerpaymenthold: The seller is new.
 	}
 
 	/**
+	 * StoreID as entered in the transaction	 */
+	private String StoreID;
+	public String getStoreID() {
+		return StoreID;
+	}
+	public void setStoreID(String value) {
+		this.StoreID = value;
+	}
+
+	/**
+	 * TerminalID as entered in the transaction	 */
+	private String TerminalID;
+	public String getTerminalID() {
+		return TerminalID;
+	}
+	public void setTerminalID(String value) {
+		this.TerminalID = value;
+	}
+
+	/**
 	 * Details about the seller.
 	 * Optional 
 	 */
@@ -636,6 +656,16 @@ newsellerpaymenthold: The seller is new.
 	}
 		 if(document.getElementsByTagName("Subject").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("Subject").item(0))){ 
 		 this.Subject =(String)document.getElementsByTagName("Subject").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("StoreID").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("StoreID").item(0))){ 
+		 this.StoreID =(String)document.getElementsByTagName("StoreID").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("TerminalID").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("TerminalID").item(0))){ 
+		 this.TerminalID =(String)document.getElementsByTagName("TerminalID").item(0).getTextContent();
 
 }
 	}

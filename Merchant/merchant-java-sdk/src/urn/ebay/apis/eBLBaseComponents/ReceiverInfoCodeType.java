@@ -14,13 +14,13 @@ PHONENUMBER("PhoneNumber"),
 private String value;
 ReceiverInfoCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static ReceiverInfoCodeType fromValue(String v) {
-		for (ReceiverInfoCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static ReceiverInfoCodeType fromValue(String v) {
+			for (ReceiverInfoCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

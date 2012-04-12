@@ -15,13 +15,13 @@ CUSTOMCODE("CustomCode"),
 private String value;
 AddressOwnerCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AddressOwnerCodeType fromValue(String v) {
-		for (AddressOwnerCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AddressOwnerCodeType fromValue(String v) {
+			for (AddressOwnerCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

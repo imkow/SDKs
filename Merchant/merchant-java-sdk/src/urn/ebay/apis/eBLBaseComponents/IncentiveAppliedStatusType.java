@@ -12,13 +12,13 @@ INCENTIVEAPPLIEDSTATUSERROR("INCENTIVE-APPLIED-STATUS-ERROR"),
 private String value;
 IncentiveAppliedStatusType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static IncentiveAppliedStatusType fromValue(String v) {
-		for (IncentiveAppliedStatusType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static IncentiveAppliedStatusType fromValue(String v) {
+			for (IncentiveAppliedStatusType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

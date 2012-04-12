@@ -12,13 +12,13 @@ DENY("Deny"),
 private String value;
 FMFPendingTransactionActionType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static FMFPendingTransactionActionType fromValue(String v) {
-		for (FMFPendingTransactionActionType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static FMFPendingTransactionActionType fromValue(String v) {
+			for (FMFPendingTransactionActionType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

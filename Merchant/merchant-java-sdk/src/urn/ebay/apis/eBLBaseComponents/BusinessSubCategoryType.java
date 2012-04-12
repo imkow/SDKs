@@ -277,13 +277,13 @@ OTHERSUBCATEGORIES("Other-SubCategories"),
 private String value;
 BusinessSubCategoryType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static BusinessSubCategoryType fromValue(String v) {
-		for (BusinessSubCategoryType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static BusinessSubCategoryType fromValue(String v) {
+			for (BusinessSubCategoryType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

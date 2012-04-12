@@ -212,7 +212,7 @@ XOF("XOF"),
 TOP("TOP"),
 TTD("TTD"),
 TND("TND"),
-TRL("TRL"),
+TRY("TRY"),
 TMM("TMM"),
 UGX("UGX"),
 UAH("UAH"),
@@ -235,13 +235,13 @@ CUSTOMCODE("CustomCode"),
 private String value;
 CurrencyCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static CurrencyCodeType fromValue(String v) {
-		for (CurrencyCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static CurrencyCodeType fromValue(String v) {
+			for (CurrencyCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

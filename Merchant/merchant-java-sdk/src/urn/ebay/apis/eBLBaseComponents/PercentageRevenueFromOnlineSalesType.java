@@ -26,13 +26,13 @@ PERCENTAGEREVENUEFROMONLINESALESRANGE4("PercentageRevenueFromOnlineSales-Range4"
 private String value;
 PercentageRevenueFromOnlineSalesType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static PercentageRevenueFromOnlineSalesType fromValue(String v) {
-		for (PercentageRevenueFromOnlineSalesType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static PercentageRevenueFromOnlineSalesType fromValue(String v) {
+			for (PercentageRevenueFromOnlineSalesType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

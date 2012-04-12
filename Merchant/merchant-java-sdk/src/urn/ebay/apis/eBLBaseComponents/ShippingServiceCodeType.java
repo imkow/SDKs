@@ -28,13 +28,13 @@ CUSTOMCODE("CustomCode"),
 private String value;
 ShippingServiceCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static ShippingServiceCodeType fromValue(String v) {
-		for (ShippingServiceCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static ShippingServiceCodeType fromValue(String v) {
+			for (ShippingServiceCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

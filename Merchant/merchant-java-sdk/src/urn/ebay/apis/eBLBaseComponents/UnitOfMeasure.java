@@ -34,13 +34,13 @@ RESERVED("RESERVED"),
 private String value;
 UnitOfMeasure(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static UnitOfMeasure fromValue(String v) {
-		for (UnitOfMeasure c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static UnitOfMeasure fromValue(String v) {
+			for (UnitOfMeasure c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

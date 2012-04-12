@@ -31,13 +31,13 @@ MARKETINGCATEGORY20("Marketing-Category20"),
 private String value;
 MarketingCategoryType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static MarketingCategoryType fromValue(String v) {
-		for (MarketingCategoryType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static MarketingCategoryType fromValue(String v) {
+			for (MarketingCategoryType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

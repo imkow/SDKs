@@ -13,13 +13,13 @@ ESTIMATEDTOTAL("EstimatedTotal"),
 private String value;
 TotalType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static TotalType fromValue(String v) {
-		for (TotalType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static TotalType fromValue(String v) {
+			for (TotalType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

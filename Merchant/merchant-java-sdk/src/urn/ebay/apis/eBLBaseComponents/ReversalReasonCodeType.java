@@ -17,13 +17,13 @@ OTHER("other"),
 private String value;
 ReversalReasonCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static ReversalReasonCodeType fromValue(String v) {
-		for (ReversalReasonCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static ReversalReasonCodeType fromValue(String v) {
+			for (ReversalReasonCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

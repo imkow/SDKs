@@ -19,13 +19,13 @@ ECHECK("echeck"),
 private String value;
 RefundSourceCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static RefundSourceCodeType fromValue(String v) {
-		for (RefundSourceCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static RefundSourceCodeType fromValue(String v) {
+			for (RefundSourceCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

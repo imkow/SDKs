@@ -20,13 +20,13 @@ PAYMENT("PAYMENT"),
 private String value;
 ButtonTypeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static ButtonTypeType fromValue(String v) {
-		for (ButtonTypeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static ButtonTypeType fromValue(String v) {
+			for (ButtonTypeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -41,13 +41,13 @@ OTHERCATEGORIES("Other-Categories"),
 private String value;
 BusinessCategoryType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static BusinessCategoryType fromValue(String v) {
-		for (BusinessCategoryType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static BusinessCategoryType fromValue(String v) {
+			for (BusinessCategoryType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

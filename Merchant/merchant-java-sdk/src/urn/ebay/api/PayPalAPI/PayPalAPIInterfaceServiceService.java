@@ -121,7 +121,7 @@ import urn.ebay.apis.eBLBaseComponents.AbstractRequestType;
 
 public class PayPalAPIInterfaceServiceService extends BaseService {
 
-	private static final String SERVICE_VERSION = "86.0";
+	private static final String SERVICE_VERSION = "87.0";
 	private static final String SERVICE_NAME = "PayPalAPIInterfaceService";
 
 	public PayPalAPIInterfaceServiceService(File configFile) throws IOException, FileNotFoundException {

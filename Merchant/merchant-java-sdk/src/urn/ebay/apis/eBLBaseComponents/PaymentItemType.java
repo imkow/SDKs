@@ -107,6 +107,56 @@ Character length and limitations: 127 single-byte alphanumeric characters
 	}
 
 	/**
+	 * Coupon ID Number 	 */
+	private String CouponID;
+	public String getCouponID() {
+		return CouponID;
+	}
+	public void setCouponID(String value) {
+		this.CouponID = value;
+	}
+
+	/**
+	 * Amount Value of The Coupon 	 */
+	private String CouponAmount;
+	public String getCouponAmount() {
+		return CouponAmount;
+	}
+	public void setCouponAmount(String value) {
+		this.CouponAmount = value;
+	}
+
+	/**
+	 * Currency of the Coupon Amount 	 */
+	private String CouponAmountCurrency;
+	public String getCouponAmountCurrency() {
+		return CouponAmountCurrency;
+	}
+	public void setCouponAmountCurrency(String value) {
+		this.CouponAmountCurrency = value;
+	}
+
+	/**
+	 * Amount of Discount on this Loyality Card	 */
+	private String LoyalityCardDiscountAmount;
+	public String getLoyalityCardDiscountAmount() {
+		return LoyalityCardDiscountAmount;
+	}
+	public void setLoyalityCardDiscountAmount(String value) {
+		this.LoyalityCardDiscountAmount = value;
+	}
+
+	/**
+	 * Currency of the Discount	 */
+	private String LoyalityCardDiscountCurrency;
+	public String getLoyalityCardDiscountCurrency() {
+		return LoyalityCardDiscountCurrency;
+	}
+	public void setLoyalityCardDiscountCurrency(String value) {
+		this.LoyalityCardDiscountCurrency = value;
+	}
+
+	/**
 	 * Cost of item 	 */
 	private BasicAmountType Amount;
 	public BasicAmountType getAmount() {
@@ -220,6 +270,31 @@ Character length and limitations: 127 single-byte alphanumeric characters
 	}
 		 if(document.getElementsByTagName("HandlingAmount").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("HandlingAmount").item(0))){ 
 		 this.HandlingAmount =(String)document.getElementsByTagName("HandlingAmount").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("CouponID").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("CouponID").item(0))){ 
+		 this.CouponID =(String)document.getElementsByTagName("CouponID").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("CouponAmount").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("CouponAmount").item(0))){ 
+		 this.CouponAmount =(String)document.getElementsByTagName("CouponAmount").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("CouponAmountCurrency").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("CouponAmountCurrency").item(0))){ 
+		 this.CouponAmountCurrency =(String)document.getElementsByTagName("CouponAmountCurrency").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("LoyalityCardDiscountAmount").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("LoyalityCardDiscountAmount").item(0))){ 
+		 this.LoyalityCardDiscountAmount =(String)document.getElementsByTagName("LoyalityCardDiscountAmount").item(0).getTextContent();
+
+}
+	}
+		 if(document.getElementsByTagName("LoyalityCardDiscountCurrency").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("LoyalityCardDiscountCurrency").item(0))){ 
+		 this.LoyalityCardDiscountCurrency =(String)document.getElementsByTagName("LoyalityCardDiscountCurrency").item(0).getTextContent();
 
 }
 	}

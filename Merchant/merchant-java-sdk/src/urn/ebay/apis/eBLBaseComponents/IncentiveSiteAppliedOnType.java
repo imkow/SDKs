@@ -13,13 +13,13 @@ INCENTIVESITEAPPLIEDONPAYPAL("INCENTIVE-SITE-APPLIED-ON-PAYPAL"),
 private String value;
 IncentiveSiteAppliedOnType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static IncentiveSiteAppliedOnType fromValue(String v) {
-		for (IncentiveSiteAppliedOnType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static IncentiveSiteAppliedOnType fromValue(String v) {
+			for (IncentiveSiteAppliedOnType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

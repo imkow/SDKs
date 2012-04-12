@@ -17,13 +17,13 @@ GOVERNMENT("Government"),
 private String value;
 BusinessTypeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static BusinessTypeType fromValue(String v) {
-		for (BusinessTypeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static BusinessTypeType fromValue(String v) {
+			for (BusinessTypeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -17,13 +17,13 @@ EBAYREWARDVOUCHER("eBayRewardVoucher"),
 private String value;
 IncentiveTypeCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static IncentiveTypeCodeType fromValue(String v) {
-		for (IncentiveTypeCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static IncentiveTypeCodeType fromValue(String v) {
+			for (IncentiveTypeCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

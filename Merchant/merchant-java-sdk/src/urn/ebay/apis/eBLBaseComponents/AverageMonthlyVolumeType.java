@@ -32,13 +32,13 @@ AVERAGEMONTHLYVOLUMERANGE6("AverageMonthlyVolume-Range6"),
 private String value;
 AverageMonthlyVolumeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AverageMonthlyVolumeType fromValue(String v) {
-		for (AverageMonthlyVolumeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AverageMonthlyVolumeType fromValue(String v) {
+			for (AverageMonthlyVolumeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

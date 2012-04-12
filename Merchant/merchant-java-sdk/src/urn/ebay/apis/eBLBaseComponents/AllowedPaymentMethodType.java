@@ -20,13 +20,13 @@ INSTANTFUNDINGSOURCE("InstantFundingSource"),
 private String value;
 AllowedPaymentMethodType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AllowedPaymentMethodType fromValue(String v) {
-		for (AllowedPaymentMethodType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AllowedPaymentMethodType fromValue(String v) {
+			for (AllowedPaymentMethodType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -23,13 +23,13 @@ PAYMENTREVIEW("payment-review"),
 private String value;
 PendingStatusCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static PendingStatusCodeType fromValue(String v) {
-		for (PendingStatusCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static PendingStatusCodeType fromValue(String v) {
+			for (PendingStatusCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -32,13 +32,13 @@ SOFTWARE("Software"),
 private String value;
 ProductCategoryType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static ProductCategoryType fromValue(String v) {
-		for (ProductCategoryType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static ProductCategoryType fromValue(String v) {
+			for (ProductCategoryType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

@@ -14,13 +14,13 @@ UNCONFIRMED("Unconfirmed"),
 private String value;
 AddressStatusCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AddressStatusCodeType fromValue(String v) {
-		for (AddressStatusCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AddressStatusCodeType fromValue(String v) {
+			for (AddressStatusCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

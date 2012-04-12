@@ -109,6 +109,30 @@ Search by Recurring Payment Profile id.  The ProfileID is returned as part of th
 	}
 
 	/**
+Search by Store Id. It is mandatory field if Terminal Id is specified as one of the search parameters.
+	 * Optional
+	 */
+	private String StoreID;
+	public String getStoreID() {
+		return StoreID;
+	}
+	public void setStoreID(String value) {
+		this.StoreID = value;
+	}
+
+	/**
+Search by Store Id and Terminal Id. If the Terminal Id field is specified as one of the search parameters, then there should be a valid Store Id value set in the StoreID field.
+	 * Optional
+	 */
+	private String TerminalID;
+	public String getTerminalID() {
+		return TerminalID;
+	}
+	public void setTerminalID(String value) {
+		this.TerminalID = value;
+	}
+
+	/**
 Search by the buyer's name 
 	 * Optional
 	 * Salutation: 20 single-byte character limit.
@@ -269,6 +293,14 @@ sb.append(super.toXMLString());
 		if( ProfileID != null ) {
 			sb.append("<urn:ProfileID>").append(ProfileID);
 			sb.append("</urn:ProfileID>");
+		}
+		if( StoreID != null ) {
+			sb.append("<urn:StoreID>").append(StoreID);
+			sb.append("</urn:StoreID>");
+		}
+		if( TerminalID != null ) {
+			sb.append("<urn:TerminalID>").append(TerminalID);
+			sb.append("</urn:TerminalID>");
 		}
 		if( PayerName != null ) {
 			sb.append("<urn:PayerName>");

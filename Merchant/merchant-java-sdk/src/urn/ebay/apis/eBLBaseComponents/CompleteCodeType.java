@@ -13,13 +13,13 @@ COMPLETE("Complete"),
 private String value;
 CompleteCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static CompleteCodeType fromValue(String v) {
-		for (CompleteCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static CompleteCodeType fromValue(String v) {
+			for (CompleteCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

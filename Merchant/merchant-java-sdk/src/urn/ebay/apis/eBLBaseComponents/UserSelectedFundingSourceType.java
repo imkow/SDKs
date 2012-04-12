@@ -15,13 +15,13 @@ BML("BML"),
 private String value;
 UserSelectedFundingSourceType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static UserSelectedFundingSourceType fromValue(String v) {
-		for (UserSelectedFundingSourceType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static UserSelectedFundingSourceType fromValue(String v) {
+			for (UserSelectedFundingSourceType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

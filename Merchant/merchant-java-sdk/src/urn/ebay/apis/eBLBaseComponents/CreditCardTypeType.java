@@ -18,13 +18,13 @@ MAESTRO("Maestro"),
 private String value;
 CreditCardTypeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static CreditCardTypeType fromValue(String v) {
-		for (CreditCardTypeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static CreditCardTypeType fromValue(String v) {
+			for (CreditCardTypeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

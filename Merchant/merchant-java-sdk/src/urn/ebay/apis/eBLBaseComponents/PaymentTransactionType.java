@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import urn.ebay.apis.CoreComponentTypes.BasicAmountType;
+import urn.ebay.apis.eBLBaseComponents.OfferCouponInfoType;
 import urn.ebay.apis.eBLBaseComponents.PayerInfoType;
 import urn.ebay.apis.eBLBaseComponents.PaymentInfoType;
 import urn.ebay.apis.eBLBaseComponents.PaymentItemInfoType;
@@ -71,6 +72,16 @@ Information about an individual item in the transaction	 */
 	}
 	public void setPaymentItemInfo(PaymentItemInfoType value) {
 		this.PaymentItemInfo = value;
+	}
+
+	/**
+Information about an individual Offer and Coupon information in the transaction	 */
+	private OfferCouponInfoType OfferCouponInfo;
+	public OfferCouponInfoType getOfferCouponInfo() {
+		return OfferCouponInfo;
+	}
+	public void setOfferCouponInfo(OfferCouponInfoType value) {
+		this.OfferCouponInfo = value;
 	}
 
 	/**
@@ -248,6 +259,13 @@ Information about an individual item in the transaction	 */
 		 nodeList = document.getElementsByTagName("PaymentItemInfo");
 			 xmlString = convertToXML(nodeList.item(0)); 
 			 this.PaymentItemInfo =  new PaymentItemInfoType(xmlString);
+
+}
+	}
+		 if(document.getElementsByTagName("OfferCouponInfo").getLength()!=0){		 if(!isWhitespaceNode(document.getElementsByTagName("OfferCouponInfo").item(0))){ 
+		 nodeList = document.getElementsByTagName("OfferCouponInfo");
+			 xmlString = convertToXML(nodeList.item(0)); 
+			 this.OfferCouponInfo =  new OfferCouponInfoType(xmlString);
 
 }
 	}

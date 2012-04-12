@@ -44,13 +44,13 @@ AVERAGETRANSACTIONPRICERANGE10("AverageTransactionPrice-Range10"),
 private String value;
 AverageTransactionPriceType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AverageTransactionPriceType fromValue(String v) {
-		for (AverageTransactionPriceType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AverageTransactionPriceType fromValue(String v) {
+			for (AverageTransactionPriceType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

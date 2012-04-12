@@ -28,13 +28,13 @@ DELAYED("Delayed"),
 private String value;
 PaymentStatusCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static PaymentStatusCodeType fromValue(String v) {
-		for (PaymentStatusCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static PaymentStatusCodeType fromValue(String v) {
+			for (PaymentStatusCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

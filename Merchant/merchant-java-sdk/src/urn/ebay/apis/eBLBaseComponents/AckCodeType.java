@@ -22,13 +22,13 @@ CUSTOMCODE("CustomCode"),
 private String value;
 AckCodeType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static AckCodeType fromValue(String v) {
-		for (AckCodeType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static AckCodeType fromValue(String v) {
+			for (AckCodeType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }

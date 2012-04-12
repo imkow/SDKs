@@ -12,13 +12,13 @@ SUBSCRIBE("SUBSCRIBE"),
 private String value;
 SubscribeTextType(String val){
 value=val;
-}public String getValue(){
-return value;
-}
-public static SubscribeTextType fromValue(String v) {
-		for (SubscribeTextType c : values())
-			if (c.value.equals(v))
-				return c;
-throw new IllegalArgumentException(v);
-}
+}		public String getValue(){
+			return value;
+		}
+		public static SubscribeTextType fromValue(String v) {
+			for (SubscribeTextType c : values())
+				if (c.value.equals(v))
+					return c;
+			throw new IllegalArgumentException(v);
+		}
 }
