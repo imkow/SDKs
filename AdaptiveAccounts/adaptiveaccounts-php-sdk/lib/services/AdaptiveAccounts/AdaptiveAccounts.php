@@ -93,13 +93,16 @@ class ErrorData {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->exceptionId = $map[$mapKeyName];
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."parameter($i)") ) {
 					$newPrefix = $prefix."parameter($i).";
-				$this->parameter[$i] = new ErrorParameter();
-				$this->parameter[$i]->init($map, $newPrefix);
+					$this->parameter[$i] = new ErrorParameter();
+					$this->parameter[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -364,13 +367,16 @@ class FaultMessage {
 				$this->responseEnvelope = new ResponseEnvelope();
 				$this->responseEnvelope->init($map, $newPrefix);
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -753,13 +759,16 @@ class CreateAccountResponse {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->accountId = $map[$mapKeyName];
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -858,13 +867,16 @@ class GetUserAgreementResponse {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->agreement = $map[$mapKeyName];
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -1021,13 +1033,16 @@ class GetVerifiedStatusResponse {
 				$this->userInfo = new UserInfoType();
 				$this->userInfo->init($map, $newPrefix);
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -1422,13 +1437,16 @@ class AddBankAccountResponse {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->fundingSourceKey = $map[$mapKeyName];
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -1687,13 +1705,16 @@ class AddPaymentCardResponse {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->fundingSourceKey = $map[$mapKeyName];
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
@@ -1791,13 +1812,16 @@ class SetFundingSourceConfirmedResponse {
 				$this->responseEnvelope = new ResponseEnvelope();
 				$this->responseEnvelope->init($map, $newPrefix);
 			}
-			for($i=0; $i<10;$i++) {
+			$i=0;
+			while(true) {
 				if( PPUtils::array_match_key($map, $prefix."error($i)") ) {
 					$newPrefix = $prefix."error($i).";
-				$this->error[$i] = new ErrorData();
-				$this->error[$i]->init($map, $newPrefix);
+					$this->error[$i] = new ErrorData();
+					$this->error[$i]->init($map, $newPrefix);
+				}
+				else break;
+				$i++;
 			}
-			 }
 		}
 	}
 }
