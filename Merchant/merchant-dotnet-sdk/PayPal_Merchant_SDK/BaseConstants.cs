@@ -27,7 +27,7 @@ namespace PayPal
         public const string XPAYPALRESPONSEDATAFORMAT = "X-PAYPAL-RESPONSE-DATA-FORMAT";
         public const string XPAYPALSERVICEVERSION = "X-PAYPAL-SERVICE-VERSION";        
         public const string XPAYPALSECURITYUSERID = "X-PAYPAL-SECURITY-USERID";
-        public const string XPAYPALSECURITYOAUTHSIGN = "X-PAYPAL-AUTHORIZATION";
+        public const string XPAYPALSECURITYOAUTHSIGN = "X-PP-AUTHORIZATION";
         public const string XPAYPALSECURITYCLIENTCERT = "CLIENT-AUTH";
         public const string XPAYPALSECURITYPASSWORD = "X-PAYPAL-SECURITY-PASSWORD";
         public const string XPAYPALSECURITYSIGNATURE = "X-PAYPAL-SECURITY-SIGNATURE";
@@ -51,7 +51,7 @@ namespace PayPal
         public static readonly Encoding ENCODING_FORMAT = Encoding.UTF8;
         
         public const string SDK_NAME = "sdk-merchant-dotnet";
-        public const string SDK_VERSION = "0.6.86";
+        public const string SDK_VERSION = "0.7.86";
 
         public class ErrorMessages
         {

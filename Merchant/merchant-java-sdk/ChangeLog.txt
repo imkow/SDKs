@@ -1,4 +1,11 @@
-PayPal  Java Merchant SDK - 0.6.86
+
+PayPal  Java Merchant SDK - 0.7.86
+==================================
+
 Release Date  - 27-Feb-2012
-This release contains new Merchant SDK (SOAP) and samples for Merchant api's.
-==========================================================================================================
+
+	This release contains new Merchant SDK (SOAP) and samples for Merchant api's.
+
+Release Date  - 17-Apr-2012
+
+	Fix for incorrect permissions header (X-PP-AUTHORIZATION)

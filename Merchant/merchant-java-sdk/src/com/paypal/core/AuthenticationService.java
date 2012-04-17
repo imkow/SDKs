@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.paypal.core;
 
@@ -14,7 +14,7 @@ import com.paypal.sdk.util.OAuthSignature;
 
 /**
  * @author lvairamani
- * 
+ *
  */
 public class AuthenticationService {
 	private Map<String, String> headers = new HashMap<String, String>();
@@ -28,8 +28,8 @@ public class AuthenticationService {
 	 * @param connection
 	 * @param accessToken
 	 * @param tokenSecret
-	 * @param config
-	 * @return
+	 * @param httpConfiguration
+	 * @return map of HTTP headers to be added to request
 	 * @throws SSLConfigurationException
 	 * @throws InvalidCredentialException
 	 * @throws MissingCredentialException
@@ -48,7 +48,7 @@ public class AuthenticationService {
 				&& (Constants.EMPTY_STRING != tokenSecret && tokenSecret != null)) {
 			authString = generateAuthString(apiCred, accessToken, tokenSecret,
 					httpConfiguration.getEndPointUrl());
-			headers.put("X-PAYPAL-AUTHORIZATION", authString);
+			headers.put("X-PP-AUTHORIZATION", authString);
 			connection.setDefaultSSL(true);
 			connection.setupClientSSL(null, null,
 					httpConfiguration.isTrustAll());

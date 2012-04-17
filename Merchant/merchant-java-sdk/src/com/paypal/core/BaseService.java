@@ -26,7 +26,7 @@ public class BaseService {
 	protected String lastRequest=null;
 	protected String lastResponse=null;
 
-	
+
 	public String getLastRequest() {
 		return lastRequest;
 	}
@@ -70,7 +70,7 @@ public class BaseService {
 
 	/**
 	 * overloaded static method used to load the configuration file.
-	 * 
+	 *
 	 * @param is
 	 */
 	public static void initConfig(InputStream is) throws IOException {
@@ -84,7 +84,7 @@ public class BaseService {
 
 	/**
 	 * overloaded static method used to load the configuration file
-	 * 
+	 *
 	 * @param file
 	 */
 	public static void initConfig(File file) throws FileNotFoundException,
@@ -107,7 +107,7 @@ public class BaseService {
 
 	/**
 	 * overloaded static method used to load the configuration file
-	 * 
+	 *
 	 * @param filepath
 	 */
 	public static void initConfig(String filepath) throws IOException,
@@ -126,15 +126,13 @@ public class BaseService {
 
 	/**
 	 * Wrapper call for APIservice.makeRequest(), used by InvoiceService class.
-	 * 
+	 *
 	 * @param method
 	 *            (API method)
 	 * @param payload
 	 *            (request parameters)
 	 * @param apiUsername
 	 *            (PayPal account)
-	 * @param tokenSecret
-	 * @param accessToken
 	 * @return String response
 	 * @throws HttpErrorException
 	 * @throws InterruptedException
