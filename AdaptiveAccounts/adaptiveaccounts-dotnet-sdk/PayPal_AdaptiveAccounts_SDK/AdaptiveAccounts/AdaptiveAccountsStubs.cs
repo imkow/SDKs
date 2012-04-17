@@ -11,21 +11,21 @@ namespace PayPal.AdaptiveAccounts.Model {
 public class EnumUtils{
 public static string getDescription(Enum value){
 string description="";DescriptionAttribute[] attributes = (DescriptionAttribute[])value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            if (attributes.Length > 0)
-            {
-                description= attributes[0].Description;
-            }
+			            if (attributes.Length > 0)
+			            {
+			                description= attributes[0].Description;
+			            }
 return description;
 }
 public static object getValue(String value,Type enumType){
 string[] names = Enum.GetNames(enumType);
-            foreach (string name in names)
-            {
-                if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
-                {
-                    return Enum.Parse(enumType, name);
-                }
-            }
+			            foreach (string name in names)
+			            {
+			                if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
+			                {
+			                    return Enum.Parse(enumType, name);
+			                }
+			            }
 return null;
 		}
 }
@@ -542,12 +542,15 @@ return null;
 			if (map.ContainsKey(key)) {
 				this.fundingSourceKey = map[key];
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -872,12 +875,15 @@ return null;
 			if (map.ContainsKey(key)) {
 				this.fundingSourceKey = map[key];
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -2231,12 +2237,15 @@ return null;
 			if (map.ContainsKey(key)) {
 				this.accountId = map[key];
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -2458,12 +2467,15 @@ return null;
 			if (map.ContainsKey(key)) {
 				this.exceptionId = map[key];
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "parameter" + '(' + i + ")";
 				if (map.ContainsKey(key + ".name")) {
 					this.parameter.Add( new ErrorParameter(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -2542,12 +2554,15 @@ return null;
 			if (map.ContainsKey(key + ".timestamp")) {
 				this.responseEnvelope = new ResponseEnvelope(map, key + '.');
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -2666,12 +2681,15 @@ return null;
 			if (map.ContainsKey(key)) {
 				this.agreement = map[key];
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -2864,12 +2882,15 @@ return null;
 			if (map.ContainsKey(key + ".emailAddress")) {
 				this.userInfo = new UserInfoType(map, key + '.');
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 
@@ -3224,12 +3245,15 @@ return null;
 			if (map.ContainsKey(key + ".timestamp")) {
 				this.responseEnvelope = new ResponseEnvelope(map, key + '.');
 			}
-			for (int i = 0; i < 10; i++) {
+		int i=0;
+		while(true) {
 				key = prefix + "error" + '(' + i + ")";
 				if (map.ContainsKey(key + ".errorId")) {
 					this.error.Add( new ErrorData(map, key + '.')); 
 				}
-			}
+		else break;
+		i++;
+		}
 		}
 	}
 

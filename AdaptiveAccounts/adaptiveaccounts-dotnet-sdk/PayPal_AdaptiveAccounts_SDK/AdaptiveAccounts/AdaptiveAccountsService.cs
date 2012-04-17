@@ -11,12 +11,19 @@ namespace PayPal.AdaptiveAccounts {
 	using PayPal.Manager;
 	using PayPal.AdaptiveAccounts.Model;
 
-	public partial class AdaptiveAccountsService : BasePayPalService{
+	public partial class AdaptiveAccountsService :BasePayPalService{
 
-		 public AdaptiveAccountsService() : base("AdaptiveAccounts", "1.0.3"){}
-		/// <summary>
-		/// Sets standard parameters common to all requests
-		/// </summary>
+		private static string serviceName = "AdaptiveAccounts";
+
+
+		private static string serviceVersion"1.0.3";
+
+
+		 public AdaptiveAccountsService() : base(serviceName)
+		        {}
+	/// <summary>
+ /// Sets standard parameters common to all requests
+ /// </summary>
 		/**
 		 *		 * Coutries Supported:
 		 * AU - Australia
@@ -48,7 +55,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public CreateAccountResponse CreateAccount(CreateAccountRequest CreateAccountRequest, string apiUsername) 
 		{
-			string resp = call("CreateAccount", CreateAccountRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("CreateAccount", CreateAccountRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new CreateAccountResponse(util.parseNVPString(resp), "");
@@ -88,7 +96,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public GetUserAgreementResponse GetUserAgreement(GetUserAgreementRequest GetUserAgreementRequest, string apiUsername) 
 		{
-			string resp = call("GetUserAgreement", GetUserAgreementRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("GetUserAgreement", GetUserAgreementRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new GetUserAgreementResponse(util.parseNVPString(resp), "");
@@ -104,7 +113,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public GetVerifiedStatusResponse GetVerifiedStatus(GetVerifiedStatusRequest GetVerifiedStatusRequest, string apiUsername) 
 		{
-			string resp = call("GetVerifiedStatus", GetVerifiedStatusRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("GetVerifiedStatus", GetVerifiedStatusRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new GetVerifiedStatusResponse(util.parseNVPString(resp), "");
@@ -129,7 +139,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public AddBankAccountResponse AddBankAccount(AddBankAccountRequest AddBankAccountRequest, string apiUsername) 
 		{
-			string resp = call("AddBankAccount", AddBankAccountRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("AddBankAccount", AddBankAccountRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new AddBankAccountResponse(util.parseNVPString(resp), "");
@@ -171,7 +182,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public AddPaymentCardResponse AddPaymentCard(AddPaymentCardRequest AddPaymentCardRequest, string apiUsername) 
 		{
-			string resp = call("AddPaymentCard", AddPaymentCardRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("AddPaymentCard", AddPaymentCardRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new AddPaymentCardResponse(util.parseNVPString(resp), "");
@@ -214,7 +226,8 @@ namespace PayPal.AdaptiveAccounts {
 		 */
 		public SetFundingSourceConfirmedResponse SetFundingSourceConfirmed(SetFundingSourceConfirmedRequest SetFundingSourceConfirmedRequest, string apiUsername) 
 		{
-			string resp = call("SetFundingSourceConfirmed", SetFundingSourceConfirmedRequest.toNVPString(""), apiUsername);
+			BasePayPalService service = new BasePayPalService(serviceName);
+			string resp = service.call("SetFundingSourceConfirmed", SetFundingSourceConfirmedRequest.toNVPString(""), apiUsername);
 
 			NVPUtil util = new NVPUtil();
 			return new SetFundingSourceConfirmedResponse(util.parseNVPString(resp), "");
