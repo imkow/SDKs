@@ -29,22 +29,22 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum AverageTransactionPriceType {
 
-AVERAGETRANSACTIONPRICENOTAPPLICABLE("AverageTransactionPrice-Not-Applicable"),
-AVERAGETRANSACTIONPRICERANGE1("AverageTransactionPrice-Range1"),
-AVERAGETRANSACTIONPRICERANGE2("AverageTransactionPrice-Range2"),
-AVERAGETRANSACTIONPRICERANGE3("AverageTransactionPrice-Range3"),
-AVERAGETRANSACTIONPRICERANGE4("AverageTransactionPrice-Range4"),
-AVERAGETRANSACTIONPRICERANGE5("AverageTransactionPrice-Range5"),
-AVERAGETRANSACTIONPRICERANGE6("AverageTransactionPrice-Range6"),
-AVERAGETRANSACTIONPRICERANGE7("AverageTransactionPrice-Range7"),
-AVERAGETRANSACTIONPRICERANGE8("AverageTransactionPrice-Range8"),
-AVERAGETRANSACTIONPRICERANGE9("AverageTransactionPrice-Range9"),
-AVERAGETRANSACTIONPRICERANGE10("AverageTransactionPrice-Range10"),
-	;
-private String value;
-AverageTransactionPriceType(String val){
-value=val;
-}		public String getValue(){
+ 		AVERAGETRANSACTIONPRICENOTAPPLICABLE("AverageTransactionPrice-Not-Applicable"),
+ 		AVERAGETRANSACTIONPRICERANGE1("AverageTransactionPrice-Range1"),
+ 		AVERAGETRANSACTIONPRICERANGE2("AverageTransactionPrice-Range2"),
+ 		AVERAGETRANSACTIONPRICERANGE3("AverageTransactionPrice-Range3"),
+ 		AVERAGETRANSACTIONPRICERANGE4("AverageTransactionPrice-Range4"),
+ 		AVERAGETRANSACTIONPRICERANGE5("AverageTransactionPrice-Range5"),
+ 		AVERAGETRANSACTIONPRICERANGE6("AverageTransactionPrice-Range6"),
+ 		AVERAGETRANSACTIONPRICERANGE7("AverageTransactionPrice-Range7"),
+ 		AVERAGETRANSACTIONPRICERANGE8("AverageTransactionPrice-Range8"),
+ 		AVERAGETRANSACTIONPRICERANGE9("AverageTransactionPrice-Range9"),
+ 		AVERAGETRANSACTIONPRICERANGE10("AverageTransactionPrice-Range10"),
+		;
+		private String value;
+		AverageTransactionPriceType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static AverageTransactionPriceType fromValue(String v) {

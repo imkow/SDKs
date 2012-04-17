@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum ChannelType {
 
-MERCHANT("Merchant"),
-EBAYITEM("eBayItem"),
-	;
-private String value;
-ChannelType(String val){
-value=val;
-}		public String getValue(){
+ 		MERCHANT("Merchant"),
+ 		EBAYITEM("eBayItem"),
+		;
+		private String value;
+		ChannelType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static ChannelType fromValue(String v) {

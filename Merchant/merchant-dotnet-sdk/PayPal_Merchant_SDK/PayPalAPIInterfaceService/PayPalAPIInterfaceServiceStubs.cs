@@ -11,21 +11,21 @@ namespace PayPal.PayPalAPIInterfaceService.Model {
 public class EnumUtils{
 public static string getDescription(Enum value){
 string description="";DescriptionAttribute[] attributes = (DescriptionAttribute[])value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false);
-            if (attributes.Length > 0)
-            {
-                description= attributes[0].Description;
-            }
+			            if (attributes.Length > 0)
+			            {
+			                description= attributes[0].Description;
+			            }
 return description;
 }
 public static object getValue(String value,Type enumType){
 string[] names = Enum.GetNames(enumType);
-            foreach (string name in names)
-            {
-                if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
-                {
-                    return Enum.Parse(enumType, name);
-                }
-            }
+			            foreach (string name in names)
+			            {
+			                if (getDescription((Enum)Enum.Parse(enumType, name)).Equals(value))
+			                {
+			                    return Enum.Parse(enumType, name);
+			                }
+			            }
 return null;
 		}
 }
@@ -1084,7 +1084,7 @@ sb.Append("</urn:AddressVerifyReq>");
 	 * Required
 	 * Maximum string length: 255 single-byte characters Input mask: ?@?.??
 	 */
-	public partial class AddressVerifyRequestType : AbstractRequestType {
+	public partial class AddressVerifyRequestType :AbstractRequestType{
 
 		/**
 Email address of buyer to be verified. 
@@ -1168,7 +1168,7 @@ sb.Append(base.toXMLString());
 	 * Confirmed: If the value of the StreetMatch object is Matched, PayPal responds that the entire postal address is confirmed.
 	 * Unconfirmed: PayPal responds that the postal address is unconfirmed
 	 */
-	public partial class AddressVerifyResponseType : AbstractResponseType {
+	public partial class AddressVerifyResponseType :AbstractResponseType{
 
 		/**
 Confirmation of a match, with one of the following tokens:
@@ -1767,7 +1767,7 @@ none: No pending reason
 	}
 	/**
 	 */
-	public partial class BAUpdateRequestType : AbstractRequestType {
+	public partial class BAUpdateRequestType :AbstractRequestType{
 
 		/**
 		 */
@@ -1993,7 +1993,7 @@ Customer's billing address.
 
 	/**
 	 */
-	public partial class BAUpdateResponseType : AbstractResponseType {
+	public partial class BAUpdateResponseType :AbstractResponseType{
 
 		private BAUpdateResponseDetailsType BAUpdateResponseDetailsField;
 		public BAUpdateResponseDetailsType BAUpdateResponseDetails {
@@ -2055,7 +2055,7 @@ sb.Append("</urn:BMButtonSearchReq>");
 	 * The earliest transaction date at which to start the search. No wildcards are allowed. 
 	 * Required
 	 */
-	public partial class BMButtonSearchRequestType : AbstractRequestType {
+	public partial class BMButtonSearchRequestType :AbstractRequestType{
 
 		/**
 		 * The earliest transaction date at which to start the search. No wildcards are allowed. 
@@ -2105,7 +2105,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMButtonSearchResponseType : AbstractResponseType {
+	public partial class BMButtonSearchResponseType :AbstractResponseType{
 
 		private List<ButtonSearchResultType> ButtonSearchResultField = new List<ButtonSearchResultType>();
 		public List<ButtonSearchResultType> ButtonSearchResult {
@@ -2170,7 +2170,7 @@ sb.Append("</urn:BMCreateButtonReq>");
 	 * Required
 	 * Must be one of the following: BUYNOW, CART, GIFTCERTIFICATE. SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or UNSUBSCRIBE
 	 */
-	public partial class BMCreateButtonRequestType : AbstractRequestType {
+	public partial class BMCreateButtonRequestType :AbstractRequestType{
 
 		/**
 		 * Type of Button to create.
@@ -2413,7 +2413,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMCreateButtonResponseType : AbstractResponseType {
+	public partial class BMCreateButtonResponseType :AbstractResponseType{
 
 		private string WebsiteField;
 		public string Website {
@@ -2519,7 +2519,7 @@ sb.Append("</urn:BMGetButtonDetailsReq>");
 	 * Required
 	 * Character length and limitations: 10 single-byte numeric characters
 	 */
-	public partial class BMGetButtonDetailsRequestType : AbstractRequestType {
+	public partial class BMGetButtonDetailsRequestType :AbstractRequestType{
 
 		/**
 		 * Button ID of button to return.
@@ -2559,7 +2559,7 @@ sb.Append(base.toXMLString());
 	 * Type of button.
 	 * One of the following: BUYNOW, CART, GIFTCERTIFICATE. SUBSCRIBE, PAYMENTPLAN, AUTOBILLING, DONATE, VIEWCART or UNSUBSCRIBE
 	 */
-	public partial class BMGetButtonDetailsResponseType : AbstractResponseType {
+	public partial class BMGetButtonDetailsResponseType :AbstractResponseType{
 
 		private string WebsiteField;
 		public string Website {
@@ -2900,7 +2900,7 @@ sb.Append("</urn:BMGetInventoryReq>");
 	 * Required
 	 * Character length and limitations: 10 single-byte numeric characters
 	 */
-	public partial class BMGetInventoryRequestType : AbstractRequestType {
+	public partial class BMGetInventoryRequestType :AbstractRequestType{
 
 		/**
 		 * Hosted Button ID of the button to return inventory for.
@@ -2938,7 +2938,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMGetInventoryResponseType : AbstractResponseType {
+	public partial class BMGetInventoryResponseType :AbstractResponseType{
 
 		private string HostedButtonIDField;
 		public string HostedButtonID {
@@ -3176,7 +3176,7 @@ sb.Append("</urn:BMManageButtonStatusReq>");
 	 * Required
 	 * Character length and limitations: 10 single-byte numeric characters
 	 */
-	public partial class BMManageButtonStatusRequestType : AbstractRequestType {
+	public partial class BMManageButtonStatusRequestType :AbstractRequestType{
 
 		/**
 		 * Button ID of Hosted button.
@@ -3228,7 +3228,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMManageButtonStatusResponseType : AbstractResponseType {
+	public partial class BMManageButtonStatusResponseType :AbstractResponseType{
 
 	 public BMManageButtonStatusResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -3274,7 +3274,7 @@ sb.Append("</urn:BMSetInventoryReq>");
 	 * Required
 	 * Character length and limitations: 10 single-byte numeric characters
 	 */
-	public partial class BMSetInventoryRequestType : AbstractRequestType {
+	public partial class BMSetInventoryRequestType :AbstractRequestType{
 
 		/**
 		 * Hosted Button ID of button you wish to change.
@@ -3479,7 +3479,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMSetInventoryResponseType : AbstractResponseType {
+	public partial class BMSetInventoryResponseType :AbstractResponseType{
 
 	 public BMSetInventoryResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -3525,7 +3525,7 @@ sb.Append("</urn:BMUpdateButtonReq>");
 	 * Required
 	 * Character length and limitations: 10 single-byte numeric characters
 	 */
-	public partial class BMUpdateButtonRequestType : AbstractRequestType {
+	public partial class BMUpdateButtonRequestType :AbstractRequestType{
 
 		/**
 		 * Hosted Button id of the button to update.
@@ -3792,7 +3792,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BMUpdateButtonResponseType : AbstractResponseType {
+	public partial class BMUpdateButtonResponseType :AbstractResponseType{
 
 		private string WebsiteField;
 		public string Website {
@@ -4131,7 +4131,7 @@ sb.Append("</urn:BillOutstandingAmountReq>");
 
 	/**
 	 */
-	public partial class BillOutstandingAmountRequestType : AbstractRequestType {
+	public partial class BillOutstandingAmountRequestType :AbstractRequestType{
 
 		private BillOutstandingAmountRequestDetailsType BillOutstandingAmountRequestDetailsField;
 		public BillOutstandingAmountRequestDetailsType BillOutstandingAmountRequestDetails {
@@ -4192,7 +4192,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BillOutstandingAmountResponseType : AbstractResponseType {
+	public partial class BillOutstandingAmountResponseType :AbstractResponseType{
 
 		private BillOutstandingAmountResponseDetailsType BillOutstandingAmountResponseDetailsField;
 		public BillOutstandingAmountResponseDetailsType BillOutstandingAmountResponseDetails {
@@ -4253,7 +4253,7 @@ sb.Append("</urn:BillUserReq>");
 	/**
 	 * This flag indicates that the response should include FMFDetails
 	 */
-	public partial class BillUserRequestType : AbstractRequestType {
+	public partial class BillUserRequestType :AbstractRequestType{
 
 		private MerchantPullPaymentType MerchantPullPaymentDetailsField;
 		public MerchantPullPaymentType MerchantPullPaymentDetails {
@@ -4298,7 +4298,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class BillUserResponseType : AbstractResponseType {
+	public partial class BillUserResponseType :AbstractResponseType{
 
 		private MerchantPullPaymentResponseType BillUserResponseDetailsField;
 		public MerchantPullPaymentResponseType BillUserResponseDetails {
@@ -5798,7 +5798,7 @@ sb.Append("</urn:CancelRecoupReq>");
 
 	/**
 	 */
-	public partial class CancelRecoupRequestType : AbstractRequestType {
+	public partial class CancelRecoupRequestType :AbstractRequestType{
 
 		private EnhancedCancelRecoupRequestDetailsType EnhancedCancelRecoupRequestDetailsField;
 		public EnhancedCancelRecoupRequestDetailsType EnhancedCancelRecoupRequestDetails {
@@ -5832,7 +5832,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class CancelRecoupResponseType : AbstractResponseType {
+	public partial class CancelRecoupResponseType :AbstractResponseType{
 
 	 public CancelRecoupResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -5883,7 +5883,7 @@ sb.Append("</urn:CompleteRecoupReq>");
 
 	/**
 	 */
-	public partial class CompleteRecoupRequestType : AbstractRequestType {
+	public partial class CompleteRecoupRequestType :AbstractRequestType{
 
 		private EnhancedCompleteRecoupRequestDetailsType EnhancedCompleteRecoupRequestDetailsField;
 		public EnhancedCompleteRecoupRequestDetailsType EnhancedCompleteRecoupRequestDetails {
@@ -5917,7 +5917,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class CompleteRecoupResponseType : AbstractResponseType {
+	public partial class CompleteRecoupResponseType :AbstractResponseType{
 
 		private EnhancedCompleteRecoupResponseDetailsType EnhancedCompleteRecoupResponseDetailsField;
 		public EnhancedCompleteRecoupResponseDetailsType EnhancedCompleteRecoupResponseDetails {
@@ -6230,7 +6230,7 @@ sb.Append("</urn:CreateBillingAgreementReq>");
 
 	/**
 	 */
-	public partial class CreateBillingAgreementRequestType : AbstractRequestType {
+	public partial class CreateBillingAgreementRequestType :AbstractRequestType{
 
 		/**
 		 */
@@ -6265,7 +6265,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class CreateBillingAgreementResponseType : AbstractResponseType {
+	public partial class CreateBillingAgreementResponseType :AbstractResponseType{
 
 		/**
 		 */
@@ -6622,7 +6622,7 @@ Indicates whether the sender's home address will be shared with recipient
 
 	/**
 	 */
-	public partial class CreateMobilePaymentRequestType : AbstractRequestType {
+	public partial class CreateMobilePaymentRequestType :AbstractRequestType{
 
 		private CreateMobilePaymentRequestDetailsType CreateMobilePaymentRequestDetailsField;
 		public CreateMobilePaymentRequestDetailsType CreateMobilePaymentRequestDetails {
@@ -6656,7 +6656,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class CreateMobilePaymentResponseType : AbstractResponseType {
+	public partial class CreateMobilePaymentResponseType :AbstractResponseType{
 
 	 public CreateMobilePaymentResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -6810,7 +6810,7 @@ sb.Append("</urn:CreateRecurringPaymentsProfileReq>");
 
 	/**
 	 */
-	public partial class CreateRecurringPaymentsProfileRequestType : AbstractRequestType {
+	public partial class CreateRecurringPaymentsProfileRequestType :AbstractRequestType{
 
 		private CreateRecurringPaymentsProfileRequestDetailsType CreateRecurringPaymentsProfileRequestDetailsField;
 		public CreateRecurringPaymentsProfileRequestDetailsType CreateRecurringPaymentsProfileRequestDetails {
@@ -6943,7 +6943,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class CreateRecurringPaymentsProfileResponseType : AbstractResponseType {
+	public partial class CreateRecurringPaymentsProfileResponseType :AbstractResponseType{
 
 		private CreateRecurringPaymentsProfileResponseDetailsType CreateRecurringPaymentsProfileResponseDetailsField;
 		public CreateRecurringPaymentsProfileResponseDetailsType CreateRecurringPaymentsProfileResponseDetails {
@@ -7632,7 +7632,7 @@ sb.Append("</urn:DoAuthorizationReq>");
 	 * Required
 	 * Character length and limits: 19 single-byte characters maximum
 	 */
-	public partial class DoAuthorizationRequestType : AbstractRequestType {
+	public partial class DoAuthorizationRequestType :AbstractRequestType{
 
 		/**
 The value of the order’s transaction identification number returned by a PayPal product. 
@@ -7711,7 +7711,7 @@ sb.Append(base.toXMLString());
 	 * An authorization identification number. 
 	 * Character length and limits: 19 single-byte characters
 	 */
-	public partial class DoAuthorizationResponseType : AbstractResponseType {
+	public partial class DoAuthorizationResponseType :AbstractResponseType{
 
 		/**
 An authorization identification number. 
@@ -7811,7 +7811,7 @@ sb.Append("</urn:DoCancelReq>");
 	/**
 	 * Msg Sub Id that was used for the orginal operation. 
 	 */
-	public partial class DoCancelRequestType : AbstractRequestType {
+	public partial class DoCancelRequestType :AbstractRequestType{
 
 		/**
 Msg Sub Id that was used for the orginal operation. 		 */
@@ -7863,7 +7863,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class DoCancelResponseType : AbstractResponseType {
+	public partial class DoCancelResponseType :AbstractResponseType{
 
 	 public DoCancelResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -7909,7 +7909,7 @@ sb.Append("</urn:DoCaptureReq>");
 	 * Required
 	 * Character length and limits: 19 single-byte characters maximum
 	 */
-	public partial class DoCaptureRequestType : AbstractRequestType {
+	public partial class DoCaptureRequestType :AbstractRequestType{
 
 		/**
 The authorization identification number of the payment you want to capture. 
@@ -8137,7 +8137,7 @@ Information about the transaction 		 */
 
 	/**
 	 */
-	public partial class DoCaptureResponseType : AbstractResponseType {
+	public partial class DoCaptureResponseType :AbstractResponseType{
 
 		private DoCaptureResponseDetailsType DoCaptureResponseDetailsField;
 		public DoCaptureResponseDetailsType DoCaptureResponseDetails {
@@ -8329,7 +8329,7 @@ sb.Append("</urn:DoDirectPaymentReq>");
 	/**
 	 * This flag indicates that the response should include FMFDetails
 	 */
-	public partial class DoDirectPaymentRequestType : AbstractRequestType {
+	public partial class DoDirectPaymentRequestType :AbstractRequestType{
 
 		private DoDirectPaymentRequestDetailsType DoDirectPaymentRequestDetailsField;
 		public DoDirectPaymentRequestDetailsType DoDirectPaymentRequestDetails {
@@ -8379,7 +8379,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 * The amount of the payment as specified by you on DoDirectPaymentRequest.	 */
-	public partial class DoDirectPaymentResponseType : AbstractResponseType {
+	public partial class DoDirectPaymentResponseType :AbstractResponseType{
 
 		/**
 		 * The amount of the payment as specified by you on DoDirectPaymentRequest.		 */
@@ -8976,7 +8976,7 @@ An identification code for use by third-party applications to identify transacti
 	/**
 	 * This flag indicates that the response should include FMFDetails
 	 */
-	public partial class DoExpressCheckoutPaymentRequestType : AbstractRequestType {
+	public partial class DoExpressCheckoutPaymentRequestType :AbstractRequestType{
 
 		private DoExpressCheckoutPaymentRequestDetailsType DoExpressCheckoutPaymentRequestDetailsField;
 		public DoExpressCheckoutPaymentRequestDetailsType DoExpressCheckoutPaymentRequestDetails {
@@ -9173,7 +9173,7 @@ Memo entered by sender in PayPal Review Page note field.
 
 	/**
 	 */
-	public partial class DoExpressCheckoutPaymentResponseType : AbstractResponseType {
+	public partial class DoExpressCheckoutPaymentResponseType :AbstractResponseType{
 
 		private DoExpressCheckoutPaymentResponseDetailsType DoExpressCheckoutPaymentResponseDetailsField;
 		public DoExpressCheckoutPaymentResponseDetailsType DoExpressCheckoutPaymentResponseDetails {
@@ -9253,7 +9253,7 @@ A timestamped token, the value of which was returned by SetMobileCheckoutRespons
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class DoMobileCheckoutPaymentRequestType : AbstractRequestType {
+	public partial class DoMobileCheckoutPaymentRequestType :AbstractRequestType{
 
 		/**
 A timestamped token, the value of which was returned by SetMobileCheckoutResponse. 
@@ -9385,7 +9385,7 @@ Information about the transaction		 */
 
 	/**
 	 */
-	public partial class DoMobileCheckoutPaymentResponseType : AbstractResponseType {
+	public partial class DoMobileCheckoutPaymentResponseType :AbstractResponseType{
 
 		private DoMobileCheckoutPaymentResponseDetailsType DoMobileCheckoutPaymentResponseDetailsField;
 		public DoMobileCheckoutPaymentResponseDetailsType DoMobileCheckoutPaymentResponseDetails {
@@ -9575,7 +9575,7 @@ sb.Append("</urn:DoNonReferencedCreditReq>");
 
 	/**
 	 */
-	public partial class DoNonReferencedCreditRequestType : AbstractRequestType {
+	public partial class DoNonReferencedCreditRequestType :AbstractRequestType{
 
 		private DoNonReferencedCreditRequestDetailsType DoNonReferencedCreditRequestDetailsField;
 		public DoNonReferencedCreditRequestDetailsType DoNonReferencedCreditRequestDetails {
@@ -9658,7 +9658,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class DoNonReferencedCreditResponseType : AbstractResponseType {
+	public partial class DoNonReferencedCreditResponseType :AbstractResponseType{
 
 		private DoNonReferencedCreditResponseDetailsType DoNonReferencedCreditResponseDetailsField;
 		public DoNonReferencedCreditResponseDetailsType DoNonReferencedCreditResponseDetails {
@@ -9721,7 +9721,7 @@ sb.Append("</urn:DoReauthorizationReq>");
 	 * Required
 	 * Character length and limits: 19 single-byte characters maximum
 	 */
-	public partial class DoReauthorizationRequestType : AbstractRequestType {
+	public partial class DoReauthorizationRequestType :AbstractRequestType{
 
 		/**
 The value of a previously authorized transaction identification number returned by a PayPal product. You can obtain a buyer's transaction number from the TransactionID element of the PayerInfo structure returned by GetTransactionDetailsResponse. 
@@ -9782,7 +9782,7 @@ sb.Append(base.toXMLString());
 	 * A new authorization identification number.
 	 * Character length and limits: 19 single-byte characters 
 	 */
-	public partial class DoReauthorizationResponseType : AbstractResponseType {
+	public partial class DoReauthorizationResponseType :AbstractResponseType{
 
 		/**
 A new authorization identification number.
@@ -10045,7 +10045,7 @@ sb.Append("</urn:DoReferenceTransactionReq>");
 	/**
 	 * This flag indicates that the response should include FMFDetails
 	 */
-	public partial class DoReferenceTransactionRequestType : AbstractRequestType {
+	public partial class DoReferenceTransactionRequestType :AbstractRequestType{
 
 		private DoReferenceTransactionRequestDetailsType DoReferenceTransactionRequestDetailsField;
 		public DoReferenceTransactionRequestDetailsType DoReferenceTransactionRequestDetails {
@@ -10232,7 +10232,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class DoReferenceTransactionResponseType : AbstractResponseType {
+	public partial class DoReferenceTransactionResponseType :AbstractResponseType{
 
 		private DoReferenceTransactionResponseDetailsType DoReferenceTransactionResponseDetailsField;
 		public DoReferenceTransactionResponseDetailsType DoReferenceTransactionResponseDetails {
@@ -10311,7 +10311,7 @@ sb.Append("</urn:DoUATPAuthorizationReq>");
 	 * UATP card details
 	 * Required
 	 */
-	public partial class DoUATPAuthorizationRequestType : AbstractRequestType {
+	public partial class DoUATPAuthorizationRequestType :AbstractRequestType{
 
 		/**
 UATP card details
@@ -10406,7 +10406,7 @@ sb.Append(base.toXMLString());
 	/**
 	 * Auth Authorization Code.
 	 */
-	public partial class DoUATPAuthorizationResponseType : DoAuthorizationResponseType {
+	public partial class DoUATPAuthorizationResponseType :DoAuthorizationResponseType{
 
 		private UATPDetailsType UATPDetailsField;
 		public UATPDetailsType UATPDetails {
@@ -10502,7 +10502,7 @@ sb.Append("</urn:DoUATPExpressCheckoutPaymentReq>");
 
 	/**
 	 */
-	public partial class DoUATPExpressCheckoutPaymentRequestType : DoExpressCheckoutPaymentRequestType {
+	public partial class DoUATPExpressCheckoutPaymentRequestType :DoExpressCheckoutPaymentRequestType{
 
 
 	public string toXMLString()  {
@@ -10516,7 +10516,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class DoUATPExpressCheckoutPaymentResponseType : DoExpressCheckoutPaymentResponseType {
+	public partial class DoUATPExpressCheckoutPaymentResponseType :DoExpressCheckoutPaymentResponseType{
 
 		private UATPDetailsType UATPDetailsField;
 		public UATPDetailsType UATPDetails {
@@ -10580,7 +10580,7 @@ sb.Append("</urn:DoVoidReq>");
 	 * Required
 	 * Character length and limits: 19 single-byte characters
 	 */
-	public partial class DoVoidRequestType : AbstractRequestType {
+	public partial class DoVoidRequestType :AbstractRequestType{
 
 		/**
 The value of the original authorization identification number returned by a PayPal product. 
@@ -10640,7 +10640,7 @@ sb.Append(base.toXMLString());
 	 * The authorization identification number you specified in the request. 
 	 * Character length and limits: 19 single-byte characters
 	 */
-	public partial class DoVoidResponseType : AbstractResponseType {
+	public partial class DoVoidResponseType :AbstractResponseType{
 
 		/**
 The authorization identification number you specified in the request. 
@@ -11152,7 +11152,7 @@ sb.Append("</urn:EnterBoardingReq>");
 
 	/**
 	 */
-	public partial class EnterBoardingRequestType : AbstractRequestType {
+	public partial class EnterBoardingRequestType :AbstractRequestType{
 
 		private EnterBoardingRequestDetailsType EnterBoardingRequestDetailsField;
 		public EnterBoardingRequestDetailsType EnterBoardingRequestDetails {
@@ -11189,7 +11189,7 @@ sb.Append(base.toXMLString());
 Use this token with the GetBoarding Details API call.
 	 * Character length and limitations: 64 alphanumeric characters. The token has the following format:
 	 * OB-61characterstring	 */
-	public partial class EnterBoardingResponseType : AbstractResponseType {
+	public partial class EnterBoardingResponseType :AbstractResponseType{
 
 		/**
 		 * A unique token that identifies this boarding session. 
@@ -11472,7 +11472,7 @@ sb.Append("</urn:ExecuteCheckoutOperationsReq>");
 
 	/**
 	 */
-	public partial class ExecuteCheckoutOperationsRequestType : AbstractRequestType {
+	public partial class ExecuteCheckoutOperationsRequestType :AbstractRequestType{
 
 		private ExecuteCheckoutOperationsRequestDetailsType ExecuteCheckoutOperationsRequestDetailsField;
 		public ExecuteCheckoutOperationsRequestDetailsType ExecuteCheckoutOperationsRequestDetails {
@@ -11553,7 +11553,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class ExecuteCheckoutOperationsResponseType : AbstractResponseType {
+	public partial class ExecuteCheckoutOperationsResponseType :AbstractResponseType{
 
 		private ExecuteCheckoutOperationsResponseDetailsType ExecuteCheckoutOperationsResponseDetailsField;
 		public ExecuteCheckoutOperationsResponseDetailsType ExecuteCheckoutOperationsResponseDetails {
@@ -11708,7 +11708,7 @@ sb.Append("</urn:ExternalRememberMeOptOutReq>");
 	 * meaning only to the merchant.
 	 * Required
 	 */
-	public partial class ExternalRememberMeOptOutRequestType : AbstractRequestType {
+	public partial class ExternalRememberMeOptOutRequestType :AbstractRequestType{
 
 		/**
 		 * The merchant passes in the ExternalRememberMeID to identify the user to opt out.  This is a 17-character
@@ -11766,7 +11766,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class ExternalRememberMeOptOutResponseType : AbstractResponseType {
+	public partial class ExternalRememberMeOptOutResponseType :AbstractResponseType{
 
 	 public ExternalRememberMeOptOutResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -12381,7 +12381,7 @@ A timestamped token, the value of which was returned by SetAuthFlowParam Respons
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class GetAccessPermissionDetailsRequestType : AbstractRequestType {
+	public partial class GetAccessPermissionDetailsRequestType :AbstractRequestType{
 
 		/**
 A timestamped token, the value of which was returned by SetAuthFlowParam Response. 
@@ -12554,7 +12554,7 @@ The Last name of the user.
 
 	/**
 	 */
-	public partial class GetAccessPermissionDetailsResponseType : AbstractResponseType {
+	public partial class GetAccessPermissionDetailsResponseType :AbstractResponseType{
 
 		private GetAccessPermissionDetailsResponseDetailsType GetAccessPermissionDetailsResponseDetailsField;
 		public GetAccessPermissionDetailsResponseDetailsType GetAccessPermissionDetailsResponseDetails {
@@ -12617,7 +12617,7 @@ A timestamped token, the value of which was returned by SetAuthFlowParam Respons
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class GetAuthDetailsRequestType : AbstractRequestType {
+	public partial class GetAuthDetailsRequestType :AbstractRequestType{
 
 		/**
 A timestamped token, the value of which was returned by SetAuthFlowParam Response. 
@@ -12746,7 +12746,7 @@ The Last name of the user.
 
 	/**
 	 */
-	public partial class GetAuthDetailsResponseType : AbstractResponseType {
+	public partial class GetAuthDetailsResponseType :AbstractResponseType{
 
 		private GetAuthDetailsResponseDetailsType GetAuthDetailsResponseDetailsField;
 		public GetAuthDetailsResponseDetailsType GetAuthDetailsResponseDetails {
@@ -12806,7 +12806,7 @@ sb.Append("</urn:GetBalanceReq>");
 
 	/**
 	 */
-	public partial class GetBalanceRequestType : AbstractRequestType {
+	public partial class GetBalanceRequestType :AbstractRequestType{
 
 		private string ReturnAllCurrenciesField;
 		public string ReturnAllCurrencies {
@@ -12834,7 +12834,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class GetBalanceResponseType : AbstractResponseType {
+	public partial class GetBalanceResponseType :AbstractResponseType{
 
 		private BasicAmountType BalanceField;
 		public BasicAmountType Balance {
@@ -12928,7 +12928,7 @@ sb.Append("</urn:GetBillingAgreementCustomerDetailsReq>");
 
 	/**
 	 */
-	public partial class GetBillingAgreementCustomerDetailsRequestType : AbstractRequestType {
+	public partial class GetBillingAgreementCustomerDetailsRequestType :AbstractRequestType{
 
 		/**
 		 */
@@ -13017,7 +13017,7 @@ Customer's billing address.
 
 	/**
 	 */
-	public partial class GetBillingAgreementCustomerDetailsResponseType : AbstractResponseType {
+	public partial class GetBillingAgreementCustomerDetailsResponseType :AbstractResponseType{
 
 		private GetBillingAgreementCustomerDetailsResponseDetailsType GetBillingAgreementCustomerDetailsResponseDetailsField;
 		public GetBillingAgreementCustomerDetailsResponseDetailsType GetBillingAgreementCustomerDetailsResponseDetails {
@@ -13080,7 +13080,7 @@ sb.Append("</urn:GetBoardingDetailsReq>");
 	 * Required
 	 * Character length and limitations: 64 alphanumeric characters. The token has the following format:
 	 * OB-61characterstring	 */
-	public partial class GetBoardingDetailsRequestType : AbstractRequestType {
+	public partial class GetBoardingDetailsRequestType :AbstractRequestType{
 
 		/**
 		 * A unique token returned by the EnterBoarding API call that identifies this boarding session. 
@@ -13400,7 +13400,7 @@ Pending
 
 	/**
 	 */
-	public partial class GetBoardingDetailsResponseType : AbstractResponseType {
+	public partial class GetBoardingDetailsResponseType :AbstractResponseType{
 
 		private GetBoardingDetailsResponseDetailsType GetBoardingDetailsResponseDetailsField;
 		public GetBoardingDetailsResponseDetailsType GetBoardingDetailsResponseDetails {
@@ -13463,7 +13463,7 @@ A timestamped token, the value of which was returned by SetExpressCheckoutRespon
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class GetExpressCheckoutDetailsRequestType : AbstractRequestType {
+	public partial class GetExpressCheckoutDetailsRequestType :AbstractRequestType{
 
 		/**
 A timestamped token, the value of which was returned by SetExpressCheckoutResponse. 
@@ -13958,7 +13958,7 @@ Customer's billing address.
 
 	/**
 	 */
-	public partial class GetExpressCheckoutDetailsResponseType : AbstractResponseType {
+	public partial class GetExpressCheckoutDetailsResponseType :AbstractResponseType{
 
 		private GetExpressCheckoutDetailsResponseDetailsType GetExpressCheckoutDetailsResponseDetailsField;
 		public GetExpressCheckoutDetailsResponseDetailsType GetExpressCheckoutDetailsResponseDetails {
@@ -14125,7 +14125,7 @@ sb.Append("</urn:GetIncentiveEvaluationReq>");
 
 	/**
 	 */
-	public partial class GetIncentiveEvaluationRequestType : AbstractRequestType {
+	public partial class GetIncentiveEvaluationRequestType :AbstractRequestType{
 
 		private GetIncentiveEvaluationRequestDetailsType GetIncentiveEvaluationRequestDetailsField;
 		public GetIncentiveEvaluationRequestDetailsType GetIncentiveEvaluationRequestDetails {
@@ -14206,7 +14206,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class GetIncentiveEvaluationResponseType : AbstractResponseType {
+	public partial class GetIncentiveEvaluationResponseType :AbstractResponseType{
 
 		private GetIncentiveEvaluationResponseDetailsType GetIncentiveEvaluationResponseDetailsField;
 		public GetIncentiveEvaluationResponseDetailsType GetIncentiveEvaluationResponseDetails {
@@ -14297,7 +14297,7 @@ Phone number for status inquiry 		 */
 
 	/**
 	 */
-	public partial class GetMobileStatusRequestType : AbstractRequestType {
+	public partial class GetMobileStatusRequestType :AbstractRequestType{
 
 		private GetMobileStatusRequestDetailsType GetMobileStatusRequestDetailsField;
 		public GetMobileStatusRequestDetailsType GetMobileStatusRequestDetails {
@@ -14332,7 +14332,7 @@ sb.Append(base.toXMLString());
 	/**
 	 * Indicates whether the phone is activated for mobile payments
 	 */
-	public partial class GetMobileStatusResponseType : AbstractResponseType {
+	public partial class GetMobileStatusResponseType :AbstractResponseType{
 
 		/**
 Indicates whether the phone is activated for mobile payments
@@ -14411,7 +14411,7 @@ sb.Append("</urn:GetPalDetailsReq>");
 
 	/**
 	 */
-	public partial class GetPalDetailsRequestType : AbstractRequestType {
+	public partial class GetPalDetailsRequestType :AbstractRequestType{
 
 
 	public string toXMLString()  {
@@ -14425,7 +14425,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class GetPalDetailsResponseType : AbstractResponseType {
+	public partial class GetPalDetailsResponseType :AbstractResponseType{
 
 		private string PalField;
 		public string Pal {
@@ -14498,7 +14498,7 @@ sb.Append("</urn:GetRecurringPaymentsProfileDetailsReq>");
 
 	/**
 	 */
-	public partial class GetRecurringPaymentsProfileDetailsRequestType : AbstractRequestType {
+	public partial class GetRecurringPaymentsProfileDetailsRequestType :AbstractRequestType{
 
 		/**
 		 */
@@ -14840,7 +14840,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class GetRecurringPaymentsProfileDetailsResponseType : AbstractResponseType {
+	public partial class GetRecurringPaymentsProfileDetailsResponseType :AbstractResponseType{
 
 		private GetRecurringPaymentsProfileDetailsResponseDetailsType GetRecurringPaymentsProfileDetailsResponseDetailsField;
 		public GetRecurringPaymentsProfileDetailsResponseDetailsType GetRecurringPaymentsProfileDetailsResponseDetails {
@@ -14904,7 +14904,7 @@ Unique identifier of a transaction.
 	 * The details for some kinds of transactions cannot be retrieved with GetTransactionDetailsRequest. You cannot obtain details of bank transfer withdrawals, for example. 
 	 * Character length and limitations: 17 single-byte alphanumeric characters
 	 */
-	public partial class GetTransactionDetailsRequestType : AbstractRequestType {
+	public partial class GetTransactionDetailsRequestType :AbstractRequestType{
 
 		/**
 Unique identifier of a transaction. 
@@ -14938,7 +14938,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class GetTransactionDetailsResponseType : AbstractResponseType {
+	public partial class GetTransactionDetailsResponseType :AbstractResponseType{
 
 		private PaymentTransactionType PaymentTransactionDetailsField;
 		public PaymentTransactionType PaymentTransactionDetails {
@@ -16002,7 +16002,7 @@ sb.Append("</urn:InitiateRecoupReq>");
 
 	/**
 	 */
-	public partial class InitiateRecoupRequestType : AbstractRequestType {
+	public partial class InitiateRecoupRequestType :AbstractRequestType{
 
 		private EnhancedInitiateRecoupRequestDetailsType EnhancedInitiateRecoupRequestDetailsField;
 		public EnhancedInitiateRecoupRequestDetailsType EnhancedInitiateRecoupRequestDetails {
@@ -16036,7 +16036,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class InitiateRecoupResponseType : AbstractResponseType {
+	public partial class InitiateRecoupResponseType :AbstractResponseType{
 
 	 public InitiateRecoupResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -16786,7 +16786,7 @@ sb.Append("</urn:ManagePendingTransactionStatusReq>");
 
 	/**
 	 */
-	public partial class ManagePendingTransactionStatusRequestType : AbstractRequestType {
+	public partial class ManagePendingTransactionStatusRequestType :AbstractRequestType{
 
 		private string TransactionIDField;
 		public string TransactionID {
@@ -16834,7 +16834,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class ManagePendingTransactionStatusResponseType : AbstractResponseType {
+	public partial class ManagePendingTransactionStatusResponseType :AbstractResponseType{
 
 		private string TransactionIDField;
 		public string TransactionID {
@@ -16974,7 +16974,7 @@ sb.Append("</urn:ManageRecurringPaymentsProfileStatusReq>");
 
 	/**
 	 */
-	public partial class ManageRecurringPaymentsProfileStatusRequestType : AbstractRequestType {
+	public partial class ManageRecurringPaymentsProfileStatusRequestType :AbstractRequestType{
 
 		private ManageRecurringPaymentsProfileStatusRequestDetailsType ManageRecurringPaymentsProfileStatusRequestDetailsField;
 		public ManageRecurringPaymentsProfileStatusRequestDetailsType ManageRecurringPaymentsProfileStatusRequestDetails {
@@ -17035,7 +17035,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class ManageRecurringPaymentsProfileStatusResponseType : AbstractResponseType {
+	public partial class ManageRecurringPaymentsProfileStatusResponseType :AbstractResponseType{
 
 		private ManageRecurringPaymentsProfileStatusResponseDetailsType ManageRecurringPaymentsProfileStatusResponseDetailsField;
 		public ManageRecurringPaymentsProfileStatusResponseDetailsType ManageRecurringPaymentsProfileStatusResponseDetails {
@@ -17257,7 +17257,7 @@ Custom note for each recipient.
 	 * Optional
 	 * Character length and limitations: 255 single-byte alphanumeric characters
 	 */
-	public partial class MassPayRequestType : AbstractRequestType {
+	public partial class MassPayRequestType :AbstractRequestType{
 
 		/**
 Subject line of the email sent to all recipients. This subject is not contained in the input file; you must create it with your application. 
@@ -17353,7 +17353,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class MassPayResponseType : AbstractResponseType {
+	public partial class MassPayResponseType :AbstractResponseType{
 
 	 public MassPayResponseType(Object xmlSoap):base(xmlSoap) {
 		XmlDocument document=new XmlDocument();
@@ -22720,7 +22720,7 @@ sb.Append("</urn:RefundTransactionReq>");
 	 * Required
 	 * Character length and limitations: 17 single-byte alphanumeric characters 
 	 */
-	public partial class RefundTransactionRequestType : AbstractRequestType {
+	public partial class RefundTransactionRequestType :AbstractRequestType{
 
 		/**
 Unique identifier of the  transaction you are refunding.
@@ -22922,7 +22922,7 @@ sb.Append(base.toXMLString());
 	 * Unique transaction ID of the refund. 
 	 * Character length and limitations:17 single-byte characters
 	 */
-	public partial class RefundTransactionResponseType : AbstractResponseType {
+	public partial class RefundTransactionResponseType :AbstractResponseType{
 
 		/**
 Unique transaction ID of the refund. 
@@ -23184,7 +23184,7 @@ Identifier of the transaction to reverse.
 
 	/**
 	 */
-	public partial class ReverseTransactionRequestType : AbstractRequestType {
+	public partial class ReverseTransactionRequestType :AbstractRequestType{
 
 		private ReverseTransactionRequestDetailsType ReverseTransactionRequestDetailsField;
 		public ReverseTransactionRequestDetailsType ReverseTransactionRequestDetails {
@@ -23271,7 +23271,7 @@ Status of reversal request.
 
 	/**
 	 */
-	public partial class ReverseTransactionResponseType : AbstractResponseType {
+	public partial class ReverseTransactionResponseType :AbstractResponseType{
 
 		private ReverseTransactionResponseDetailsType ReverseTransactionResponseDetailsField;
 		public ReverseTransactionResponseDetailsType ReverseTransactionResponseDetails {
@@ -24046,7 +24046,7 @@ User address, this information is used when user chooses to signup for PayPal.
 
 	/**
 	 */
-	public partial class SetAccessPermissionsRequestType : AbstractRequestType {
+	public partial class SetAccessPermissionsRequestType :AbstractRequestType{
 
 		private SetAccessPermissionsRequestDetailsType SetAccessPermissionsRequestDetailsField;
 		public SetAccessPermissionsRequestDetailsType SetAccessPermissionsRequestDetails {
@@ -24082,7 +24082,7 @@ sb.Append(base.toXMLString());
 A timestamped token by which you identify to PayPal that you are processing this user. The token expires after three hours.
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class SetAccessPermissionsResponseType : AbstractResponseType {
+	public partial class SetAccessPermissionsResponseType :AbstractResponseType{
 
 		/**
 A timestamped token by which you identify to PayPal that you are processing this user. The token expires after three hours.
@@ -24509,7 +24509,7 @@ User address, this information is used when user chooses to signup for PayPal.
 
 	/**
 	 */
-	public partial class SetAuthFlowParamRequestType : AbstractRequestType {
+	public partial class SetAuthFlowParamRequestType :AbstractRequestType{
 
 		private SetAuthFlowParamRequestDetailsType SetAuthFlowParamRequestDetailsField;
 		public SetAuthFlowParamRequestDetailsType SetAuthFlowParamRequestDetails {
@@ -24545,7 +24545,7 @@ sb.Append(base.toXMLString());
 A timestamped token by which you identify to PayPal that you are processing this user. The token expires after three hours.
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class SetAuthFlowParamResponseType : AbstractResponseType {
+	public partial class SetAuthFlowParamResponseType :AbstractResponseType{
 
 		/**
 A timestamped token by which you identify to PayPal that you are processing this user. The token expires after three hours.
@@ -24807,7 +24807,7 @@ The value 1 indicates that you require that the customer's billing address on fi
 
 	/**
 	 */
-	public partial class SetCustomerBillingAgreementRequestType : AbstractRequestType {
+	public partial class SetCustomerBillingAgreementRequestType :AbstractRequestType{
 
 		private SetCustomerBillingAgreementRequestDetailsType SetCustomerBillingAgreementRequestDetailsField;
 		public SetCustomerBillingAgreementRequestDetailsType SetCustomerBillingAgreementRequestDetails {
@@ -24841,7 +24841,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class SetCustomerBillingAgreementResponseType : AbstractResponseType {
+	public partial class SetCustomerBillingAgreementResponseType :AbstractResponseType{
 
 		/**
 		 */
@@ -26282,7 +26282,7 @@ Customer's shipping address.
 
 	/**
 	 */
-	public partial class SetExpressCheckoutRequestType : AbstractRequestType {
+	public partial class SetExpressCheckoutRequestType :AbstractRequestType{
 
 		private SetExpressCheckoutRequestDetailsType SetExpressCheckoutRequestDetailsField;
 		public SetExpressCheckoutRequestDetailsType SetExpressCheckoutRequestDetails {
@@ -26318,7 +26318,7 @@ sb.Append(base.toXMLString());
 A timestamped token by which you identify to PayPal that you are processing this payment with Express Checkout. The token expires after three hours. If you set Token in the SetExpressCheckoutRequest, the value of Token in the response is identical to the value in the request. 
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class SetExpressCheckoutResponseType : AbstractResponseType {
+	public partial class SetExpressCheckoutResponseType :AbstractResponseType{
 
 		/**
 A timestamped token by which you identify to PayPal that you are processing this payment with Express Checkout. The token expires after three hours. If you set Token in the SetExpressCheckoutRequest, the value of Token in the response is identical to the value in the request. 
@@ -26668,7 +26668,7 @@ Customer's shipping address.
 
 	/**
 	 */
-	public partial class SetMobileCheckoutRequestType : AbstractRequestType {
+	public partial class SetMobileCheckoutRequestType :AbstractRequestType{
 
 		private SetMobileCheckoutRequestDetailsType SetMobileCheckoutRequestDetailsField;
 		public SetMobileCheckoutRequestDetailsType SetMobileCheckoutRequestDetails {
@@ -26704,7 +26704,7 @@ sb.Append(base.toXMLString());
 A timestamped token by which you identify to PayPal that you are processing this payment with Mobile Checkout. The token expires after three hours.
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class SetMobileCheckoutResponseType : AbstractResponseType {
+	public partial class SetMobileCheckoutResponseType :AbstractResponseType{
 
 		/**
 A timestamped token by which you identify to PayPal that you are processing this payment with Mobile Checkout. The token expires after three hours.
@@ -27343,7 +27343,7 @@ sb.Append("</urn:TransactionSearchReq>");
 The earliest transaction date at which to start the search. No wildcards are allowed. 
 	 * Required
 	 */
-	public partial class TransactionSearchRequestType : AbstractRequestType {
+	public partial class TransactionSearchRequestType :AbstractRequestType{
 
 		/**
 The earliest transaction date at which to start the search. No wildcards are allowed. 
@@ -27699,7 +27699,7 @@ sb.Append(base.toXMLString());
 
 	/**
 Results of a Transaction Search.	 */
-	public partial class TransactionSearchResponseType : AbstractResponseType {
+	public partial class TransactionSearchResponseType :AbstractResponseType{
 
 		/**
 Results of a Transaction Search.		 */
@@ -27877,7 +27877,7 @@ sb.Append("</urn:UpdateAccessPermissionsReq>");
 	 * Required
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class UpdateAccessPermissionsRequestType : AbstractRequestType {
+	public partial class UpdateAccessPermissionsRequestType :AbstractRequestType{
 
 		/**
 Unique PayPal customer account number, the value of which was returned by GetAuthDetails Response.
@@ -27917,7 +27917,7 @@ sb.Append(base.toXMLString());
 	 * The status of the update call, Success/Failure.
 	 * Character length and limitations: 20 single-byte characters
 	 */
-	public partial class UpdateAccessPermissionsResponseType : AbstractResponseType {
+	public partial class UpdateAccessPermissionsResponseType :AbstractResponseType{
 
 		/**
 The status of the update call, Success/Failure.
@@ -28282,7 +28282,7 @@ sb.Append("</urn:UpdateRecurringPaymentsProfileReq>");
 
 	/**
 	 */
-	public partial class UpdateRecurringPaymentsProfileRequestType : AbstractRequestType {
+	public partial class UpdateRecurringPaymentsProfileRequestType :AbstractRequestType{
 
 		private UpdateRecurringPaymentsProfileRequestDetailsType UpdateRecurringPaymentsProfileRequestDetailsField;
 		public UpdateRecurringPaymentsProfileRequestDetailsType UpdateRecurringPaymentsProfileRequestDetails {
@@ -28343,7 +28343,7 @@ sb.Append(base.toXMLString());
 
 	/**
 	 */
-	public partial class UpdateRecurringPaymentsProfileResponseType : AbstractResponseType {
+	public partial class UpdateRecurringPaymentsProfileResponseType :AbstractResponseType{
 
 		private UpdateRecurringPaymentsProfileResponseDetailsType UpdateRecurringPaymentsProfileResponseDetailsField;
 		public UpdateRecurringPaymentsProfileResponseDetailsType UpdateRecurringPaymentsProfileResponseDetails {

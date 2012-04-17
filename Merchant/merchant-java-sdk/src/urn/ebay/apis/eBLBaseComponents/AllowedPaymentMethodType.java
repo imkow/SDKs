@@ -12,15 +12,15 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum AllowedPaymentMethodType {
 
-DEFAULT("Default"),
-INSTANTPAYMENTONLY("InstantPaymentOnly"),
-ANYFUNDINGSOURCE("AnyFundingSource"),
-INSTANTFUNDINGSOURCE("InstantFundingSource"),
-	;
-private String value;
-AllowedPaymentMethodType(String val){
-value=val;
-}		public String getValue(){
+ 		DEFAULT("Default"),
+ 		INSTANTPAYMENTONLY("InstantPaymentOnly"),
+ 		ANYFUNDINGSOURCE("AnyFundingSource"),
+ 		INSTANTFUNDINGSOURCE("InstantFundingSource"),
+		;
+		private String value;
+		AllowedPaymentMethodType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static AllowedPaymentMethodType fromValue(String v) {

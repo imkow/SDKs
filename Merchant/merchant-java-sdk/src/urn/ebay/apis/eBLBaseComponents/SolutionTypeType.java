@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum SolutionTypeType {
 
-MARK("Mark"),
-SOLE("Sole"),
-	;
-private String value;
-SolutionTypeType(String val){
-value=val;
-}		public String getValue(){
+ 		MARK("Mark"),
+ 		SOLE("Sole"),
+		;
+		private String value;
+		SolutionTypeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static SolutionTypeType fromValue(String v) {

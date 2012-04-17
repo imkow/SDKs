@@ -138,11 +138,11 @@ public class PayPalAPIInterfaceServiceService extends BaseService {
 		
 	}
 
-private void setStandardParams(AbstractRequestType request) {
-	if (request.getVersion() == null) {
-	request.setVersion(SERVICE_VERSION);
-}
-}
+	private void setStandardParams(AbstractRequestType request) {
+		if (request.getVersion() == null) {
+			request.setVersion(SERVICE_VERSION);
+		}
+	}
 	/**
 	 * @throws SSLConfigurationException
 	 * @throws InvalidCredentialException

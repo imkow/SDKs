@@ -11,18 +11,18 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum AckCodeType {
 
-SUCCESS("Success"),
-FAILURE("Failure"),
-WARNING("Warning"),
-SUCCESSWITHWARNING("SuccessWithWarning"),
-FAILUREWITHWARNING("FailureWithWarning"),
-PARTIALSUCCESS("PartialSuccess"),
-CUSTOMCODE("CustomCode"),
-	;
-private String value;
-AckCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		SUCCESS("Success"),
+ 		FAILURE("Failure"),
+ 		WARNING("Warning"),
+ 		SUCCESSWITHWARNING("SuccessWithWarning"),
+ 		FAILUREWITHWARNING("FailureWithWarning"),
+ 		PARTIALSUCCESS("PartialSuccess"),
+ 		CUSTOMCODE("CustomCode"),
+		;
+		private String value;
+		AckCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static AckCodeType fromValue(String v) {

@@ -6,13 +6,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum FMFPendingTransactionActionType {
 
-ACCEPT("Accept"),
-DENY("Deny"),
-	;
-private String value;
-FMFPendingTransactionActionType(String val){
-value=val;
-}		public String getValue(){
+ 		ACCEPT("Accept"),
+ 		DENY("Deny"),
+		;
+		private String value;
+		FMFPendingTransactionActionType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static FMFPendingTransactionActionType fromValue(String v) {

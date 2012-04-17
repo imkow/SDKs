@@ -7,14 +7,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum PaymentCodeType {
 
-NONE("none"),
-ECHECK("echeck"),
-INSTANT("instant"),
-	;
-private String value;
-PaymentCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		NONE("none"),
+ 		ECHECK("echeck"),
+ 		INSTANT("instant"),
+		;
+		private String value;
+		PaymentCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static PaymentCodeType fromValue(String v) {

@@ -6,14 +6,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum ButtonImageType {
 
-REG("REG"),
-SML("SML"),
-CC("CC"),
-	;
-private String value;
-ButtonImageType(String val){
-value=val;
-}		public String getValue(){
+ 		REG("REG"),
+ 		SML("SML"),
+ 		CC("CC"),
+		;
+		private String value;
+		ButtonImageType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static ButtonImageType fromValue(String v) {

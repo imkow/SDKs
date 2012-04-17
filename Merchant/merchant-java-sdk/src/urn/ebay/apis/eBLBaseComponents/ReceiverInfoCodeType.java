@@ -7,14 +7,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum ReceiverInfoCodeType {
 
-EMAILADDRESS("EmailAddress"),
-USERID("UserID"),
-PHONENUMBER("PhoneNumber"),
-	;
-private String value;
-ReceiverInfoCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		EMAILADDRESS("EmailAddress"),
+ 		USERID("UserID"),
+ 		PHONENUMBER("PhoneNumber"),
+		;
+		private String value;
+		ReceiverInfoCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static ReceiverInfoCodeType fromValue(String v) {

@@ -9,15 +9,15 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum SeverityCodeType {
 
-WARNING("Warning"),
-ERROR("Error"),
-PARTIALSUCCESS("PartialSuccess"),
-CUSTOMCODE("CustomCode"),
-	;
-private String value;
-SeverityCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		WARNING("Warning"),
+ 		ERROR("Error"),
+ 		PARTIALSUCCESS("PartialSuccess"),
+ 		CUSTOMCODE("CustomCode"),
+		;
+		private String value;
+		SeverityCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static SeverityCodeType fromValue(String v) {

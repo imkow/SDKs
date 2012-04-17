@@ -6,13 +6,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum IncentiveAppliedStatusType {
 
-INCENTIVEAPPLIEDSTATUSSUCCESS("INCENTIVE-APPLIED-STATUS-SUCCESS"),
-INCENTIVEAPPLIEDSTATUSERROR("INCENTIVE-APPLIED-STATUS-ERROR"),
-	;
-private String value;
-IncentiveAppliedStatusType(String val){
-value=val;
-}		public String getValue(){
+ 		INCENTIVEAPPLIEDSTATUSSUCCESS("INCENTIVE-APPLIED-STATUS-SUCCESS"),
+ 		INCENTIVEAPPLIEDSTATUSERROR("INCENTIVE-APPLIED-STATUS-ERROR"),
+		;
+		private String value;
+		IncentiveAppliedStatusType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static IncentiveAppliedStatusType fromValue(String v) {

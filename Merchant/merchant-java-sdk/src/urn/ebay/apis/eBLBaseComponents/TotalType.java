@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum TotalType {
 
-TOTAL("Total"),
-ESTIMATEDTOTAL("EstimatedTotal"),
-	;
-private String value;
-TotalType(String val){
-value=val;
-}		public String getValue(){
+ 		TOTAL("Total"),
+ 		ESTIMATEDTOTAL("EstimatedTotal"),
+		;
+		private String value;
+		TotalType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static TotalType fromValue(String v) {

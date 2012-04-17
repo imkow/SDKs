@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum MobileRecipientCodeType {
 
-PHONENUMBER("PhoneNumber"),
-EMAILADDRESS("EmailAddress"),
-	;
-private String value;
-MobileRecipientCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		PHONENUMBER("PhoneNumber"),
+ 		EMAILADDRESS("EmailAddress"),
+		;
+		private String value;
+		MobileRecipientCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static MobileRecipientCodeType fromValue(String v) {

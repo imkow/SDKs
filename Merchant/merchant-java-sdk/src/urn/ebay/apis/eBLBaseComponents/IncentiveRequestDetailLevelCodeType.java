@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum IncentiveRequestDetailLevelCodeType {
 
-AGGREGATED("Aggregated"),
-DETAIL("Detail"),
-	;
-private String value;
-IncentiveRequestDetailLevelCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		AGGREGATED("Aggregated"),
+ 		DETAIL("Detail"),
+		;
+		private String value;
+		IncentiveRequestDetailLevelCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static IncentiveRequestDetailLevelCodeType fromValue(String v) {

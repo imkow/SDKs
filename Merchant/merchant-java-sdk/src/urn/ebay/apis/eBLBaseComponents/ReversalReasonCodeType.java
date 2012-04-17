@@ -7,17 +7,17 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum ReversalReasonCodeType {
 
-NONE("none"),
-CHARGEBACK("chargeback"),
-GUARANTEE("guarantee"),
-BUYERCOMPLAINT("buyer-complaint"),
-REFUND("refund"),
-OTHER("other"),
-	;
-private String value;
-ReversalReasonCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		NONE("none"),
+ 		CHARGEBACK("chargeback"),
+ 		GUARANTEE("guarantee"),
+ 		BUYERCOMPLAINT("buyer-complaint"),
+ 		REFUND("refund"),
+ 		OTHER("other"),
+		;
+		private String value;
+		ReversalReasonCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static ReversalReasonCodeType fromValue(String v) {

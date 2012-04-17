@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum MerchantPullStatusCodeType {
 
-ACTIVE("Active"),
-CANCELED("Canceled"),
-	;
-private String value;
-MerchantPullStatusCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		ACTIVE("Active"),
+ 		CANCELED("Canceled"),
+		;
+		private String value;
+		MerchantPullStatusCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static MerchantPullStatusCodeType fromValue(String v) {

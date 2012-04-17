@@ -7,18 +7,18 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum CreditCardTypeType {
 
-VISA("Visa"),
-MASTERCARD("MasterCard"),
-DISCOVER("Discover"),
-AMEX("Amex"),
-SWITCH("Switch"),
-SOLO("Solo"),
-MAESTRO("Maestro"),
-	;
-private String value;
-CreditCardTypeType(String val){
-value=val;
-}		public String getValue(){
+ 		VISA("Visa"),
+ 		MASTERCARD("MasterCard"),
+ 		DISCOVER("Discover"),
+ 		AMEX("Amex"),
+ 		SWITCH("Switch"),
+ 		SOLO("Solo"),
+ 		MAESTRO("Maestro"),
+		;
+		private String value;
+		CreditCardTypeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static CreditCardTypeType fromValue(String v) {

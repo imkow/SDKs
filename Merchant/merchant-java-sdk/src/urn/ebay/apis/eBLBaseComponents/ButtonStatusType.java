@@ -6,12 +6,12 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum ButtonStatusType {
 
-DELETE("DELETE"),
-	;
-private String value;
-ButtonStatusType(String val){
-value=val;
-}		public String getValue(){
+ 		DELETE("DELETE"),
+		;
+		private String value;
+		ButtonStatusType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static ButtonStatusType fromValue(String v) {

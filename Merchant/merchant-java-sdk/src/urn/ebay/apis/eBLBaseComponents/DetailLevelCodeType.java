@@ -6,14 +6,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum DetailLevelCodeType {
 
-RETURNALL("ReturnAll"),
-ITEMRETURNDESCRIPTION("ItemReturnDescription"),
-ITEMRETURNATTRIBUTES("ItemReturnAttributes"),
-	;
-private String value;
-DetailLevelCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		RETURNALL("ReturnAll"),
+ 		ITEMRETURNDESCRIPTION("ItemReturnDescription"),
+ 		ITEMRETURNATTRIBUTES("ItemReturnAttributes"),
+		;
+		private String value;
+		DetailLevelCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static DetailLevelCodeType fromValue(String v) {

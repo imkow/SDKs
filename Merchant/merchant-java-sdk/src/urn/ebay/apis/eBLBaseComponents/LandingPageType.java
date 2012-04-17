@@ -7,14 +7,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum LandingPageType {
 
-NONE("None"),
-LOGIN("Login"),
-BILLING("Billing"),
-	;
-private String value;
-LandingPageType(String val){
-value=val;
-}		public String getValue(){
+ 		NONE("None"),
+ 		LOGIN("Login"),
+ 		BILLING("Billing"),
+		;
+		private String value;
+		LandingPageType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static LandingPageType fromValue(String v) {

@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum IncentiveRequestCodeType {
 
-INCHECKOUT("InCheckout"),
-PRECHECKOUT("PreCheckout"),
-	;
-private String value;
-IncentiveRequestCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		INCHECKOUT("InCheckout"),
+ 		PRECHECKOUT("PreCheckout"),
+		;
+		private String value;
+		IncentiveRequestCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static IncentiveRequestCodeType fromValue(String v) {

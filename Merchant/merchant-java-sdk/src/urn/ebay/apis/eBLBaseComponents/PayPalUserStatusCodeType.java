@@ -7,13 +7,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum PayPalUserStatusCodeType {
 
-VERIFIED("verified"),
-UNVERIFIED("unverified"),
-	;
-private String value;
-PayPalUserStatusCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		VERIFIED("verified"),
+ 		UNVERIFIED("unverified"),
+		;
+		private String value;
+		PayPalUserStatusCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static PayPalUserStatusCodeType fromValue(String v) {

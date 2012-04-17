@@ -7,17 +7,17 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum IncentiveTypeCodeType {
 
-COUPON("Coupon"),
-EBAYGIFTCERTIFICATE("eBayGiftCertificate"),
-EBAYGIFTCARD("eBayGiftCard"),
-PAYPALREWARDVOUCHER("PayPalRewardVoucher"),
-MERCHANTGIFTCERTIFICATE("MerchantGiftCertificate"),
-EBAYREWARDVOUCHER("eBayRewardVoucher"),
-	;
-private String value;
-IncentiveTypeCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		COUPON("Coupon"),
+ 		EBAYGIFTCERTIFICATE("eBayGiftCertificate"),
+ 		EBAYGIFTCARD("eBayGiftCard"),
+ 		PAYPALREWARDVOUCHER("PayPalRewardVoucher"),
+ 		MERCHANTGIFTCERTIFICATE("MerchantGiftCertificate"),
+ 		EBAYREWARDVOUCHER("eBayRewardVoucher"),
+		;
+		private String value;
+		IncentiveTypeCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static IncentiveTypeCodeType fromValue(String v) {

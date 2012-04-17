@@ -7,23 +7,23 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum PendingStatusCodeType {
 
-NONE("none"),
-ECHECK("echeck"),
-INTL("intl"),
-VERIFY("verify"),
-ADDRESS("address"),
-UNILATERAL("unilateral"),
-OTHER("other"),
-UPGRADE("upgrade"),
-MULTICURRENCY("multi-currency"),
-AUTHORIZATION("authorization"),
-ORDER("order"),
-PAYMENTREVIEW("payment-review"),
-	;
-private String value;
-PendingStatusCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		NONE("none"),
+ 		ECHECK("echeck"),
+ 		INTL("intl"),
+ 		VERIFY("verify"),
+ 		ADDRESS("address"),
+ 		UNILATERAL("unilateral"),
+ 		OTHER("other"),
+ 		UPGRADE("upgrade"),
+ 		MULTICURRENCY("multi-currency"),
+ 		AUTHORIZATION("authorization"),
+ 		ORDER("order"),
+ 		PAYMENTREVIEW("payment-review"),
+		;
+		private String value;
+		PendingStatusCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static PendingStatusCodeType fromValue(String v) {

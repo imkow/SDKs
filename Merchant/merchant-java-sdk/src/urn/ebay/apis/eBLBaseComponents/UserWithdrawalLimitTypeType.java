@@ -6,14 +6,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum UserWithdrawalLimitTypeType {
 
-UNKNOWN("Unknown"),
-LIMITED("Limited"),
-UNLIMITED("Unlimited"),
-	;
-private String value;
-UserWithdrawalLimitTypeType(String val){
-value=val;
-}		public String getValue(){
+ 		UNKNOWN("Unknown"),
+ 		LIMITED("Limited"),
+ 		UNLIMITED("Unlimited"),
+		;
+		private String value;
+		UserWithdrawalLimitTypeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static UserWithdrawalLimitTypeType fromValue(String v) {

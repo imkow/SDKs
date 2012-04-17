@@ -7,15 +7,15 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum MobilePaymentCodeType {
 
-PP("P2P"),
-HARDGOODS("HardGoods"),
-DONATION("Donation"),
-TOPUP("TopUp"),
-	;
-private String value;
-MobilePaymentCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		PP("P2P"),
+ 		HARDGOODS("HardGoods"),
+ 		DONATION("Donation"),
+ 		TOPUP("TopUp"),
+		;
+		private String value;
+		MobilePaymentCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static MobilePaymentCodeType fromValue(String v) {

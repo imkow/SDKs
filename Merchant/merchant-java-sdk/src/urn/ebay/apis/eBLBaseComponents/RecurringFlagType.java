@@ -5,13 +5,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum RecurringFlagType {
 
-Y1("Y"),
-Y2("y"),
-	;
-private String value;
-RecurringFlagType(String val){
-value=val;
-}		public String getValue(){
+ 		Y1("Y"),
+ 		Y2("y"),
+		;
+		private String value;
+		RecurringFlagType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static RecurringFlagType fromValue(String v) {

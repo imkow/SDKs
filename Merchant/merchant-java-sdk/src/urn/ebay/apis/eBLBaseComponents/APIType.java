@@ -5,13 +5,13 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum APIType {
 
-CHECKOUTAUTHORIZATION("CHECKOUT_AUTHORIZATION"),
-CHECKOUTSALE("CHECKOUT_SALE"),
-	;
-private String value;
-APIType(String val){
-value=val;
-}		public String getValue(){
+ 		CHECKOUTAUTHORIZATION("CHECKOUT_AUTHORIZATION"),
+ 		CHECKOUTSALE("CHECKOUT_SALE"),
+		;
+		private String value;
+		APIType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static APIType fromValue(String v) {

@@ -8,14 +8,14 @@ package urn.ebay.apis.eBLBaseComponents;
 
 public enum AddressOwnerCodeType {
 
-PAYPAL("PayPal"),
-EBAY("eBay"),
-CUSTOMCODE("CustomCode"),
-	;
-private String value;
-AddressOwnerCodeType(String val){
-value=val;
-}		public String getValue(){
+ 		PAYPAL("PayPal"),
+ 		EBAY("eBay"),
+ 		CUSTOMCODE("CustomCode"),
+		;
+		private String value;
+		AddressOwnerCodeType(String val){
+			value=val;
+		}		public String getValue(){
 			return value;
 		}
 		public static AddressOwnerCodeType fromValue(String v) {
