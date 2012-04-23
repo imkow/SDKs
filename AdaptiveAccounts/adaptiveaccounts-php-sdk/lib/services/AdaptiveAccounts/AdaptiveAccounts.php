@@ -75,15 +75,13 @@ class ErrorData {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->subdomain = $map[$mapKeyName];
 			}
-			if( PPUtils::array_match_key($map, $prefix."severity.") ) {
-				$newPrefix = $prefix ."severity.";
-				$this->severity = new ErrorSeverity();
-				$this->severity->init($map, $newPrefix);
+			$mapKeyName =  $prefix . 'severity';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->severity = $map[$mapKeyName];
 			}
-			if( PPUtils::array_match_key($map, $prefix."category.") ) {
-				$newPrefix = $prefix ."category.";
-				$this->category = new ErrorCategory();
-				$this->category->init($map, $newPrefix);
+			$mapKeyName =  $prefix . 'category';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->category = $map[$mapKeyName];
 			}
 			$mapKeyName =  $prefix . 'message';
 			if($map != null && array_key_exists($mapKeyName, $map)) {
@@ -174,8 +172,7 @@ class RequestEnvelope {
 		$str = '';
 		$delim = '';
 		if( $this->detailLevel != null ) {
-			$newPrefix = $prefix . 'detailLevel.';
-			$str .= $delim . call_user_func(array($this->detailLevel, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'detailLevel=' . urlencode($this->detailLevel);
 			$delim = '&';
 		}
 		if( $this->errorLanguage != null ) {
@@ -227,10 +224,9 @@ class ResponseEnvelope {
 			if($map != null && array_key_exists($mapKeyName, $map)) {
 				$this->timestamp = $map[$mapKeyName];
 			}
-			if( PPUtils::array_match_key($map, $prefix."ack.") ) {
-				$newPrefix = $prefix ."ack.";
-				$this->ack = new AckCode();
-				$this->ack->init($map, $newPrefix);
+			$mapKeyName =  $prefix . 'ack';
+			if($map != null && array_key_exists($mapKeyName, $map)) {
+				$this->ack = $map[$mapKeyName];
 			}
 			$mapKeyName =  $prefix . 'correlationId';
 			if($map != null && array_key_exists($mapKeyName, $map)) {
@@ -1293,8 +1289,7 @@ class AddBankAccountRequest {
 			$delim = '&';
 		}
 		if( $this->bankAccountType != null ) {
-			$newPrefix = $prefix . 'bankAccountType.';
-			$str .= $delim . call_user_func(array($this->bankAccountType, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'bankAccountType=' . urlencode($this->bankAccountType);
 			$delim = '&';
 		}
 		if( $this->bankAccountNumber != null ) {
@@ -1362,8 +1357,7 @@ class AddBankAccountRequest {
 			$delim = '&';
 		}
 		if( $this->confirmationType != null ) {
-			$newPrefix = $prefix . 'confirmationType.';
-			$str .= $delim . call_user_func(array($this->confirmationType, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'confirmationType=' . urlencode($this->confirmationType);
 			$delim = '&';
 		}
 		if( $this->webOptions != null ) {
@@ -1607,8 +1601,7 @@ class AddPaymentCardRequest {
 			$delim = '&';
 		}
 		if( $this->cardType != null ) {
-			$newPrefix = $prefix . 'cardType.';
-			$str .= $delim . call_user_func(array($this->cardType, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'cardType=' . urlencode($this->cardType);
 			$delim = '&';
 		}
 		if( $this->expirationDate != null ) {
@@ -1630,8 +1623,7 @@ class AddPaymentCardRequest {
 			$delim = '&';
 		}
 		if( $this->confirmationType != null ) {
-			$newPrefix = $prefix . 'confirmationType.';
-			$str .= $delim . call_user_func(array($this->confirmationType, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'confirmationType=' . urlencode($this->confirmationType);
 			$delim = '&';
 		}
 		if( $this->webOptions != null ) {
@@ -2354,13 +2346,11 @@ class BusinessInfoType {
 			$delim = '&';
 		}
 		if( $this->businessType != null ) {
-			$newPrefix = $prefix . 'businessType.';
-			$str .= $delim . call_user_func(array($this->businessType, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'businessType=' . urlencode($this->businessType);
 			$delim = '&';
 		}
 		if( $this->businessSubtype != null ) {
-			$newPrefix = $prefix . 'businessSubtype.';
-			$str .= $delim . call_user_func(array($this->businessSubtype, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'businessSubtype=' . urlencode($this->businessSubtype);
 			$delim = '&';
 		}
 		if( $this->incorporationId != null ) {
@@ -2380,8 +2370,7 @@ class BusinessInfoType {
 			$delim = '&';
 		}
 		for($i=0; $i<count($this->salesVenue);$i++) {
-			$newPrefix = $prefix . "salesVenue($i).";
-			$str .= $delim . call_user_func(array($this->salesVenue[$i], 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix ."salesVenue($i)=" .  urlencode($this->salesVenue[$i]);
 		 }
 		if( $this->salesVenueDesc != null ) {
 			$str .= $delim .  $prefix . 'salesVenueDesc=' . urlencode($this->salesVenueDesc);
@@ -2508,8 +2497,7 @@ class BusinessStakeholderType {
 		$str = '';
 		$delim = '';
 		if( $this->role != null ) {
-			$newPrefix = $prefix . 'role.';
-			$str .= $delim . call_user_func(array($this->role, 'toNVPString'), $newPrefix);
+			$str .= $delim .  $prefix . 'role=' . urlencode($this->role);
 			$delim = '&';
 		}
 		if( $this->name != null ) {
