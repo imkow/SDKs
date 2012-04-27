@@ -1,11 +1,11 @@
 
-
-PayPal Merchant SDK for .NET - v0.6.88
+PayPal Merchant SDK for .NET - v0.7.88
 --------------------------------------
 
 Release Date - 11-Mar-2012
 
 	- wsdl update version 88.0    
+	- Fix for incorrect Permissions header (X-PP-AUTHORIZATION)
 	
 PayPal Merchant SDK for .NET - v0.6.86
 --------------------------------------
